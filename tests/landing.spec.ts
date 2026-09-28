@@ -30,14 +30,14 @@ test('production assets, real 3D, scroll story, and desktop layout', async ({ pa
 
 test('all action buttons, native dialog focus, Escape and concept link', async ({ page }) => {
   await page.goto('./')
-  for (const label of ['เข้าใช้งาน', 'ดาวน์โหลด']) {
+  for (const label of ['ดาวน์โหลด']) {
     const buttons = page.getByRole('button', { name: label, exact: true })
-    expect(await buttons.count()).toBe(2)
+    await expect(buttons).toHaveCount(2)
     for (const button of await buttons.all()) {
       await button.click()
       const modal = page.getByRole('dialog')
       await expect(modal).toBeVisible()
-      await expect(modal).toContainText(label === 'เข้าใช้งาน' ? 'ยังไม่เปิดให้เข้าใช้งานจริง' : 'ยังไม่มีไฟล์ให้ดาวน์โหลด')
+      await expect(modal).toContainText('ยังไม่มีไฟล์ให้ดาวน์โหลด')
       await expect(modal.getByRole('button', { name: 'ปิดหน้าต่าง' }).first()).toBeFocused()
       await page.keyboard.press('Shift+Tab')
       expect(await page.evaluate(() => !!document.activeElement?.closest('dialog'))).toBe(true)
@@ -47,7 +47,7 @@ test('all action buttons, native dialog focus, Escape and concept link', async (
       expect(await page.evaluate(() => getComputedStyle(document.body).overflow)).not.toBe('hidden')
     }
   }
-  await page.getByRole('button', { name: 'เข้าใช้งาน', exact: true }).first().click()
+  await page.getByRole('button', { name: 'ดาวน์โหลด', exact: true }).first().click()
   await page.getByRole('dialog').getByRole('link', { name: 'ดูตัวอย่างคอนเซปต์' }).click()
   await expect(page.getByRole('dialog')).not.toBeVisible()
   await expect(page.getByRole('tab', { name: /งานประจำวัน/ })).toBeFocused()

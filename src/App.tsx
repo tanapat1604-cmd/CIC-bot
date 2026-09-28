@@ -5,10 +5,8 @@ import { capabilities, faqs, stories } from './content'
 import { siteConfig } from './config'
 import FaqItem from './FaqItem'
 import { motionEase, useMediaQuery, useTabMotion } from './useMotion'
-
-function Brand({ light = false }: { light?: boolean }) {
-  return <a className={`brand ${light ? 'brand-light' : ''}`} href="#top" aria-label="CIC Bot กลับด้านบน"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M27 9a14 14 0 1 0 0 22" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" /><circle cx="26" cy="20" r="4" fill="currentColor" /></svg><span>CIC<span className="brand-bot"> Bot</span></span></a>
-}
+import Brand from './Brand'
+import './styles.css'
 
 type Action = 'app' | 'download'
 
@@ -26,6 +24,12 @@ export default function App() {
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)')
   const mobileMenu = useMediaQuery('(max-width: 900px)')
   const { shown, panels } = useTabMotion(activeTab, reduced)
+
+  useEffect(() => {
+    // A direct anchor or Back navigation may arrive before this lazy route mounts.
+    const target = document.getElementById(location.hash.slice(1))
+    target?.scrollIntoView({ behavior: 'instant' })
+  }, [])
 
   useEffect(() => {
     if (reduced) return
@@ -118,7 +122,7 @@ export default function App() {
 
   const actionButtons = (className = '') => <div className={`action-buttons ${className}`}><button className="button button-outline" onClick={() => openAction('app')}>เข้าใช้งาน <Icon name="arrow" size={17} /></button><button className="button button-primary" onClick={() => openAction('download')}><Icon name="download" size={17} /> ดาวน์โหลด</button></div>
 
-  return <>
+  return <div className="landing">
     <a href="#main" className="skip-link">ข้ามไปยังเนื้อหา</a>
     <header className="header">
       <div className="header-inner wrap">
@@ -128,7 +132,7 @@ export default function App() {
           <a href="#capabilities" onClick={() => setMenuOpen(false)}>ช่วยอะไรได้บ้าง</a>
           <a href="#how-it-works" onClick={() => setMenuOpen(false)}>วิธีทำงาน</a>
         </nav>
-        <div className="header-actions"><span className="coming-soon">เร็ว ๆ นี้</span>{actionButtons()}</div>
+        <div className="header-actions"><span className="coming-soon">ทดลองหน้าแอป</span>{actionButtons()}</div>
         <button className="menu-toggle" ref={menuButton} aria-label={menuOpen ? 'ปิดเมนู' : 'เปิดเมนู'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(current => !current)}><Icon name={menuOpen ? 'close' : 'menu'} /></button>
       </div>
     </header>
@@ -184,5 +188,5 @@ export default function App() {
     <dialog ref={dialog} className="status-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description" onKeyDown={trapDialogFocus} onCancel={event => { event.preventDefault(); closeDialog() }} onClick={event => { if (event.target === event.currentTarget) { const rect = event.currentTarget.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeDialog() } }}>
       <button className="dialog-close" aria-label="ปิดหน้าต่าง" onClick={closeDialog} autoFocus><Icon name="close" /></button><div className="dialog-symbol"><Icon name={dialogAction === 'app' ? 'spark' : 'download'} size={30} /></div><p className="eyebrow blue">SOMETHING GOOD IS TAKING SHAPE</p><h2 id="dialog-title">กำลังพัฒนา<br />เพื่อเป็นผู้ช่วยของคุณ<span className="blue">.</span></h2><p id="dialog-description">{dialogAction === 'app' ? 'CIC Bot ยังไม่เปิดให้เข้าใช้งานจริง' : 'CIC Bot ยังไม่มีไฟล์ให้ดาวน์โหลด'} ขณะนี้อยู่ระหว่างพัฒนา ระหว่างนี้ลองสำรวจตัวอย่างคอนเซปต์และความสามารถที่เราวางแผนไว้ได้เลย</p><a href="#capabilities" className="button button-primary" onClick={() => { closeDialog(); setTimeout(() => tabs.current[activeTab]?.focus({ preventScroll: true }), 0) }}>ดูตัวอย่างคอนเซปต์ <Icon name="arrow" size={18} /></a><button className="dialog-dismiss" onClick={closeDialog}>ปิดหน้าต่าง</button>
     </dialog>
-  </>
+  </div>
 }

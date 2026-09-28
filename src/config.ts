@@ -1,5 +1,5 @@
 export const siteConfig = {
-  appUrl: '',
+  appUrl: '#/app',
   downloadUrl: '',
   repositoryUrl: 'https://github.com/tanapat1604-cmd/CIC-bot',
 }

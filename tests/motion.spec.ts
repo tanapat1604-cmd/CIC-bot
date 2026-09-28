@@ -38,7 +38,7 @@ test('rapid tabs settle on latest choice, keep layout and move the indicator', a
 
 test('dialog animates while focus, Escape, rapid reopen and links stay immediate', async ({ page }) => {
   await page.goto('./')
-  const trigger = page.getByRole('button', { name: 'เข้าใช้งาน', exact: true }).first()
+  const trigger = page.getByRole('button', { name: 'ดาวน์โหลด', exact: true }).first()
   await trigger.click()
   const modal = page.locator('dialog')
   await expect(modal).toHaveAttribute('open', '')
@@ -117,7 +117,9 @@ test('animated fallback pauses offscreen and respects reduced motion', async ({ 
 })
 
 test('WebGL renders, scrolls both directions, and context loss shows the fallback', async ({ page }) => {
-  test.setTimeout(60000)
+  test.setTimeout(90000)
+  // Limit software-renderer readback cost; still exercise the desktop scroll camera.
+  await page.setViewportSize({ width: 1280, height: 800 })
   await page.goto('./')
   await expect(page.locator('.scene-hero')).toHaveAttribute('data-renderer', 'webgl')
   const hero = page.locator('.scene-hero')

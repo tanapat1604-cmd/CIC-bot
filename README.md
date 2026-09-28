@@ -1,6 +1,10 @@
 # CIC Bot
 
-หน้าโปรโมตคอนเซปต์ CIC Bot ภาษาไทย ใช้ React, TypeScript, Vite และ Three.js ผ่าน React Three Fiber เว็บไซต์นี้ **ไม่ใช่แอป AI ที่พร้อมใช้งาน** ไม่มีระบบบัญชี หลังบ้าน หรือการแชร์/ควบคุมหน้าจอจริง
+หน้าโปรโมต CIC Bot และตัวอย่างแอปภาษาไทย ใช้ React, TypeScript, Vite และ Three.js ผ่าน React Three Fiber (เฉพาะหน้าโปรโมต) เว็บไซต์นี้ **ไม่ใช่แอป AI ที่พร้อมใช้งาน** ไม่มีระบบบัญชี หลังบ้าน หรือการแชร์/ควบคุมหน้าจอจริง
+
+- [หน้าโปรโมต](https://tanapat1604-cmd.github.io/CIC-bot/)
+- [ทดลองหน้าแอป](https://tanapat1604-cmd.github.io/CIC-bot/#/app)
+- [โครงสร้างแอปและจุดต่อระบบจริง](APP-FOUNDATION.md)
 
 ## รันและ build
 
@@ -35,7 +39,10 @@ npm test
 
 - `src/content.ts` — ตัวอย่างความสามารถ เรื่องเล่า และ FAQ
 - `src/App.tsx` — Hero เมนู วิธีทำงาน ส่วนท้าย และ dialog
-- `src/styles.css` — สี ฟอนต์ ระยะห่าง และ responsive; สีหลักอยู่ใน `:root`
+- `src/styles.css` — CSS หน้าโปรโมตที่จำกัด selector ใน `.landing`
+- `src/base.css`, `src/Brand.tsx` — tokens/reset และ Brand ร่วมกัน
+- `src/Router.tsx` — lazy hash route แยก Landing กับ Workspace
+- `src/workspace/` — UI, CSS Modules, interfaces, in-memory store และ cancellable mock adapters
 - `src/Scene.tsx` — โมเดลจอคอมพิวเตอร์และผู้ช่วย สร้าง geometry ในโค้ด
 - `src/SceneView.tsx` — lazy load, หยุด animation เมื่อนอกจอ/แท็บไม่ทำงาน และ reduced motion
 - `src/SceneFallback.tsx` — ฉาก CSS สำรอง
@@ -44,7 +51,10 @@ npm test
 
 สร้างภาพแชร์ใหม่จากหน้าเว็บ: รัน `npm run build` แล้ว `npm run social` (ต้องติดตั้ง Chromium สำหรับ Playwright) จากนั้น build อีกครั้งเพื่อรวมภาพใหม่
 
-`appUrl` และ `downloadUrl` เริ่มต้นเป็นสตริงว่าง ทุกปุ่มจึงเปิด dialog แจ้งว่ากำลังพัฒนา เมื่อมีผลิตภัณฑ์จริงจึงใส่ URL และปรับข้อความสถานะ ไม่มีไฟล์ดาวน์โหลดปลอมหรือแบบฟอร์มเก็บข้อมูล
+`appUrl` เป็น `#/app` เปิดหน้าแอปจำลอง ส่วน `downloadUrl` ยังว่างและเปิด dialog แจ้งว่ากำลังพัฒนา ไม่มีไฟล์ดาวน์โหลดปลอมหรือแบบฟอร์มเก็บข้อมูล
+
+แอปมีแชตในหน่วยความจำ โหมดคุย/ให้ดู/ช่วยทำ บริบทตัวอย่าง การอนุญาตทีละรายการ และมุมมองเต็ม/กะทัดรัดที่ใช้ session เดียวกัน แนบลิงก์หรือภาพ preview ในเครื่องได้โดยไม่ fetch/อัปโหลด ข้อความและภาพหายเมื่อรีเฟรช ดูรายละเอียดและข้อจำกัดใน `APP-FOUNDATION.md`
+`tests/workspace.spec.ts` ตรวจแอป/routing/attachments/accessibility/responsive และ `tests/store.spec.ts` ตรวจ cancellation, ผลตอบกลับเก่า, approval และ error/retry
 
 ฟอนต์ Noto Sans Thai และ Inter รวมใน build ไม่เรียก Google Fonts ขณะใช้งาน ฉากไม่ใช้โมเดล/texture ภายนอก จำกัด DPR ที่ 1.5 และแสดงภาพนิ่งเมื่อเลือก reduced motion
 
