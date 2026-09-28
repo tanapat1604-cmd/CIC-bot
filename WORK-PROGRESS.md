@@ -7,7 +7,7 @@ Updated: 2026-09-28. User requests a working simulated app, linked from the exis
 - Existing React 19 / TypeScript / Vite / Playwright; preserve the landing scene and motion.
 - Full brief: user attachment `0ae6a7f9-3f7d-410b-b38a-1f4edf6f3d5c/Pasted text.txt`.
 
-## Implemented (not committed yet)
+## Implemented and published
 - Lazy hash route `#/app`, scoped landing CSS, shared tokens/Brand. Landing entry buttons now open app, downloads keep dialog.
 - Expanded/compact workspace, in-memory SessionStore, injected mock adapters, AbortSignal + session/operation checks, per-action approval and context selection.
 - Local image previews with validation/revocation, URL attachments without fetch, IME-safe composer, native dialogs, responsive sidebar/drawers.
@@ -22,9 +22,17 @@ Updated: 2026-09-28. User requests a working simulated app, linked from the exis
 - Contrast ratios measured: success 6.13, warning 5.95, error 6.78, muted 4.56, primary white 5.49.
 - APP-FOUNDATION.md and README updated. Production build and final lint passed. Only existing Three chunk-size warning remains; app direct route does not load it.
 
-## Remaining
-- Commit/push without force, verify GitHub Actions deployment and live URLs.
-- Live app checker is `.tools/verify-app-live.mjs`; it compares the served JS hash to local build, tests app/landing, approval across layouts, mobile and errors, and writes `test-results/live-app-verification.json`.
+## Deployment and final handoff
+- Code committed/pushed as `7aade646a664a5bdfc14c7d17c6dc7a75825d175`; no force push.
+- GitHub Actions run https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/36411840221 completed successfully (build/tests/deploy).
+- A quota limit interrupted the first live-browser verification attempt. User resumed after quota reset; verification then completed successfully.
+- Live landing: https://tanapat1604-cmd.github.io/CIC-bot/
+- Live app: https://tanapat1604-cmd.github.io/CIC-bot/#/app
+- Live served asset `/CIC-bot/assets/index-D291Lb3r.js` matches local production build; HTTP 200, no console/page errors or HTTP asset errors.
+- Verified direct app/reload, desktop/mobile, source selection, approval carried from expanded to compact, completed mock action, landing footer entry and actual landing WebGL. Direct app does not request Three/Scene chunk.
+- Inspected live screenshots: desktop, approval card, compact and mobile. Evidence is in `test-results/live-app-*.png` and `test-results/live-app-verification.json` (gitignored).
+- No remaining work for this brief. AI, real screen sharing, desktop integration and persistence remain future work; see APP-FOUNDATION.md.
+- Browser coverage is Chromium with simulated viewports; physical mobile devices, Safari/Firefox and screen readers have not been verified.
 
 ## Commands
 PowerShell: prepend `.tools/node-v22.22.0-win-x64` to PATH; set PLAYWRIGHT_BROWSERS_PATH to `.tools/browsers`. `npm run build`, `npm run lint`, `npm test`.
