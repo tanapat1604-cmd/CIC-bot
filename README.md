@@ -48,6 +48,19 @@ npm test
 
 ฟอนต์ Noto Sans Thai และ Inter รวมใน build ไม่เรียก Google Fonts ขณะใช้งาน ฉากไม่ใช้โมเดล/texture ภายนอก จำกัด DPR ที่ 1.5 และแสดงภาพนิ่งเมื่อเลือก reduced motion
 
+## การเคลื่อนไหว
+
+- `src/sceneMotion.ts` กำหนดมุมกล้อง 3 ช่วงตาม scroll progress; `SceneView.tsx` วัดตำแหน่งผ่าน passive scroll listener และส่งค่าใน ref โดยไม่อัปเดต React ทุกเฟรม
+- `Scene.tsx` ควบคุมตำแหน่งและมุมทั้งหมดของชิ้นส่วนที่ขยับจาก frame loop จุดเดียว แยกวงแหวนออกจากใบหน้า ใช้ delta time และหยุดนับเวลาระหว่างที่ฉากหรือแท็บไม่แสดง
+- จอเอียงเห็นความหนา แผงงานลอยต่างจังหวะ มีแสงขอบและเงาแบบ shader ขนาดเล็ก ไม่ใช้ shadow map หรือ postprocessing
+- บนมือถือ DPR สูงสุด 1 ลดจำนวน polygon และระยะเคลื่อนกล้อง พร้อมปิด parallax
+- `data-renderer` ของ `.scene-view` แยก `loading`, `webgl` (มี frame ที่เรนเดอร์แล้ว), `fallback` เพื่อช่วยตรวจสอบ; ถ้าโหลดโมดูลไม่ได้หรือ context หายจะแสดงฉาก CSS ที่ลอยเบา ๆ พร้อมป้ายภาพสำรอง
+- `src/useMotion.ts` จัดการสลับแท็บแบบ fade out 90 ms / fade in 220 ms และยกเลิก transition เก่าเมื่อเลือกใหม่ พื้นที่ทั้ง 5 หมวดใช้ grid ซ้อนกันเพื่อรักษาความสูง ส่วนที่ไม่แสดงเป็น `inert` และ `aria-hidden`
+- Dialog ใช้ native `showModal()` / `close()` ร่วมกับ CSS `@starting-style` และ discrete transitions จึงคืน focus ทันทีขณะภาพค่อย ๆ ปิด เบราว์เซอร์ที่ไม่รองรับ transition ชนิดนี้ยังเปิด–ปิด dialog ได้
+- FAQ และเมนูใช้ CSS transitions ที่ย้อนทิศได้ทันที; reduced motion ปิดการลอย หมุน parallax กล้อง และ transition พร้อมคงเนื้อหาครบ
+
+`tests/motion.spec.ts` เพิ่มการตรวจแท็บรัว/ความสูง/ตัวบอกแท็บ, dialog เปิดซ้ำระหว่างปิด, FAQ กดซ้ำ, เมนูและ focus, fallback เคลื่อนไหว/หยุดนอกจอ, WebGL ตาม scroll ทั้งสองทิศ และ context loss ผลใน Chromium ทดสอบไม่ใช่การรับประกัน FPS หรือ GPU ทุกเครื่อง
+
 ## GitHub Pages
 
 Repository: https://github.com/tanapat1604-cmd/CIC-bot

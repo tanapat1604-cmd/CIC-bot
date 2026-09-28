@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState, type KeyboardEvent } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState, type KeyboardEvent } from 'react'
 import Icon from './Icon'
 import SceneView from './SceneView'
 import { capabilities, faqs, stories } from './content'
 import { siteConfig } from './config'
+import FaqItem from './FaqItem'
+import { motionEase, useMediaQuery, useTabMotion } from './useMotion'
 
 function Brand({ light = false }: { light?: boolean }) {
   return <a className={`brand ${light ? 'brand-light' : ''}`} href="#top" aria-label="CIC Bot กลับด้านบน"><svg viewBox="0 0 40 40" fill="none" aria-hidden="true"><path d="M27 9a14 14 0 1 0 0 22" stroke="currentColor" strokeWidth="5.5" strokeLinecap="round" /><circle cx="26" cy="20" r="4" fill="currentColor" /></svg><span>CIC<span className="brand-bot"> Bot</span></span></a>
@@ -19,14 +21,61 @@ export default function App() {
   const tabs = useRef<(HTMLButtonElement | null)[]>([])
   const storyItems = useRef<(HTMLElement | null)[]>([])
   const menuButton = useRef<HTMLButtonElement>(null)
-  const selected = capabilities[activeTab]
+  const indicator = useRef<HTMLSpanElement>(null)
+  const tabList = useRef<HTMLDivElement>(null)
+  const reduced = useMediaQuery('(prefers-reduced-motion: reduce)')
+  const mobileMenu = useMediaQuery('(max-width: 900px)')
+  const { shown, panels } = useTabMotion(activeTab, reduced)
 
   useEffect(() => {
+    if (reduced) return
+    const animations: Animation[] = []
     const observer = new IntersectionObserver(entries => {
-      for (const entry of entries) if (entry.isIntersecting) setStoryStep(Number((entry.target as HTMLElement).dataset.step))
-    }, { rootMargin: '-30% 0px -35% 0px' })
-    storyItems.current.forEach(element => { if (element) observer.observe(element) })
+      for (const entry of entries) if (entry.isIntersecting) {
+        observer.unobserve(entry.target)
+        animations.push(entry.target.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 480, easing: motionEase }))
+      }
+    }, { threshold: 0.12 })
+    document.querySelectorAll('.section-heading, .how-steps li').forEach(node => observer.observe(node))
+    return () => { observer.disconnect(); animations.forEach(animation => animation.cancel()) }
+  }, [reduced])
+
+  useLayoutEffect(() => {
+    const placeIndicator = () => {
+      const button = tabs.current[activeTab]
+      const marker = indicator.current
+      if (!button || !marker) return
+      marker.style.width = `${button.offsetWidth}px`
+      marker.style.height = `${button.offsetHeight}px`
+      marker.style.transform = `translate(${button.offsetLeft}px, ${button.offsetTop}px)`
+    }
+    placeIndicator()
+    const observer = new ResizeObserver(placeIndicator)
+    if (tabList.current) observer.observe(tabList.current)
     return () => observer.disconnect()
+  }, [activeTab])
+
+  useEffect(() => {
+    let frame = 0
+    let current = 0
+    const measure = () => {
+      frame = 0
+      let closest = Infinity
+      let next = 0
+      storyItems.current.forEach((element, i) => {
+        if (!element) return
+        const rect = element.getBoundingClientRect()
+        const distance = Math.abs(rect.top + rect.height / 2 - innerHeight / 2)
+        if (distance < closest) { closest = distance; next = i }
+      })
+      // Only the active caption updates React; scroll/camera motion stays in refs.
+      if (current !== next) { current = next; setStoryStep(next) }
+    }
+    const schedule = () => { if (!frame) frame = requestAnimationFrame(measure) }
+    measure()
+    window.addEventListener('scroll', schedule, { passive: true })
+    window.addEventListener('resize', schedule)
+    return () => { cancelAnimationFrame(frame); window.removeEventListener('scroll', schedule); window.removeEventListener('resize', schedule) }
   }, [])
 
   useEffect(() => {
@@ -42,10 +91,14 @@ export default function App() {
     if (url) { window.location.assign(url); return }
     setDialogAction(action)
     setMenuOpen(false)
+    if (dialog.current) dialog.current.inert = false
     dialog.current?.showModal()
   }
 
-  function closeDialog() { dialog.current?.close() }
+  function closeDialog() {
+    dialog.current?.close()
+    if (dialog.current) dialog.current.inert = true
+  }
   function trapDialogFocus(event: KeyboardEvent<HTMLDialogElement>) {
     if (event.key !== 'Tab') return
     const controls = event.currentTarget.querySelectorAll<HTMLElement>('button, a[href]')
@@ -70,13 +123,13 @@ export default function App() {
     <header className="header">
       <div className="header-inner wrap">
         <Brand />
-        <nav aria-label="เมนูหลัก" className={`navigation ${menuOpen ? 'is-open' : ''}`} id="main-navigation">
+        <nav aria-label="เมนูหลัก" className={`navigation ${menuOpen ? 'is-open' : ''}`} id="main-navigation" inert={mobileMenu && !menuOpen}>
           <a href="#about" onClick={() => setMenuOpen(false)}>รู้จัก CIC</a>
           <a href="#capabilities" onClick={() => setMenuOpen(false)}>ช่วยอะไรได้บ้าง</a>
           <a href="#how-it-works" onClick={() => setMenuOpen(false)}>วิธีทำงาน</a>
         </nav>
         <div className="header-actions"><span className="coming-soon">เร็ว ๆ นี้</span>{actionButtons()}</div>
-        <button className="menu-toggle" ref={menuButton} aria-label={menuOpen ? 'ปิดเมนู' : 'เปิดเมนู'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(!menuOpen)}><Icon name={menuOpen ? 'close' : 'menu'} /></button>
+        <button className="menu-toggle" ref={menuButton} aria-label={menuOpen ? 'ปิดเมนู' : 'เปิดเมนู'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(current => !current)}><Icon name={menuOpen ? 'close' : 'menu'} /></button>
       </div>
     </header>
     <main id="main">
@@ -99,7 +152,7 @@ export default function App() {
       <section className="about-section section-pad" id="about">
         <div className="wrap"><div className="section-heading"><p className="eyebrow">01 / MEET YOUR SIDEKICK</p><div><h2>มีคนช่วยมอง<br />มีทางไปต่อ<span className="blue">.</span></h2><p className="section-intro">จากสิ่งที่เห็น สู่สิ่งที่เข้าใจ<br />นี่คือแนวคิดของผู้ช่วยที่อยู่ข้างคุณ</p></div></div>
           <div className="story-layout">
-            <div className="story-visual"><div className="story-visual-top"><span className="status-dot" /> CIC WORKSPACE <span>CONCEPT</span></div><SceneView variant="story" step={storyStep} /><div className="story-visual-bottom"><span>0{storyStep + 1} / 03</span><span>{stories[storyStep].tag}</span></div></div>
+            <div className="story-visual"><div className="story-visual-top"><span className="status-dot" /> CIC WORKSPACE <span>CONCEPT</span></div><SceneView variant="story" /><div className="story-visual-bottom"><span>0{storyStep + 1} / 03</span><span>{stories[storyStep].tag}</span></div></div>
             <div className="story-steps">{stories.map((story, i) => <article key={story.title} data-step={i} ref={element => { storyItems.current[i] = element }} className={`story-step ${storyStep === i ? 'active' : ''}`}><span className="step-number">0{i + 1}</span><h3>{story.title}</h3><p>{story.text}</p><span className="story-tag">{story.tag}</span></article>)}</div>
           </div>
           <p className="concept-note">แนวทางของผลิตภัณฑ์ที่กำลังพัฒนา · ความสามารถจริงขึ้นอยู่กับขอบเขตและสิทธิ์ที่รองรับในอนาคต</p>
@@ -108,28 +161,28 @@ export default function App() {
 
       <section className="capabilities-section section-pad" id="capabilities">
         <div className="wrap"><div className="section-heading"><p className="eyebrow">02 / A WORLD OF POSSIBILITIES</p><div><h2>หลายบทบาท<br />ผู้ช่วยคนเดียว<span className="blue">.</span></h2><p className="section-intro">ลองเลือกงานของคุณ แล้วมองภาพ<br />ว่า CIC อาจช่วยได้อย่างไร</p></div></div>
-          <div className="capability-tabs" role="tablist" aria-label="ตัวอย่างความสามารถ">{capabilities.map((item, i) => <button key={item.id} ref={element => { tabs.current[i] = element }} role="tab" id={`tab-${item.id}`} aria-controls={`panel-${item.id}`} aria-selected={i === activeTab} tabIndex={i === activeTab ? 0 : -1} onClick={() => setActiveTab(i)} onKeyDown={event => navigateTabs(event, i)}><Icon name={item.icon} /><span>{item.title}</span><span className="tab-index">0{i + 1}</span></button>)}</div>
-          <div role="tabpanel" id={`panel-${selected.id}`} aria-labelledby={`tab-${selected.id}`} tabIndex={0} className="capability-panel">
+          <div ref={tabList} className="capability-tabs" role="tablist" aria-label="ตัวอย่างความสามารถ"><span ref={indicator} className="tab-indicator" aria-hidden="true" />{capabilities.map((item, i) => <button key={item.id} ref={element => { tabs.current[i] = element }} role="tab" id={`tab-${item.id}`} aria-controls={`panel-${item.id}`} aria-selected={i === activeTab} tabIndex={i === activeTab ? 0 : -1} onClick={() => setActiveTab(i)} onKeyDown={event => navigateTabs(event, i)}><Icon name={item.icon} /><span>{item.title}</span><span className="tab-index">0{i + 1}</span></button>)}</div>
+          <div className="capability-panels">{capabilities.map((selected, i) => <div key={selected.id} ref={node => { panels.current[i] = node }} role="tabpanel" id={`panel-${selected.id}`} aria-labelledby={`tab-${selected.id}`} tabIndex={i === shown && i === activeTab ? 0 : -1} aria-hidden={i !== shown || i !== activeTab} inert={i !== shown || i !== activeTab} data-shown={i === shown} className="capability-panel">
             <div className="capability-copy"><p className="eyebrow blue">{selected.kicker}</p><h3>{selected.heading}</h3><p>{selected.description}</p><ul>{selected.items.map(item => <li key={item}><Icon name="check" size={17} />{item}</li>)}</ul><span className="planned-label"><span className="status-dot" /> ความสามารถที่วางแผนไว้</span></div>
             <div className={`demo demo-${selected.id}`}><div className="demo-top"><div className="window-dots"><i /><i /><i /></div><span>ตัวอย่างคอนเซปต์</span><Icon name="screen" size={15} /></div>
               <div className="demo-screen"><div className="demo-document"><div className="document-title"><Icon name={selected.icon} size={18} />{selected.screen}</div><div className="document-content">{selected.rows.map((row, i) => <div key={row} className="document-row"><span className="row-marker">{selected.id === 'app' ? i + 1 : <Icon name="check" size={11} />}</span>{row}</div>)}</div><div className="document-lines"><i /><i /></div></div>
               <div className="demo-conversation"><p className="user-bubble">{selected.prompt}</p><div className="bot-reply"><span className="bot-avatar">C</span><div><b>CIC <span>ตัวอย่างคอนเซปต์</span></b><p>{selected.response}</p></div></div></div></div>
               <div className="demo-bottom"><span className="status-dot" /> ภาพจำลองแนวคิด · ไม่ใช่การทำงานของ AI จริง</div>
             </div>
-          </div>
+          </div>)}</div>
         </div>
       </section>
 
       <section className="how-section section-pad" id="how-it-works"><div className="wrap"><div className="section-heading"><p className="eyebrow">03 / SIMPLE BY DESIGN</p><div><h2>เริ่มที่คุณ<br />ไปต่อด้วยกัน<span className="blue">.</span></h2><p className="section-intro">วิธีทำงานที่วางแผนไว้<br />เรียบง่าย และให้คุณเป็นคนเลือก</p></div></div><ol className="how-steps">{[{ title: 'เลือกหน้าจอ', text: 'เลือกสิ่งที่อยากแชร์ เพื่อให้ CIC เข้าใจบริบท', icon: 'screen' }, { title: 'บอกเป้าหมาย', text: 'เล่าสิ่งที่อยากทำ ด้วยภาษาที่เป็นคุณ', icon: 'work' }, { title: 'ช่วยกันวิเคราะห์', text: 'รับมุมมองและแนวทาง สำหรับขั้นตอนถัดไป', icon: 'spark' }, { title: 'คุณเป็นคนอนุญาต', text: 'เลือกวิธีช่วยและสิทธิ์ในการลงมือ หยุดได้ตามต้องการ', icon: 'shield' }].map((item, i) => <li key={item.title}><div className="how-step-top"><span>0{i + 1}</span><Icon name={item.icon as 'screen' | 'work' | 'spark' | 'shield'} size={28} /></div><h3>{item.title}</h3><p>{item.text}</p></li>)}</ol><div className="control-note"><Icon name="shield" /><p>คุณเลือกสิ่งที่แชร์ คุณเลือกวิธีช่วย <span>นี่คือแนวทางของผลิตภัณฑ์ที่กำลังพัฒนา</span></p></div></div></section>
 
-      <section className="faq-section section-pad" id="faq"><div className="wrap faq-layout"><div><p className="eyebrow">04 / GOOD QUESTIONS</p><h2>อีกนิด<br />ก่อนรู้จักกัน<span className="blue">.</span></h2><p className="section-intro">คำถามที่คุณอาจกำลังสงสัย</p></div><div className="faq-list">{faqs.map(([question, answer], i) => <details key={question}><summary><span className="faq-number">0{i + 1}</span><span>{question}</span><Icon name="plus" /></summary><p>{answer}</p></details>)}</div></div></section>
+      <section className="faq-section section-pad" id="faq"><div className="wrap faq-layout"><div><p className="eyebrow">04 / GOOD QUESTIONS</p><h2>อีกนิด<br />ก่อนรู้จักกัน<span className="blue">.</span></h2><p className="section-intro">คำถามที่คุณอาจกำลังสงสัย</p></div><div className="faq-list">{faqs.map(([question, answer], i) => <FaqItem key={question} question={question} answer={answer} index={i} />)}</div></div></section>
 
       <section className="closing"><div className="wrap"><p className="eyebrow">A LITTLE HELP. A LOT OF POSSIBILITY.</p><h2>จากสิ่งที่อยู่บนจอ<br />สู่สิ่งที่คุณอยากทำให้สำเร็จ<span>.</span></h2><p>ก้าวต่อไปของผู้ช่วยดิจิทัล กำลังเริ่มต้นที่นี่</p>{actionButtons('closing-actions')}<span className="closing-status">อยู่ระหว่างพัฒนา · พร้อมให้คุณรู้จัก ก่อนพร้อมใช้งาน</span><div className="closing-orbit" aria-hidden="true"><i /><i /><i /></div></div></section>
     </main>
     <footer><div className="wrap footer-inner"><Brand /><span>ผู้ช่วยดิจิทัลข้างหน้าจอคุณ</span><span className="footer-status"><span className="status-dot" /> อยู่ระหว่างพัฒนา</span><a href={siteConfig.repositoryUrl} target="_blank" rel="noreferrer">GitHub <Icon name="arrow" size={16} /><span className="sr-only"> (เปิดแท็บใหม่)</span></a></div><div className="wrap footer-bottom"><span>© {new Date().getFullYear()} CIC Bot</span><span>คิดไปด้วยกัน เติบโตไปด้วยกัน</span><a href="#top">กลับด้านบน ↑</a></div></footer>
 
-    <dialog ref={dialog} className="status-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description" onKeyDown={trapDialogFocus} onClick={event => { if (event.target === event.currentTarget) { const rect = event.currentTarget.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeDialog() } }}>
-      <button className="dialog-close" aria-label="ปิดหน้าต่าง" onClick={closeDialog} autoFocus><Icon name="close" /></button><div className="dialog-symbol"><Icon name={dialogAction === 'app' ? 'spark' : 'download'} size={30} /></div><p className="eyebrow blue">SOMETHING GOOD IS TAKING SHAPE</p><h2 id="dialog-title">กำลังพัฒนา<br />เพื่อเป็นผู้ช่วยของคุณ<span className="blue">.</span></h2><p id="dialog-description">{dialogAction === 'app' ? 'CIC Bot ยังไม่เปิดให้เข้าใช้งานจริง' : 'CIC Bot ยังไม่มีไฟล์ให้ดาวน์โหลด'} ขณะนี้อยู่ระหว่างพัฒนา ระหว่างนี้ลองสำรวจตัวอย่างคอนเซปต์และความสามารถที่เราวางแผนไว้ได้เลย</p><a href="#capabilities" className="button button-primary" onClick={() => { closeDialog(); setTimeout(() => document.getElementById(`tab-${selected.id}`)?.focus({ preventScroll: true }), 0) }}>ดูตัวอย่างคอนเซปต์ <Icon name="arrow" size={18} /></a><button className="dialog-dismiss" onClick={closeDialog}>ปิดหน้าต่าง</button>
+    <dialog ref={dialog} className="status-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description" onKeyDown={trapDialogFocus} onCancel={event => { event.preventDefault(); closeDialog() }} onClick={event => { if (event.target === event.currentTarget) { const rect = event.currentTarget.getBoundingClientRect(); if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) closeDialog() } }}>
+      <button className="dialog-close" aria-label="ปิดหน้าต่าง" onClick={closeDialog} autoFocus><Icon name="close" /></button><div className="dialog-symbol"><Icon name={dialogAction === 'app' ? 'spark' : 'download'} size={30} /></div><p className="eyebrow blue">SOMETHING GOOD IS TAKING SHAPE</p><h2 id="dialog-title">กำลังพัฒนา<br />เพื่อเป็นผู้ช่วยของคุณ<span className="blue">.</span></h2><p id="dialog-description">{dialogAction === 'app' ? 'CIC Bot ยังไม่เปิดให้เข้าใช้งานจริง' : 'CIC Bot ยังไม่มีไฟล์ให้ดาวน์โหลด'} ขณะนี้อยู่ระหว่างพัฒนา ระหว่างนี้ลองสำรวจตัวอย่างคอนเซปต์และความสามารถที่เราวางแผนไว้ได้เลย</p><a href="#capabilities" className="button button-primary" onClick={() => { closeDialog(); setTimeout(() => tabs.current[activeTab]?.focus({ preventScroll: true }), 0) }}>ดูตัวอย่างคอนเซปต์ <Icon name="arrow" size={18} /></a><button className="dialog-dismiss" onClick={closeDialog}>ปิดหน้าต่าง</button>
     </dialog>
   </>
 }

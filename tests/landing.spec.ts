@@ -1,5 +1,8 @@
 import { test, expect } from '@playwright/test'
 
+// Stop software-rendered frames before Chromium tears down its tracing context.
+test.afterEach(async ({ page }) => { await page.emulateMedia({ reducedMotion: 'reduce' }) })
+
 test('production assets, real 3D, scroll story, and desktop layout', async ({ page }) => {
   const errors: string[] = [], failedAssets: string[] = []
   page.on('pageerror', error => errors.push(error.message))
@@ -8,6 +11,7 @@ test('production assets, real 3D, scroll story, and desktop layout', async ({ pa
   await expect(page).toHaveTitle(/CIC Bot/)
   await expect(page.getByRole('heading', { level: 1 })).toContainText('ช่วยคิดไปกับทุกงาน')
   await expect(page.locator('.scene-hero canvas')).toBeVisible()
+  await expect(page.locator('.scene-hero')).toHaveAttribute('data-renderer', 'webgl')
   await page.waitForTimeout(700)
   await page.screenshot({ path: 'test-results/desktop-hero.png' })
   await expect(page.locator('.scene-hero')).toHaveAttribute('data-active', 'true')
@@ -67,11 +71,12 @@ test('five concept tabs work with click and keyboard; FAQ disclosures', async ({
   await expect(tabs.last()).toBeFocused()
   await page.keyboard.press('Home')
   await expect(tabs.first()).toBeFocused()
-  await page.locator('summary').nth(1).click()
-  await expect(page.locator('details').nth(1)).toHaveAttribute('open', '')
-  await expect(page.locator('details').nth(1)).toContainText('ยังไม่เปิดให้ใช้งานจริง')
-  await page.locator('summary').nth(1).press('Enter')
-  await expect(page.locator('details').nth(1)).not.toHaveAttribute('open')
+  const question = page.getByRole('button', { name: /ใช้งานได้แล้วหรือยัง/ })
+  await question.click()
+  await expect(question).toHaveAttribute('aria-expanded', 'true')
+  await expect(page.getByRole('region', { name: /ใช้งานได้แล้วหรือยัง/ })).toContainText('ยังไม่เปิดให้ใช้งานจริง')
+  await question.press('Enter')
+  await expect(question).toHaveAttribute('aria-expanded', 'false')
 })
 
 test('mobile and tablet do not overflow; mobile navigation works', async ({ page }) => {
@@ -125,6 +130,7 @@ test('no WebGL: CSS concept remains visible and controls still work', async ({ p
   })
   await page.goto('./')
   await expect(page.locator('html')).toHaveAttribute('data-webgl-unavailable', 'true')
+  await expect(page.locator('.scene-hero')).toHaveAttribute('data-renderer', 'fallback')
   await expect(page.locator('.scene-hero .scene-fallback:visible')).toHaveCount(1)
   await page.getByRole('button', { name: 'ดาวน์โหลด', exact: true }).first().click()
   await expect(page.getByRole('dialog')).toBeVisible()
@@ -135,6 +141,7 @@ test('3D chunk fails: page and CSS fallback survive', async ({ page }) => {
   await page.route(/\/assets\/Scene-[^/]+\.js$/, route => route.abort())
   await page.goto('./')
   await failedChunk
+  await expect(page.locator('.scene-hero')).toHaveAttribute('data-renderer', 'fallback')
   await expect(page.locator('.scene-hero .scene-fallback:visible')).toHaveCount(1)
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible()
   await page.getByRole('tab', { name: /เกม/ }).click()
