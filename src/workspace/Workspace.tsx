@@ -3,6 +3,7 @@ import Brand from '../Brand'
 import Icon from '../Icon'
 import { useMediaQuery } from '../useMotion'
 import Chat from './Chat'
+import ConnectionSettings from './ConnectionSettings'
 import ContextPanel from './ContextPanel'
 import { contextStatus } from './status'
 import Modal from './Modal'
@@ -19,6 +20,7 @@ const status = { idle: 'พร้อมคุย', responding: 'กำลัง�
 export default function Workspace() {
   const state = useSyncExternalStore(store.subscribe, store.getSnapshot)
   const session = state.sessions.find(item => item.id === state.sessionId)!
+  const demo = session.connection === 'demo'
   const compact = state.layout === 'compact'
   const narrow = useMediaQuery('(max-width: 760px)'), wide = useMediaQuery('(min-width: 1320px)')
   const [collapsed, setCollapsed] = useState(false), [navOpen, setNavOpen] = useState(false)
@@ -38,7 +40,7 @@ export default function Workspace() {
   const select = () => { store.openSources(); setSourceOpen(true) }
   const closeSources = () => { store.cancelSources(); setSourceOpen(false) }
   const busy = ['responding', 'executing', 'awaiting-approval'].includes(session.agent) || session.screen === 'selecting'
-  const inlineContext = wide && !compact
+  const inlineContext = wide && !compact && demo
   const navigation = <>
     <div className={s.sidebarBrand}><Brand href="#top" className={s.brand} />{!narrow && <button className={s.sidebarIcon} aria-label={collapsed ? 'ขยายแถบด้านข้าง' : 'ยุบแถบด้านข้าง'} onClick={() => setCollapsed(value => !value)}><Icon name="menu" /></button>}</div>
     <button className={s.newChat} aria-label="แชตใหม่" onClick={() => { store.newSession(); setNavOpen(false) }}><Icon name="plus" /><span>แชตใหม่</span></button>
@@ -49,25 +51,25 @@ export default function Workspace() {
     {!compact && !narrow && <aside className={s.sidebar} aria-label="ประวัติแชต">{navigation}</aside>}
     <main className={s.main}>
       <header className={s.header}>
-        <div className={s.topRow}><div className={s.titleGroup}>{!compact && narrow && <button className={s.iconButton} aria-label="เปิดประวัติแชต" onClick={() => setNavOpen(true)}><Icon name="menu" /></button>}<span className={s.chatTitle}>{compact ? 'CIC' : session.title}</span><span className={s.previewBadge}>ตัวอย่างแอป</span></div><div className={s.headerActions}>
+        <div className={s.topRow}><div className={s.titleGroup}>{!compact && narrow && <button className={s.iconButton} aria-label="เปิดประวัติแชต" onClick={() => setNavOpen(true)}><Icon name="menu" /></button>}<span className={s.chatTitle}>{compact ? 'CIC' : session.title}</span><button className={s.previewBadge} aria-label="การเชื่อมต่อ" title="เลือกการเชื่อมต่อสำหรับแชตใหม่" onClick={() => setSettingsOpen(true)}>{demo ? 'ตัวอย่างแอป' : session.connection === 'test' ? 'ทดสอบ backend' : 'AI จริง'}</button></div><div className={s.headerActions}>
           <button className={s.layoutButton} aria-label={compact ? 'กลับ Workspace' : 'มุมมองกะทัดรัด'} title={compact ? 'กลับ Workspace' : 'มุมมองกะทัดรัด'} onClick={() => store.setLayout(compact ? 'expanded' : 'compact')}><Icon name={compact ? 'screen' : 'structure'} size={19} /><span>{compact ? 'กลับ Workspace' : 'มุมมองกะทัดรัด'}</span></button>
           <button className={s.stop} disabled={!busy} onClick={() => { store.stop(); setSourceOpen(false) }}><span aria-hidden="true">■</span> หยุดงาน</button>
         </div></div>
-        <div className={s.controlsRow}><div className={s.modes} role="group" aria-label="โหมดผู้ช่วย">{modes.map(mode => <button key={mode.id} aria-pressed={session.mode === mode.id} title={mode.description} onClick={() => store.setMode(mode.id)}>{mode.label}</button>)}</div>
-          <div className={s.contextTools}><button className={s.contextToggle} aria-label="เปิดบริบท" title={session.source?.name ?? 'รายละเอียดบริบทหน้าจอ'} aria-expanded={inlineContext ? !contextHidden : contextOpen} onClick={() => inlineContext ? setContextHidden(value => !value) : setContextOpen(true)}><span className={s.dot} data-active={session.mode !== 'chat' && !!session.source} /><span>{contextStatus(session)}</span><Icon name="screen" size={17} /></button>{!session.source && <button className={s.sourceShortcut} onClick={select}>เลือกหน้าจอจำลอง</button>}</div>
+        <div className={s.controlsRow}><div className={s.modes} role="group" aria-label="โหมดผู้ช่วย">{modes.map(mode => <button key={mode.id} disabled={!demo && mode.id !== 'chat'} aria-pressed={session.mode === mode.id} title={!demo && mode.id !== 'chat' ? 'backend รอบนี้รับข้อความเท่านั้น' : mode.description} onClick={() => store.setMode(mode.id)}>{mode.label}</button>)}</div>
+          {demo ? <div className={s.contextTools}><button className={s.contextToggle} aria-label="เปิดบริบท" title={session.source?.name ?? 'รายละเอียดบริบทหน้าจอ'} aria-expanded={inlineContext ? !contextHidden : contextOpen} onClick={() => inlineContext ? setContextHidden(value => !value) : setContextOpen(true)}><span className={s.dot} data-active={session.mode !== 'chat' && !!session.source} /><span>{contextStatus(session)}</span><Icon name="screen" size={17} /></button>{!session.source && <button className={s.sourceShortcut} onClick={select}>เลือกหน้าจอจำลอง</button>}</div> : <span className={s.textOnly}>ข้อความเท่านั้น · ยังไม่รับภาพหรือหน้าจอ</span>}
         </div>
       </header>
       <div className={s.chatArea}><Chat key={session.id} session={session} store={store} onSelect={select} onLink={() => { setLink(''); setLinkError(''); setLinkOpen(true) }} /></div>
       <div className={s.agentStatus} role="status" aria-live="polite">{status[session.agent]}{compact && <a href="#top">กลับหน้าแนะนำ ↗</a>}</div>
     </main>
     {inlineContext && <aside className={`${s.contextPanel} ${contextHidden ? s.hiddenPanel : ''} ${session.mode === 'chat' ? s.quietContext : ''}`} aria-label="บริบทหน้าจอ" inert={contextHidden} aria-hidden={contextHidden}><div className={s.panelHeading}><h2>บริบทหน้าจอ</h2><button className={s.iconButton} aria-label="ซ่อนบริบท" onClick={() => setContextHidden(true)}><Icon name="close" size={18} /></button></div><ContextPanel session={session} store={store} onSelect={select} /></aside>}
-    <Modal open={contextOpen && !inlineContext} title="บริบทหน้าจอ" onClose={() => setContextOpen(false)} drawer><ContextPanel session={session} store={store} onSelect={select} /></Modal>
+    <Modal open={contextOpen && !inlineContext && demo} title="บริบทหน้าจอ" onClose={() => setContextOpen(false)} drawer><ContextPanel session={session} store={store} onSelect={select} /></Modal>
     <Modal open={navOpen && narrow && !compact} title="แชตของคุณ" onClose={() => setNavOpen(false)} drawer><nav className={s.mobileNav} aria-label="ประวัติแชต">{navigation}</nav></Modal>
     <Modal open={sourceOpen} title="ลองเลือกหน้าจอ" onClose={closeSources}>
       <p className={s.modalIntro}>เลือกแหล่งตัวอย่างเพื่อทดลองบริบท ไม่มีการเข้าถึงหน้าจอจริง</p>
       <div className={s.sourceOptions}>{([{ kind: 'desktop', label: 'ทั้งหน้าจอ', detail: 'โต๊ะทำงานตัวอย่าง' }, { kind: 'window', label: 'หน้าต่างโปรแกรม', detail: 'หน้าต่างตัวอย่าง — VS Code' }, { kind: 'tab', label: 'แท็บเบราว์เซอร์', detail: 'แท็บตัวอย่าง — แผนงาน' }] as { kind: SourceKind; label: string; detail: string }[]).map(source => <button key={source.kind} onClick={() => store.selectSource(source.kind)}><Icon name="screen" /><span><b>{source.label}</b><small>{source.detail}</small></span><Icon name="arrow" size={17} /></button>)}<button disabled><Icon name="screen" /><span><b>พื้นที่เฉพาะบนจอ</b><small>ยังไม่รองรับใน preview</small></span></button></div>
     </Modal>
     <Modal open={linkOpen} title="แนบลิงก์" onClose={() => setLinkOpen(false)}><form onSubmit={event => { event.preventDefault(); try { store.addLink(link); setLinkOpen(false) } catch (error) { setLinkError(error instanceof Error ? error.message : 'ลิงก์ไม่ถูกต้อง') } }}><p className={s.modalIntro}>เพิ่ม URL เป็นข้อมูลประกอบ ตัวอย่างนี้จะไม่เปิดอ่านลิงก์</p><label className={s.field}>URL (http / https)<input type="text" inputMode="url" value={link} onChange={event => setLink(event.target.value)} placeholder="https://example.com" autoComplete="off" /></label>{linkError && <p className={s.error} role="alert">{linkError}</p>}<button className={s.primary} type="submit" disabled={!link.trim()}>เพิ่มลิงก์</button></form></Modal>
-    <Modal open={settingsOpen} title="ตั้งค่า" onClose={() => setSettingsOpen(false)}><p className={s.modalIntro}>พื้นที่ทดลองของคุณ</p><div className={s.settingsRow}><b>การเชื่อมต่อ</b><span>บริการจำลองภายในหน้าเว็บ</span></div><div className={s.settingsRow}><b>แชตและภาพ</b><span>เก็บในหน่วยความจำ ไม่บันทึกลงอุปกรณ์อัตโนมัติ</span></div><div className={s.settingsRow}><b>การเคลื่อนไหว</b><span>ใช้ค่าลดการเคลื่อนไหวจากระบบของคุณ</span></div><p className={s.modalIntro}>ยังไม่มีบัญชีผู้ใช้ การเชื่อมต่อ AI หรือการควบคุมเครื่องจริง</p></Modal>
+    <Modal open={settingsOpen} title="ตั้งค่า" onClose={() => setSettingsOpen(false)}>{settingsOpen && <ConnectionSettings store={store} onClose={() => setSettingsOpen(false)} />}<div className={s.settingsRow}><b>แชตและภาพ</b><span>เก็บในหน่วยความจำ ไม่บันทึกลงอุปกรณ์อัตโนมัติ</span></div><div className={s.settingsRow}><b>การเคลื่อนไหว</b><span>ใช้ค่าลดการเคลื่อนไหวจากระบบของคุณ</span></div></Modal>
   </div>
 }

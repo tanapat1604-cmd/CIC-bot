@@ -1,6 +1,6 @@
 # CIC app foundation
 
-CIC เป็นผู้ช่วยที่ใช้บริบทจากหน้าจอที่ผู้ใช้เลือก รอบนี้เป็น **ตัวอย่างแอป** เท่านั้น ไม่มี AI, backend, login, screen capture, desktop control หรือไฟล์ติดตั้ง
+CIC เป็นผู้ช่วยที่วางแผนให้ใช้บริบทจากหน้าจอที่ผู้ใช้เลือก เว็บสาธารณะยังเป็น **ตัวอย่างแอป** มี backend แชตข้อความสำหรับทดสอบในเครื่องแล้ว แต่ยังไม่มี AI จริง, login, screen capture, desktop control หรือไฟล์ติดตั้ง
 
 ## เส้นทางและโครงหน้า
 
@@ -69,7 +69,19 @@ Mock ทยอยตอบ 4 ช่วงสั้น ๆ รวมประม�
 
 ## จุดต่อรอบถัดไป
 
-1. เริ่มที่ AgentAdapter: ต่อแชตข้อความ frontend → backend → AI ให้ตอบจริงและหยุดได้ก่อน ใช้ streaming contract เดิม ออกแบบ API, authentication, rate limits, error/cancellation; secret อยู่ server เท่านั้น ไม่มีช่องกรอก API key ในเว็บ GitHub Pages เสิร์ฟ frontend ส่วน backend ต้องมีที่รันแยก
+### ขั้น 3A: transport/backend ที่เพิ่มแล้ว
+
+`Session.connection` แยก demo/test/live แบบคงที่ต่อแชต เปลี่ยนการเชื่อมต่อด้วยแชตใหม่และรักษาประวัติเดิมไว้แยกกัน `SessionStore` เลือก adapter ตามแชต ไม่กระจาย fetch ใน components; demo ยังใช้ adapters เดิมและมี 3 โหมด ส่วน backend เปิดแค่ข้อความ ไม่มี attachments/source/actions
+
+`transport.ts` ใช้ POST fetch + NDJSON streaming และ AbortSignal ส่งเฉพาะประวัติข้อความของ session ปัจจุบัน ตัดเป็นข้อความเต็มช่วงล่าสุดไม่เกิน 24 ข้อความ/24,000 ตัวอักษร ข้อความละ 8,000 ละ assistant ที่ stopped/error/streaming ไม่ส่งเสมือนตอบครบ UI แจ้งเมื่อมีการละประวัติ ทุก event ตรวจ runtime schema/identity และ terminal; ขาดช่วงแสดง error ไม่ถือว่าเสร็จ ไม่มี auto retry และไม่ fallback เป็น mock
+
+`shared/chatProtocol.ts` เป็น runtime schema/limits ร่วม frontend/backend; `backend/server.ts` ใช้ Node HTTP และ provider interface ใน `backend/provider.ts` มีเฉพาะ free test provider ที่ติดป้ายไม่ใช่ AI Server กำหนด system instruction เองและไม่รับ action จากข้อความ ใบอนุญาตจำลองเดิมไม่ใช้กับ endpoint นี้
+
+หน้า Settings ตรวจ health และ local access session ก่อนให้เริ่มแชต backend; cookie HttpOnly อยู่ฝั่งเบราว์เซอร์ ไม่ฝัง shared secret UI/Public Pages ยังเปิด backend ไม่ได้โดยตั้ง VITE URL อย่างเดียว Readiness ของการเชื่อมต่อเป็นผลตรวจ ณ เวลานั้น หาก service หยุดภายหลังจะแสดง error จริง
+
+รายละเอียดการรัน, protocol, loopback-only trust model, auth/rate/concurrency/body/time/output limits, logs และข้อกำหนดก่อนเปิดสาธารณะ: [backend/README.md](backend/README.md) ไม่มีการเชื่อม provider ที่เสียเงินในรอบ 3A และ test provider สำเร็จไม่เท่ากับ AI จริงสำเร็จ
+
+1. ขั้น 3B: เลือก provider/model แล้วเพิ่ม provider adapter จริงหนึ่งราย ทดสอบตอบ/หยุดตามสิทธิ์ค่าใช้จ่ายที่ผู้ใช้อนุญาต ขั้น 3C: เลือก hosting และ public identity/quota/spend controls ก่อนเผยแพร่ backend; secret อยู่ server เท่านั้น ไม่มีช่องกรอก API key ในเว็บ GitHub Pages เสิร์ฟ frontend ส่วน backend ต้องมีที่รันแยก
 2. ScreenSourceAdapter: ตรวจความสามารถและสิทธิ์จริงตาม browser/OS, handle user cancel/track ended, บอกแหล่งและขอบเขตที่ใช้จริง, ไม่สมมติว่าเลือกพื้นที่ได้ทุกแพลตฟอร์ม
 3. ControlAdapter: ต่อ desktop bridge แยกจากหน้าเว็บ ผูก authorization กับ action/target จริง ตรวจซ้ำตอน execute และหยุดได้ ไม่ใช้คำอนุญาตจาก UI อย่างเดียวเป็นขอบเขตความปลอดภัย
 4. Desktop integration: native window/side panel/always-on-top, OS permissions, source capture และ computer control ยังต้องออกแบบและทดสอบแยกทั้งหมด

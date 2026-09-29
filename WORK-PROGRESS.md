@@ -1,6 +1,20 @@
 # CIC app foundation — progress
 
-## Current round: readiness audit (complete, published)
+## Current round: stage 3 text backend (in progress)
+- Brief: attachment `59e1d348-0984-45b9-a7f0-30dec37c3f56/Pasted text.txt`.
+- Starting at `e014fcb`, clean tree, fetched origin with no incoming changes. Read foundation/status/progress, routing, adapters, store, UI and tests; no AGENTS.md found. Provider/model/hosting not configured in tracked project; no secrets read or printed.
+- Scope: implement strict text protocol + cancellable fetch transport, loopback-only development backend/provider interface/deterministic test provider, distinct demo/backend sessions, local access/size/rate/concurrency/time/output limits, tests and documentation. No paid calls, real provider choice or public backend deployment inferred.
+- External decisions still needed after independent work: AI provider/model and backend hosting/access method; user sets server secrets outside chat. Stage 3B/C must remain pending until verified.
+- Baseline build/lint running. Next: implementation and free local tests, frontend regression checks, commit/push and public demo verification.
+- Checkpoint: baseline build/lint passed; 39/41 existing cases passed, two unchanged software-WebGL motion cases timed out (normal motion visibility + scroll screenshots). Recheck separately; no scene edits.
+- Implemented shared strict text request/event schemas, bounded history without partial replies, incremental UTF-8 NDJSON transport, local-only backend/provider interface/test provider, access cookies + Host/Origin/loopback checks, request/rate/concurrency/time/output/call limits and sanitized logging/errors. UI separates demo/test/live sessions; local health+session check required; public Pages cannot enable backend in this release.
+- Frontend/backend builds and lint pass. New backend/transport/browser suite: 10/11 passed. Remaining failure was a test locator matching sidebar chat titles rather than message articles; narrowed to articles, rerun pending. Actual stop/new-chat/switch reached upstream cancellation before that assertion. Inspected all four local backend screenshots (1440×900, 1280×720, 390×844, 360×480), no overflow or overlapping controls.
+- Added backend/README.md and updated README/APP-FOUNDATION; provider/model/hosting still not selected. No real AI requests, secrets or paid services used. Next: targeted rerun + full regression, final status docs, commit/push/demo deployment, then bundle required external decisions for user.
+- Final local checkpoint: Workspace/backend browser regression 30/30 passed. Latest new backend/transport/UI suite 11/11 passed, including real HTTP abort propagation. Remaining landing/transport run passed all except unchanged WebGL scroll screenshot timeout; normal-motion visibility passed on rerun. Across local suites 51/52 cases passed, one local software-renderer timeout remains (do not claim all local tests passed).
+- Strict role/health type checks added; quota-exhausted health reports not ready. Fixed oversized-body response handling to drain rejected bytes without buffering rather than reset the socket before the client can read 413. Backend access/limits tests pass after fix. Final build/backend build/lint running, then commit/push and CI full suite.
+- Final frontend build, backend build and lint all passed. No dependencies added. Real `.env` paths verified ignored; frontend bundle test excludes server instruction/code and a known non-secret server-env sentinel. Ready to commit stage 3A; stage 3B/C explicitly pending user provider/model/hosting/access decisions and paid-test authorization.
+
+## Previous round: readiness audit (complete, published)
 - Brief: attachment `3d4408c6-0e01-4b8f-84c8-44d33541fd40/Pasted text.txt`.
 - Starting commit `7f78a33`, clean tree; fetched origin, no incoming changes. No AGENTS.md found in repository or parent paths.
 - Read routing, Workspace, store, adapters, attachments and foundation docs. Running baseline build/lint/tests before changes.

@@ -1,6 +1,6 @@
 # CIC Bot
 
-หน้าโปรโมต CIC Bot และตัวอย่างแอปภาษาไทย ใช้ React, TypeScript, Vite และ Three.js ผ่าน React Three Fiber (เฉพาะหน้าโปรโมต) เว็บไซต์นี้ **ไม่ใช่แอป AI ที่พร้อมใช้งาน** ไม่มีระบบบัญชี หลังบ้าน หรือการแชร์/ควบคุมหน้าจอจริง
+หน้าโปรโมต CIC Bot และ Workspace ภาษาไทย ใช้ React, TypeScript, Vite และ Three.js ผ่าน React Three Fiber (เฉพาะหน้าโปรโมต) เว็บไซต์สาธารณะยังเป็น **ตัวอย่างแอป** มี backend แชตข้อความสำหรับทดสอบในเครื่อง แต่ยังไม่เชื่อม AI จริง ไม่มีระบบบัญชีหรือการแชร์/ควบคุมหน้าจอจริง
 
 - [หน้าโปรโมต](https://tanapat1604-cmd.github.io/CIC-bot/)
 - [ทดลองหน้าแอป](https://tanapat1604-cmd.github.io/CIC-bot/#/app)
@@ -25,6 +25,14 @@ npm run preview
 ```
 
 Build อยู่ใน `dist/` ตั้ง base เป็น `/CIC-bot/` ใน `vite.config.ts`
+
+## Backend แชตข้อความ (ขั้น 3A)
+
+เปิดอีก terminal แล้วรัน `npm run backend:dev` จาก root จากนั้นเปิด frontend ที่ `http://127.0.0.1:5173/CIC-bot/#/app` เลือก **การเชื่อมต่อ → ตรวจการเชื่อมต่อ backend → เริ่มแชตทดสอบ backend** โดย backend ต้องผ่าน health/session check ก่อน ตัวทดสอบไม่ใช่ AI และไม่เสียเงิน
+
+ตั้งค่าได้จาก `backend/.env.example` → `backend/.env` (ไฟล์จริงถูก ignore); root `.env.example` มีเฉพาะ URL สาธารณะ ห้ามใส่ key ใน `VITE_*` ไม่ต้องมี key สำหรับ test provider ดู [วิธีรัน ขอบเขตสิทธิ์ และ protocol](backend/README.md) ใช้ `npm run backend:build` เพื่อตรวจ/คอมไพล์ backend และหยุด backend ที่เปิดเองก่อนรัน browser tests ซึ่งใช้ port 8787
+
+ยังไม่เลือก provider/model/hosting จึงยังไม่มีขั้น 3B (ตอบจาก AI จริง) หรือ 3C (backend สาธารณะ) เว็บ Pages เปิด demo ต่อได้ และไม่พยายามเชื่อม localhost หรือเปิด live ตาม config โดยอัตโนมัติ
 
 ## ทดสอบ
 

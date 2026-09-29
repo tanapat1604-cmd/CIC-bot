@@ -185,3 +185,9 @@
 @media(max-width:1000px) { .controlsRow { align-items:stretch; }.contextTools { width:100%; justify-content:space-between; }.contextToggle span:not(.dot) { display:inline; } }
 .compact .contextTools { width:100%; justify-content:space-between; }.compact .contextToggle span:not(.dot) { display:inline; }
 @media(prefers-reduced-motion:reduce) { .workspace *,.workspace *::before,.workspace *::after,.modal,.modal *,.modal::backdrop { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }
+
+.header .previewBadge { min-height:28px; border-color:#cddbf6; background:#eef3ff; color:#31558d; font-size:10px; padding:2px 7px; white-space:nowrap; }
+.textOnly { font-size:11px; color:var(--muted); }
+.connectionSettings>button { margin:6px 8px 10px 0; }
+.connectionSettings>p[role=status] { color:var(--success); font-size:13px; margin:12px 0; }
+@media(max-width:600px) { .textOnly { flex-basis:100%; } }

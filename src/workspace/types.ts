@@ -2,6 +2,7 @@ export type Mode = 'chat' | 'observe' | 'assist'
 export type ScreenStatus = 'disconnected' | 'selecting' | 'connected' | 'error'
 export type AgentStatus = 'idle' | 'responding' | 'awaiting-approval' | 'executing' | 'paused' | 'error'
 export type Layout = 'expanded' | 'compact'
+export type Connection = 'demo' | 'test' | 'live'
 export type SourceKind = 'desktop' | 'window' | 'tab'
 export interface ScreenSource { id: string; kind: SourceKind; name: string }
 export type Attachment = { id: string; kind: 'link'; name: string; url: string } | { id: string; kind: 'image'; name: string; url: string; file: File }
@@ -14,6 +15,7 @@ export interface ProposedAction extends ActionProposal {
 export type ResponseStatus = 'streaming' | 'complete' | 'stopped' | 'error'
 export interface Message { id: string; role: 'user' | 'assistant'; text: string; attachments?: Attachment[]; action?: ProposedAction; operationId?: string; responseStatus?: ResponseStatus }
 export interface Session {
+  connection: Connection; contextNotice: boolean
   id: string; title: string; mode: Mode; screen: ScreenStatus; source: ScreenSource | null
   agent: AgentStatus; operationId: string | null; messages: Message[]; draft: string; attachments: Attachment[]
   error: string | null; retryText: string | null
@@ -32,7 +34,7 @@ export interface ControlAdapter { execute(action: ProposedAction, signal: AbortS
 export interface SessionStore {
   getSnapshot(): WorkspaceState
   subscribe(listener: () => void): () => void
-  newSession(): void
+  newSession(connection?: Connection): void
   switchSession(id: string): void
   setLayout(layout: Layout): void
   setMode(mode: Mode): void

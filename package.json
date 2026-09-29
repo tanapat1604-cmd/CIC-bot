@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc -b && vite build",
+    "backend:build": "tsc -p backend/tsconfig.json",
+    "backend:dev": "npm run backend:build && node --env-file-if-exists=backend/.env .backend-build/backend/index.js",
     "preview": "vite preview --host 127.0.0.1",
     "lint": "eslint .",
     "test": "playwright test",

@@ -26,6 +26,9 @@ jobs:
       - run: npm ci
       - run: npm run lint
       - run: npm run build
+        env:
+          CIC_SERVER_SECRET: stage3-secret-sentinel-not-a-real-key
+      - run: npm run backend:build
       - run: npx playwright install --with-deps chromium
       - run: npm test
       - uses: actions/upload-pages-artifact@v3

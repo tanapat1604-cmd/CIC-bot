@@ -1,14 +1,15 @@
 import { createMockAdapters } from './adapters'
 import { describeCommand, isAllowedProposal } from './actions'
-import type { ActionProposal, AgentRequest, Attachment, Message, Session, SessionStore, WorkspaceState } from './types'
+import { createTextAdapter, localBackendUrl, textHistory } from './transport'
+import type { ActionProposal, AgentAdapter, AgentRequest, Attachment, Connection, Message, Session, SessionStore, WorkspaceState } from './types'
 
 export const MAX_IMAGE_BYTES = 5 * 1024 * 1024
 export const MAX_ATTACHMENTS = 6
 const id = () => crypto.randomUUID()
-function newChat(): Session {
-  return { id: id(), title: 'แชตใหม่', mode: 'chat', screen: 'disconnected', source: null, agent: 'idle', operationId: null, messages: [], draft: '', attachments: [], error: null, retryText: null }
+function newChat(connection: Connection = 'demo'): Session {
+  return { connection, contextNotice: false, id: id(), title: 'แชตใหม่', mode: 'chat', screen: 'disconnected', source: null, agent: 'idle', operationId: null, messages: [], draft: '', attachments: [], error: null, retryText: null }
 }
-export function createSessionStore(adapters = createMockAdapters()): SessionStore {
+export function createSessionStore(adapters = createMockAdapters(), textAdapter?: AgentAdapter): SessionStore {
   const first = newChat()
   let state: WorkspaceState = { sessions: [first], sessionId: first.id, layout: 'expanded' }
   const listeners = new Set<() => void>(), objectUrls = new Set<string>()
@@ -50,7 +51,13 @@ export function createSessionStore(adapters = createMockAdapters()): SessionStor
       return exists ? s.messages.map(message => message.id === responseId ? update(message) : message) : [...s.messages, update({ id: responseId, role: 'assistant', text: '', operationId: op.operationId, responseStatus: 'streaming' })]
     }
     try {
-      for await (const event of adapters.agent.respond(request, op.signal)) {
+      if (session.connection !== 'demo') {
+        if (!textAdapter) throw new Error('ยังไม่ได้เชื่อมต่อ backend เปิดการเชื่อมต่อแล้วตรวจอีกครั้ง')
+        const history = textHistory(request)
+        patch(session.id, s => ({ ...s, contextNotice: history.omitted }))
+      }
+      const agent = session.connection === 'demo' ? adapters.agent : textAdapter!
+      for await (const event of agent.respond(request, op.signal)) {
         if (!valid(op.sessionId, op.operationId) || op.signal.aborted) return
         if (event.sessionId !== op.sessionId || event.operationId !== op.operationId) throw new Error('คำตอบไม่ตรงกับคำขอปัจจุบัน กรุณาลองอีกครั้ง')
         if (event.type === 'error') throw new Error(event.message)
@@ -59,7 +66,7 @@ export function createSessionStore(adapters = createMockAdapters()): SessionStor
           if (typeof event.text !== 'string') throw new Error('รูปแบบคำตอบไม่ถูกต้อง')
           patch(session.id, s => ({ ...s, messages: updateResponse(s, message => ({ ...message, text: message.text + event.text })) }))
         } else if (event.type === 'action') {
-          if (proposal || !isAllowedProposal(event.proposal, request)) throw new Error('ข้อเสนอการกระทำไม่ตรงกับโหมดหรือบริบท จึงไม่ได้ขออนุญาต')
+          if (session.connection !== 'demo' || proposal || !isAllowedProposal(event.proposal, request)) throw new Error('ข้อเสนอการกระทำไม่ตรงกับโหมดหรือบริบท จึงไม่ได้ขออนุญาต')
           // Copy the proposal so an adapter cannot mutate approved parameters later.
           proposal = { ...event.proposal, command: { ...event.proposal.command } }
         } else if (event.type === 'done') {
@@ -80,17 +87,18 @@ export function createSessionStore(adapters = createMockAdapters()): SessionStor
   const store: SessionStore = {
     getSnapshot: () => state,
     subscribe(listener) { listeners.add(listener); return () => { listeners.delete(listener) } },
-    newSession() { cancel(); const session = newChat(); publish({ ...state, sessions: [...state.sessions, session], sessionId: session.id }) },
+    newSession(connection = current().connection) { cancel(); const session = newChat(connection); publish({ ...state, sessions: [...state.sessions, session], sessionId: session.id }) },
     switchSession(sessionId) { if (sessionId === state.sessionId || !state.sessions.some(s => s.id === sessionId)) return; cancel(); publish({ ...state, sessionId }) },
     setLayout(layout) { publish({ ...state, layout }) },
-    setMode(mode) { if (current().mode === mode) return; cancel(); patch(state.sessionId, s => ({ ...s, mode, agent: 'idle', error: null, retryText: null })) },
+    setMode(mode) { if (current().mode === mode || (current().connection !== 'demo' && mode !== 'chat')) return; cancel(); patch(state.sessionId, s => ({ ...s, mode, agent: 'idle', error: null, retryText: null })) },
     setDraft(draft) { patch(state.sessionId, s => ({ ...s, draft })) },
     send() { void respond(current().draft.trim()) },
     retry() { if (current().agent === 'error' && current().retryText) void respond(current().retryText!, true) },
     stop: cancel,
-    openSources() { cancel(); patch(state.sessionId, s => ({ ...s, screen: 'selecting', error: null })) },
+    openSources() { if (current().connection !== 'demo') return; cancel(); patch(state.sessionId, s => ({ ...s, screen: 'selecting', error: null })) },
     cancelSources() { cancel() },
     async selectSource(kind) {
+      if (current().connection !== 'demo') return
       cancel(); const op = begin()
       patch(state.sessionId, s => ({ ...s, screen: 'selecting', operationId: op.operationId, error: null }))
       try {
@@ -125,6 +133,7 @@ export function createSessionStore(adapters = createMockAdapters()): SessionStor
       patch(state.sessionId, s => ({ ...s, agent: 'idle', operationId: null, messages: s.messages.map(message => message.action?.id === actionId ? { ...message, action: { ...action, status: 'rejected' } } : message) }))
     },
     addLink(value) {
+      if (current().connection !== 'demo') throw new Error('แชต backend รับข้อความเท่านั้น พิมพ์ URL ได้แต่ไม่ได้เปิดอ่านเว็บ')
       let url: URL
       try { url = new URL(value.trim()) } catch { throw new Error('กรุณาใส่ URL เต็ม เช่น https://example.com') }
       if (!['https:', 'http:'].includes(url.protocol) || url.username || url.password) throw new Error('รองรับเฉพาะ http/https ที่ไม่มีชื่อผู้ใช้หรือรหัสผ่านใน URL')
@@ -133,6 +142,7 @@ export function createSessionStore(adapters = createMockAdapters()): SessionStor
       patch(state.sessionId, s => ({ ...s, attachments: [...s.attachments, attachment] }))
     },
     async addImage(file) {
+      if (current().connection !== 'demo') throw new Error('แชต backend ยังไม่รองรับภาพ')
       if (!['image/png', 'image/jpeg', 'image/webp', 'image/gif'].includes(file.type)) throw new Error('รองรับภาพ PNG, JPEG, WebP และ GIF เท่านั้น')
       if (file.size > MAX_IMAGE_BYTES) throw new Error('ภาพใหญ่เกินกำหนด กรุณาเลือกภาพไม่เกิน 5 MB')
       if (current().attachments.length >= MAX_ATTACHMENTS) throw new Error('แนบได้สูงสุด 6 รายการต่อข้อความ')
@@ -156,4 +166,5 @@ export function createSessionStore(adapters = createMockAdapters()): SessionStor
   return store
 }
 
-export const sessionStore = createSessionStore()
+export const backendUrl = typeof location === 'undefined' ? null : localBackendUrl(location.hostname, import.meta.env?.VITE_BACKEND_URL)
+export const sessionStore = createSessionStore(createMockAdapters(), backendUrl ? createTextAdapter(backendUrl) : undefined)

@@ -6,3 +6,7 @@ playwright-report/
 *.local
 *.log
 *.tsbuildinfo
+.backend-build/
+.env
+.env.*
+!.env.example
