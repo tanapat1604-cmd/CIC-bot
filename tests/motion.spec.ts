@@ -116,7 +116,7 @@ test('animated fallback pauses offscreen and respects reduced motion', async ({ 
   expect(await orb.evaluate(node => getComputedStyle(node).animationName)).toBe('none')
 })
 
-test('WebGL renders, scrolls both directions, and context loss shows the fallback', async ({ page }) => {
+test('WebGL renders and scrolls both directions', async ({ page }) => {
   test.setTimeout(90000)
   // Limit software-renderer readback cost; still exercise the desktop scroll camera.
   await page.setViewportSize({ width: 1280, height: 800 })
@@ -135,8 +135,15 @@ test('WebGL renders, scrolls both directions, and context loss shows the fallbac
     await page.waitForTimeout(550)
     await page.screenshot({ path: `test-results/story-${label}.png` })
   }
-  // Stop submitting GPU work before asking the test driver to lose its context.
+})
+
+test('real WebGL context loss shows the fallback', async ({ page }) => {
+  // Keep this separate from expensive software-rendered screenshots: it must get
+  // its own assertion window, not the last milliseconds of a camera test.
   await page.emulateMedia({ reducedMotion: 'reduce' })
+  await page.goto('./')
+  await page.locator('[data-step="1"]').scrollIntoViewIfNeeded()
+  await expect(page.locator('.scene-story')).toHaveAttribute('data-renderer', 'webgl')
   await page.waitForTimeout(100)
   const supported = await page.locator('.scene-story canvas').evaluate(node => {
     const context = (node as HTMLCanvasElement).getContext('webgl2')!

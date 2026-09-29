@@ -5,6 +5,7 @@
 - [หน้าโปรโมต](https://tanapat1604-cmd.github.io/CIC-bot/)
 - [ทดลองหน้าแอป](https://tanapat1604-cmd.github.io/CIC-bot/#/app)
 - [โครงสร้างแอปและจุดต่อระบบจริง](APP-FOUNDATION.md)
+- [สถานะการพัฒนาแต่ละขั้น](DEVELOPMENT-STATUS.md)
 
 ## รันและ build
 
@@ -55,6 +56,8 @@ npm test
 
 แอปมีแชตในหน่วยความจำ โหมดคุย/ให้ดู/ช่วยทำ บริบทตัวอย่าง การอนุญาตทีละรายการ และมุมมองเต็ม/กะทัดรัดที่ใช้ session เดียวกัน แนบลิงก์หรือภาพ preview ในเครื่องได้โดยไม่ fetch/อัปโหลด ข้อความและภาพหายเมื่อรีเฟรช ดูรายละเอียดและข้อจำกัดใน `APP-FOUNDATION.md`
 `tests/workspace.spec.ts` ตรวจแอป/routing/attachments/accessibility/responsive และ `tests/store.spec.ts` ตรวจ cancellation, ผลตอบกลับเก่า, approval และ error/retry
+
+ฐาน adapter รองรับ typed streaming events และคำตอบที่หยุดกลางทางแล้ว ตัวอย่างช่วยทำรองรับคลิกปุ่มบันทึก พิมพ์ข้อความในเครื่องหมายคำพูด และจัดรายการงาน โดยตรวจข้อมูลก่อนขออนุญาต ไม่แปลงข้อความตอบเป็นคำสั่งควบคุมเครื่อง `tests/streaming.spec.ts` และ `tests/readiness.spec.ts` ตรวจ contract, partial replies, การออกจากแอป และ flow ผ่าน UI
 
 ฟอนต์ Noto Sans Thai และ Inter รวมใน build ไม่เรียก Google Fonts ขณะใช้งาน ฉากไม่ใช้โมเดล/texture ภายนอก จำกัด DPR ที่ 1.5 และแสดงภาพนิ่งเมื่อเลือก reduced motion
 

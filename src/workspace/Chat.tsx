@@ -17,7 +17,7 @@ export function Attachments({ items, onRemove }: { items: Attachment[]; onRemove
   return <div className={s.attachments}>{items.map(item => <div className={s.attachment} key={item.id}>
     {item.kind === 'image' ? <img src={item.url} alt={`ภาพแนบ ${item.name}`} /> : <Icon name="arrow" size={16} />}
     <div><b>{item.name}</b>{item.kind === 'link' && <span title={item.url}>{item.url}</span>}</div>
-    {onRemove && <button className={s.iconButton} aria-label={`ลบ ${item.name}`} onClick={() => onRemove(item.id)}><Icon name="close" size={15} /></button>}
+    {onRemove && <button type="button" className={s.iconButton} aria-label={`ลบ ${item.name}`} onClick={() => onRemove(item.id)}><Icon name="close" size={15} /></button>}
   </div>)}</div>
 }
 const actionLabels = { pending: 'รอคุณอนุญาต', executing: 'กำลังทำการจำลอง', done: 'เสร็จแล้ว · ผลจำลอง', cancelled: 'ยกเลิกแล้ว', rejected: 'ปฏิเสธแล้ว', error: 'การจำลองไม่สำเร็จ' }
@@ -27,6 +27,7 @@ export default function Chat({ session, store, onSelect, onLink }: { session: Se
   const [unread, setUnread] = useState(false), [attachmentError, setAttachmentError] = useState('')
   const reduced = useMediaQuery('(prefers-reduced-motion: reduce)')
   const busy = ['responding', 'executing'].includes(session.agent)
+  const latest = session.messages.at(-1)
   useLayoutEffect(() => {
     if (!input.current) return
     input.current.style.height = 'auto'
@@ -34,9 +35,9 @@ export default function Chat({ session, store, onSelect, onLink }: { session: Se
   }, [session.draft])
   useLayoutEffect(() => {
     if (!session.messages.length) scroll.current?.scrollTo({ top: 0, behavior: 'instant' })
-    else if (nearEnd.current) scroll.current?.scrollTo({ top: scroll.current.scrollHeight, behavior: reduced ? 'instant' : 'smooth' })
+    else if (nearEnd.current) scroll.current?.scrollTo({ top: scroll.current.scrollHeight, behavior: reduced || latest?.responseStatus === 'streaming' ? 'instant' : 'smooth' })
     else setUnread(true)
-  }, [session.messages, session.agent, reduced])
+  }, [session.messages, session.agent, reduced, latest?.responseStatus])
   useEffect(() => {
     const element = scroll.current!
     const observer = new ResizeObserver(() => {
@@ -59,15 +60,16 @@ export default function Chat({ session, store, onSelect, onLink }: { session: Se
         </div> : <div className={s.messages}>{session.messages.map(message => <article className={`${s.message} ${message.role === 'user' ? s.user : s.assistant}`} key={message.id} aria-label={message.role === 'user' ? 'ข้อความของคุณ' : 'คำตอบจำลอง CIC'}>
           <div className={s.messageLabel}>{message.role === 'user' ? 'คุณ' : <><span className={s.smallBot}>C</span>CIC <small>คำตอบจำลอง</small></>}</div>
           <MessageText text={message.text} />
+          {message.responseStatus && message.responseStatus !== 'complete' && <p className={s.responseState}>{message.responseStatus === 'streaming' ? 'กำลังทยอยตอบ…' : message.responseStatus === 'stopped' ? 'หยุดกลางทาง · คำตอบนี้ยังไม่ครบ' : 'ตอบไม่สำเร็จ · คำตอบนี้ยังไม่ครบ'}</p>}
           {!!message.attachments?.length && <Attachments items={message.attachments} />}
           {message.action && <div className={s.approval} data-status={message.action.status}>
-            <span className={s.actionStatus}>{actionLabels[message.action.status]}</span><h3>{message.action.title}</h3><dl><dt>เป้าหมาย</dt><dd>{message.action.target}</dd><dt>ผลที่คาดว่าจะเกิด</dt><dd>{message.action.effect}</dd></dl>
+            <span className={s.actionStatus}>{actionLabels[message.action.status]}</span> <small className={s.responseState}>การจำลอง</small><h3>{message.action.title}</h3><dl><dt>เป้าหมาย</dt><dd>{message.action.target}</dd><dt>รายละเอียดที่จะใช้</dt><dd className={s.actionDetails}>{message.action.details}</dd><dt>ผลที่คาดว่าจะเกิด</dt><dd>{message.action.effect}</dd></dl>
             {message.action.status === 'pending' && <div className={s.actionButtons}><button className={s.primary} onClick={() => store.approve(message.action!.id)}>อนุญาตการจำลองนี้</button><button className={s.secondary} onClick={() => store.reject(message.action!.id)}>ปฏิเสธ</button></div>}
           </div>}
         </article>)}</div>}
         {session.mode !== 'chat' && !session.source && <div className={s.contextHint}><Icon name="screen" size={18} /><span>คุยต่อได้ หรือเพิ่มบริบทจำลอง</span><button onClick={onSelect}>เลือกแหล่ง</button></div>}
-        {session.agent === 'responding' && <p className={s.working}>กำลังเตรียมคำตอบจำลอง…</p>}
-        {session.agent === 'paused' && <p className={s.working}>หยุดงานแล้ว ส่งข้อความใหม่ได้เมื่อพร้อม</p>}
+        {session.agent === 'responding' && latest?.responseStatus !== 'streaming' && <p className={s.working}>กำลังเตรียมคำตอบจำลอง…</p>}
+        {session.agent === 'paused' && <p className={s.working}>หยุดงานแล้ว · {session.source ? `ยังเลือก ${session.source.name} ไว้${session.mode === 'chat' ? ' แต่ไม่ใช้ในโหมดคุย' : ''}` : 'ไม่มีบริบทที่เลือกไว้'} ส่งข้อความใหม่ได้เมื่อพร้อม</p>}
         {session.error && <div className={s.error} role="alert">{session.error}{session.agent === 'error' && session.retryText && <button className={s.secondary} onClick={() => store.retry()}>ลองอีกครั้ง</button>}</div>}
       </div>
     </div>
@@ -83,7 +85,7 @@ export default function Chat({ session, store, onSelect, onLink }: { session: Se
         if (selected) { try { await store.addImage(selected) } catch (error) { setAttachmentError(error instanceof Error ? error.message : 'แนบภาพไม่สำเร็จ') } }
       }} />
       {attachmentError && <p className={s.error} role="alert">{attachmentError}</p>}
-      <p className={s.composerNote}>คำตอบและการทำงานเป็นการจำลอง · ภาพไม่เกิน 5 MB เก็บในหน้านี้เท่านั้น</p>
+      <div className={s.composerNote}>แชตและสิ่งแนบหายเมื่อรีเฟรช <details className={s.attachmentHelp}><summary>ข้อจำกัดสิ่งแนบ</summary><p>สูงสุด 6 รายการต่อข้อความ · ภาพ PNG/JPEG/WebP/GIF ไม่เกิน 5 MB และ 24 ล้านพิกเซล · ภาพอยู่ในเครื่อง ไม่อัปโหลด และไม่เปิดอ่าน URL</p></details></div>
     </div>
   </>
 }

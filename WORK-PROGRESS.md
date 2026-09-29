@@ -1,5 +1,22 @@
 # CIC app foundation — progress
 
+## Current round: readiness audit (in progress)
+- Brief: attachment `3d4408c6-0e01-4b8f-84c8-44d33541fd40/Pasted text.txt`.
+- Starting commit `7f78a33`, clean tree; fetched origin, no incoming changes. No AGENTS.md found in repository or parent paths.
+- Read routing, Workspace, store, adapters, attachments and foundation docs. Running baseline build/lint/tests before changes.
+- Confirmed issues: broad mock action regex maps “คลิกปุ่มบันทึก” to an unrelated task list; AgentAdapter only returns one completed reply and attachment count; compact panel is centered; attachment limits are not fully stated in UI.
+- Plan: explicit mock scenarios + structured validated actions; cancellable typed streaming contract; clearer controls/context/stop status; compact aligned right; targeted lifecycle/attachment/browser tests; update docs and DEVELOPMENT-STATUS.md; commit/push/deploy/live verification.
+- No real AI, network service, backend, capture, persistence or computer control in this round.
+- Baseline: build/lint passed; 29/30 tests passed. Existing combined WebGL scroll/context-loss test timed out before fallback assertion; split context loss into its own test with the same real WebGL assertions (no production scene changes).
+- Implemented (not yet fully verified): typed AsyncIterable AgentEvent contract with session/operation identities, typed message/attachment history, distinct streaming/complete/stopped/error responses; validates structured action proposals before showing approval. Mock scenarios now distinguish save-click, quoted text typing, task-list and advisory replies; unknown commands explain supported cases.
+- Source selection now gets a fresh identity each time. Cancellation marks partial responses stopped, drops staged proposals and ignores late events.
+- UI changes: compact docked right, visible layout label on wide screens, direct source shortcut, quieter unused context panel, distinct stop-work label and retained-context notice; full attachment limits in expandable help.
+- Fixed actual attachment-remove form-submit bug with type=button. Pending: behavioral test additions, visual inspection, docs/status, full checks, commit/push/deploy/live verification.
+- 2026-09-29 checkpoint: store/streaming/workspace suite passed 23/23. Inspected 1440×900, 1280×720, 390×844, 360×480 and right-docked compact screenshots. New browser tests passed 3/4; the remaining test exposed delayed cancellation when leaving for a lazy route. Added hashchange cancellation at navigation boundary; rerun pending.
+- APP-FOUNDATION.md updated for streaming/action contract; DEVELOPMENT-STATUS.md added. Build/lint passed before the navigation fix. Still no commit/push for this round.
+- Navigation fix verified: partial-stream/leave/re-enter test now passes; all four new browser scenarios have passed. Final production build passed. Full 41-test suite + final lint running; next: inspect results, finalize status docs, commit/push, verify Pages and live app.
+- Final local verification: full suite 40/41 passed, including actual WebGL/scroll/context loss. Remaining failure was fake-clock synchronization (host time behind browser time); pause now uses browser time + 1 second. All four readiness cases passed on rerun, so all 41 cases passed across full/targeted runs. Final lint passed; production build passed. No FPS claim. Next: commit/push and verify deployed assets and flows.
+
 Updated: 2026-09-28. User requests a working simulated app, linked from the existing landing page, then test, commit, push and verify GitHub Pages.
 
 ## Baseline

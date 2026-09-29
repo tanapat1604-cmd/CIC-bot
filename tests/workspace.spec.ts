@@ -71,7 +71,7 @@ test('context permissions, approval, reject, stop and stale request invalidation
   await page.getByRole('button', { name: 'ช่วยทำ', exact: true }).click()
   await send(page, 'ช่วยทำรายการสุดท้าย')
   await page.getByRole('button', { name: 'อนุญาตการจำลองนี้' }).click()
-  await page.getByRole('button', { name: 'หยุด', exact: true }).click()
+  await page.getByRole('button', { name: 'หยุดงาน', exact: true }).click()
   await page.waitForTimeout(800)
   await expect(page.getByText('เสร็จแล้ว · ผลจำลอง', { exact: true })).toHaveCount(1)
   await page.getByRole('button', { name: 'หยุดใช้บริบท', exact: true }).click()

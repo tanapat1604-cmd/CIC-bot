@@ -7,7 +7,7 @@ const active = (store: SessionStore) => store.getSnapshot().sessions.find(s => s
 const send = (store: SessionStore, text: string) => { store.setDraft(text); store.send() }
 test('stop and chat switch reject even adapters that ignore AbortSignal', async () => {
   const adapters = createMockAdapters()
-  adapters.agent.respond = async () => { await new Promise(resolve => setTimeout(resolve, 100)); return { text: 'LATE RESULT' } }
+  adapters.agent.respond = async function* (request) { await new Promise(resolve => setTimeout(resolve, 100)); yield { sessionId: request.sessionId, operationId: request.operationId, type: 'delta', text: 'LATE RESULT' }; yield { sessionId: request.sessionId, operationId: request.operationId, type: 'done' } }
   const store = createSessionStore(adapters)
   send(store, 'first'); store.stop()
   await new Promise(resolve => setTimeout(resolve, 150))
@@ -33,10 +33,10 @@ test('approvals bind to source, mode, session and operation; duplicate approval 
   send(store, 'ช่วยทำรายการใหม่')
   await expect.poll(() => active(store).agent).toBe('awaiting-approval')
   const next = active(store).messages.at(-1)!.action!
-  expect(next.sourceId).toBe('mock-window')
+  expect(next.sourceId).toBe(active(store).source?.id)
   store.setMode('chat'); store.approve(next.id)
   expect(active(store).messages.at(-1)!.action!.status).toBe('cancelled')
-  store.setMode('assist'); send(store, 'ช่วยทำอีกครั้ง')
+  store.setMode('assist'); send(store, 'ช่วยทำรายการ')
   await expect.poll(() => active(store).agent).toBe('awaiting-approval')
   const accepted = active(store).messages.at(-1)!.action!
   store.approve(accepted.id); store.approve(accepted.id)
@@ -89,7 +89,7 @@ test('chat excludes screen context; analysis never requests control; execution e
   store.setMode('assist'); send(store, 'วิเคราะห์งานนี้')
   await expect.poll(() => active(store).agent).toBe('idle')
   expect(active(store).messages.at(-1)?.action).toBeUndefined()
-  expect(lastSource).toBe('mock-desktop')
+  expect(lastSource).toBe(active(store).source?.id)
   send(store, 'ช่วยทำรายการ'); await expect.poll(() => active(store).agent).toBe('awaiting-approval')
   store.approve(active(store).messages.at(-1)!.action!.id)
   await expect.poll(() => active(store).agent).toBe('error')

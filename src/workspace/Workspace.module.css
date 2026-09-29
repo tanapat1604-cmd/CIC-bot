@@ -156,7 +156,7 @@
 .collapsed .sidebarBrand { margin:0 0 24px; justify-content:center; }
 .collapsed .sidebarBrand .sidebarIcon { margin:auto; }
 .collapsed .sidebar .newChat,.collapsed .sidebar .history button,.collapsed .sidebarBottom>button,.collapsed .sidebarBottom>a { justify-content:center; padding:10px; }
-.compact { max-width:440px; margin:0 auto; border-inline:1px solid var(--border); box-shadow:0 0 40px #14233d09; }
+.compact { max-width:440px; margin:0 0 0 auto; border-inline:1px solid var(--border); box-shadow:0 0 40px #14233d09; }
 .compact .header { padding:16px; }.compact .topRow { margin-bottom:12px; }
 .compact .controlsRow { flex-direction:column; align-items:stretch; gap:8px; }
 .compact .modes { justify-content:space-between; }.compact .modes button { flex:1; }
@@ -165,6 +165,14 @@
 .compact .empty { padding-top:24px; }.compact .empty h1 { font-size:25px; }.compact .empty>p:not(.eyebrow) { font-size:12px; }
 .compact .prompts { gap:8px; margin-top:24px; }.compact .prompts button { padding:12px 10px; font-size:11px; }.compact .prompts button>svg:last-child { display:none; }
 .compact .composerNote { font-size:9px; }.compact .message { font-size:15px; }.compact .user { max-width:94%; padding:12px 16px; }
+.headerActions { flex-shrink:0; }.titleGroup { flex:1; }.chatTitle { min-width:0; }
+.layoutButton { padding:6px 8px; font-size:11px; }.layoutButton span { display:none; }
+.header .stop { white-space:nowrap; }.header .stop:not(:disabled) { color:white; background:var(--error); border-color:var(--error); }.header .stop:hover:not(:disabled) { color:var(--error); background:#fceef0; }
+.controlsRow { flex-wrap:wrap; }.contextTools { display:flex; align-items:center; gap:4px; flex-wrap:wrap; }.sourceShortcut { color:var(--blue)!important; border-color:#cddbf6!important; padding:4px 9px; font-size:11px; white-space:nowrap; }
+.quietContext { background:var(--background); }.quietContext .contextEmpty { padding-block:8px 20px; }.quietContext .contextIcon { width:40px; height:40px; margin-bottom:12px; }.quietContext .screenPreview { filter:saturate(.35); }
+.responseState { font-size:11px; color:var(--muted); margin-top:8px; }.actionDetails { white-space:pre-wrap; }
+.attachmentHelp { display:inline; margin-left:8px; }.attachmentHelp summary { display:inline; text-decoration:underline; cursor:pointer; }.attachmentHelp p { padding:8px; margin-top:6px; border-radius:6px; background:#edf1f7; text-align:left; line-height:1.7; }
+@media(min-width:1100px) { .layoutButton span { display:inline; }.compact .layoutButton span { display:none; } }
 @keyframes arrive { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
 @media(max-width:1400px) and (min-width:1320px) { .header { padding-inline:24px; }.chatContent { padding-inline:28px; }.composerArea { padding-inline:28px; }.modes button { padding-inline:13px; } }
 @media(max-width:1000px) { .sidebar { flex-basis:210px; }.header { padding-inline:24px; }.chatContent,.composerArea { padding-inline:24px; }.contextToggle span:not(.dot) { display:none; } }
@@ -174,4 +182,6 @@
 @media(max-height:650px) { .empty { padding-top:16px; }.empty h1 { font-size:24px; }.botMark { width:44px; height:44px; margin-bottom:12px; }.prompts { margin-top:20px; }.header { padding-top:12px; padding-bottom:10px; }.topRow { margin-bottom:10px; }.composerNote { margin-top:6px; }.sidebar { padding-top:20px; }.sidebarBrand { margin-bottom:20px; } }
 @media(min-height:651px) and (max-height:800px) { .empty { padding:8px 0; }.botMark { width:40px; height:40px; margin-bottom:12px; }.empty .eyebrow { display:none; }.empty h1 { font-size:24px; line-height:1.45; margin-bottom:8px; }.empty>p:not(.eyebrow) { line-height:1.6; }.prompts { margin-top:16px; gap:8px; }.prompts button { padding-block:10px; } }
 @media(max-height:650px) { .composer textarea { max-height:80px; }.composer .attachments { max-height:64px; } }
+@media(max-width:1000px) { .controlsRow { align-items:stretch; }.contextTools { width:100%; justify-content:space-between; }.contextToggle span:not(.dot) { display:inline; } }
+.compact .contextTools { width:100%; justify-content:space-between; }.compact .contextToggle span:not(.dot) { display:inline; }
 @media(prefers-reduced-motion:reduce) { .workspace *,.workspace *::before,.workspace *::after,.modal,.modal *,.modal::backdrop { animation:none!important; transition:none!important; scroll-behavior:auto!important; } }

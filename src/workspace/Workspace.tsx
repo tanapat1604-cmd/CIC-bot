@@ -27,8 +27,12 @@ export default function Workspace() {
   const [link, setLink] = useState(''), [linkError, setLinkError] = useState('')
   useEffect(() => {
     const dispose = () => store.dispose()
+    // A lazy destination can suspend before unmount cleanup runs. Stop at the
+    // navigation boundary, including Back/Forward, rather than waiting for it.
+    const leaving = () => { if (location.hash !== '#/app' && !location.hash.startsWith('#/app?')) store.stop() }
     addEventListener('beforeunload', dispose)
-    return () => { store.stop(); removeEventListener('beforeunload', dispose) }
+    addEventListener('hashchange', leaving)
+    return () => { store.stop(); removeEventListener('beforeunload', dispose); removeEventListener('hashchange', leaving) }
   }, [])
   useEffect(() => { if (session.screen === 'connected' || session.screen === 'error') setSourceOpen(false) }, [session.screen])
   const select = () => { store.openSources(); setSourceOpen(true) }
@@ -46,17 +50,17 @@ export default function Workspace() {
     <main className={s.main}>
       <header className={s.header}>
         <div className={s.topRow}><div className={s.titleGroup}>{!compact && narrow && <button className={s.iconButton} aria-label="เปิดประวัติแชต" onClick={() => setNavOpen(true)}><Icon name="menu" /></button>}<span className={s.chatTitle}>{compact ? 'CIC' : session.title}</span><span className={s.previewBadge}>ตัวอย่างแอป</span></div><div className={s.headerActions}>
-          <button className={s.iconButton} aria-label={compact ? 'กลับ Workspace' : 'มุมมองกะทัดรัด'} title={compact ? 'กลับ Workspace' : 'มุมมองกะทัดรัด'} onClick={() => store.setLayout(compact ? 'expanded' : 'compact')}><Icon name={compact ? 'screen' : 'structure'} size={19} /></button>
-          <button className={s.stop} disabled={!busy} onClick={() => { store.stop(); setSourceOpen(false) }}><span aria-hidden="true">■</span> หยุด</button>
+          <button className={s.layoutButton} aria-label={compact ? 'กลับ Workspace' : 'มุมมองกะทัดรัด'} title={compact ? 'กลับ Workspace' : 'มุมมองกะทัดรัด'} onClick={() => store.setLayout(compact ? 'expanded' : 'compact')}><Icon name={compact ? 'screen' : 'structure'} size={19} /><span>{compact ? 'กลับ Workspace' : 'มุมมองกะทัดรัด'}</span></button>
+          <button className={s.stop} disabled={!busy} onClick={() => { store.stop(); setSourceOpen(false) }}><span aria-hidden="true">■</span> หยุดงาน</button>
         </div></div>
         <div className={s.controlsRow}><div className={s.modes} role="group" aria-label="โหมดผู้ช่วย">{modes.map(mode => <button key={mode.id} aria-pressed={session.mode === mode.id} title={mode.description} onClick={() => store.setMode(mode.id)}>{mode.label}</button>)}</div>
-          <button className={s.contextToggle} aria-label="เปิดบริบท" aria-expanded={inlineContext ? !contextHidden : contextOpen} onClick={() => inlineContext ? setContextHidden(value => !value) : setContextOpen(true)}><span className={s.dot} data-active={session.mode !== 'chat' && !!session.source} /><span>{contextStatus(session)}</span><Icon name="screen" size={17} /></button>
+          <div className={s.contextTools}><button className={s.contextToggle} aria-label="เปิดบริบท" title={session.source?.name ?? 'รายละเอียดบริบทหน้าจอ'} aria-expanded={inlineContext ? !contextHidden : contextOpen} onClick={() => inlineContext ? setContextHidden(value => !value) : setContextOpen(true)}><span className={s.dot} data-active={session.mode !== 'chat' && !!session.source} /><span>{contextStatus(session)}</span><Icon name="screen" size={17} /></button>{!session.source && <button className={s.sourceShortcut} onClick={select}>เลือกหน้าจอจำลอง</button>}</div>
         </div>
       </header>
       <div className={s.chatArea}><Chat key={session.id} session={session} store={store} onSelect={select} onLink={() => { setLink(''); setLinkError(''); setLinkOpen(true) }} /></div>
       <div className={s.agentStatus} role="status" aria-live="polite">{status[session.agent]}{compact && <a href="#top">กลับหน้าแนะนำ ↗</a>}</div>
     </main>
-    {inlineContext && <aside className={`${s.contextPanel} ${contextHidden ? s.hiddenPanel : ''}`} aria-label="บริบทหน้าจอ" inert={contextHidden} aria-hidden={contextHidden}><div className={s.panelHeading}><h2>บริบทหน้าจอ</h2><button className={s.iconButton} aria-label="ซ่อนบริบท" onClick={() => setContextHidden(true)}><Icon name="close" size={18} /></button></div><ContextPanel session={session} store={store} onSelect={select} /></aside>}
+    {inlineContext && <aside className={`${s.contextPanel} ${contextHidden ? s.hiddenPanel : ''} ${session.mode === 'chat' ? s.quietContext : ''}`} aria-label="บริบทหน้าจอ" inert={contextHidden} aria-hidden={contextHidden}><div className={s.panelHeading}><h2>บริบทหน้าจอ</h2><button className={s.iconButton} aria-label="ซ่อนบริบท" onClick={() => setContextHidden(true)}><Icon name="close" size={18} /></button></div><ContextPanel session={session} store={store} onSelect={select} /></aside>}
     <Modal open={contextOpen && !inlineContext} title="บริบทหน้าจอ" onClose={() => setContextOpen(false)} drawer><ContextPanel session={session} store={store} onSelect={select} /></Modal>
     <Modal open={navOpen && narrow && !compact} title="แชตของคุณ" onClose={() => setNavOpen(false)} drawer><nav className={s.mobileNav} aria-label="ประวัติแชต">{navigation}</nav></Modal>
     <Modal open={sourceOpen} title="ลองเลือกหน้าจอ" onClose={closeSources}>
