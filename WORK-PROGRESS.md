@@ -1,6 +1,6 @@
 # CIC app foundation — progress
 
-## Current round: readiness audit (in progress)
+## Current round: readiness audit (complete, published)
 - Brief: attachment `3d4408c6-0e01-4b8f-84c8-44d33541fd40/Pasted text.txt`.
 - Starting commit `7f78a33`, clean tree; fetched origin, no incoming changes. No AGENTS.md found in repository or parent paths.
 - Read routing, Workspace, store, adapters, attachments and foundation docs. Running baseline build/lint/tests before changes.
@@ -16,6 +16,10 @@
 - APP-FOUNDATION.md updated for streaming/action contract; DEVELOPMENT-STATUS.md added. Build/lint passed before the navigation fix. Still no commit/push for this round.
 - Navigation fix verified: partial-stream/leave/re-enter test now passes; all four new browser scenarios have passed. Final production build passed. Full 41-test suite + final lint running; next: inspect results, finalize status docs, commit/push, verify Pages and live app.
 - Final local verification: full suite 40/41 passed, including actual WebGL/scroll/context loss. Remaining failure was fake-clock synchronization (host time behind browser time); pause now uses browser time + 1 second. All four readiness cases passed on rerun, so all 41 cases passed across full/targeted runs. Final lint passed; production build passed. No FPS claim. Next: commit/push and verify deployed assets and flows.
+- Code committed and pushed as `5affbd1bb6ed9961b985e7d3ba7842bd9418768d`. Workflow https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/36501043224 is running; remote lint/build passed, browser install/tests/deploy pending. Resume by checking this run, then running `.tools/verify-app-live.mjs` and recording actual live results before claiming this round is published.
+- Final 2026-09-29: workflow `36501043224` completed successfully, including full tests and Pages deployment. Live verifier passed at https://tanapat1604-cmd.github.io/CIC-bot/#/app; served `/CIC-bot/assets/index-CK77anQy.js` matches local build, HTTP 200, no console/page/HTTP asset errors. Direct app avoids Three; verified save-click and exact typed text, approval across layouts, compact right alignment, mobile/reload, landing WebGL and footer entry.
+- Inspected live desktop, approval, compact and mobile screenshots. Evidence: `test-results/live-app-*.png`, `test-results/live-app-verification.json` (gitignored). Viewport/keyboard/reduced-motion checks are Chromium simulations, not physical mobile/native IME/screen-reader/Safari/Firefox verification.
+- This brief is complete. Stage 2 Workspace/mock preview is ready for the next implementation round; no real AI/backend/screen capture/computer control was added. Start next round with text chat through a separately hosted backend, server-side secrets, streaming identity/cancellation and service-side authorization. See DEVELOPMENT-STATUS.md and APP-FOUNDATION.md. Final documentation-only checkpoint uses `[skip ci]` because deployed code remains `5affbd1`.
 
 Updated: 2026-09-28. User requests a working simulated app, linked from the existing landing page, then test, commit, push and verify GitHub Pages.
 
