@@ -32,7 +32,7 @@ Build อยู่ใน `dist/` ตั้ง base เป็น `/CIC-bot/` ใ�
 
 ตั้งค่าได้จาก `backend/.env.example` → `backend/.env` (ไฟล์จริงถูก ignore); root `.env.example` มีเฉพาะ URL สาธารณะ ห้ามใส่ key ใน `VITE_*` ไม่ต้องมี key สำหรับ test provider ดู [วิธีรัน ขอบเขตสิทธิ์ และ protocol](backend/README.md) ใช้ `npm run backend:build` เพื่อตรวจ/คอมไพล์ backend และหยุด backend ที่เปิดเองก่อนรัน browser tests ซึ่งใช้ port 8787
 
-ขั้น 3B เชื่อมและทดสอบ Ollama 0.34.4/qwen3:0.6b จริงแล้ว แต่ภาษาไทยทั่วไปยังไม่ผ่านการยอมรับ ตั้งต้น context 2048/output 192 tokens/3 threads/ปิด thinking/keep-alive 1 นาที ไม่รับประกัน RAM หรือความเร็ว เปลี่ยนโมเดลที่ติดตั้งผ่าน config ได้ ขั้น 3C/backend สาธารณะยังไม่ทำ เว็บ Pages เปิด demo ต่อได้ และไม่พยายามเชื่อม localhost หรือเปิด live ตาม config โดยอัตโนมัติ
+ขั้น 3B เชื่อมและทดสอบ Ollama 0.34.4 และตรวจซ้ำบน 0.35.1 กับ qwen3:0.6b จริงแล้ว แต่ภาษาไทยทั่วไปยังไม่ผ่านการยอมรับ ตั้งต้น context 2048/output 192 tokens/3 threads/ปิด thinking/keep-alive 1 นาที ไม่รับประกัน RAM หรือความเร็ว เปลี่ยนโมเดลที่ติดตั้งผ่าน config ได้ ขั้น 3C/backend สาธารณะยังไม่ทำ เว็บ Pages เปิด demo ต่อได้ และไม่พยายามเชื่อม localhost หรือเปิด live ตาม config โดยอัตโนมัติ
 
 ## ทดสอบ
 
