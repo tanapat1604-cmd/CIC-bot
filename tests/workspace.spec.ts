@@ -1,4 +1,5 @@
 import { test, expect, type Page } from '@playwright/test'
+import { observeOpeningAnimation, expectOpeningAnimation } from './dialogAnimation'
 
 async function send(page: Page, text: string) { await page.getByRole('textbox', { name: 'ข้อความถึง CIC' }).fill(text); await page.getByRole('button', { name: 'ส่งข้อความ', exact: true }).click() }
 async function selectSource(page: Page, label = 'หน้าต่างโปรแกรม') {
@@ -154,9 +155,10 @@ test('app motion, rapid modal reopen and context toggle keep composer position',
   const hidden = await input.boundingBox()
   expect(hidden).toEqual(before)
   await page.getByRole('button', { name: 'เปิดบริบท', exact: true }).click()
+  const modal = page.locator('dialog[aria-label="แนบลิงก์"]')
+  await observeOpeningAnimation(modal)
   await page.getByRole('button', { name: 'ลิงก์', exact: true }).click()
-  const modal = page.getByRole('dialog', { name: 'แนบลิงก์' })
-  expect(await modal.evaluate(el => el.getAnimations().some(a => a.effect?.getTiming().duration === 260))).toBe(true)
+  await expectOpeningAnimation(modal)
   await page.keyboard.press('Escape')
   await page.getByRole('button', { name: 'ลิงก์', exact: true }).click()
   await expect(modal.getByRole('button', { name: 'ปิดแนบลิงก์' })).toBeFocused()

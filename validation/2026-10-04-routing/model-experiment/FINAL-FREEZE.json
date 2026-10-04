@@ -1,0 +1,5 @@
+{
+  "created": "2026-10-04T14:21:26.7018180Z",
+  "rule": "One candidate only; no retuning after development or held results; production prompt unchanged.",
+  "planSHA256": "b311e63dc1e195f687fc102af7b313979d6fd3383969992c6ec5f87e46e13c0a"
+}

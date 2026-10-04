@@ -1,6 +1,15 @@
 # CIC app foundation — progress
 
-## Current round: bounded system help, false refusals and source/status UI
+## Current round: send-result intent, latest corrections and animation diagnosis
+- Started clean ccb9efa / origin main (previous tested f1eeb1f); read progress/help report, no overwritten work. Default0.6b/prompt/settings unchanged,1.7b retained, no pulls/public backend/external capabilities.
+- User chose targeted clarification and separate prompt experiment. No callable immediate notification tool: question cards/final chat, no delivery claim/automation. Optional next-round choice is independent of completing this round.
+- Frozen12dev/16newheld before edits, archived baseline/raw results; production/case hashes frozen before new results inspected, no retuning. Report validation/2026-10-04-routing/RESULTS.md.
+- Bounded send-result/answer recognition and latest replacement/barriers added; original denied text/raw model retained. Held routing miss6/6→1/6 (ส่งผลการคำนวณ remains), system false refusal0/7, ambiguous failure1/3→0/3; explicit model false refusal3/5→2/5, irrelevant refusal/missing draft1/5 remains. Final draft30s timeout under concurrent browser load retained. Calculator0/3→2/3, mixed0/4→3/4. No general Thai assistant acceptance.
+- Real260ms animation events confirm old late-snapshot test issue magnified by host load. Stronger runtime event assertions/negative none700ms controls; no CSS/WebGL changes. First full71pass1fallback-readinessfail2skip retained; sequential final72pass2optinskip. Related16pass, attachment recheckpass; actual-model browser transport/switch2pass45.8s, retry raw math still wrong. Builds/frontend/backend/lint pass. Desktop/mobile/short images inspected.
+- Separate model experiment: identical fixed-history SHA verified; live histories retained separately, one candidate/no retuning. Old refusals improve but output_limit/language regress and real actions lack clear refusal; candidate NOT promoted. Full model-experiment/RESULTS.md.
+- Backend restored ready0.6b at127.0.0.1:8787, actual app help/calc/time/mixed/latest clarification checked; all listeners loopback. Commit/push/CI/demo checkpoint to follow. New held failures become regression; fresh held questions required next round.
+
+## Previous round: bounded system help, false refusals and source/status UI
 - Started clean at d647fb1, origin/main matched. Read mixed report; retained qwen3:0.6b and installed 1.7b, no pulls/prompt changes/public backend. Initial free RAM ~1.90 GiB; frontend/Ollama loopback, old backend listener absent (PID file stale).
 - Frozen development10/regression4/holdout16 before edits; raw baseline snapshot and final backend/shared/cases freeze. No retuning from held failures. Additional exact6 old regression questions measured separately.
 - Added bounded /help and reminder instructions, validated help provenance, wrapping source labels and pending/stream/stopped/error/retry/unperformed status. General/quoted/negated prose still reaches model.

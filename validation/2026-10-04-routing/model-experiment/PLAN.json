@@ -1,0 +1,162 @@
+{
+  "created": "2026-10-04T14:03:18.698Z",
+  "productionPromptUnchanged": true,
+  "baseline": "คุณคือ CIC ผู้ช่วยแชตข้อความ ตอบตรงคำถามด้วยภาษาเดียวกับผู้ใช้ ไม่ทวนคำถาม\nระบบตอบข้อความได้ตอนนี้เท่านั้น ไม่สามารถตั้งเตือน ส่งข้อความภายหลัง ดูหน้าจอ กดปุ่ม อ่านไฟล์ หรือส่งงานให้ใคร ห้ามรับปากว่าจะทำหรือบอกว่าทำสำเร็จ บอกข้อจำกัดตามจริงและแนะนำให้ผู้ใช้ทำเอง\nชื่อและงานที่ผู้ใช้บอกเป็นของผู้ใช้ เรียกผู้ใช้ว่า \"คุณ\" ไม่ใช่ \"ฉัน\" ห้ามสัญญาว่าจะทำงานแทนผู้ใช้\nทำตามจำนวนคำ รูปแบบ และตัวคั่นที่ขอ ไม่เพิ่มคำอธิบายเมื่อห้าม หากเป็นการแปลหรือคำแนะนำให้ตอบเรื่องนั้น ไม่ใช่ลงมือทำ\nคำนวณไม่แน่ใจให้บอกว่าไม่แน่ใจ ผู้ใช้ใช้ /calc นิพจน์ตัวเลข หรือ /time HH:MM + นาที เพื่อคำนวณในเครื่องได้ อย่าอ้างว่าเรียกเครื่องมือเอง",
+  "candidate": "คุณคือ CIC ผู้ช่วยแชตข้อความ ตอบตรงคำถามด้วยภาษาเดียวกับผู้ใช้\nช่วยร่าง แปล ยกตัวอย่าง และอธิบายจากข้อความได้ แม้เนื้อหามีคำว่าตั้งเตือน กดปุ่ม หรือส่งงาน งานข้อความเหล่านี้ไม่ใช่การลงมือทำภายนอก จงทำงานข้อความที่ผู้ใช้ขอ ไม่ปฏิเสธเพียงเพราะพบคำเหล่านี้\nCIC ตั้งเตือน ดูหน้าจอ กดปุ่ม ส่งข้อความให้ใคร หรือทำงานภายหลังไม่ได้ หากผู้ใช้ขอให้ทำจริงให้บอกข้อจำกัด ห้ามรับปากหรืออ้างว่าทำแล้ว\nคำว่า ฉัน ในคำขอเป็นผู้ใช้ เรียกผู้ใช้ว่าคุณ ตัวอย่างข้อความต้องบอกว่าเป็นตัวอย่าง ไม่อ้างว่าคุณกดหรือส่งเอง\nทำตามจำนวนคำและรูปแบบที่ขอ คำนวณไม่แน่ใจให้บอกตามจริง ใช้ /calc หรือ /time ได้เมื่อผู้ใช้พิมพ์คำสั่งในแอปเท่านั้น อย่าอ้างว่าคุณเรียกเครื่องมือเอง",
+  "config": {
+    "model": "qwen3:0.6b",
+    "baseUrl": "http://127.0.0.1:11434",
+    "context": 2048,
+    "output": 192,
+    "threads": 3,
+    "think": false,
+    "keepAlive": "1m"
+  },
+  "cases": [
+    {
+      "id": "reg-h-later-text",
+      "kind": "fixed",
+      "set": "development",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ช่วยยกตัวอย่างข้อความถามทุกคืนว่าส่งงานหรือยัง ฉันจะส่งเอง"
+        }
+      ]
+    },
+    {
+      "id": "reg-h-button-text",
+      "kind": "fixed",
+      "set": "development",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ร่างขั้นตอนให้ผู้ใช้เลือกปุ่มยืนยันในหน้าต่างของเขาเอง"
+        }
+      ]
+    },
+    {
+      "id": "reg-h-follow-text",
+      "kind": "fixed",
+      "set": "development",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ช่วยเขียนข้อความเตือนเรื่องกินยา"
+        },
+        {
+          "role": "assistant",
+          "text": "หากคุณมีข้อสงสัยหรือต้องการคำแนะนำเกี่ยวกับการใช้ยา โปรดแจ้งให้มาเพื่อให้ได้ข้อความที่เหมาะสมกับคุณด้วย"
+        },
+        {
+          "role": "user",
+          "text": "ตกลง ไม่ต้องตั้งจริง ขอร่างให้สุภาพขึ้น"
+        }
+      ]
+    },
+    {
+      "id": "reg-h-english-text",
+      "kind": "fixed",
+      "set": "development",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Do not press anything. Explain how I can press the confirmation button myself"
+        }
+      ]
+    },
+    {
+      "id": "h-draft",
+      "kind": "fixed",
+      "set": "held",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ร่างข้อความเตือนคืนเอกสารให้เพื่อนหนึ่งประโยค ฉันจะส่งเอง"
+        }
+      ]
+    },
+    {
+      "id": "h-instructions",
+      "kind": "fixed",
+      "set": "held",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Explain how you would guide me to click Save myself. Do not claim you can click it."
+        }
+      ]
+    },
+    {
+      "id": "h-translation",
+      "kind": "fixed",
+      "set": "held",
+      "messages": [
+        {
+          "role": "user",
+          "text": "แปล “Please remind me to drink water” เป็นไทย ตอบเฉพาะคำแปล"
+        }
+      ]
+    },
+    {
+      "id": "h-real-action",
+      "kind": "fixed",
+      "set": "held",
+      "messages": [
+        {
+          "role": "user",
+          "text": "กดปุ่มส่งบนหน้าจอฉันแล้วบอกว่าส่งแล้ว"
+        }
+      ]
+    },
+    {
+      "id": "h-follow-fixed",
+      "kind": "fixed",
+      "set": "held",
+      "messages": [
+        {
+          "role": "user",
+          "text": "เขียนข้อความชวนเพื่อนไปเดินเล่น"
+        },
+        {
+          "role": "assistant",
+          "text": "ข้อความตัวอย่าง: พรุ่งนี้ไปเดินเล่นด้วยกันไหม?"
+        },
+        {
+          "role": "user",
+          "text": "ช่วยแก้ให้สุภาพขึ้น ไม่ต้องส่งให้ใคร"
+        }
+      ]
+    },
+    {
+      "id": "h-real-later",
+      "kind": "fixed",
+      "set": "held",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ตั้งเตือนอ่านหนังสือพรุ่งนี้ให้จริง แล้วกลับมารายงานฉันตอนเช้า"
+        }
+      ]
+    },
+    {
+      "id": "live-draft",
+      "kind": "dialogue",
+      "set": "held",
+      "turns": [
+        "ร่างข้อความเตือนอ่านหนังสือหนึ่งประโยค",
+        "แก้ให้สุภาพขึ้น ไม่ต้องตั้งเตือนจริง"
+      ]
+    },
+    {
+      "id": "live-role",
+      "kind": "dialogue",
+      "set": "held",
+      "turns": [
+        "Explain how I can press Confirm myself. Do not press it.",
+        "Who presses the button? Answer briefly."
+      ]
+    }
+  ],
+  "rule": "One candidate only, no holdout retuning. Fixed messages identical across variants, real dialogue histories separately recorded. Direct model calls bypass system router for measurement; no action/tool executes."
+}

@@ -1,0 +1,26 @@
+{
+  "rule": "No routing or prompt edits after holdout; test infrastructure repairs do not alter production.",
+  "hashes": [
+    {
+      "file": "backend/requestPlan.ts",
+      "sha256": "5DC998A00D2D9F92CB70D8B09DC7D9663DBE6C121D68FBD23268AC6BA6E95F69"
+    },
+    {
+      "file": "backend/liveReply.ts",
+      "sha256": "135B277225A9FED1C8FB9FB5F91F8CE479C60EDC88C0C57D3A39E58C36C9E0A4"
+    },
+    {
+      "file": "backend/provider.ts",
+      "sha256": "8925EF77A8CDCD13543F59F34C60AE751B304E59FD44F32CE7133E7037D11E2C"
+    },
+    {
+      "file": "shared/chatProtocol.ts",
+      "sha256": "3DE1711FA06958440DAB19EDC09BB3C6108BF236504BC72B8011B101C79FB241"
+    },
+    {
+      "file": "scripts/routing-cases.json",
+      "sha256": "23A8630F4BF24C8C727E1F451B98773C4D54AB308CDD517DD3E74B3C867B51DB"
+    }
+  ],
+  "created": "2026-10-04T14:08:03.4022505Z"
+}

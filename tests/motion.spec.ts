@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { observeOpeningAnimation, expectOpeningAnimation } from './dialogAnimation'
 
 test.use({ reducedMotion: 'no-preference' })
 test.afterEach(async ({ page }) => { await page.emulateMedia({ reducedMotion: 'reduce' }) })
@@ -39,11 +40,12 @@ test('rapid tabs settle on latest choice, keep layout and move the indicator', a
 test('dialog animates while focus, Escape, rapid reopen and links stay immediate', async ({ page }) => {
   await page.goto('./')
   const trigger = page.getByRole('button', { name: 'ดาวน์โหลด', exact: true }).first()
-  await trigger.click()
   const modal = page.locator('dialog')
+  await observeOpeningAnimation(modal)
+  await trigger.click()
   await expect(modal).toHaveAttribute('open', '')
   await expect(modal.locator('.dialog-close')).toBeFocused()
-  expect(await modal.evaluate(node => node.getAnimations().some(animation => animation.effect?.getTiming().duration === 260))).toBe(true)
+  await expectOpeningAnimation(modal)
   await page.keyboard.press('Shift+Tab')
   await expect(modal.locator('.dialog-dismiss')).toBeFocused()
   await page.keyboard.press('Escape')

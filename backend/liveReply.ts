@@ -10,7 +10,7 @@ export function createLiveReply(provider: Provider, input: Input, signal: AbortS
   const plan = planRequest(input.messages)
   const thai = /[\u0e00-\u0e7f]/u.test(plan.original)
   const refusal = thai ? 'ข้อมูลจากระบบ: ไม่ได้ส่งข้อความ ตั้งเตือน ดูหน้าจอ กดปุ่ม หรือทำงานภายหลังให้' : 'System: no message was sent, reminder set, screen viewed, button pressed or future work scheduled.'
-  const clarification = thai ? 'ต้องการให้ช่วยส่วนข้อความใด เช่น ร่างข้อความหรืออธิบายวิธีทำเอง? ระบบทำงานภายนอกให้ไม่ได้' : 'Which text task should I help with, such as drafting or instructions? CIC cannot perform external actions.'
+  const clarification = thai ? 'ต้องการให้ช่วยส่วนข้อความ: ร่างข้อความ หรืออธิบายวิธีทำเอง? ยังไม่ได้ทำงานภายนอก และ CIC ส่งข้อความหรือตั้งเตือนให้ไม่ได้' : 'Which text task should I help with, such as drafting or instructions? CIC cannot perform external actions.'
   const utility = plan.kind === 'model' && /^\/(?:calc|time|capabilities)\b/i.test(plan.allowed[0]) ? resolveTextUtility(plan.allowed[0], input.messages) : null
   const help = plan.kind === 'model' ? systemHelp(plan.allowed[0], maskQuotes(plan.allowed[0]).text) : null
   const source: ReplySource = plan.kind === 'mixed' ? 'mixed' : plan.kind === 'system' || plan.kind === 'clarify' ? 'capabilities' : help ? 'help' : utility?.source ?? 'model'
@@ -21,7 +21,7 @@ export function createLiveReply(provider: Provider, input: Input, signal: AbortS
     if (help) { yield help; return }
     if (utility) { yield utility.text; return }
     if (plan.kind === 'model') {
-      const messages = plan.resolvedFrom === undefined ? input.messages : [...input.messages.slice(0, -1), { role: 'user' as const, text: plan.allowed[0] }]
+      const messages = plan.resolvedFrom === undefined && plan.effective === undefined ? input.messages : [...input.messages.slice(0, -1), { role: 'user' as const, text: plan.allowed[0] }]
       yield* provider.stream({ ...input, messages }, signal); return
     }
     yield refusal + '\n' + (thai ? 'ส่วนที่ไม่ได้ทำ: ' : 'Parts not performed: ') + plan.denied.map(p => JSON.stringify(p)).join(', ') + '\n'

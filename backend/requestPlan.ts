@@ -2,9 +2,9 @@ import type { TextMessage } from '../shared/chatProtocol.js'
 import { requestIntent } from './requestIntent.js'
 import { systemHelp } from './systemHelp.js'
 
-export type RequestPlan = { kind: 'model' | 'system' | 'mixed' | 'clarify'; original: string; allowed: string[]; denied: string[]; resolvedFrom?: number }
-const task = /ร่าง|เขียน|แปล|อธิบาย|บอกวิธี|แนะนำ|ยกตัวอย่าง|สรุป|คำนวณ|draft|write|translate|explain|calculate|how to/i
-const external = /เตือน|ปลุก|ทัก|ส่งข้อความ|ส่งให้|ส่งเลย|กด|คลิก|หน้าจอ|จอที่|remind|notify|click|press|send/i
+export type RequestPlan = { kind: 'model' | 'system' | 'mixed' | 'clarify'; original: string; allowed: string[]; denied: string[]; resolvedFrom?: number; effective?: string }
+const task = /ร่าง|เขียน|แปล|อธิบาย|บอกวิธี|แนะนำ|สอน|ขอวิธี|ยกตัวอย่าง|สรุป|คำนวณ|draft|write|translate|explain|calculate|how to/i
+const external = /เตือน|ปลุก|ทัก|ส่งข้อความ|ส่งผล|ส่งคำตอบ|ส่งให้|ส่งเลย|กด|คลิก|หน้าจอ|จอที่|remind|notify|click|press|send/i
 /** Mask quotes only for classification; every delivered/requested part retains the original text. */
 export function maskQuotes(text: string) {
   let masked = '', close = ''
@@ -25,18 +25,29 @@ export function clauses(text: string) {
   const last = text.slice(start).trim(); if (last) parts.push(last)
   return { parts, unclosed: masked.unclosed }
 }
-export function planRequest(messages: readonly TextMessage[]): RequestPlan {
+export function planRequest(messages: readonly TextMessage[], depth = 0): RequestPlan {
   const original = messages.at(-1)!.text, visible = maskQuotes(original)
   const empty = (kind: RequestPlan['kind']): RequestPlan => ({ kind, original, allowed: [], denied: [] })
-  if (visible.unclosed && external.test(original)) return empty('clarify')
-  // Resolve only explicit references using submitted user turns; assistant promises never count.
+  if (depth > 16 || (visible.unclosed && external.test(original))) return empty('clarify')
+  // Explicit replacement creates a new scoped request. Preserve original/effective in the plan;
+  // never delete action words or rewrite model output to make a request look successful.
+  const replacement = /^(?:ขอ\s*)?(?:เปลี่ยน(?:คำสั่ง)?เป็น|แก้(?:คำสั่ง)?เป็น)\s*(?:แค่|เพียง)?\s*/u.exec(visible.text)
+  if (replacement) {
+    const effective = original.slice(replacement[0].length).trim(), target = maskQuotes(effective).text
+    if (!task.test(target) && !external.test(target) && !/^\/(?:help|capabilities|calc|time)\b/i.test(target)) return empty('clarify')
+    const resolved = planRequest([...messages.slice(0, -1), { role: 'user', text: effective }], depth + 1)
+    return { ...resolved, original, effective }
+  }
+  if (/^(?:ยกเลิก|cancel)/i.test(visible.text) && !task.test(visible.text)) return empty('clarify')
+  // Corrections/cancellations are barriers: an unknown replacement never resurrects an older action.
+  // Resolve only submitted user turns; assistant promises never count.
   if (/^(?:ทำเลย|เอาเลย|ทำตามที่ขอไว้เลย|จัดการอันนั้นเลย|ตกลง|do it)[.!\s]*$/i.test(original.trim())) {
     for (let i = messages.length - 2; i >= 0; i--) {
       if (messages[i].role !== 'user') continue
       const prior = maskQuotes(messages[i].text).text
-      if (!task.test(prior) && !external.test(prior) && !/ยกเลิก|แก้คำสั่ง|cancel/i.test(prior)) continue
+      if (!task.test(prior) && !external.test(prior) && !/ยกเลิก|แก้คำสั่ง|เปลี่ยน(?:คำสั่ง)?เป็น|cancel/i.test(prior) && !/^\/(?:help|capabilities|calc|time)\b/i.test(prior)) continue
       if (/ยกเลิก|cancel/i.test(prior) && !task.test(prior)) return empty('clarify')
-      const resolved = planRequest(messages.slice(0, i + 1))
+      const resolved = planRequest(messages.slice(0, i + 1), depth + 1)
       if (resolved.kind === 'mixed' || resolved.kind === 'clarify') return empty('clarify')
       return { ...resolved, original, resolvedFrom: i }
     }
@@ -45,19 +56,22 @@ export function planRequest(messages: readonly TextMessage[]): RequestPlan {
   const split = clauses(original)
   if (split.parts.length > 4) return empty('clarify')
   const allowed: string[] = [], denied: string[] = []
+  let cancelledText = false
   for (const part of split.parts) {
     const text = maskQuotes(part).text
     const negatedSend = /(?:ไม่ต้อง|อย่า|ห้าม).{0,10}ส่ง|(?:do not|don't).{0,10}send/i.test(text)
     const userSends = /(?:ฉัน|ผม|เรา|i).{0,8}(?:จะ)?ส่ง.{0,15}เอง|i will send/i.test(text)
-    const send = !negatedSend && !userSends && /(?:ส่งให้|ส่งเลย|ส่งข้อความ|send).+/i.test(text)
+    const send = !negatedSend && !userSends && /(?:ส่งผล|ส่งคำตอบ|ส่งให้|ส่งเลย|ส่งข้อความ|send).+/i.test(text)
     const falseCompletion = /(?:ตอบ|บอก|พูด|say|tell).*(?:สำเร็จ|เรียบร้อย|เสร็จ|done|completed)/i.test(text + (task.test(text) ? '' : original)) && !task.test(text)
     const explicitEnact = /(?:ทำให้จริง|ทำจริง|ทำแบบนั้น|บนเครื่องฉัน|กดให้|ส่งให้)/i.test(text) && !task.test(text) && !/(?:ไม่ต้อง|อย่า).{0,8}(?:ทำ|กด|ส่ง)/i.test(text)
     if (systemHelp(part, text)) { allowed.push(part); continue }
     const intent = requestIntent(part, messages)
     if (falseCompletion || (send && !task.test(text)) || explicitEnact || intent.kind === 'refuse') denied.push(part)
+    else if (/^(?:ไม่ต้อง|อย่า|ห้าม)\s*(?:ร่าง|เขียน|สอน|อธิบาย|แนะนำ|แปล)/u.test(text)) cancelledText = true
     else if (/^\/(?:calc|time)\b/i.test(part) || task.test(text)) allowed.push(part)
     else if (intent.kind === 'clarify') return empty('clarify')
   }
   if (denied.length) return { kind: allowed.length ? 'mixed' : 'system', original, allowed, denied }
+  if (cancelledText && !allowed.length) return empty('clarify')
   return { kind: 'model', original, allowed: [original], denied: [] }
 }

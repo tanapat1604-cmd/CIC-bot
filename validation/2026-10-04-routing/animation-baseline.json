@@ -1,0 +1,590 @@
+{
+  "note": "Observer sampling may affect rendering; diagnostics, not replacement assertions. Offscreen variant uses existing visibility pause, without changing duration.",
+  "results": [
+    {
+      "scene": "normal",
+      "round": 0,
+      "clickMs": 497,
+      "late": {
+        "sinceOpen": 225.79999999701977,
+        "animations": [
+          {
+            "duration": 260,
+            "state": "running"
+          },
+          {
+            "duration": 260,
+            "state": "running"
+          }
+        ],
+        "media": false
+      },
+      "frames": [
+        {
+          "elapsed": 0.09999999403953552,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 16.700000002980232,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 53.8999999910593,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 91.79999999701977,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 156,
+          "opacity": "0.492456",
+          "transform": "matrix(0.979698, 0, 0, 0.979698, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 33.41400000201533
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 33.41400000201533
+            }
+          ]
+        },
+        {
+          "elapsed": 292,
+          "opacity": "0.994527",
+          "transform": "matrix(0.999781, 0, 0, 0.999781, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 183.31400000201546
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 183.31400000201546
+            }
+          ]
+        },
+        {
+          "elapsed": 432.20000000298023,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 557.3999999910593,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 679.5,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 797.7999999970198,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        }
+      ],
+      "opened": 2578.6000000089407,
+      "atLateCheck": null
+    },
+    {
+      "scene": "normal",
+      "round": 1,
+      "clickMs": 751,
+      "late": {
+        "sinceOpen": 254.20000000298023,
+        "animations": [
+          {
+            "duration": 260,
+            "state": "running"
+          },
+          {
+            "duration": 260,
+            "state": "running"
+          }
+        ],
+        "media": false
+      },
+      "frames": [
+        {
+          "elapsed": 0.10000000894069672,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 10.200000002980232,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 57.900000005960464,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 96.90000000596046,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 326.1000000089407,
+          "opacity": "0.999186",
+          "transform": "matrix(0.999967, 0, 0, 0.999967, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 216.66400000292361
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 216.66400000292361
+            }
+          ]
+        },
+        {
+          "elapsed": 478.6000000089407,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 621.6000000089407,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 761.9000000059605,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        }
+      ],
+      "opened": 3804.0999999940395,
+      "atLateCheck": null
+    },
+    {
+      "scene": "offscreen",
+      "round": 0,
+      "clickMs": 83,
+      "late": {
+        "sinceOpen": 50.20000000298023,
+        "animations": [
+          {
+            "duration": 260,
+            "state": "running"
+          },
+          {
+            "duration": 260,
+            "state": "running"
+          }
+        ],
+        "media": false
+      },
+      "frames": [
+        {
+          "elapsed": 0,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 8.400000005960464,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 10.100000008940697,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 18.5,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 55.79999999701977,
+          "opacity": "0.491112",
+          "transform": "matrix(0.979644, 0, 0, 0.979644, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 33.29800000847305
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 33.29800000847305
+            }
+          ]
+        },
+        {
+          "elapsed": 174.29999999701977,
+          "opacity": "0.97985",
+          "transform": "matrix(0.999194, 0, 0, 0.999194, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 149.9980000084733
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 149.9980000084733
+            }
+          ]
+        },
+        {
+          "elapsed": 294.20000000298023,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 409.1000000089407,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 524.2999999970198,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 630,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 744.7000000029802,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        }
+      ],
+      "opened": 2823.5999999940395,
+      "atLateCheck": null
+    },
+    {
+      "scene": "offscreen",
+      "round": 1,
+      "clickMs": 112,
+      "late": {
+        "sinceOpen": 82.40000000596046,
+        "animations": [
+          {
+            "duration": 260,
+            "state": "running"
+          },
+          {
+            "duration": 260,
+            "state": "running"
+          }
+        ],
+        "media": false
+      },
+      "frames": [
+        {
+          "elapsed": 0,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 5.9000000059604645,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 11,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 16.100000008940697,
+          "opacity": "0",
+          "transform": "matrix(0.96, 0, 0, 0.96, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 0
+            }
+          ]
+        },
+        {
+          "elapsed": 67.1000000089407,
+          "opacity": "0.657994",
+          "transform": "matrix(0.98632, 0, 0, 0.98632, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 50.053999997605736
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 50.053999997605736
+            }
+          ]
+        },
+        {
+          "elapsed": 211,
+          "opacity": "0.994537",
+          "transform": "matrix(0.999781, 0, 0, 0.999781, 0, 0)",
+          "animations": [
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 183.35399999760548
+            },
+            {
+              "duration": 260,
+              "state": "running",
+              "currentTime": 183.35399999760548
+            }
+          ]
+        },
+        {
+          "elapsed": 333.30000001192093,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 449.20000000298023,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 571.7000000029802,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 683.1000000089407,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        },
+        {
+          "elapsed": 803.4000000059605,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "animations": []
+        }
+      ],
+      "opened": 2771.8999999910593,
+      "atLateCheck": null
+    }
+  ]
+}

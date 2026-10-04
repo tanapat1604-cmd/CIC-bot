@@ -1,0 +1,335 @@
+{
+  "note": "Observer sampling may affect rendering; diagnostics, not replacement assertions. Offscreen variant uses existing visibility pause, without changing duration.",
+  "results": [
+    {
+      "scene": "normal",
+      "round": 0,
+      "clickMs": 1114,
+      "late": {
+        "sinceOpen": 287.30000001192093,
+        "animations": [
+          {
+            "duration": 260,
+            "state": "running"
+          },
+          {
+            "duration": 260,
+            "state": "running"
+          }
+        ],
+        "media": false
+      },
+      "frames": [],
+      "events": [
+        {
+          "name": "transitionrun",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 4206,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionstart",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 4206.20000000298,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionrun",
+          "property": "transform",
+          "elapsedTime": 0,
+          "time": 4206.29999999702,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionstart",
+          "property": "transform",
+          "elapsedTime": 0,
+          "time": 4206.29999999702,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionrun",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 4206.29999999702,
+          "pseudo": "::backdrop"
+        },
+        {
+          "name": "transitionstart",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 4206.29999999702,
+          "pseudo": "::backdrop"
+        },
+        {
+          "name": "transitionend",
+          "property": "opacity",
+          "elapsedTime": 0.26,
+          "time": 4661.5,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionend",
+          "property": "transform",
+          "elapsedTime": 0.26,
+          "time": 4661.5999999940395,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionend",
+          "property": "opacity",
+          "elapsedTime": 0.26,
+          "time": 4661.5999999940395,
+          "pseudo": "::backdrop"
+        }
+      ],
+      "opened": 4194.5999999940395,
+      "atLateCheck": null
+    },
+    {
+      "scene": "normal",
+      "round": 1,
+      "clickMs": 1063,
+      "late": {
+        "sinceOpen": 745.6999999880791,
+        "animations": [],
+        "media": false
+      },
+      "frames": [],
+      "events": [
+        {
+          "name": "transitionrun",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 3540.699999988079,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionstart",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 3540.7999999970198,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionrun",
+          "property": "transform",
+          "elapsedTime": 0,
+          "time": 3540.7999999970198,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionstart",
+          "property": "transform",
+          "elapsedTime": 0,
+          "time": 3540.7999999970198,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionrun",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 3540.7999999970198,
+          "pseudo": "::backdrop"
+        },
+        {
+          "name": "transitionstart",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 3540.7999999970198,
+          "pseudo": "::backdrop"
+        },
+        {
+          "name": "transitionend",
+          "property": "opacity",
+          "elapsedTime": 0.26,
+          "time": 3952.0999999940395,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionend",
+          "property": "transform",
+          "elapsedTime": 0.26,
+          "time": 3952.199999988079,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionend",
+          "property": "opacity",
+          "elapsedTime": 0.26,
+          "time": 3952.199999988079,
+          "pseudo": "::backdrop"
+        }
+      ],
+      "opened": 3531,
+      "atLateCheck": null
+    },
+    {
+      "scene": "offscreen",
+      "round": 0,
+      "clickMs": 111,
+      "late": {
+        "sinceOpen": 73.29999999701977,
+        "animations": [
+          {
+            "duration": 260,
+            "state": "running"
+          },
+          {
+            "duration": 260,
+            "state": "running"
+          }
+        ],
+        "media": false
+      },
+      "frames": [],
+      "events": [
+        {
+          "name": "transitionrun",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 2663,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionstart",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 2663,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionrun",
+          "property": "transform",
+          "elapsedTime": 0,
+          "time": 2663,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionstart",
+          "property": "transform",
+          "elapsedTime": 0,
+          "time": 2663,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionrun",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 2663,
+          "pseudo": "::backdrop"
+        },
+        {
+          "name": "transitionstart",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 2663.0999999940395,
+          "pseudo": "::backdrop"
+        },
+        {
+          "name": "transitionend",
+          "property": "opacity",
+          "elapsedTime": 0.26,
+          "time": 2963.4000000059605,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionend",
+          "property": "transform",
+          "elapsedTime": 0.26,
+          "time": 2963.5,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionend",
+          "property": "opacity",
+          "elapsedTime": 0.26,
+          "time": 2963.5,
+          "pseudo": "::backdrop"
+        }
+      ],
+      "opened": 2656.2000000029802,
+      "atLateCheck": null
+    },
+    {
+      "scene": "offscreen",
+      "round": 1,
+      "clickMs": 91,
+      "late": {
+        "sinceOpen": 552.2000000029802,
+        "animations": [],
+        "media": false
+      },
+      "frames": [],
+      "events": [
+        {
+          "name": "transitionrun",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 2525.7000000029802,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionstart",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 2525.7000000029802,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionrun",
+          "property": "transform",
+          "elapsedTime": 0,
+          "time": 2525.7000000029802,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionstart",
+          "property": "transform",
+          "elapsedTime": 0,
+          "time": 2525.7000000029802,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionrun",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 2525.7000000029802,
+          "pseudo": "::backdrop"
+        },
+        {
+          "name": "transitionstart",
+          "property": "opacity",
+          "elapsedTime": 0,
+          "time": 2525.7000000029802,
+          "pseudo": "::backdrop"
+        },
+        {
+          "name": "transitionend",
+          "property": "opacity",
+          "elapsedTime": 0.26,
+          "time": 2922,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionend",
+          "property": "transform",
+          "elapsedTime": 0.26,
+          "time": 2922.0999999940395,
+          "pseudo": ""
+        },
+        {
+          "name": "transitionend",
+          "property": "opacity",
+          "elapsedTime": 0.26,
+          "time": 2922.0999999940395,
+          "pseudo": "::backdrop"
+        }
+      ],
+      "opened": 2522.5,
+      "atLateCheck": null
+    }
+  ]
+}
