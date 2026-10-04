@@ -58,8 +58,8 @@
 .message { min-width:0; max-width:100%; font-size:15px; line-height:1.85; animation:arrive 220ms var(--ease); }
 .user { align-self:flex-end; max-width:88%; padding:16px 20px; border:1px solid #dce5fa; border-radius:12px 12px 3px 12px; background:#eaf0ff; }
 .assistant { width:100%; padding:0 4px; }
-.messageLabel { display:flex; align-items:center; gap:8px; font-size:12px; font-weight:600; margin-bottom:10px; }
-.messageLabel small { font-size:10px; font-weight:400; color:var(--muted); }
+.messageLabel { display:flex; flex-wrap:wrap; overflow-wrap:anywhere; align-items:center; gap:8px; font-size:12px; font-weight:600; margin-bottom:10px; }
+.messageLabel small { min-width:0; font-size:12px; line-height:1.6; font-weight:400; color:var(--muted); }
 .smallBot { display:grid; place-items:center; width:24px; height:24px; color:white; background:var(--blue); border-radius:7px; font:600 14px 'Inter',sans-serif; }
 .messageText { white-space:pre-wrap; overflow-wrap:anywhere; }
 .messageText:empty { display:none; }
@@ -170,7 +170,7 @@
 .header .stop { white-space:nowrap; }.header .stop:not(:disabled) { color:white; background:var(--error); border-color:var(--error); }.header .stop:hover:not(:disabled) { color:var(--error); background:#fceef0; }
 .controlsRow { flex-wrap:wrap; }.contextTools { display:flex; align-items:center; gap:4px; flex-wrap:wrap; }.sourceShortcut { color:var(--blue)!important; border-color:#cddbf6!important; padding:4px 9px; font-size:11px; white-space:nowrap; }
 .quietContext { background:var(--background); }.quietContext .contextEmpty { padding-block:8px 20px; }.quietContext .contextIcon { width:40px; height:40px; margin-bottom:12px; }.quietContext .screenPreview { filter:saturate(.35); }
-.responseState { font-size:11px; color:var(--muted); margin-top:8px; }.actionDetails { white-space:pre-wrap; }
+.responseState { overflow-wrap:anywhere; line-height:1.6; font-size:12px; color:var(--muted); margin-top:8px; }.actionDetails { white-space:pre-wrap; }
 .attachmentHelp { display:inline; margin-left:8px; }.attachmentHelp summary { display:inline; text-decoration:underline; cursor:pointer; }.attachmentHelp p { padding:8px; margin-top:6px; border-radius:6px; background:#edf1f7; text-align:left; line-height:1.7; }
 @media(min-width:1100px) { .layoutButton span { display:inline; }.compact .layoutButton span { display:none; } }
 @keyframes arrive { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }

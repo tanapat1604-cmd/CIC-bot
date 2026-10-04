@@ -1,5 +1,6 @@
 import type { TextMessage } from '../shared/chatProtocol.js'
 import { requestIntent } from './requestIntent.js'
+import { systemHelp } from './systemHelp.js'
 
 export type RequestPlan = { kind: 'model' | 'system' | 'mixed' | 'clarify'; original: string; allowed: string[]; denied: string[]; resolvedFrom?: number }
 const task = /ร่าง|เขียน|แปล|อธิบาย|บอกวิธี|แนะนำ|ยกตัวอย่าง|สรุป|คำนวณ|draft|write|translate|explain|calculate|how to/i
@@ -51,6 +52,7 @@ export function planRequest(messages: readonly TextMessage[]): RequestPlan {
     const send = !negatedSend && !userSends && /(?:ส่งให้|ส่งเลย|ส่งข้อความ|send).+/i.test(text)
     const falseCompletion = /(?:ตอบ|บอก|พูด|say|tell).*(?:สำเร็จ|เรียบร้อย|เสร็จ|done|completed)/i.test(text + (task.test(text) ? '' : original)) && !task.test(text)
     const explicitEnact = /(?:ทำให้จริง|ทำจริง|ทำแบบนั้น|บนเครื่องฉัน|กดให้|ส่งให้)/i.test(text) && !task.test(text) && !/(?:ไม่ต้อง|อย่า).{0,8}(?:ทำ|กด|ส่ง)/i.test(text)
+    if (systemHelp(part, text)) { allowed.push(part); continue }
     const intent = requestIntent(part, messages)
     if (falseCompletion || (send && !task.test(text)) || explicitEnact || intent.kind === 'refuse') denied.push(part)
     else if (/^\/(?:calc|time)\b/i.test(part) || task.test(text)) allowed.push(part)

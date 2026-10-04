@@ -1,0 +1,7 @@
+{
+  "baselineCommit": "d647fb1877255ec54a3fcd274837a82f02d798c0",
+  "frozen": "2026-10-04T19:51:18.2789770+07:00",
+  "casesSHA256": "0FDE391CD1951A0E7538932C66AF62A7D15EF7A1DA388E659ECA3583DEC9EFD3",
+  "rule": "Holdout answers are sealed until final development freeze; do not tune from them. No prompt or model changes.",
+  "freeRAMKiB": 2012992
+}

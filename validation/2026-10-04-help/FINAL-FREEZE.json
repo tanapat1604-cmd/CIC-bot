@@ -1,0 +1,54 @@
+{
+  "frozen": "2026-10-04T20:02:18.8754741+07:00",
+  "note": "Development complete. Holdout results must not be used to tune backend/rules/prompt in this round.",
+  "hashes": [
+    {
+      "sha256": "5B7B69876ECB83F5267C589B708D7A714CFDE165417ABAA6FE08B52033DD2C0A",
+      "file": "backend/index.ts"
+    },
+    {
+      "sha256": "3574965098038277C9F726B5A37B5081A177474A2AEF2E6ED118F16D32B04B99",
+      "file": "backend/liveReply.ts"
+    },
+    {
+      "sha256": "02E30CAD1168D3B4A5383937593EC5ACC145DFAA6560C644EB9F71CF03DA775C",
+      "file": "backend/ollama.ts"
+    },
+    {
+      "sha256": "8925EF77A8CDCD13543F59F34C60AE751B304E59FD44F32CE7133E7037D11E2C",
+      "file": "backend/provider.ts"
+    },
+    {
+      "sha256": "0E95EE45F2D2533E3AC79AB9D4B9211D408426F462CA66EACB99F7E5E2FFFF97",
+      "file": "backend/requestIntent.ts"
+    },
+    {
+      "sha256": "9912951F9BF8A877152E9926E8693A8460782AA04D7414F939F703D36F8A6AA2",
+      "file": "backend/requestPlan.ts"
+    },
+    {
+      "sha256": "F71B18FD543F215AC9C0D4B4B028A2BCF4CFEC77258D017C62FEB9A96D5EAE41",
+      "file": "backend/server.ts"
+    },
+    {
+      "sha256": "40736A0BAB4D32F57BA7EC71A93CD63EBF1903EC7F69D32CE79BB413DE965E48",
+      "file": "backend/systemHelp.ts"
+    },
+    {
+      "sha256": "707748C18A36572064F3AC2638BEA2F26B1A382931F1DCBC71AFB0DF1E44EC19",
+      "file": "backend/textUtilities.ts"
+    },
+    {
+      "sha256": "1D95C4FB26B3FA3C31B972F715A845222A72A610B107B5AA25928840DF5A778D",
+      "file": "shared/capabilities.ts"
+    },
+    {
+      "sha256": "3DE1711FA06958440DAB19EDC09BB3C6108BF236504BC72B8011B101C79FB241",
+      "file": "shared/chatProtocol.ts"
+    },
+    {
+      "sha256": "0FDE391CD1951A0E7538932C66AF62A7D15EF7A1DA388E659ECA3583DEC9EFD3",
+      "file": "scripts/help-cases.json"
+    }
+  ]
+}
