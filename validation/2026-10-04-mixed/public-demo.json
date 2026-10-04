@@ -1,0 +1,20 @@
+{
+  "landing": "https://tanapat1604-cmd.github.io/CIC-bot/",
+  "app": "https://tanapat1604-cmd.github.io/CIC-bot/#/app",
+  "asset": "/CIC-bot/assets/index-DesM_eNP.js",
+  "status": 200,
+  "appWithoutThree": true,
+  "desktop": true,
+  "mobile": true,
+  "source": true,
+  "saveAction": true,
+  "typedText": true,
+  "compactRight": true,
+  "approvalAcrossLayouts": true,
+  "directReload": true,
+  "landingWebGL": true,
+  "footerEntry": true,
+  "errors": [],
+  "entrySHA256": "A4C7FE1C72DA8028234E41A4780C462F00FF95C13774A6B20A1777E28E848BD7",
+  "entryMatchesLocalBuild": true
+}
