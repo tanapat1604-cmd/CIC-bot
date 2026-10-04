@@ -1,3 +1,5 @@
+import { CIC_CAPABILITIES } from '../shared/capabilities.js'
+import { resolveTextUtility } from './textUtilities.js'
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http'
 import { randomBytes, randomUUID } from 'node:crypto'
 import { once } from 'node:events'
@@ -35,7 +37,7 @@ export function createChatServer(options: Options = {}) {
       try { if (ready) await provider.check?.(AbortSignal.any([probe.signal, AbortSignal.timeout(2500)])) }
       catch (error) { ready = false; code = error instanceof ChatError ? error.code : 'unavailable' }
       finally { res.off('close', closed); probe.abort() }
-      if (!res.destroyed) json(res, 200, { version: 1, ready, kind: provider.kind, capabilities: ['text-stream'], ...(provider.model ? { model: provider.model, location: 'local' } : {}), ...(code ? { code } : {}) })
+      if (!res.destroyed) json(res, 200, { version: 1, ready, kind: provider.kind, capabilities: ['text-stream'], ...(provider.kind === 'live' ? { capabilityProfile: CIC_CAPABILITIES } : {}), ...(provider.model ? { model: provider.model, location: 'local' } : {}), ...(code ? { code } : {}) })
       return
     }
     // No shared secret in the frontend: issue a short-lived HttpOnly local session.
@@ -79,7 +81,10 @@ export function createChatServer(options: Options = {}) {
       res.writeHead(200, { 'Content-Type': 'application/x-ndjson; charset=utf-8', 'X-Accel-Buffering': 'no' })
       res.flushHeaders()
       let length = 0
-      const iterator = provider.stream({ messages: request.messages, system: SYSTEM_INSTRUCTION, maxOutputChars: LIMITS.outputChars }, controller.signal)[Symbol.asyncIterator]()
+      const utility = provider.kind === 'live' ? resolveTextUtility(request.messages.at(-1)!.text) : null
+      const responseSource = utility?.source ?? 'model'
+      const stream = utility ? (async function* () { controller.signal.throwIfAborted(); yield utility.text })() : provider.stream({ messages: request.messages, system: SYSTEM_INSTRUCTION, maxOutputChars: LIMITS.outputChars }, controller.signal)
+      const iterator = stream[Symbol.asyncIterator]()
       try {
         while (true) {
           const next = await abortable(iterator.next(), controller.signal)
@@ -90,7 +95,7 @@ export function createChatServer(options: Options = {}) {
           if (length > LIMITS.outputChars) throw new ChatError('output_limit')
           await event({ ...identity, type: 'delta', text: next.value })
         }
-        await event({ ...identity, type: 'done' }); status = 'done'
+        await event({ ...identity, type: 'done', ...(provider.kind === 'live' ? { source: responseSource } : {}) }); status = 'done'
       } finally { controller.abort(); void iterator.return?.().catch(() => {}) }
     } catch (error) {
       const code = timeout ? 'timeout' : error instanceof ChatError ? error.code : 'unavailable'

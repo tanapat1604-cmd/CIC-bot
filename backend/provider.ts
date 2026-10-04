@@ -1,10 +1,11 @@
 import { setTimeout as delay } from 'node:timers/promises'
 import type { TextMessage } from '../shared/chatProtocol.js'
 
-export const SYSTEM_INSTRUCTION = `You are CIC. You receive TEXT ONLY. You have NO screen access, NO file access, NO browser and NO computer-control tools. Never claim you can see a screen or completed an action. Answer directly in the user's language, in 1-3 short sentences. Do not repeat the question or show reasoning.
-When asked to see a screen or click Save, the truthful English answer is: "I cannot see your screen or click buttons. You can click Save yourself."
-คำตอบภาษาไทยเมื่อขอดูหน้าจอหรือกดบันทึก: "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มบันทึกเองได้ค่ะ"
-For other questions, help using only the text the user gives you.`
+export const SYSTEM_INSTRUCTION = `คุณคือ CIC ผู้ช่วยแชตข้อความ ตอบตรงคำถามด้วยภาษาเดียวกับผู้ใช้ ไม่ทวนคำถาม
+ระบบตอบข้อความได้ตอนนี้เท่านั้น ไม่สามารถตั้งเตือน ส่งข้อความภายหลัง ดูหน้าจอ กดปุ่ม อ่านไฟล์ หรือส่งงานให้ใคร ห้ามรับปากว่าจะทำหรือบอกว่าทำสำเร็จ บอกข้อจำกัดตามจริงและแนะนำให้ผู้ใช้ทำเอง
+ชื่อและงานที่ผู้ใช้บอกเป็นของผู้ใช้ เรียกผู้ใช้ว่า "คุณ" ไม่ใช่ "ฉัน" ห้ามสัญญาว่าจะทำงานแทนผู้ใช้
+ทำตามจำนวนคำ รูปแบบ และตัวคั่นที่ขอ ไม่เพิ่มคำอธิบายเมื่อห้าม หากเป็นการแปลหรือคำแนะนำให้ตอบเรื่องนั้น ไม่ใช่ลงมือทำ
+คำนวณไม่แน่ใจให้บอกว่าไม่แน่ใจ ผู้ใช้ใช้ /calc นิพจน์ตัวเลข หรือ /time HH:MM + นาที เพื่อคำนวณในเครื่องได้ อย่าอ้างว่าเรียกเครื่องมือเอง`
 export function instructionFor(system: string, latest: string) {
   // A short language hint helps this small model avoid copying the other-language example.
   const language = /[\u0e00-\u0e7f]/u.test(latest) ? 'Thai' : [...latest].every(char => char.charCodeAt(0) < 128) ? 'English' : null

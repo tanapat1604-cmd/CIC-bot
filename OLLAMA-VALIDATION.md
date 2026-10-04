@@ -1,5 +1,10 @@
 # Ollama local validation — updated 2026-10-04
 
+## Latest: correctness and truthful capabilities (2026-10-04)
+
+See [full new trial](validation/2026-10-04-correctness/RESULTS.md). Keep0.6b/default and1.7b installed. Frozen held-outs2/12→7/12;6 final passes from explicit system/tools,1 model money response passed both. Reminder paraphrase escaped and output_limit regressed; role/format/NL-time remain failures. Same model/settings; no tuning from holdout. Related46/46 and installed0.6b actual browser smoke PASS. Capabilities/provenance are authoritative; model prose remains unverified. No external actions or public backend. Final CI/demo checkpoint is in WORK-PROGRESS.md.
+
+
 ส่งมอบรอบนี้เสร็จ: commit b3a3afa push แล้ว; [CI/Pages](https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37182359849) ผ่าน. Demo ตรวจจริงและ asset hash ตรง build หลัง deploy; backend เดิม 0.6b กลับพร้อมเฉพาะในเครื่อง. Final docs checkpoint ใช้ [skip ci].
 
 **ผลรอบล่าสุด: คง qwen3:0.6b; ภาษาไทยทั่วไป/ผู้ช่วยส่วนตัวที่เชื่อถือได้ยังไม่ผ่านทั้ง0.6bและ1.7b.** ดาวน์โหลดเฉพาะ1.7bตามอนุญาตหลังผู้ใช้ปิดโปรแกรมและตรวจRAMว่าง2.42GiB เก็บ0.6bไว้; backendยังในเครื่องและPagesยังdemo

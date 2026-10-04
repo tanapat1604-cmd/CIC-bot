@@ -1,3 +1,4 @@
+import { CIC_CAPABILITIES } from '../../shared/capabilities'
 import { ChatError, errors, LIMITS, record, validateEvent, validateRequest, type TextEvent, type TextMessage, type TextRequest } from '../../shared/chatProtocol'
 import type { AgentAdapter, AgentRequest } from './types'
 
@@ -81,6 +82,7 @@ export async function connectBackend(baseUrl: string, signal: AbortSignal): Prom
     if (record(value) && value.ready === false && typeof value.code === 'string' && Object.hasOwn(errors, value.code)) throw new ChatError(value.code as keyof typeof errors)
     if (!record(value) || value.version !== 1 || value.ready !== true || (value.kind !== 'test' && value.kind !== 'live') || !Array.isArray(value.capabilities) || !value.capabilities.includes('text-stream')) throw new ChatError('unavailable')
     if (value.kind === 'live' && (value.location !== 'local' || typeof value.model !== 'string' || !/^[a-zA-Z0-9][\w.:/-]{0,119}$/.test(value.model))) throw new ChatError('unavailable')
+    if (value.kind === 'live' && (!record(value.capabilityProfile) || Object.entries(CIC_CAPABILITIES).some(([key, expected]) => (value.capabilityProfile as Record<string, unknown>)[key] !== expected))) throw new ChatError('unavailable')
     const session = await fetch(`${baseUrl}/session`, { method: 'POST', credentials: 'include', signal })
     if (!session.ok) throw responseError(session.status)
     return { kind: value.kind, ...(value.kind === 'live' ? { model: value.model as string } : {}) }

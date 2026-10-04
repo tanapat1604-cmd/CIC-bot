@@ -1,3 +1,4 @@
+import { CAPABILITY_NOTICE, UTILITY_HELP } from '../../shared/capabilities'
 import { useEffect, useRef, useState } from 'react'
 import { backendUrl } from './store'
 import { connectBackend, type BackendCapability } from './transport'
@@ -27,6 +28,7 @@ export default function ConnectionSettings({ store, onClose }: { store: SessionS
       <button className={s.secondary} disabled={checking} onClick={() => void check()}>{checking ? 'กำลังตรวจการเชื่อมต่อ…' : 'ตรวจการเชื่อมต่อ backend'}</button>
       {capability && <><p role="status">{capability.kind === 'test' ? 'เชื่อมต่อ backend ทดสอบในเครื่องสำเร็จ · ไม่ใช่ AI จริง' : `พบโมเดลในเครื่อง ${capability.model}`}</p><button className={s.primary} onClick={() => start(capability.kind)}>{capability.kind === 'test' ? 'เริ่มแชตทดสอบ backend' : 'เริ่มแชต AI ในเครื่อง'}</button></>}
     </> : <p className={s.modalIntro}>เว็บสาธารณะยังใช้ตัวอย่างแอป การเชื่อม backend รอบนี้เปิดเฉพาะเครื่องพัฒนา</p>}
+    {capability?.kind === 'live' && <p className={s.modalIntro}>{CAPABILITY_NOTICE}<br />{UTILITY_HELP}</p>}
     {error && <p className={s.error} role="alert">{error}</p>}
     <p className={s.modalIntro}>backend รับข้อความเท่านั้น ยังไม่รับภาพหรือบริบทหน้าจอ และไม่เปิดอ่าน URL ไม่มีการสลับเป็นคำตอบจำลองเมื่อเชื่อมต่อขัดข้อง</p>
   </div>

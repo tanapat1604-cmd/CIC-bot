@@ -1,0 +1,10 @@
+{
+  "startCommit": "c6b9c32",
+  "newHoldouts": 12,
+  "rule": "Do not run or inspect holdout answers until implementation/prompt frozen; no edits based on holdout in this round",
+  "casesSHA256": "46797FEB81833EF5BA7C8E43040BFE06EF8E5E124152E603059CDB26346A254A",
+  "frozenAt": "2026-10-04T13:28:59.5142030+07:00",
+  "developmentCases": 10,
+  "model": "qwen3:0.6b",
+  "noDownloads": true
+}

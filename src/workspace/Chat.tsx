@@ -3,6 +3,7 @@ import Icon, { type IconName } from '../Icon'
 import { useMediaQuery } from '../useMotion'
 import type { Attachment, Session, SessionStore } from './types'
 import s from './Workspace.module.css'
+import { CAPABILITY_NOTICE, UTILITY_HELP } from '../../shared/capabilities'
 import { LIMITS } from '../../shared/chatProtocol'
 
 const prompts: { icon: IconName; title: string; text: string }[] = [
@@ -61,8 +62,9 @@ export default function Chat({ session, store, onSelect, onLink }: { session: Se
           <span className={s.botMark}><Icon name="spark" size={28} /></span><p className={s.eyebrow}>YOUR EVERYDAY COMPANION</p><h1>วันนี้อยากให้ CIC<br />ช่วยเรื่องอะไร?</h1><p>เริ่มจากสิ่งที่คุณกำลังคิด<br />เราค่อย ๆ หาทางไปด้วยกัน</p>
           <div className={s.prompts}>{prompts.filter(prompt => demo || prompt.icon !== 'screen').map(prompt => <button key={prompt.title} onClick={() => { store.setDraft(prompt.text); input.current?.focus() }}><Icon name={prompt.icon} /><span>{prompt.title}</span><Icon name="arrow" size={15} /></button>)}</div>
         </div> : <div className={s.messages}>{session.messages.map(message => <article className={`${s.message} ${message.role === 'user' ? s.user : s.assistant}`} key={message.id} aria-label={message.role === 'user' ? 'ข้อความของคุณ' : replyLabel}>
-          <div className={s.messageLabel}>{message.role === 'user' ? 'คุณ' : <><span className={s.smallBot}>C</span>CIC <small>{demo ? 'คำตอบจำลอง' : session.connection === 'test' ? 'ทดสอบ backend · ไม่ใช่ AI' : "AI ในเครื่อง · " + (session.model ?? 'Ollama')}</small></>}</div>
+          <div className={s.messageLabel}>{message.role === 'user' ? 'คุณ' : <><span className={s.smallBot}>C</span>CIC <small>{demo ? 'คำตอบจำลอง' : session.connection === 'test' ? 'ทดสอบ backend · ไม่ใช่ AI' : message.replySource === 'calculator' ? 'เครื่องคำนวณในเครื่อง · ไม่ใช่โมเดล' : message.replySource === 'time-calculator' ? 'คำนวณเวลาในเครื่อง · ไม่ใช่โมเดล' : message.replySource === 'capabilities' ? 'ข้อมูลความสามารถจากระบบ' : "AI ในเครื่อง · " + (session.model ?? 'Ollama')}</small></>}</div>
           <MessageText text={message.text} />
+          {session.connection === 'live' && message.role === 'assistant' && message.responseStatus === 'complete' && <p className={s.responseState}>{message.replySource && message.replySource !== 'model' ? 'ส่งผลจากระบบแล้ว · ไม่มีการทำงานภายนอก' : 'ส่งคำตอบจากโมเดลแล้ว · ยังไม่ได้ทำงานภายนอก ข้อความอาจคลาดเคลื่อน'}</p>}
           {message.responseStatus && message.responseStatus !== 'complete' && <p className={s.responseState}>{message.responseStatus === 'streaming' ? 'กำลังทยอยตอบ…' : message.responseStatus === 'stopped' ? 'หยุดกลางทาง · คำตอบนี้ยังไม่ครบ' : 'ตอบไม่สำเร็จ · คำตอบนี้ยังไม่ครบ'}</p>}
           {!!message.attachments?.length && <Attachments items={message.attachments} />}
           {message.action && <div className={s.approval} data-status={message.action.status}>
@@ -78,6 +80,7 @@ export default function Chat({ session, store, onSelect, onLink }: { session: Se
       </div>
     </div>
     <div className={s.composerArea}>
+      {session.connection === 'live' && <p className={s.responseState}>{CAPABILITY_NOTICE}</p>}
       {unread && <button className={s.unread} onClick={() => { nearEnd.current = true; setUnread(false); scroll.current?.scrollTo({ top: scroll.current.scrollHeight, behavior: reduced ? 'instant' : 'smooth' }) }}>ข้อความใหม่ ↓</button>}
       <form className={s.composer} onSubmit={event => { event.preventDefault(); send() }}>
         {!!session.attachments.length && <Attachments items={session.attachments} onRemove={id => store.removeAttachment(id)} />}
@@ -88,6 +91,7 @@ export default function Chat({ session, store, onSelect, onLink }: { session: Se
         const selected = event.target.files?.[0]; event.target.value = ''; setAttachmentError('')
         if (selected) { try { await store.addImage(selected) } catch (error) { setAttachmentError(error instanceof Error ? error.message : 'แนบภาพไม่สำเร็จ') } }
       }} />
+      {session.connection === 'live' && <details className={s.attachmentHelp}><summary>ความสามารถจริงของ CIC</summary><p>{CAPABILITY_NOTICE}</p><p>{UTILITY_HELP}</p><p>คำตอบจากโมเดลไม่ใช่หลักฐานว่างานภายนอกสำเร็จ</p></details>}
       {attachmentError && <p className={s.error} role="alert">{attachmentError}</p>}
       <div className={s.composerNote}>แชตและสิ่งแนบหายเมื่อรีเฟรช {demo ? <details className={s.attachmentHelp}><summary>ข้อจำกัดสิ่งแนบ</summary><p>สูงสุด 6 รายการต่อข้อความ · ภาพ PNG/JPEG/WebP/GIF ไม่เกิน 5 MB และ 24 ล้านพิกเซล · ภาพอยู่ในเครื่อง ไม่อัปโหลด และไม่เปิดอ่าน URL</p></details> : <details className={s.attachmentHelp}><summary>ข้อจำกัดแชตข้อความ</summary><p>ไม่เปิดอ่าน URL · ข้อความไม่เกิน 8,000 ตัวอักษร ใช้ประวัติล่าสุดไม่เกิน 24 ข้อความ รวม 24,000 ตัวอักษร · การหยุดไม่รับประกันการยกเลิกค่าใช้จ่ายที่เกิดแล้ว{session.connection === 'test' && ' · backend ทดสอบนี้ไม่เสียเงินและไม่ใช่ AI'}</p></details>}</div>
     </div>

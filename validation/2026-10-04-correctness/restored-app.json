@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-10-04T06:54:41.934Z",
+  "health": {
+    "version": 1,
+    "ready": true,
+    "kind": "live",
+    "capabilities": [
+      "text-stream"
+    ],
+    "capabilityProfile": {
+      "version": 1,
+      "textChat": true,
+      "calculator": true,
+      "timeArithmetic": true,
+      "reminders": false,
+      "futureWork": false,
+      "screenRead": false,
+      "computerControl": false,
+      "fileAccess": false,
+      "webAccess": false
+    },
+    "model": "qwen3:0.6b",
+    "location": "local"
+  },
+  "answers": [
+    {
+      "prompt": "/calc 88 - 31 - 16",
+      "text": "C\nCIC\nเครื่องคำนวณในเครื่อง · ไม่ใช่โมเดล\n\n88 - 31 - 16 = 41\n\nส่งผลจากระบบแล้ว · ไม่มีการทำงานภายนอก"
+    },
+    {
+      "prompt": "/time 22:55 + 80",
+      "text": "C\nCIC\nคำนวณเวลาในเครื่อง · ไม่ใช่โมเดล\n\n22:55 + 80 = 00:15 (+1 วัน)\nคำนวณเวลาเท่านั้น ไม่ได้ตั้งเตือนหรือนัดหมาย\n\nส่งผลจากระบบแล้ว · ไม่มีการทำงานภายนอก"
+    },
+    {
+      "prompt": "ช่วยตั้งเตือนวันอังคาร",
+      "text": "C\nCIC\nข้อมูลความสามารถจากระบบ\n\nระบบไม่ได้ทำงานภายนอก: ตั้งเตือน ส่งข้อความภายหลัง ดูหน้าจอ หรือกดปุ่มให้ไม่ได้ คุณทำในแอปของคุณเองได้\n\nส่งผลจากระบบแล้ว · ไม่มีการทำงานภายนอก"
+    }
+  ],
+  "errors": [],
+  "scope": "Real restored app + authoritative utilities; real model flows recorded separately in app-live.json"
+}

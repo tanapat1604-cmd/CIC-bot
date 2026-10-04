@@ -72,7 +72,7 @@ export function createSessionStore(adapters = createMockAdapters(), textAdapter?
         } else if (event.type === 'done') {
           const action = proposal ? { ...proposal, ...describeCommand(proposal.command), target: request.source?.name ?? 'พื้นที่ตัวอย่างในแชตนี้', id: id(), status: 'pending' as const } : undefined
           patch(session.id, s => ({ ...s, agent: action ? 'awaiting-approval' : 'idle', operationId: action ? op.operationId : null, retryText: null,
-            messages: updateResponse(s, message => ({ ...message, responseStatus: 'complete', action })),
+            messages: updateResponse(s, message => ({ ...message, responseStatus: 'complete', replySource: event.source ?? 'model', action })),
           }))
           return
         } else throw new Error('ไม่รองรับรูปแบบคำตอบนี้')

@@ -1,6 +1,12 @@
 # CIC app foundation — progress
 
-## Current round: Thai model comparison (complete, committed and pushed)
+## Current round: correctness and truthful capabilities
+- 2026-10-04: started c6b9c32. Frozen10development/12newholdouts before tuning; baseline and stepwise prompt variants retained, final production SHA frozen before holdout. Same0.6b/settings, no new downloads;1.7b retained. Full report: validation/2026-10-04-correctness/RESULTS.md.
+- Held-out strict2/12 →7/12:6 final passes are system refusals/tools,1 model money answer also passed baseline. Rephrased reminder escaped guard and output_limit regressed; role/format/NL-time still fail. No Thai assistant readiness claim. No production retuning after holdout.
+- Added authoritative capability profile/provenance, bounded /calc and /time and explicit capability refusals; live UI states no external work and labels tool versus model. Parser does not secretly solve NL prompts. No reminder/screen/control/future job or public backend.
+- Frontend/backend builds and lint PASS; related46/46 PASS; actual installed0.6b browser send/followup/stop/retry/no duplicates PASS. Restoration, commit/push, CI and public demo checks recorded in final checkpoint below.
+
+## Previous round: Thai model comparison (complete, committed and pushed)
 - FINAL 2026-10-04: implementation/results commit b3a3afa2985e71118d02a74c7fc16d335c6c4fa3 pushed. CI/Pages run https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37182359849 SUCCESS (lint, frontend/backend builds, default tests, frontend-only deploy). Real-model case stays opt-in/skipped in CI; local 0.6b PASS and 1.7b FAIL remain separately reported. Public browser demo verified desktop/mobile/controls/reload/WebGL/public connection restrictions with no page/console/asset errors. Post-deploy HTTP200 and entry JS SHA256 match local build, index-DACxeUHF.js unchanged. Backend restored with 0.6b; actual connection dialog ready and all listeners loopback. Local app http://127.0.0.1:5173/CIC-bot/#/app. Trial complete, no pending download/test/commit. Final documentation checkpoint uses [skip ci]; tested/deployed implementation stays b3a3afa.
 
 - 2026-10-04: started at 444585a and read progress/validation. Verified i5-7500, 8 GB RAM, local-only listeners. Initial free RAM ~306 MiB. User closed apps and confirmed readiness; fresh free RAM 2,539,520 KiB (2.42 GiB), ample C/D space. Downloaded ONLY qwen3:1.7b (1,359,293,444 bytes, digest 8f68893c685c); retained 0.6b (522,653,767 bytes, digest 7df6b6e09427). Official model/Qwen/hardware docs checked and linked in RESULTS.md. Actual models used CPU (size_vram=0).

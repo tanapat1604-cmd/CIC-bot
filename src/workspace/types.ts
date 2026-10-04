@@ -1,3 +1,4 @@
+import type { ReplySource } from '../../shared/capabilities'
 export type Mode = 'chat' | 'observe' | 'assist'
 export type ScreenStatus = 'disconnected' | 'selecting' | 'connected' | 'error'
 export type AgentStatus = 'idle' | 'responding' | 'awaiting-approval' | 'executing' | 'paused' | 'error'
@@ -13,7 +14,7 @@ export interface ProposedAction extends ActionProposal {
   id: string; title: string; target: string; details: string; effect: string; status: ActionStatus
 }
 export type ResponseStatus = 'streaming' | 'complete' | 'stopped' | 'error'
-export interface Message { id: string; role: 'user' | 'assistant'; text: string; attachments?: Attachment[]; action?: ProposedAction; operationId?: string; responseStatus?: ResponseStatus }
+export interface Message { id: string; role: 'user' | 'assistant'; text: string; attachments?: Attachment[]; action?: ProposedAction; operationId?: string; responseStatus?: ResponseStatus; replySource?: ReplySource }
 export interface Session {
   connection: Connection; contextNotice: boolean; model?: string
   id: string; title: string; mode: Mode; screen: ScreenStatus; source: ScreenSource | null
@@ -26,7 +27,7 @@ export type AgentAttachment = { kind: 'link'; name: string; url: string } | { ki
 export interface AgentMessage { id: string; role: 'user' | 'assistant'; text: string; attachments: AgentAttachment[]; responseStatus?: ResponseStatus }
 export interface AgentRequest { sessionId: string; operationId: string; messages: AgentMessage[]; mode: Mode; source: ScreenSource | null }
 export type AgentEvent = { sessionId: string; operationId: string } & (
-  { type: 'delta'; text: string } | { type: 'action'; proposal: ActionProposal } | { type: 'done' } | { type: 'cancelled' } | { type: 'error'; message: string }
+  { type: 'delta'; text: string } | { type: 'action'; proposal: ActionProposal } | { type: 'done'; source?: ReplySource } | { type: 'cancelled' } | { type: 'error'; message: string }
 )
 export interface ScreenSourceAdapter { select(kind: SourceKind, signal: AbortSignal): Promise<ScreenSource> }
 export interface AgentAdapter { respond(request: AgentRequest, signal: AbortSignal): AsyncIterable<AgentEvent> }

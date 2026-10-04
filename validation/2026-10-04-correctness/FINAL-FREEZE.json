@@ -1,0 +1,52 @@
+{
+  "hashes": [
+    {
+      "sha256": "8925EF77A8CDCD13543F59F34C60AE751B304E59FD44F32CE7133E7037D11E2C",
+      "file": "backend/provider.ts"
+    },
+    {
+      "sha256": "0B8F6BC4E9722DFFA74078297C6652DCA984690573FB2246843AED7F1FB976C2",
+      "file": "backend/server.ts"
+    },
+    {
+      "sha256": "CD0EB9D2B2893967FAE6D79752F2358279FFC74472B7C24AFE01CF292853E1CB",
+      "file": "backend/textUtilities.ts"
+    },
+    {
+      "sha256": "D8F18DF9F1D545A47888B53050C50433402CB93487EC89A946742924A15B3147",
+      "file": "shared/capabilities.ts"
+    },
+    {
+      "sha256": "F75FF2453CA312B7AF8E43B0E5500AADCEF2EA93BA462375F46C5BCC7F3F26E7",
+      "file": "shared/chatProtocol.ts"
+    },
+    {
+      "sha256": "F93F40F0195232C21E7815456920CAF3C23F6C3D821163E2574AD094CFFE3173",
+      "file": "src/workspace/Chat.tsx"
+    },
+    {
+      "sha256": "C64D65E0FCB8FA19BE0642D23A8B92AB274217760DE22FF936B45AFA383B1C81",
+      "file": "src/workspace/ConnectionSettings.tsx"
+    },
+    {
+      "sha256": "3CD49F3C87B9B01A792D390BE92CA9BC888016930B28DCAD83A0C24DE3CF1872",
+      "file": "src/workspace/types.ts"
+    },
+    {
+      "sha256": "F2E2F88EAD215B00475F38BB85818739D3C51AFDA952FED0AAAE60B5CB6E44FD",
+      "file": "src/workspace/transport.ts"
+    },
+    {
+      "sha256": "6F5F478AAF1AA51767DB2F9DB54BB98E4F5F8A3CF11E56AF66DA0161280AF145",
+      "file": "src/workspace/store.ts"
+    },
+    {
+      "sha256": "46797FEB81833EF5BA7C8E43040BFE06EF8E5E124152E603059CDB26346A254A",
+      "file": "scripts/correctness-cases.json"
+    }
+  ],
+  "frozenAt": "2026-10-04T13:41:55.0199712+07:00",
+  "rule": "No prompt/routing/tool changes from held-out answers in this round",
+  "developmentRationale": "More useful arithmetic on development set, but prompt-only capability/format/role failures remain. Explicit system routes handle scoped requests/calculations; model claims never grant actions.",
+  "chosenPrompt": "concise Thai"
+}
