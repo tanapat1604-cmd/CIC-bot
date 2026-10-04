@@ -1,0 +1,19 @@
+{
+  "conclusion": "success",
+  "status": "completed",
+  "url": "https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37185769121",
+  "headSha": "f0ecdb079d0e79cb428d0304666237eb963cb28e",
+  "jobs": [
+    {
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "runId": 37185769121
+}

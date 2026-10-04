@@ -1,0 +1,20 @@
+{
+  "landing": "https://tanapat1604-cmd.github.io/CIC-bot/",
+  "app": "https://tanapat1604-cmd.github.io/CIC-bot/#/app",
+  "asset": "/CIC-bot/assets/index-LqY0YwBs.js",
+  "status": 200,
+  "appWithoutThree": true,
+  "desktop": true,
+  "mobile": true,
+  "source": true,
+  "saveAction": true,
+  "typedText": true,
+  "compactRight": true,
+  "approvalAcrossLayouts": true,
+  "directReload": true,
+  "landingWebGL": true,
+  "footerEntry": true,
+  "errors": [],
+  "entrySHA256": "53286C7DB904F06DE6F3D4CBF0F6F06516471B1D22D0FAF07D9FE0E98F790CC0",
+  "entryMatchesLocalBuild": true
+}
