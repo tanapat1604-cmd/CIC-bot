@@ -1,0 +1,10 @@
+{
+  "frozenAt": "2026-10-04T07:10:35.479Z",
+  "casesSHA256": "0c2be737926594c38423454c94b5c8d19f954f6c8c0914512f63ba76540131c4",
+  "counts": {
+    "development": 27,
+    "holdout": 27,
+    "regression": 8
+  },
+  "reason": "Add quoted summary and negative screen narrative contrast pairs to measure false positives, before any production rule edits. Original cases and initial PLAN preserved; initial baseline untouched. Added development baseline is separate. No heldout answers opened."
+}

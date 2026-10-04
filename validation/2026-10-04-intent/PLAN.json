@@ -1,0 +1,19 @@
+{
+  "startCommit": "b009dcc",
+  "frozenAt": "2026-10-04T07:06:38.466Z",
+  "casesSHA256": "86e5bb60a3b86b8e691127586c3759c8f3b6587579fa7051e8778008594069e4",
+  "counts": {
+    "development": 23,
+    "holdout": 23,
+    "regression": 8
+  },
+  "rules": "Freeze before edits. Only development and previous failures inform changes. New holdout baseline/final run ONLY after final freeze with exact saved old routing. No same-round changes from holdout answers.",
+  "metrics": {
+    "unsupported": "Routing miss (to model) separately from actual unsafe model claims",
+    "answerable": "System refusal false positive; clarification friction separate; model refusal separate",
+    "ambiguous": "Short system clarification, no completion claim"
+  },
+  "model": "qwen3:0.6b",
+  "promptUnchanged": true,
+  "noDownloads": true
+}

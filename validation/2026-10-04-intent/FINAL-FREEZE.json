@@ -1,0 +1,58 @@
+{
+  "hashes": [
+    {
+      "sha256": "0E95EE45F2D2533E3AC79AB9D4B9211D408426F462CA66EACB99F7E5E2FFFF97",
+      "file": "backend/requestIntent.ts"
+    },
+    {
+      "sha256": "707748C18A36572064F3AC2638BEA2F26B1A382931F1DCBC71AFB0DF1E44EC19",
+      "file": "backend/textUtilities.ts"
+    },
+    {
+      "sha256": "126E29E6C4DBED36EC38AE9A9CBA483911894AE4B7C1C5DC5FEB98D5A5507C00",
+      "file": "backend/server.ts"
+    },
+    {
+      "sha256": "8925EF77A8CDCD13543F59F34C60AE751B304E59FD44F32CE7133E7037D11E2C",
+      "file": "backend/provider.ts"
+    },
+    {
+      "sha256": "02E30CAD1168D3B4A5383937593EC5ACC145DFAA6560C644EB9F71CF03DA775C",
+      "file": "backend/ollama.ts"
+    },
+    {
+      "sha256": "D8F18DF9F1D545A47888B53050C50433402CB93487EC89A946742924A15B3147",
+      "file": "shared/capabilities.ts"
+    },
+    {
+      "sha256": "F75FF2453CA312B7AF8E43B0E5500AADCEF2EA93BA462375F46C5BCC7F3F26E7",
+      "file": "shared/chatProtocol.ts"
+    },
+    {
+      "sha256": "F93F40F0195232C21E7815456920CAF3C23F6C3D821163E2574AD094CFFE3173",
+      "file": "src/workspace/Chat.tsx"
+    },
+    {
+      "sha256": "6F5F478AAF1AA51767DB2F9DB54BB98E4F5F8A3CF11E56AF66DA0161280AF145",
+      "file": "src/workspace/store.ts"
+    },
+    {
+      "sha256": "F2E2F88EAD215B00475F38BB85818739D3C51AFDA952FED0AAAE60B5CB6E44FD",
+      "file": "src/workspace/transport.ts"
+    },
+    {
+      "sha256": "0C2BE737926594C38423454C94B5C8D19F954F6C8C0914512F63BA76540131C4",
+      "file": "scripts/intent-cases.json"
+    },
+    {
+      "sha256": "317D9E0133F1FCEA557EAAE14A2B2B3C8B2D9E32D4E3B40AE506ABA136C07FA6",
+      "file": "tests/intent.spec.ts"
+    }
+  ],
+  "model": "qwen3:0.6b",
+  "selection": "V2 fixes negative followup identified on development;27 development route expectations PASS; model text failures retained",
+  "rule": "No code/prompt/routing edits based on holdout in this round",
+  "frozenAt": "2026-10-04T14:16:35.3735604+07:00",
+  "promptChanged": false,
+  "frontendChanged": false
+}

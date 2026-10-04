@@ -1,5 +1,10 @@
 # Ollama local validation — updated 2026-10-04
 
+## Latest: intent routing and false refusals (2026-10-04)
+
+See [new intent trial](validation/2026-10-04-intent/RESULTS.md). Same0.6b/prompt/settings;1.7b retained/no downloads. Frozen new contrast pairs: unsupported routing misses11/13→0/13, false system refusals2/13→0/13, ambiguous system clarification0/1→1/1. Model false refusals remain3/13; first-person capability claim remains. No aggregate Thai readiness claim and no retuning from holdout. Calculator/time provenance unchanged. Related48/48 and actual0.6b browser flows PASS. Final restoration/CI checkpoint: WORK-PROGRESS.md.
+
+
 ## Latest: correctness and truthful capabilities (2026-10-04)
 
 See [full new trial](validation/2026-10-04-correctness/RESULTS.md). Keep0.6b/default and1.7b installed. Frozen held-outs2/12→7/12;6 final passes from explicit system/tools,1 model money response passed both. Reminder paraphrase escaped and output_limit regressed; role/format/NL-time remain failures. Same model/settings; no tuning from holdout. Related46/46 and installed0.6b actual browser smoke PASS. Capabilities/provenance are authoritative; model prose remains unverified. No external actions or public backend. Final CI/demo checkpoint is in WORK-PROGRESS.md.

@@ -81,7 +81,7 @@ export function createChatServer(options: Options = {}) {
       res.writeHead(200, { 'Content-Type': 'application/x-ndjson; charset=utf-8', 'X-Accel-Buffering': 'no' })
       res.flushHeaders()
       let length = 0
-      const utility = provider.kind === 'live' ? resolveTextUtility(request.messages.at(-1)!.text) : null
+      const utility = provider.kind === 'live' ? resolveTextUtility(request.messages.at(-1)!.text, request.messages) : null
       const responseSource = utility?.source ?? 'model'
       const stream = utility ? (async function* () { controller.signal.throwIfAborted(); yield utility.text })() : provider.stream({ messages: request.messages, system: SYSTEM_INSTRUCTION, maxOutputChars: LIMITS.outputChars }, controller.signal)
       const iterator = stream[Symbol.asyncIterator]()

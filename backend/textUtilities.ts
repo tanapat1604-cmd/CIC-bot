@@ -1,3 +1,5 @@
+import { requestIntent } from './requestIntent.js'
+import type { TextMessage } from '../shared/chatProtocol.js'
 import { CAPABILITY_NOTICE, UTILITY_HELP, type ReplySource } from '../shared/capabilities.js'
 
 type Result = { source: ReplySource; text: string }
@@ -62,22 +64,18 @@ export function addMinutes(expression: string): string {
   const days = Math.floor(total / 1440), minutes = ((total % 1440) + 1440) % 1440
   return `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}${days ? ` (${days > 0 ? '+' : ''}${days} วัน)` : ''}`
 }
-export function resolveTextUtility(text: string): Result | null {
+export function resolveTextUtility(text: string, messages: readonly TextMessage[] = []): Result | null {
   const input = text.trim()
   if (/^\/capabilities$/i.test(input)) return { source: 'capabilities', text: CAPABILITY_NOTICE + '\n' + UTILITY_HELP }
-  // Conservative request grammar, not a semantic classifier. Advice/quotes remain model text.
-  const advisory = /อธิบาย|แปล|วิธี|ตัวอย่าง|แต่งเรื่อง|translate|how to/i.test(input)
-  const unsupported = !advisory && (
-    /^(?:ช่วย|กรุณา|โปรด)?\s*(?:ตั้ง|สร้าง|เพิ่ม)(?:การ)?เตือน/u.test(input) ||
-    /(?:ช่วย|กรุณา|โปรด)\s*(?:กด|คลิก)(?:ปุ่ม)?/u.test(input) ||
-    /(?:ดู|อ่าน|เห็น).*(?:หน้าจอ|หน้าต่างที่.*เปิด)/u.test(input) ||
-    /(?:พรุ่งนี้|ภายหลัง|วันหน้า|คืนนี้).*(?:ช่วย|ค่อย)(?:ส่งข้อความ|ทัก|ติดตาม)/u.test(input) ||
-    /บอก.*(?:เตือน|กดปุ่ม|ส่งงาน).*(?:สำเร็จ|เสร็จแล้ว)/u.test(input) ||
-    /^(?:please\s+)?(?:set|create)\s+(?:a\s+)?reminder\b|^(?:please\s+)?(?:click|press)\s+(?:the\s+)?(?:button|save|ok)\b/i.test(input)
-  )
-  if (unsupported) return { source: 'capabilities', text: /[\u0e00-\u0e7f]/u.test(input) ? 'ระบบไม่ได้ทำงานภายนอก: ตั้งเตือน ส่งข้อความภายหลัง ดูหน้าจอ หรือกดปุ่มให้ไม่ได้ คุณทำในแอปของคุณเองได้' : 'No external action was performed. CIC cannot set reminders, message later, view your screen or click buttons. You can do that in your own app.' }
   const match = /^\/(calc|time)(?:\s+(.*))?$/is.exec(input)
-  if (!match) return null // Natural language remains model output, never silently rewritten as a tool answer.
+  if (!match) {
+    const intent = requestIntent(input, messages)
+    if (intent.kind === 'allow') return null
+    const thai = /[\u0e00-\u0e7f]/u.test(input)
+    return { source: 'capabilities', text: intent.kind === 'clarify'
+      ? (thai ? 'ต้องการให้ช่วยเขียนข้อความหรืออธิบายวิธีทำเองใช่ไหม? ระบบทำงานภายนอกหรือแจ้งเตือนภายหลังให้ไม่ได้' : 'Do you want help drafting text or instructions? CIC cannot perform external actions or notify you later.')
+      : (thai ? 'ระบบไม่ได้ทำงานภายนอก: ตั้งเตือน ส่งข้อความภายหลัง ดูหน้าจอ หรือกดปุ่มให้ไม่ได้ คุณทำในแอปของคุณเองได้' : 'No external action was performed. CIC cannot set reminders, message later, view your screen or click buttons. You can do that in your own app.') }
+  }
   const source = match[1].toLowerCase() === 'calc' ? 'calculator' : 'time-calculator'
   try {
     const expression = (match[2] ?? '').trim()
