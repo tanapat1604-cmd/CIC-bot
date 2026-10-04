@@ -1,5 +1,7 @@
 # Ollama local validation — updated 2026-10-04
 
+ส่งมอบรอบนี้เสร็จ: commit b3a3afa push แล้ว; [CI/Pages](https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37182359849) ผ่าน. Demo ตรวจจริงและ asset hash ตรง build หลัง deploy; backend เดิม 0.6b กลับพร้อมเฉพาะในเครื่อง. Final docs checkpoint ใช้ [skip ci].
+
 **ผลรอบล่าสุด: คง qwen3:0.6b; ภาษาไทยทั่วไป/ผู้ช่วยส่วนตัวที่เชื่อถือได้ยังไม่ผ่านทั้ง0.6bและ1.7b.** ดาวน์โหลดเฉพาะ1.7bตามอนุญาตหลังผู้ใช้ปิดโปรแกรมและตรวจRAMว่าง2.42GiB เก็บ0.6bไว้; backendยังในเครื่องและPagesยังdemo
 
 รายงานครบพร้อมคำถาม/คำตอบจริง คะแนนสองรอบ เวลา RAMที่วัดได้ และข้อจำกัด: [RESULTS.md](validation/2026-10-04-thai/RESULTS.md). แผนและเกณฑ์ถูกตรึงก่อนผล: [PLAN.md](validation/2026-10-04-thai/PLAN.md); raw60requests: [comparison.json](validation/2026-10-04-thai/comparison.json); [RAM samples](validation/2026-10-04-thai/memory-samples.json); [rubric review](validation/2026-10-04-thai/review.json)

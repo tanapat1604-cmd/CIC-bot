@@ -1,0 +1,18 @@
+{
+  "landing": "https://tanapat1604-cmd.github.io/CIC-bot/",
+  "app": "https://tanapat1604-cmd.github.io/CIC-bot/#/app",
+  "asset": "/CIC-bot/assets/index-DACxeUHF.js",
+  "status": 200,
+  "appWithoutThree": true,
+  "desktop": true,
+  "mobile": true,
+  "source": true,
+  "saveAction": true,
+  "typedText": true,
+  "compactRight": true,
+  "approvalAcrossLayouts": true,
+  "directReload": true,
+  "landingWebGL": true,
+  "footerEntry": true,
+  "errors": []
+}

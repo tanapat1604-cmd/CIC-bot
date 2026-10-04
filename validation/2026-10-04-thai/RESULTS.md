@@ -88,3 +88,7 @@ RAM วัดจาก Windows OS/process จริง รวม Ollama แล�
 - ตรวจภาพ desktop/mobileของทั้งสองตัวแล้ว: UIยังอ่าน/ส่งข้อความ/แสดงสถานะหยุดหรือerrorได้; screenshot1.7bเผยปัญหาretryที่ตรวจพบ. ภาพและ trace เก็บเฉพาะใน .tools/ollama-evidence/thai-trial-* (ignored), ไม่ push trace ที่อาจมี local session cookie
 - การจำลอง network failure ทำที่ provider boundary ไม่ได้ปิดบริการ Ollama; cancellationยืนยันHTTP abort ไม่ใช่การวัดCPUหยุดภายในกี่ms. ไม่ทดสอบมือถือจริง/Safari/Firefox/screen-reader
 - ไม่เปลี่ยน frontend/backend production code, prompt, encoding, model defaults หรือ public listener. เปลี่ยนเฉพาะ diagnostic scripts, opt-in assertions และเอกสาร. ค่า backend/.env ยังคง0.6b; คืนบริการและตรวจhealthก่อนส่งมอบ. GitHub Pagesยังdemo; CI/pushสถานะสุดท้ายอยู่ใน WORK-PROGRESS.md
+
+## ส่งมอบเสร็จ
+
+Commit b3a3afa2985e71118d02a74c7fc16d335c6c4fa3 push แล้ว; [CI/Pages](https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37182359849) ผ่าน lint/build/default tests/deploy. CI ไม่รันโมเดลจริง; ผล opt-in 0.6b ผ่านและ 1.7b ล้มเหลวคงรายงานตามจริง. Demo browser desktop/mobile/flow ผ่าน และหลัง deploy HTTP200/JS hash ตรง build ใน [post-deploy-demo.json](post-deploy-demo.json). [Local app readiness](restored-app-ready.json) ยืนยัน backend 0.6b กลับพร้อมในเครื่อง. Final docs checkpoint ใช้ [skip ci]; production frontend/prompt/default config ไม่เปลี่ยน.
