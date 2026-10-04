@@ -1,0 +1,161 @@
+{
+  "run": {
+    "id": 37205346156,
+    "head_sha": "f1eeb1f5befba4204095f8e74458562c2731fa57",
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37205346156"
+  },
+  "jobs": [
+    {
+      "name": "build",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T13:21:46Z",
+          "completed_at": "2026-10-04T13:21:47Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T13:21:47Z",
+          "completed_at": "2026-10-04T13:21:49Z"
+        },
+        {
+          "name": "Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T13:21:49Z",
+          "completed_at": "2026-10-04T13:21:51Z"
+        },
+        {
+          "name": "Run npm ci",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T13:21:51Z",
+          "completed_at": "2026-10-04T13:21:54Z"
+        },
+        {
+          "name": "Run npm run lint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-04T13:21:54Z",
+          "completed_at": "2026-10-04T13:21:57Z"
+        },
+        {
+          "name": "Run npm run build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-04T13:21:57Z",
+          "completed_at": "2026-10-04T13:22:05Z"
+        },
+        {
+          "name": "Run npm run backend:build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-04T13:22:05Z",
+          "completed_at": "2026-10-04T13:22:06Z"
+        },
+        {
+          "name": "Run npx playwright install --with-deps chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-04T13:22:06Z",
+          "completed_at": "2026-10-04T13:22:27Z"
+        },
+        {
+          "name": "Run npm test",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-04T13:22:27Z",
+          "completed_at": "2026-10-04T13:24:01Z"
+        },
+        {
+          "name": "Run actions/upload-pages-artifact@v3",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-04T13:24:01Z",
+          "completed_at": "2026-10-04T13:24:02Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-04T13:24:02Z",
+          "completed_at": "2026-10-04T13:24:02Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-04T13:24:02Z",
+          "completed_at": "2026-10-04T13:24:03Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-04T13:24:03Z",
+          "completed_at": "2026-10-04T13:24:03Z"
+        }
+      ]
+    },
+    {
+      "name": "deploy",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-04T13:24:10Z",
+          "completed_at": "2026-10-04T13:24:11Z"
+        },
+        {
+          "name": "Run actions/configure-pages@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-04T13:24:11Z",
+          "completed_at": "2026-10-04T13:24:11Z"
+        },
+        {
+          "name": "Deploy to GitHub Pages",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-04T13:24:11Z",
+          "completed_at": "2026-10-04T13:24:18Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-04T13:24:18Z",
+          "completed_at": "2026-10-04T13:24:18Z"
+        }
+      ]
+    }
+  ]
+}

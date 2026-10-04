@@ -1,6 +1,6 @@
 # รอบช่วยเหลือจากระบบและการปฏิเสธผิด — 2026-10-04
 
-เริ่มที่ `d647fb1877255ec54a3fcd274837a82f02d798c0` tree สะอาดและ origin/main ตรงกัน อ่าน WORK-PROGRESS.md และรายงาน mixed ก่อนแก้ ไม่มี AGENTS.md ใน repository/parent ที่ตรวจ RAM ว่างเริ่มประมาณ 1.90 GiB (ตอนตรึงชุด 2,012,992 KiB) frontend/Ollama ฟังเฉพาะ 127.0.0.1; backend เดิมไม่พบ listener ก่อนเริ่ม แม้ไฟล์ PID เก่ายังมีค่าอยู่ จะเปิดบริการตาม config เดิมกลับและตรวจจริงก่อนส่งมอบ
+เริ่มที่ `d647fb1877255ec54a3fcd274837a82f02d798c0` tree สะอาดและ origin/main ตรงกัน อ่าน WORK-PROGRESS.md และรายงาน mixed ก่อนแก้ ไม่มี AGENTS.md ใน repository/parent ที่ตรวจ RAM ว่างเริ่มประมาณ 1.90 GiB (ตอนตรึงชุด 2,012,992 KiB) frontend/Ollama ฟังเฉพาะ 127.0.0.1; backend เดิมไม่พบ listener ก่อนเริ่ม แม้ไฟล์ PID เก่ายังมีค่าอยู่ เปิดบริการตาม config เดิมกลับแล้วและตรวจจริงก่อนส่งมอบ (ดูหลักฐานด้านท้าย)
 
 คง qwen3:0.6b, เก็บ 1.7b, ไม่ดาวน์โหลด ไม่เปลี่ยน prompt/settings ไม่เปิด backend สาธารณะ ไม่เพิ่มระบบเตือน ดูหน้าจอ ควบคุมเครื่อง หรืองานภายหลัง
 
@@ -74,7 +74,9 @@ Frontend/backend build และ lint ผ่าน Default full suite: 66 ผ่
 
 Installed 0.6b browser: send/followup/stop/upstream abort/controlled-error retry no repeated user/terminal done ผ่าน; retry คง failed attempt และสร้างอีก attempt แยกสถานะ ไม่ append raw answer ซ้ำลง attempt เดิม การมีเลข 5 ใน NL retry reply ไม่ใช่การพิสูจน์ว่าตอบ 2+3 ถูก (raw ใน app-installed-model.json เป็นรายการคำถามอื่น) /calc เท่านั้นที่ตรวจค่าจริงได้ อีก test ตรวจเปลี่ยนแชตตอนโมเดลตอบ: upstream cancelled, แชตใหม่ไม่รับ late reply, กลับแชตเดิม partial หยุดคงที่/source model, /help source help ไม่เรียกโมเดลเพิ่ม ผ่าน (app-chat-switch.json)
 
-บริการเปิดกลับพร้อมใช้งานจริง: ready/live/qwen3:0.6b, app help/refusal/invalid tools ผ่าน (restored-app-ready.json), 5173/8787/11434 ฟังเฉพาะ 127.0.0.1 ตรวจภาพ restored help ครบสามขนาดจออีกครั้ง PENDING CI/demo จะเติมหลัง commit/push และตรวจเว็บจริง
+บริการเปิดกลับพร้อมใช้งานจริง: ready/live/qwen3:0.6b, app help/refusal/invalid tools ผ่าน (restored-app-ready.json), 5173/8787/11434 ฟังเฉพาะ 127.0.0.1 ตรวจภาพ restored help ครบสามขนาดจออีกครั้ง โค้ด/ผลทดสอบ commit และ push ที่ f1eeb1f5befba4204095f8e74458562c2731fa57; CI/Pages https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37205346156 SUCCESS ทั้ง lint/frontend build/backend build/default tests และ frontend-only deploy (ci.json) ไม่ถือว่า CI ผ่านแล้วทำให้ local animation failure หาย และ installed-model tests เป็น opt-in ที่ตรวจในเครื่องแยกแล้ว
+
+เว็บ https://tanapat1604-cmd.github.io/CIC-bot/#/app HTTP200 และ entry index-BkgBqIaQ.js SHA256 ตรง build ท้องถิ่น (public-asset-hash.json) ตรวจ desktop/mobile/reload/demo controls/approval/compact/WebGL ผ่าน ไม่มี page/console/asset errors ไม่มี request localhost/127.0.0.1/:11434 ตลอด flow และ UI สาธารณะเปิด local backend ไม่ได้ (public-demo.json) ตรวจภาพจริง local/live แล้ว diff/evidence ไม่มี secrets, .env, trace ที่มี cookie, ข้อมูลส่วนตัวจริง หรือไฟล์นอกขอบเขต จบงานรอบนี้ Final checkpoint เป็นเอกสาร [skip ci]; deployed/tested implementation ยังคง f1eeb1f
 
 รูป Chromium ที่ตรวจ: desktop 1440×900, mobile 390×844, short 360×480; source/ส่วนที่ไม่ได้ทำอ่านได้ ไม่พบ horizontal overflow composer อยู่ในจอ เลื่อนอ่านข้อความยาวได้ และทดสอบกดส่ง /time บนทุกขนาดจอ ภาพใน .tools/help-images (ignored) ไม่ใช่การทดสอบเครื่องมือถือจริง/แป้นพิมพ์ native IME/Safari/Firefox/screen reader
 
