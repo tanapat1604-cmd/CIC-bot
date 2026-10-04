@@ -10,6 +10,8 @@ export const errors = {
   interrupted: 'การเชื่อมต่อขาดช่วงก่อนตอบครบ ลองอีกครั้งได้',
   timeout: 'บริการใช้เวลานานเกินกำหนด ลองอีกครั้งได้',
   output_limit: 'คำตอบถึงขีดจำกัดแล้ว กรุณาถามให้แคบลง',
+  model_missing: 'ไม่พบโมเดลที่ตั้งไว้ใน Ollama กรุณาตรวจชื่อโมเดลที่ติดตั้งแล้ว',
+  model_settings: 'โมเดลนี้ไม่รองรับค่า thinking ที่ตั้งไว้ กรุณาตรวจการตั้งค่า backend',
 } as const
 export type ErrorCode = keyof typeof errors
 export type TextEvent = { sessionId: string; operationId: string } & (

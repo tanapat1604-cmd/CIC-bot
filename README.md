@@ -1,6 +1,6 @@
 # CIC Bot
 
-หน้าโปรโมต CIC Bot และ Workspace ภาษาไทย ใช้ React, TypeScript, Vite และ Three.js ผ่าน React Three Fiber (เฉพาะหน้าโปรโมต) เว็บไซต์สาธารณะยังเป็น **ตัวอย่างแอป** มี backend แชตข้อความสำหรับทดสอบในเครื่อง แต่ยังไม่เชื่อม AI จริง ไม่มีระบบบัญชีหรือการแชร์/ควบคุมหน้าจอจริง
+หน้าโปรโมต CIC Bot และ Workspace ภาษาไทย ใช้ React, TypeScript, Vite และ Three.js ผ่าน React Three Fiber (เฉพาะหน้าโปรโมต) เว็บไซต์สาธารณะยังเป็น **ตัวอย่างแอป** ส่วน backend ในเครื่องเชื่อมแชตข้อความกับ Ollama ได้แล้ว ไม่มีระบบบัญชีหรือการแชร์/ควบคุมหน้าจอจริง คุณภาพภาษาไทยของ qwen3:0.6b ยังมีข้อจำกัด ดู [ผลทดสอบจริง](OLLAMA-VALIDATION.md)
 
 - [หน้าโปรโมต](https://tanapat1604-cmd.github.io/CIC-bot/)
 - [ทดลองหน้าแอป](https://tanapat1604-cmd.github.io/CIC-bot/#/app)
@@ -26,13 +26,13 @@ npm run preview
 
 Build อยู่ใน `dist/` ตั้ง base เป็น `/CIC-bot/` ใน `vite.config.ts`
 
-## Backend แชตข้อความ (ขั้น 3A)
+## Backend แชตข้อความในเครื่อง (ขั้น 3B)
 
-เปิดอีก terminal แล้วรัน `npm run backend:dev` จาก root จากนั้นเปิด frontend ที่ `http://127.0.0.1:5173/CIC-bot/#/app` เลือก **การเชื่อมต่อ → ตรวจการเชื่อมต่อ backend → เริ่มแชตทดสอบ backend** โดย backend ต้องผ่าน health/session check ก่อน ตัวทดสอบไม่ใช่ AI และไม่เสียเงิน
+ตั้ง `AI_PROVIDER=ollama` และ `AI_MODEL=qwen3:0.6b` ใน `backend/.env` สำหรับโมเดลที่ติดตั้งไว้แล้ว เปิดอีก terminal แล้วรัน `npm run backend:dev` จาก root จากนั้นเปิด frontend ที่ `http://127.0.0.1:5173/CIC-bot/#/app` เลือก **การเชื่อมต่อ → ตรวจการเชื่อมต่อ backend → เริ่มแชต AI ในเครื่อง** โดยต้องผ่าน health/session check ก่อน ปุ่มหยุดยกเลิกคำขอถึง Ollama และ retry ไม่เพิ่มข้อความผู้ใช้ซ้ำ ไม่ดาวน์โหลดโมเดลอัตโนมัติ หากต้องการตัวทดสอบที่ไม่เรียก AI ให้ใช้ `AI_PROVIDER=test`
 
 ตั้งค่าได้จาก `backend/.env.example` → `backend/.env` (ไฟล์จริงถูก ignore); root `.env.example` มีเฉพาะ URL สาธารณะ ห้ามใส่ key ใน `VITE_*` ไม่ต้องมี key สำหรับ test provider ดู [วิธีรัน ขอบเขตสิทธิ์ และ protocol](backend/README.md) ใช้ `npm run backend:build` เพื่อตรวจ/คอมไพล์ backend และหยุด backend ที่เปิดเองก่อนรัน browser tests ซึ่งใช้ port 8787
 
-ยังไม่เลือก provider/model/hosting จึงยังไม่มีขั้น 3B (ตอบจาก AI จริง) หรือ 3C (backend สาธารณะ) เว็บ Pages เปิด demo ต่อได้ และไม่พยายามเชื่อม localhost หรือเปิด live ตาม config โดยอัตโนมัติ
+ขั้น 3B เชื่อมและทดสอบ Ollama 0.34.4/qwen3:0.6b จริงแล้ว แต่ภาษาไทยทั่วไปยังไม่ผ่านการยอมรับ ตั้งต้น context 2048/output 192 tokens/3 threads/ปิด thinking/keep-alive 1 นาที ไม่รับประกัน RAM หรือความเร็ว เปลี่ยนโมเดลที่ติดตั้งผ่าน config ได้ ขั้น 3C/backend สาธารณะยังไม่ทำ เว็บ Pages เปิด demo ต่อได้ และไม่พยายามเชื่อม localhost หรือเปิด live ตาม config โดยอัตโนมัติ
 
 ## ทดสอบ
 
@@ -95,4 +95,4 @@ Workflow อยู่ใน `.github/workflows/deploy.yml` ใช้ `contents: 
 
 ## ขอบเขตคอนเซปต์
 
-บทสนทนาเป็นข้อความตัวอย่าง ไม่ส่งข้อมูลไปหา AI ไม่เริ่มแชร์หน้าจอ และไม่ติดตามพฤติกรรมผู้ใช้ ไม่มีการยืนยันวันเปิดตัว ราคา ระบบปฏิบัติการ หรือความสามารถที่ยังไม่พร้อม คุณเป็นผู้เลือกสิ่งที่แชร์และอนุญาตการลงมือทำตามแนวทางผลิตภัณฑ์ที่วางแผนไว้
+บทสนทนาบนเว็บสาธารณะเป็นข้อความตัวอย่าง ไม่ส่งข้อมูลไปหา AI ส่วนแชต Ollama ที่เปิดเองในเครื่องส่งเฉพาะข้อความผ่าน local backend ไม่มีการแชร์หน้าจอ ควบคุมเครื่อง หรือติดตามพฤติกรรมผู้ใช้ ไม่มีการยืนยันวันเปิดตัว ราคา ระบบปฏิบัติการ หรือความสามารถที่ยังไม่พร้อม

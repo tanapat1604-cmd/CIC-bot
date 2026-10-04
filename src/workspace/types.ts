@@ -15,7 +15,7 @@ export interface ProposedAction extends ActionProposal {
 export type ResponseStatus = 'streaming' | 'complete' | 'stopped' | 'error'
 export interface Message { id: string; role: 'user' | 'assistant'; text: string; attachments?: Attachment[]; action?: ProposedAction; operationId?: string; responseStatus?: ResponseStatus }
 export interface Session {
-  connection: Connection; contextNotice: boolean
+  connection: Connection; contextNotice: boolean; model?: string
   id: string; title: string; mode: Mode; screen: ScreenStatus; source: ScreenSource | null
   agent: AgentStatus; operationId: string | null; messages: Message[]; draft: string; attachments: Attachment[]
   error: string | null; retryText: string | null
@@ -34,7 +34,7 @@ export interface ControlAdapter { execute(action: ProposedAction, signal: AbortS
 export interface SessionStore {
   getSnapshot(): WorkspaceState
   subscribe(listener: () => void): () => void
-  newSession(connection?: Connection): void
+  newSession(connection?: Connection, model?: string): void
   switchSession(id: string): void
   setLayout(layout: Layout): void
   setMode(mode: Mode): void

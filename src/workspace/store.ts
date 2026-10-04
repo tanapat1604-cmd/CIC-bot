@@ -6,8 +6,8 @@ import type { ActionProposal, AgentAdapter, AgentRequest, Attachment, Connection
 export const MAX_IMAGE_BYTES = 5 * 1024 * 1024
 export const MAX_ATTACHMENTS = 6
 const id = () => crypto.randomUUID()
-function newChat(connection: Connection = 'demo'): Session {
-  return { connection, contextNotice: false, id: id(), title: 'แชตใหม่', mode: 'chat', screen: 'disconnected', source: null, agent: 'idle', operationId: null, messages: [], draft: '', attachments: [], error: null, retryText: null }
+function newChat(connection: Connection = 'demo', model?: string): Session {
+  return { connection, model: connection === 'live' ? model : undefined, contextNotice: false, id: id(), title: 'แชตใหม่', mode: 'chat', screen: 'disconnected', source: null, agent: 'idle', operationId: null, messages: [], draft: '', attachments: [], error: null, retryText: null }
 }
 export function createSessionStore(adapters = createMockAdapters(), textAdapter?: AgentAdapter): SessionStore {
   const first = newChat()
@@ -87,7 +87,7 @@ export function createSessionStore(adapters = createMockAdapters(), textAdapter?
   const store: SessionStore = {
     getSnapshot: () => state,
     subscribe(listener) { listeners.add(listener); return () => { listeners.delete(listener) } },
-    newSession(connection = current().connection) { cancel(); const session = newChat(connection); publish({ ...state, sessions: [...state.sessions, session], sessionId: session.id }) },
+    newSession(connection = current().connection, model = current().model) { cancel(); const session = newChat(connection, model); publish({ ...state, sessions: [...state.sessions, session], sessionId: session.id }) },
     switchSession(sessionId) { if (sessionId === state.sessionId || !state.sessions.some(s => s.id === sessionId)) return; cancel(); publish({ ...state, sessionId }) },
     setLayout(layout) { publish({ ...state, layout }) },
     setMode(mode) { if (current().mode === mode || (current().connection !== 'demo' && mode !== 'chat')) return; cancel(); patch(state.sessionId, s => ({ ...s, mode, agent: 'idle', error: null, retryText: null })) },

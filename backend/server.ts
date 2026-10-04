@@ -27,7 +27,17 @@ export function createChatServer(options: Options = {}) {
     if (origin && !origins.includes(origin)) { fail(res, 403, 'unauthorized'); return }
     if (origin) { res.setHeader('Access-Control-Allow-Origin', origin); res.setHeader('Access-Control-Allow-Credentials', 'true'); res.setHeader('Vary', 'Origin') }
     if (req.method === 'OPTIONS' && origin) { res.writeHead(204, { 'Access-Control-Allow-Methods': 'POST, GET', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '600' }); res.end(); return }
-    if (req.url === '/health' && req.method === 'GET') { json(res, 200, { version: 1, ready: options.enabled !== false && spent < (options.maxRequests ?? 100), kind: provider.kind, capabilities: ['text-stream'] }); return }
+    if (req.url === '/health' && req.method === 'GET') {
+      let ready = options.enabled !== false && spent < (options.maxRequests ?? 100)
+      let code: ErrorCode | undefined
+      const probe = new AbortController(), closed = () => probe.abort()
+      res.once('close', closed)
+      try { if (ready) await provider.check?.(AbortSignal.any([probe.signal, AbortSignal.timeout(2500)])) }
+      catch (error) { ready = false; code = error instanceof ChatError ? error.code : 'unavailable' }
+      finally { res.off('close', closed); probe.abort() }
+      if (!res.destroyed) json(res, 200, { version: 1, ready, kind: provider.kind, capabilities: ['text-stream'], ...(provider.model ? { model: provider.model, location: 'local' } : {}), ...(code ? { code } : {}) })
+      return
+    }
     // No shared secret in the frontend: issue a short-lived HttpOnly local session.
     // Any trusted local process can bootstrap; this is not public user authentication.
     if (!origin || req.method !== 'POST') { fail(res, 403, 'unauthorized'); return }

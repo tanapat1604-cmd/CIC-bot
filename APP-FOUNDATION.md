@@ -1,6 +1,6 @@
 # CIC app foundation
 
-CIC เป็นผู้ช่วยที่วางแผนให้ใช้บริบทจากหน้าจอที่ผู้ใช้เลือก เว็บสาธารณะยังเป็น **ตัวอย่างแอป** มี backend แชตข้อความสำหรับทดสอบในเครื่องแล้ว แต่ยังไม่มี AI จริง, login, screen capture, desktop control หรือไฟล์ติดตั้ง
+CIC เป็นผู้ช่วยที่วางแผนให้ใช้บริบทจากหน้าจอที่ผู้ใช้เลือก เว็บสาธารณะยังเป็น **ตัวอย่างแอป** ส่วนในเครื่องเชื่อมแชตข้อความกับ Ollama ผ่าน backend แล้ว แต่คุณภาพภาษาไทยของโมเดลยังมีข้อจำกัด ไม่มี login, screen capture, desktop control หรือไฟล์ติดตั้ง
 
 ## เส้นทางและโครงหน้า
 
@@ -75,13 +75,21 @@ Mock ทยอยตอบ 4 ช่วงสั้น ๆ รวมประม�
 
 `transport.ts` ใช้ POST fetch + NDJSON streaming และ AbortSignal ส่งเฉพาะประวัติข้อความของ session ปัจจุบัน ตัดเป็นข้อความเต็มช่วงล่าสุดไม่เกิน 24 ข้อความ/24,000 ตัวอักษร ข้อความละ 8,000 ละ assistant ที่ stopped/error/streaming ไม่ส่งเสมือนตอบครบ UI แจ้งเมื่อมีการละประวัติ ทุก event ตรวจ runtime schema/identity และ terminal; ขาดช่วงแสดง error ไม่ถือว่าเสร็จ ไม่มี auto retry และไม่ fallback เป็น mock
 
-`shared/chatProtocol.ts` เป็น runtime schema/limits ร่วม frontend/backend; `backend/server.ts` ใช้ Node HTTP และ provider interface ใน `backend/provider.ts` มีเฉพาะ free test provider ที่ติดป้ายไม่ใช่ AI Server กำหนด system instruction เองและไม่รับ action จากข้อความ ใบอนุญาตจำลองเดิมไม่ใช้กับ endpoint นี้
+`shared/chatProtocol.ts` เป็น runtime schema/limits ร่วม frontend/backend; `backend/server.ts` ใช้ Node HTTP และ provider interface ใน `backend/provider.ts` มี free test provider ที่ติดป้ายไม่ใช่ AI และ local Ollama adapter ใน `backend/ollama.ts` Server กำหนด system instruction เองและไม่รับ action จากข้อความ ใบอนุญาตจำลองเดิมไม่ใช้กับ endpoint นี้
 
 หน้า Settings ตรวจ health และ local access session ก่อนให้เริ่มแชต backend; cookie HttpOnly อยู่ฝั่งเบราว์เซอร์ ไม่ฝัง shared secret UI/Public Pages ยังเปิด backend ไม่ได้โดยตั้ง VITE URL อย่างเดียว Readiness ของการเชื่อมต่อเป็นผลตรวจ ณ เวลานั้น หาก service หยุดภายหลังจะแสดง error จริง
 
 รายละเอียดการรัน, protocol, loopback-only trust model, auth/rate/concurrency/body/time/output limits, logs และข้อกำหนดก่อนเปิดสาธารณะ: [backend/README.md](backend/README.md) ไม่มีการเชื่อม provider ที่เสียเงินในรอบ 3A และ test provider สำเร็จไม่เท่ากับ AI จริงสำเร็จ
 
-1. ขั้น 3B: เลือก provider/model แล้วเพิ่ม provider adapter จริงหนึ่งราย ทดสอบตอบ/หยุดตามสิทธิ์ค่าใช้จ่ายที่ผู้ใช้อนุญาต ขั้น 3C: เลือก hosting และ public identity/quota/spend controls ก่อนเผยแพร่ backend; secret อยู่ server เท่านั้น ไม่มีช่องกรอก API key ในเว็บ GitHub Pages เสิร์ฟ frontend ส่วน backend ต้องมีที่รันแยก
+### ขั้น 3B: local Ollama ที่ตรวจแล้ว
+
+`AI_PROVIDER=ollama`, `AI_MODEL` เลือกโมเดลในเครื่องผ่าน config; browser ติดต่อ backend เท่านั้น ไม่เรียก Ollama โดยตรง Health ตรวจโมเดลและการรองรับ thinking; ปฏิเสธ cloud model/redirect/URL นอก loopback และไม่ดาวน์โหลดเอง ไม่มี mock fallback เมื่อผิดพลาด UI แสดงชื่อโมเดลในคำตอบและป้าย AI ในเครื่อง
+
+ค่าเริ่มต้น context 2048/output 192 tokens/3 threads/think=false/keep-alive 1m รับคำขอ Ollama พร้อมกันหนึ่งรายการ ส่ง language hint กับ CIC instruction ที่ระบุ text-only ไม่อ้างว่าเห็นหน้าจอหรือกดปุ่ม ไม่มี silent context truncation; แชตยาวอาจชน context ก่อน generic character limit และต้องเริ่มแชตใหม่ ผลที่ชน output cap ติดป้ายว่ายังไม่ครบ
+
+Ollama 0.34.4/qwen3:0.6b ผ่านการทดสอบหน้าแอปจริง: ตอบ/จำบริบทแชต/stream/stop ส่ง abort ถึง upstream/error/retry ไม่ซ้ำ ไม่มี frontend request ไป Ollama ทดสอบ UTF-8 API/CLI แล้วไม่พบอักขระเสีย แต่คำถามไทยใหม่นอกชุดปรับ prompt ยังตอบผิดหรือสำนวนแปลก ดู [ผลและข้อจำกัด](OLLAMA-VALIDATION.md) ขั้น 3B ฝั่งเชื่อมต่อเสร็จ; คุณภาพภาษาไทยทั่วไปยังไม่ยอมรับ
+
+1. รอบถัดไป: เลือกว่าจะใช้ 0.6b กับข้อความสั้น/อังกฤษต่อ หรืออนุญาตทดลองโมเดลใหญ่ขึ้นก่อนดาวน์โหลด ไม่เริ่มขั้น 3C อัตโนมัติ ขั้น 3C ต้องเลือก hosting และ public identity/quota/spend controls ก่อนเผยแพร่ backend; secret อยู่ server เท่านั้น ไม่มีช่องกรอก API key ในเว็บ GitHub Pages เสิร์ฟ frontend ส่วน backend ต้องมีที่รันแยก
 2. ScreenSourceAdapter: ตรวจความสามารถและสิทธิ์จริงตาม browser/OS, handle user cancel/track ended, บอกแหล่งและขอบเขตที่ใช้จริง, ไม่สมมติว่าเลือกพื้นที่ได้ทุกแพลตฟอร์ม
 3. ControlAdapter: ต่อ desktop bridge แยกจากหน้าเว็บ ผูก authorization กับ action/target จริง ตรวจซ้ำตอน execute และหยุดได้ ไม่ใช้คำอนุญาตจาก UI อย่างเดียวเป็นขอบเขตความปลอดภัย
 4. Desktop integration: native window/side panel/always-on-top, OS permissions, source capture และ computer control ยังต้องออกแบบและทดสอบแยกทั้งหมด

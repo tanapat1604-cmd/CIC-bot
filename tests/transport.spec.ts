@@ -70,5 +70,5 @@ test('public host cannot enable local/live endpoint and frontend bundle excludes
   expect(localBackendUrl('127.0.0.1')).toBe('http://127.0.0.1:8787')
   const files = (await readdir('dist/assets')).filter(file => file.endsWith('.js'))
   const bundle = (await Promise.all(files.map(file => readFile(`dist/assets/${file}`, 'utf8')))).join('')
-  for (const value of ['stage3-secret-sentinel-not-a-real-key', 'You are CIC, a concise, helpful assistant.', 'node:crypto', 'cic_local=']) expect(bundle).not.toContain(value)
+  for (const value of ['stage3-secret-sentinel-not-a-real-key', 'You receive TEXT ONLY.', 'node:crypto', 'cic_local=']) expect(bundle).not.toContain(value)
 })

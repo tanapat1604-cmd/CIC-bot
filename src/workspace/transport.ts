@@ -72,16 +72,18 @@ export function createTextAdapter(baseUrl: string, fetcher: typeof fetch = fetch
     },
   }
 }
-export type BackendCapability = { kind: 'test' | 'live' }
+export type BackendCapability = { kind: 'test' | 'live'; model?: string }
 export async function connectBackend(baseUrl: string, signal: AbortSignal): Promise<BackendCapability> {
   try {
     const response = await fetch(`${baseUrl}/health`, { signal, credentials: 'include' })
     if (!response.ok) throw responseError(response.status)
     const value: unknown = await response.json()
+    if (record(value) && value.ready === false && typeof value.code === 'string' && Object.hasOwn(errors, value.code)) throw new ChatError(value.code as keyof typeof errors)
     if (!record(value) || value.version !== 1 || value.ready !== true || (value.kind !== 'test' && value.kind !== 'live') || !Array.isArray(value.capabilities) || !value.capabilities.includes('text-stream')) throw new ChatError('unavailable')
+    if (value.kind === 'live' && (value.location !== 'local' || typeof value.model !== 'string' || !/^[a-zA-Z0-9][\w.:/-]{0,119}$/.test(value.model))) throw new ChatError('unavailable')
     const session = await fetch(`${baseUrl}/session`, { method: 'POST', credentials: 'include', signal })
     if (!session.ok) throw responseError(session.status)
-    return { kind: value.kind as 'test' | 'live' }
+    return { kind: value.kind, ...(value.kind === 'live' ? { model: value.model as string } : {}) }
   } catch (error) { if (error instanceof ChatError) throw error; throw new ChatError('unavailable') }
 }
 // Stage 3A intentionally cannot enable a public paid endpoint by changing a VITE variable.
