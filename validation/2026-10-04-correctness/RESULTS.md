@@ -1,6 +1,6 @@
 # CIC correctness and truthful capability trial — 2026-10-04
 
-เริ่ม c6b9c32; คง qwen3:0.6b เก็บ1.7b ไม่มีการดาวน์โหลดเพิ่ม Backend ใช้เฉพาะ loopback. อ่าน WORK-PROGRESS.md และผลรอบภาษาไทยเดิมก่อนเริ่ม; repository ตรง origin และสะอาด. RAM ว่างก่อนรอบ2,708,384KiB (~2.58GiB).
+เริ่ม c6b9c32; คง qwen3:0.6b เก็บ1.7b ไม่มีการดาวน์โหลดเพิ่ม Backend ใช้เฉพาะ loopback. หลังคืนบริการตรวจจริงอีกครั้ง: /calc 88 - 31 - 16 = 41, /time 22:55 + 80 = 00:15 (+1 วัน), คำขอตั้งเตือนวันอังคารถูกปฏิเสธโดยระบบ; restored-app.json เก็บผล. Frontend5173/backend8787/Ollama11434 ฟัง127.0.0.1ทั้งหมด. อ่าน WORK-PROGRESS.md และผลรอบภาษาไทยเดิมก่อนเริ่ม; repository ตรง origin และสะอาด. RAM ว่างก่อนรอบ2,708,384KiB (~2.58GiB).
 
 ผลคำถามใหม่: baseline2/12 → ระบบสุดท้าย7/12 ตามการตรวจด้วยคนรายข้อ ไม่ใช่คะแนนรับรองผู้ช่วยภาษาไทย. คำตอบสุดท้ายที่ผ่าน6ข้อจากระบบปฏิเสธหรือเครื่องคำนวณ และ1ข้อจากโมเดล (เงิน35บาท ซึ่ง baseline ก็ถูก). การคิดเวลาในภาษาธรรมชาติ รูปแบบคำตอบ และการถามต่อเกี่ยวกับบทบาทยังไม่ผ่าน. คำขอตั้งเตือนแบบใหม่หลุดจากกฎ ตอบวนและชน output_limit; บันทึกเป็นผลแย่ลง ไม่ซ่อนคำตอบบางส่วน.
 
@@ -233,3 +233,7 @@ I cannot see your screen or click buttons. You can click Save yourself.
 
 ## จุดต่อ
 ยังคง0.6b เพราะรอบนี้ทดสอบเฉพาะโมเดลนี้ ไม่มีหลักฐานให้เปลี่ยนไป1.7b. ยังไม่พร้อมเป็นผู้ช่วยส่วนตัวภาษาไทย: ข้อจำกัดข้อความ/คำอ้อม/การถามต่อ/เวลาและรูปแบบยังอยู่. รอบถัดไปเก็บชุดใหม่ก่อนแก้ แล้วนำชุดนี้เป็น regression; พิจารณาขยายคำสั่ง explicit ที่ผู้ใช้เลือกเองพร้อม provenance หรือ grammar ปฏิเสธที่มีการวัด false positives และขอบเขต. ไม่เพิ่ม reminder/screen/control/future job/public backend หรือบุคลิกที่กลบข้อจำกัด.
+
+## Final delivery checkpoint
+
+- FINAL 2026-10-04: implementation/results 83b4e356a3c1371db7235f2d49022e8f21de46b8 committed and pushed. CI/Pages https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37184265069 SUCCESS (lint, frontend/backend builds, full default tests, frontend-only deploy). Installed0.6b local real-model test PASS separately; CI does not run/download Ollama. Public demo desktop/mobile/controls/reload/WebGL/public backend restrictions PASS with no browser/asset errors; entry index-LqY0YwBs.js SHA256 matches local build. Backend restored with0.6b; /calc, /time and capability refusals checked in actual app, all listeners127.0.0.1. Evidence: ci.json/public-demo.json/restored-app.json. Final documentation checkpoint uses [skip ci]; deployed implementation remains83b4e35. Round complete, no pending tests/downloads. Next: NEW frozen holdouts before widening request grammar; preserve failures from this set as regression. No Thai assistant readiness claim.
