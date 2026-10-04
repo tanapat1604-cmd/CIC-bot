@@ -1,5 +1,5 @@
 import { CIC_CAPABILITIES } from '../shared/capabilities.js'
-import { resolveTextUtility } from './textUtilities.js'
+import { createLiveReply } from './liveReply.js'
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http'
 import { randomBytes, randomUUID } from 'node:crypto'
 import { once } from 'node:events'
@@ -81,9 +81,10 @@ export function createChatServer(options: Options = {}) {
       res.writeHead(200, { 'Content-Type': 'application/x-ndjson; charset=utf-8', 'X-Accel-Buffering': 'no' })
       res.flushHeaders()
       let length = 0
-      const utility = provider.kind === 'live' ? resolveTextUtility(request.messages.at(-1)!.text, request.messages) : null
-      const responseSource = utility?.source ?? 'model'
-      const stream = utility ? (async function* () { controller.signal.throwIfAborted(); yield utility.text })() : provider.stream({ messages: request.messages, system: SYSTEM_INSTRUCTION, maxOutputChars: LIMITS.outputChars }, controller.signal)
+      const input = { messages: request.messages, system: SYSTEM_INSTRUCTION, maxOutputChars: LIMITS.outputChars }
+      const reply = provider.kind === 'live' ? createLiveReply(provider, input, controller.signal) : null
+      const responseSource = reply?.source ?? 'model'
+      const stream = reply?.stream ?? provider.stream(input, controller.signal)
       const iterator = stream[Symbol.asyncIterator]()
       try {
         while (true) {
@@ -93,7 +94,7 @@ export function createChatServer(options: Options = {}) {
           if (!next.value) continue
           length += next.value.length
           if (length > LIMITS.outputChars) throw new ChatError('output_limit')
-          await event({ ...identity, type: 'delta', text: next.value })
+          await event({ ...identity, type: 'delta', text: next.value, ...(provider.kind === 'live' ? { source: responseSource } : {}) })
         }
         await event({ ...identity, type: 'done', ...(provider.kind === 'live' ? { source: responseSource } : {}) }); status = 'done'
       } finally { controller.abort(); void iterator.return?.().catch(() => {}) }

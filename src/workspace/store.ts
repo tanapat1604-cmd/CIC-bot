@@ -64,7 +64,7 @@ export function createSessionStore(adapters = createMockAdapters(), textAdapter?
         if (event.type === 'cancelled') { cancel(); return }
         if (event.type === 'delta') {
           if (typeof event.text !== 'string') throw new Error('รูปแบบคำตอบไม่ถูกต้อง')
-          patch(session.id, s => ({ ...s, messages: updateResponse(s, message => ({ ...message, text: message.text + event.text })) }))
+          patch(session.id, s => ({ ...s, messages: updateResponse(s, message => ({ ...message, text: message.text + event.text, replySource: event.source ?? message.replySource })) }))
         } else if (event.type === 'action') {
           if (session.connection !== 'demo' || proposal || !isAllowedProposal(event.proposal, request)) throw new Error('ข้อเสนอการกระทำไม่ตรงกับโหมดหรือบริบท จึงไม่ได้ขออนุญาต')
           // Copy the proposal so an adapter cannot mutate approved parameters later.

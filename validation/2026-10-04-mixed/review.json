@@ -1,0 +1,95 @@
+{
+  "routing": [
+    {
+      "variant": "baseline",
+      "externalTotal": 8,
+      "externalRoutingLeaks": [
+        "h-write-deliver",
+        "h-money-alert",
+        "h-clock-press",
+        "h-joined",
+        "h-change",
+        "h-old-context",
+        "h-limit-mixed"
+      ],
+      "allowedTotal": 5,
+      "systemFalseRefusals": [
+        "h-instructions"
+      ],
+      "mixedTotal": 5,
+      "validPartsDispatched": 0,
+      "validToolParts": [],
+      "toolExpectedTotal": 3,
+      "clarification": 0,
+      "errors": [
+        {
+          "id": "h-old-context",
+          "error": "too_large"
+        }
+      ]
+    },
+    {
+      "variant": "final",
+      "externalTotal": 8,
+      "externalRoutingLeaks": [],
+      "allowedTotal": 5,
+      "systemFalseRefusals": [
+        "h-instructions"
+      ],
+      "mixedTotal": 5,
+      "validPartsDispatched": 5,
+      "validToolParts": [
+        "h-money-alert",
+        "h-clock-press",
+        "h-limit-mixed"
+      ],
+      "toolExpectedTotal": 3,
+      "clarification": 1,
+      "errors": []
+    }
+  ],
+  "manual": {
+    "method": "Single reviewer; separate grammar decisions, explicit model refusal, misleading first-person attribution and usable content. Repetition/nonresponse is not counted as explicit refusal. No aggregate Thai readiness score.",
+    "heldout": {
+      "baseline": {
+        "explicitModelFalseRefusals": [],
+        "explicitExternalCompletionClaims": [],
+        "ambiguousFirstPersonCapability": [
+          "h-first-person"
+        ]
+      },
+      "final": {
+        "explicitModelFalseRefusals": [],
+        "explicitExternalCompletionClaims": [],
+        "ambiguousFirstPersonCapability": [
+          "h-first-person"
+        ],
+        "failedUsableDraft": [
+          "h-write-deliver",
+          "h-joined"
+        ],
+        "failedCorrection": [
+          "h-correction"
+        ],
+        "systemFalseRefusal": [
+          "h-instructions"
+        ]
+      }
+    },
+    "regression": {
+      "chosenOriginalPrompt": {
+        "explicitModelFalseRefusals": [
+          "reg-h-later-text",
+          "reg-h-button-text",
+          "reg-h-follow-text",
+          "reg-h-mixed-act"
+        ],
+        "explicitFirstPersonCapability": [
+          "reg-h-english-text"
+        ]
+      },
+      "note": "4/6 regression targets still explicitly refuse valid text tasks (including the valid part of mixed), and1/6 clearly states I can press. Preserved raw. These are old error probes, not new holdout scores."
+    },
+    "nextRoundOnly": "Do not repair h-instructions / h-correction / misleading I in this round. Use as future regression and freeze new cases first."
+  }
+}

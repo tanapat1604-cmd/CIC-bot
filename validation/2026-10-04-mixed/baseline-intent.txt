@@ -1,0 +1,46 @@
+const quoted = /```[\s\S]*?```|`[^`]*`|"[^"\n]*"|'[^'\n]*'|“[^”]*”|«[^»]*»/g;
+const outsideQuotes = (text) => text.toLowerCase().replace(quoted, ' ');
+const domain = /เตือน|แจ้งเตือน|ปลุก|หน้าจอ|จอที่|กด|คลิก|ปุ่ม|ทัก|สะกิด|ส่งข้อความ|คอยถาม|remind|notification|screen|click|press|button|message.*later/i;
+const meta = /(?:อธิบาย|บอกวิธี|แนะนำ|สอน|ร่าง|เขียน|แปล|ยกตัวอย่าง|แต่งเรื่อง|ตรวจประโยค|สรุป|คิด(?:ข้อความ|คำถาม)|explain|how to|translate|draft|write|example)/i;
+const negatedMeta = /(?:ไม่ต้อง|อย่า(?:แค่)?|ห้าม|do not|don't)\s*(?:อธิบาย|แนะนำ|บอกวิธี|สอน|explain)/i;
+const negatedAction = /(?:ไม่ต้อง|อย่า|ห้าม)\s*(?:ตั้ง(?:การ)?เตือน|แจ้งเตือน|เตือน|กด|คลิก|ทำ(?:จริง|แบบนั้น)|ตั้งจริง)[\s\S]*?(?=แค่|เพียง|แต่|ช่วย|ขอ|$)|(?:do not|don't)\s*(?:press|click|set|remind|do)[\s\S]*?(?=\.|explain|but|$)/gi;
+/** Bounded speech-act grammar, not semantic understanding. Never trusts assistant prose as authority. */
+export function requestIntent(text, messages = []) {
+    const original = outsideQuotes(text);
+    const previousUser = messages.slice(0, -1).filter(m => m.role === 'user').at(-1)?.text ?? '';
+    const context = outsideQuotes(previousUser);
+    const relevant = domain.test(original) || (domain.test(context) && /ทำให้|ทำแบบนั้น|ทำจริง|ตั้งให้|อันนั้น|ได้เลย|ตกลง|that|do it/i.test(original));
+    if (!relevant)
+        return { kind: 'allow', reason: 'no external-action intent' };
+    let textTask = false;
+    // Scope advice and negation to clauses: "explain ... then do it" is still an action request.
+    for (const raw of original.split(/\n|[.!?;]|\s+(?:then|but|and)\s+|แล้ว|แต่|จากนั้น/u)) {
+        const withoutNegation = raw.replace(negatedAction, ' ');
+        if (withoutNegation !== raw)
+            textTask = true;
+        const clause = withoutNegation.replace(/(?:เรื่อง|เกี่ยวกับ)(?:การ)?(?:แจ้งเตือน|เตือน|กดปุ่ม)/g, ' ').trim();
+        if (!clause) {
+            textTask = true;
+            continue;
+        }
+        const isMeta = meta.test(clause) && !negatedMeta.test(clause);
+        if (isMeta) {
+            textTask = true;
+            continue;
+        }
+        if (/^(?:ฉัน|ผม|เรา|i)\s*(?:จะ|กำลัง|ไม่|ไม่ได้)?\s*(?:เห็น|กด|คลิก|อ่าน)/i.test(clause) && !/(?:ให้คุณ|ช่วย(?:กด|คลิก|อ่าน|ดู))/i.test(clause)) {
+            textTask = true;
+            continue;
+        }
+        const action = /(?:ตั้ง(?:การ)?เตือน|แจ้งเตือน|เตือน|ปลุก|ทัก|สะกิด|ส่งข้อความ|คอยถาม|กด|คลิก|เลือกปุ่ม|remind|notify|click|press)/i.test(clause);
+        const view = /(?:ดู|อ่าน|มอง|เห็น).{0,60}(?:หน้าจอ|จอ|หน้าต่าง)|(?:หน้าจอ|screen).{0,40}(?:ตอนนี้|อะไร|now|read|see)/i.test(clause);
+        const claim = /(?:บอก|พูด|ยืนยัน|say|tell).{0,80}(?:สำเร็จ|เรียบร้อย|เสร็จ|done|completed)/i.test(clause);
+        const enact = /(?:ทำให้จริง|ทำจริง|ทำแบบนั้น|ตั้งให้|กดอันนั้น|do it|do that)/i.test(clause);
+        if (view || claim || action || (enact && domain.test(original + context)))
+            return { kind: 'refuse', reason: 'explicit external action or fabricated completion' };
+    }
+    if (textTask)
+        return { kind: 'allow', reason: 'text task or negated action' };
+    // A bare reference or "help with reminders" lacks enough intent to refuse or promise execution.
+    return { kind: 'clarify', reason: 'ambiguous capability reference' };
+}

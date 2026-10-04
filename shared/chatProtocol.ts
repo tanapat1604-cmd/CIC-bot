@@ -16,7 +16,7 @@ export const errors = {
 } as const
 export type ErrorCode = keyof typeof errors
 export type TextEvent = { sessionId: string; operationId: string } & (
-  { type: 'delta'; text: string } | { type: 'done'; source?: ReplySource } | { type: 'cancelled' } | { type: 'error'; code: ErrorCode }
+  { type: 'delta'; text: string; source?: ReplySource } | { type: 'done'; source?: ReplySource } | { type: 'cancelled' } | { type: 'error'; code: ErrorCode }
 )
 export class ChatError extends Error {
   constructor(public code: ErrorCode) { super(errors[code]) }
@@ -39,7 +39,7 @@ export function validateRequest(value: unknown): TextRequest {
 export function validateEvent(value: unknown, request: Pick<TextRequest, 'sessionId' | 'operationId'>): TextEvent {
   if (!record(value) || value.sessionId !== request.sessionId || value.operationId !== request.operationId) throw new ChatError('interrupted')
   const keys = ['sessionId', 'operationId', 'type']
-  if (value.type === 'delta' && typeof value.text === 'string' && value.text.length > 0 && value.text.length <= LIMITS.outputChars && exact(value, [...keys, 'text'])) return value as TextEvent
+  if (value.type === 'delta' && typeof value.text === 'string' && value.text.length > 0 && value.text.length <= LIMITS.outputChars && (exact(value, [...keys, 'text']) || exact(value, [...keys, 'text', 'source']) && REPLY_SOURCES.includes(value.source as ReplySource))) return value as TextEvent
   if (value.type === 'done' && (exact(value, keys) || exact(value, [...keys, 'source']) && REPLY_SOURCES.includes(value.source as ReplySource))) return value as TextEvent
   if (value.type === 'cancelled' && exact(value, keys)) return value as TextEvent
   if (value.type === 'error' && typeof value.code === 'string' && Object.hasOwn(errors, value.code) && exact(value, [...keys, 'code'])) return value as TextEvent

@@ -1,0 +1,71 @@
+{
+  "frozenAt": "2026-10-04T14:49:08.1134503+07:00",
+  "rule": "No production/prompt/test-case changes from new holdout in this round",
+  "prompt": "Original after one failed candidate",
+  "hashes": [
+    {
+      "file": "backend/provider.ts",
+      "sha256": "8925EF77A8CDCD13543F59F34C60AE751B304E59FD44F32CE7133E7037D11E2C"
+    },
+    {
+      "file": "backend/requestIntent.ts",
+      "sha256": "0E95EE45F2D2533E3AC79AB9D4B9211D408426F462CA66EACB99F7E5E2FFFF97"
+    },
+    {
+      "file": "backend/requestPlan.ts",
+      "sha256": "0F601F56DAC74639708F999A4B3C9747CECDEE446CC35F282040908840B0B358"
+    },
+    {
+      "file": "backend/liveReply.ts",
+      "sha256": "1CDD3AE28C266A254599D2319A16319FBB8DE418CAE36FEEC4B31C86B567C218"
+    },
+    {
+      "file": "backend/textUtilities.ts",
+      "sha256": "707748C18A36572064F3AC2638BEA2F26B1A382931F1DCBC71AFB0DF1E44EC19"
+    },
+    {
+      "file": "backend/server.ts",
+      "sha256": "F71B18FD543F215AC9C0D4B4B028A2BCF4CFEC77258D017C62FEB9A96D5EAE41"
+    },
+    {
+      "file": "backend/ollama.ts",
+      "sha256": "02E30CAD1168D3B4A5383937593EC5ACC145DFAA6560C644EB9F71CF03DA775C"
+    },
+    {
+      "file": "shared/capabilities.ts",
+      "sha256": "B7F5FAA1A1AD27F8F1247DD8DE10499096839E4DE13791A269145E163A312A18"
+    },
+    {
+      "file": "shared/chatProtocol.ts",
+      "sha256": "3DE1711FA06958440DAB19EDC09BB3C6108BF236504BC72B8011B101C79FB241"
+    },
+    {
+      "file": "src/workspace/Chat.tsx",
+      "sha256": "78BA7F2028602FE32A5AC74962BDE30BBFFECE9786BDC8B1D45CA10C28E846C8"
+    },
+    {
+      "file": "src/workspace/store.ts",
+      "sha256": "436BAB0178C1AF668C771637722B0F072079A9FA58EF89913A11CA420D71461E"
+    },
+    {
+      "file": "src/workspace/types.ts",
+      "sha256": "C020EBC3D463E16A73AE06026849D624D1EB29AD4B472BB15216FFC7804BD8E0"
+    },
+    {
+      "file": "src/workspace/transport.ts",
+      "sha256": "F2E2F88EAD215B00475F38BB85818739D3C51AFDA952FED0AAAE60B5CB6E44FD"
+    },
+    {
+      "file": "scripts/mixed-cases.json",
+      "sha256": "2AFFE14DA8C47284FA4FDE9A3B9936F6AC128E5A1A90713EB6C50FA6AEC29492"
+    },
+    {
+      "file": "tests/mixed.spec.ts",
+      "sha256": "AE8DFAA13FE49CC5092AA189EF3076DB8924BD73F9FD341D1B2E03620CE02C95"
+    },
+    {
+      "file": "tests/intent.spec.ts",
+      "sha256": "D90D4C8821CDDCA5C37940A1E6A364A825F8A5A70A5F42BC7147B348EC7BA49D"
+    }
+  ]
+}

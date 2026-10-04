@@ -27,7 +27,7 @@ export type AgentAttachment = { kind: 'link'; name: string; url: string } | { ki
 export interface AgentMessage { id: string; role: 'user' | 'assistant'; text: string; attachments: AgentAttachment[]; responseStatus?: ResponseStatus }
 export interface AgentRequest { sessionId: string; operationId: string; messages: AgentMessage[]; mode: Mode; source: ScreenSource | null }
 export type AgentEvent = { sessionId: string; operationId: string } & (
-  { type: 'delta'; text: string } | { type: 'action'; proposal: ActionProposal } | { type: 'done'; source?: ReplySource } | { type: 'cancelled' } | { type: 'error'; message: string }
+  { type: 'delta'; text: string; source?: ReplySource } | { type: 'action'; proposal: ActionProposal } | { type: 'done'; source?: ReplySource } | { type: 'cancelled' } | { type: 'error'; message: string }
 )
 export interface ScreenSourceAdapter { select(kind: SourceKind, signal: AbortSignal): Promise<ScreenSource> }
 export interface AgentAdapter { respond(request: AgentRequest, signal: AbortSignal): AsyncIterable<AgentEvent> }

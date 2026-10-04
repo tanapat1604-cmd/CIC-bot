@@ -1,0 +1,52 @@
+{
+  "providerSHA256": "8925EF77A8CDCD13543F59F34C60AE751B304E59FD44F32CE7133E7037D11E2C",
+  "chosenPrompt": "original e6a439b",
+  "candidateErrors": [
+    {
+      "id": "d-draft-send",
+      "turn": 0,
+      "target": true,
+      "error": "output_limit"
+    },
+    {
+      "id": "d-shift",
+      "turn": 0,
+      "target": false,
+      "error": "output_limit"
+    },
+    {
+      "id": "d-model-claim",
+      "turn": 0,
+      "target": true,
+      "error": "output_limit"
+    },
+    {
+      "id": "reg-h-later-text",
+      "turn": 0,
+      "target": true,
+      "error": "output_limit"
+    },
+    {
+      "id": "reg-h-button-text",
+      "turn": 0,
+      "target": true,
+      "error": "output_limit"
+    },
+    {
+      "id": "reg-h-follow-text",
+      "turn": 0,
+      "target": false,
+      "error": "output_limit"
+    },
+    {
+      "id": "reg-h-mixed-act",
+      "turn": 0,
+      "target": true,
+      "error": "output_limit"
+    }
+  ],
+  "systemErrors": [],
+  "candidateRejected": true,
+  "reason": "Single candidate adds terminal output_limit errors; no additional candidate or output-budget changes",
+  "decidedAt": "2026-10-04T14:49:03.4371049+07:00"
+}

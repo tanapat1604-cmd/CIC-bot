@@ -1,5 +1,10 @@
 # Ollama local validation — updated 2026-10-04
 
+## Latest: mixed requests and long context (2026-10-04)
+
+See [full trial](validation/2026-10-04-mixed/RESULTS.md). Keep0.6b/original prompt; one candidate rejected after7output_limit errors. New routing leaks7/8→0/8; systemfalse refusal remains1/5. Actual mixed tools3/3 correct; modeldrafts, role/correction and capability claims still unreliable. Rawmodel/delivered replies preserved; no response filter or newexternalaction. CI/restoration checkpoint: WORK-PROGRESS.md.
+
+
 ## Latest: intent routing and false refusals (2026-10-04)
 
 See [new intent trial](validation/2026-10-04-intent/RESULTS.md). Same0.6b/prompt/settings;1.7b retained/no downloads. Frozen new contrast pairs: unsupported routing misses11/13→0/13, false system refusals2/13→0/13, ambiguous system clarification0/1→1/1. Model false refusals remain3/13; first-person capability claim remains. No aggregate Thai readiness claim and no retuning from holdout. Calculator/time provenance unchanged. Related48/48 and actual0.6b browser flows PASS. Final restoration/CI checkpoint: WORK-PROGRESS.md.
