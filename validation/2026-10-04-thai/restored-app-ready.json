@@ -1,0 +1,1 @@
+{"url":"http://127.0.0.1:5173/CIC-bot/#/app","health":{"version":1,"ready":true,"kind":"live","capabilities":["text-stream"],"model":"qwen3:0.6b","location":"local"},"readyInApp":true,"errors":[]}

@@ -1,0 +1,41 @@
+{
+  "model": "qwen3:0.6b",
+  "actualReplies": [
+    "CCIC AI ในเครื่อง · qwen3:0.6bสวัสดี",
+    "CCIC AI ในเครื่อง · qwen3:0.6bสวัสดี",
+    "CCIC AI ในเครื่อง · qwen3:0.6b1. Write a simple program to add numbers.  \n2. Createหยุดกลางทาง · คำตอบนี้ยังไม่ครบ",
+    "CCIC AI ในเครื่อง · qwen3:0.6b1. บวก 2 บวก 3 เท่ากับเท่าไร? ตอบสั้น ๆ: 5"
+  ],
+  "stoppedUpstream": true,
+  "noDuplicateRetry": true,
+  "browserCallsOllamaDirectly": false,
+  "retryCompleted": true,
+  "logs": [
+    {
+      "requestId": "d60c8ed2-2668-48d6-863a-dd263e463e6f",
+      "status": "done",
+      "durationMs": 3885
+    },
+    {
+      "requestId": "80cdff1a-4a41-4f74-8e84-a0276a90856d",
+      "status": "done",
+      "durationMs": 578
+    },
+    {
+      "requestId": "f5ff96f2-45de-4000-a62b-603a01b128e6",
+      "status": "cancelled",
+      "durationMs": 1095
+    },
+    {
+      "requestId": "50c5e412-a50a-45fc-9820-71840c9e6528",
+      "status": "unavailable",
+      "durationMs": 15
+    },
+    {
+      "requestId": "606f2661-327e-4e1d-99b0-24c5cf749c26",
+      "status": "done",
+      "durationMs": 1936
+    }
+  ],
+  "errors": []
+}

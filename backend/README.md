@@ -43,6 +43,10 @@ Only public `VITE_BACKEND_URL` belongs in the root `.env.local`, if overriding t
 - `CHAT_ENABLED=false` disables chat on next server start. Stop the process to stop usage immediately. The 100-call counter is an additional local test circuit breaker, **not monetary cost accounting**; restarts reset all counters. Before any paid/public provider, add persistent user/service quotas and a provider spend cap/kill switch appropriate to that service.
 - Logs contain only generated request ID, status and elapsed milliseconds. Do not log prompts, cookies, keys or raw provider errors. User-facing errors are allowlisted Thai messages.
 
+## Latest local model trial (2026-10-04)
+
+Authorized 1.7b trial is complete; both models remain installed, default stays 0.6b. 1.7b was usable with CPU/RAM after closing apps but failed correctness/capability gates and real-app retry completion. Neither model is accepted for general Thai/personal-assistant reliability. Frozen questions, raw responses, measured times/RAM and evaluation are in [RESULTS.md](../validation/2026-10-04-thai/RESULTS.md). Next focus selected by the user is truthful capabilities and correctness before personality, still text-only/local.
+
 ## Remaining quality work / 3C
 
 3B connectivity is verified with Ollama 0.34.4/qwen3:0.6b on the user's machine and rechecked on 0.35.1; general Thai quality is not accepted yet. No additional model downloads without the user's choice/authorization. Swap the installed model via server config without changing frontend API calls, then restart backend and begin a new chat. Ollama API details were checked against the [v0.34.4 documentation](https://github.com/ollama/ollama/blob/v0.34.4/docs/api.md) and [types](https://github.com/ollama/ollama/blob/v0.34.4/api/types.go), then the [v0.35.1 types](https://github.com/ollama/ollama/blob/v0.35.1/api/types.go) on 2026-10-04 before retesting.

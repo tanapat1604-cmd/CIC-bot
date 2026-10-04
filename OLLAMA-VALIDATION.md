@@ -1,4 +1,29 @@
-# Ollama local validation — 2026-09-29 (recheck 2026-10-04)
+# Ollama local validation — updated 2026-10-04
+
+**ผลรอบล่าสุด: คง qwen3:0.6b; ภาษาไทยทั่วไป/ผู้ช่วยส่วนตัวที่เชื่อถือได้ยังไม่ผ่านทั้ง0.6bและ1.7b.** ดาวน์โหลดเฉพาะ1.7bตามอนุญาตหลังผู้ใช้ปิดโปรแกรมและตรวจRAMว่าง2.42GiB เก็บ0.6bไว้; backendยังในเครื่องและPagesยังdemo
+
+รายงานครบพร้อมคำถาม/คำตอบจริง คะแนนสองรอบ เวลา RAMที่วัดได้ และข้อจำกัด: [RESULTS.md](validation/2026-10-04-thai/RESULTS.md). แผนและเกณฑ์ถูกตรึงก่อนผล: [PLAN.md](validation/2026-10-04-thai/PLAN.md); raw60requests: [comparison.json](validation/2026-10-04-thai/comparison.json); [RAM samples](validation/2026-10-04-thai/memory-samples.json); [rubric review](validation/2026-10-04-thai/review.json)
+
+| ผลสองรอบ | 0.6b | 1.7b |
+| --- | --- | --- |
+| ผ่านrubric ต่อรอบ | 5/14 | 5/14 |
+| ผ่านคำถามใหม่ต่อรอบ | 2/8 | 2/8 |
+| warm median / p95 | 1.895s / 4.927s | 2.958s / 7.147s |
+| warm sampled peak Ollama+runner WS | 830.6MiB | 1631.8MiB |
+| warm sampled RAMว่างต่ำสุด | 1404.0MiB | 879.7MiB |
+| หน้าแอป smokeที่ตรวจcompletionจริง | PASS | FAIL: retry output_limit |
+
+1.7bรันได้ด้วยCPUและผ่านเกณฑ์ทรัพยากรในsessionนี้ แต่เงินทอนตอบ20แทน40 เวลา16:00แทน15:05 และทั้งคู่รับปากตั้งเตือนที่CICทำไม่ได้ จึงไม่เปลี่ยนdefault. การผ่านecho/2+3/ปฏิเสธหน้าจอไม่เพียงพอรับรองไทยทั่วไป; followupมีสรรพนาม/บทบาทผิด
+
+RAMสุ่มวัดจากWindowsรวมllama-serverที่ตรวจpath; samplerเดิมตกหล่นrunnerจึงเก็บpilotแต่ไม่ใช้ตัดสิน. Actual interval median978ms/p953412ms/max4855ms, 14/60คำขอสั้นไม่มีsampleในช่วงตอบ (null), peakเป็นค่าที่สุ่มพบ ไม่อ้างRAMสูงสุดทั้งหมดหรือpaging-free. คำตอบซ้ำseed42เหมือนกันไม่ใช่สถิติอิสระ
+
+Buildfrontend/backend+lintผ่าน ชุดที่เกี่ยวข้อง42/42ผ่าน. พบsmokeเดิมรายงานผ่าน1.7bผิดจากassertionไม่ครบ จึงแก้ให้requiredone/noalert/noincomplete แล้วรันซ้ำ: 0.6bPASS,1.7bFAILตามจริง. รายละเอียด[verification](validation/2026-10-04-thai/RESULTS.md#หน้าแอปจริงและการตรวจโค้ด). ไม่มีfrontendproductionเปลี่ยน ไม่มีการแก้encodingหรือเผยแพร่backend
+
+ขั้นถัดไปตามผู้ใช้เลือก: เน้นความถูกต้องและไม่อ้างสิ่งที่ทำไม่ได้ก่อนบุคลิกจาวิส แยกdevelopmentset/holdoutใหม่ ใช้ชุดนี้เป็นregressionเท่านั้น ยังไม่ดาวน์โหลดโมเดลอื่นและยังไม่เพิ่มscreen/control/publicbackend
+
+## ประวัติขั้น3B — ผลเดิม2026-09-29และตรวจซ้ำ2026-10-04ก่อนทดลอง1.7b
+
+ข้อความเรื่องไม่ดาวน์โหลดในส่วนประวัติด้านล่างหมายถึงรอบก่อน ไม่ใช่สถานะรอบล่าสุด
 
 ขั้น 3B **เชื่อมโมเดลจริงในเครื่องผ่านแล้ว** แต่ **คุณภาพภาษาไทยทั่วไปยังไม่ผ่านการยอมรับ** ใช้ทดลองข้อความสั้นได้ ไม่ใช่หลักฐานว่าเป็นผู้ช่วยที่เชื่อถือได้ทุกเรื่อง ไม่มีการดาวน์โหลดโมเดลหรือเปิด backend สาธารณะ
 

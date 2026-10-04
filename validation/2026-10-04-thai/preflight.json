@@ -1,0 +1,61 @@
+{
+  "measuredAt": "2026-10-04T12:56:56.1659324+07:00",
+  "cpu": {
+    "Name": "Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz"
+  },
+  "os": {
+    "TotalVisibleMemorySize": 8270012,
+    "FreePhysicalMemory": 2630432,
+    "TotalVirtualMemorySize": 21398020,
+    "FreeVirtualMemory": 8790432
+  },
+  "version": {
+    "version": "0.35.1"
+  },
+  "disks": [
+    {
+      "Name": "C",
+      "Free": 201751404544
+    },
+    {
+      "Name": "D",
+      "Free": 996483444736
+    },
+    {
+      "Name": "E",
+      "Free": null
+    },
+    {
+      "Name": "Temp",
+      "Free": 201751404544
+    }
+  ],
+  "modelsBefore": {
+    "models": [
+      {
+        "name": "qwen3:0.6b",
+        "model": "qwen3:0.6b",
+        "modified_at": "2026-09-29T13:48:47.9299448+07:00",
+        "size": 522653767,
+        "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "751.63M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 1024
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "thinking"
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,1169 @@
+{
+  "samples": [
+    {
+      "ollamaWorkingSetBytes": 33210368,
+      "freeVirtualBytes": 8915447808,
+      "timestamp": 1791093572682,
+      "freePhysicalBytes": 2609106944,
+      "ollamaPrivateBytes": 118202368,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33210368,
+      "freeVirtualBytes": 8916144128,
+      "timestamp": 1791093573371,
+      "freePhysicalBytes": 2603520000,
+      "ollamaPrivateBytes": 118202368,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33480704,
+      "freeVirtualBytes": 8908713984,
+      "timestamp": 1791093573978,
+      "freePhysicalBytes": 2590806016,
+      "ollamaPrivateBytes": 118202368,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34037760,
+      "freeVirtualBytes": 8852127744,
+      "timestamp": 1791093574554,
+      "freePhysicalBytes": 2532659200,
+      "ollamaPrivateBytes": 117932032,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34054144,
+      "freeVirtualBytes": 8331362304,
+      "timestamp": 1791093575140,
+      "freePhysicalBytes": 2462965760,
+      "ollamaPrivateBytes": 117932032,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34054144,
+      "freeVirtualBytes": 8334958592,
+      "timestamp": 1791093575771,
+      "freePhysicalBytes": 2058502144,
+      "ollamaPrivateBytes": 117932032,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33320960,
+      "freeVirtualBytes": 8028225536,
+      "timestamp": 1791093577100,
+      "freePhysicalBytes": 1862074368,
+      "ollamaPrivateBytes": 116883456,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33341440,
+      "freeVirtualBytes": 8027832320,
+      "timestamp": 1791093577667,
+      "freePhysicalBytes": 1855418368,
+      "ollamaPrivateBytes": 116883456,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33357824,
+      "freeVirtualBytes": 8026644480,
+      "timestamp": 1791093578337,
+      "freePhysicalBytes": 1854455808,
+      "ollamaPrivateBytes": 116883456,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33357824,
+      "freeVirtualBytes": 8026984448,
+      "timestamp": 1791093578911,
+      "freePhysicalBytes": 1851559936,
+      "ollamaPrivateBytes": 116883456,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33452032,
+      "freeVirtualBytes": 8025968640,
+      "timestamp": 1791093579654,
+      "freePhysicalBytes": 1854058496,
+      "ollamaPrivateBytes": 116883456,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33452032,
+      "freeVirtualBytes": 8029839360,
+      "timestamp": 1791093580222,
+      "freePhysicalBytes": 1851031552,
+      "ollamaPrivateBytes": 116883456,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33488896,
+      "freeVirtualBytes": 8008155136,
+      "timestamp": 1791093581410,
+      "freePhysicalBytes": 1842749440,
+      "ollamaPrivateBytes": 116916224,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33488896,
+      "freeVirtualBytes": 8030216192,
+      "timestamp": 1791093582600,
+      "freePhysicalBytes": 1850286080,
+      "ollamaPrivateBytes": 116916224,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33488896,
+      "freeVirtualBytes": 8028377088,
+      "timestamp": 1791093583180,
+      "freePhysicalBytes": 1840078848,
+      "ollamaPrivateBytes": 116916224,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33931264,
+      "freeVirtualBytes": 8030777344,
+      "timestamp": 1791093583988,
+      "freePhysicalBytes": 1849376768,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33931264,
+      "freeVirtualBytes": 8031035392,
+      "timestamp": 1791093585055,
+      "freePhysicalBytes": 1850576896,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33931264,
+      "freeVirtualBytes": 8028598272,
+      "timestamp": 1791093585850,
+      "freePhysicalBytes": 1874997248,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33931264,
+      "freeVirtualBytes": 8029405184,
+      "timestamp": 1791093586922,
+      "freePhysicalBytes": 1879601152,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33931264,
+      "freeVirtualBytes": 8025083904,
+      "timestamp": 1791093587520,
+      "freePhysicalBytes": 1870082048,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33984512,
+      "freeVirtualBytes": 8033796096,
+      "timestamp": 1791093588335,
+      "freePhysicalBytes": 1874706432,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33984512,
+      "freeVirtualBytes": 8034267136,
+      "timestamp": 1791093589580,
+      "freePhysicalBytes": 1876959232,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33984512,
+      "freeVirtualBytes": 7993462784,
+      "timestamp": 1791093591077,
+      "freePhysicalBytes": 1856708608,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33984512,
+      "freeVirtualBytes": 8039116800,
+      "timestamp": 1791093592089,
+      "freePhysicalBytes": 1886621696,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 33988608,
+      "freeVirtualBytes": 8008359936,
+      "timestamp": 1791093593129,
+      "freePhysicalBytes": 1866674176,
+      "ollamaPrivateBytes": 117415936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34045952,
+      "freeVirtualBytes": 8037601280,
+      "timestamp": 1791093594269,
+      "freePhysicalBytes": 1874554880,
+      "ollamaPrivateBytes": 117440512,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34062336,
+      "freeVirtualBytes": 8037732352,
+      "timestamp": 1791093594964,
+      "freePhysicalBytes": 1879564288,
+      "ollamaPrivateBytes": 117440512,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34062336,
+      "freeVirtualBytes": 8021241856,
+      "timestamp": 1791093595985,
+      "freePhysicalBytes": 1860857856,
+      "ollamaPrivateBytes": 117440512,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34062336,
+      "freeVirtualBytes": 8020299776,
+      "timestamp": 1791093596757,
+      "freePhysicalBytes": 1862844416,
+      "ollamaPrivateBytes": 117440512,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34062336,
+      "freeVirtualBytes": 8018534400,
+      "timestamp": 1791093597671,
+      "freePhysicalBytes": 1858203648,
+      "ollamaPrivateBytes": 117440512,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34095104,
+      "freeVirtualBytes": 7985274880,
+      "timestamp": 1791093598280,
+      "freePhysicalBytes": 1843871744,
+      "ollamaPrivateBytes": 117473280,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34615296,
+      "freeVirtualBytes": 8017571840,
+      "timestamp": 1791093599087,
+      "freePhysicalBytes": 1852628992,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34615296,
+      "freeVirtualBytes": 8052355072,
+      "timestamp": 1791093599743,
+      "freePhysicalBytes": 1885908992,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34615296,
+      "freeVirtualBytes": 8049643520,
+      "timestamp": 1791093600497,
+      "freePhysicalBytes": 1886220288,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34615296,
+      "freeVirtualBytes": 8049590272,
+      "timestamp": 1791093601068,
+      "freePhysicalBytes": 1884700672,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34627584,
+      "freeVirtualBytes": 8052264960,
+      "timestamp": 1791093601875,
+      "freePhysicalBytes": 1885941760,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34627584,
+      "freeVirtualBytes": 8030396416,
+      "timestamp": 1791093602847,
+      "freePhysicalBytes": 1867870208,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34627584,
+      "freeVirtualBytes": 7975251968,
+      "timestamp": 1791093603821,
+      "freePhysicalBytes": 1832796160,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34635776,
+      "freeVirtualBytes": 8057032704,
+      "timestamp": 1791093604722,
+      "freePhysicalBytes": 1879642112,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34635776,
+      "freeVirtualBytes": 8064012288,
+      "timestamp": 1791093605398,
+      "freePhysicalBytes": 1879896064,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34635776,
+      "freeVirtualBytes": 8063602688,
+      "timestamp": 1791093606081,
+      "freePhysicalBytes": 1880588288,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34635776,
+      "freeVirtualBytes": 8059772928,
+      "timestamp": 1791093606732,
+      "freePhysicalBytes": 1882718208,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34635776,
+      "freeVirtualBytes": 8059887616,
+      "timestamp": 1791093607404,
+      "freePhysicalBytes": 1880506368,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34643968,
+      "freeVirtualBytes": 8064020480,
+      "timestamp": 1791093607994,
+      "freePhysicalBytes": 1880215552,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34643968,
+      "freeVirtualBytes": 8063856640,
+      "timestamp": 1791093608555,
+      "freePhysicalBytes": 1880379392,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34656256,
+      "freeVirtualBytes": 8046178304,
+      "timestamp": 1791093609829,
+      "freePhysicalBytes": 1870155776,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34656256,
+      "freeVirtualBytes": 8065310720,
+      "timestamp": 1791093610573,
+      "freePhysicalBytes": 1884012544,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34656256,
+      "freeVirtualBytes": 8067530752,
+      "timestamp": 1791093611147,
+      "freePhysicalBytes": 1880350720,
+      "ollamaPrivateBytes": 117981184,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34869248,
+      "freeVirtualBytes": 8065388544,
+      "timestamp": 1791093611962,
+      "freePhysicalBytes": 1884766208,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34869248,
+      "freeVirtualBytes": 8066199552,
+      "timestamp": 1791093612689,
+      "freePhysicalBytes": 1882103808,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34869248,
+      "freeVirtualBytes": 8035442688,
+      "timestamp": 1791093613260,
+      "freePhysicalBytes": 1857437696,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8037302272,
+      "timestamp": 1791093614200,
+      "freePhysicalBytes": 1862733824,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8067612672,
+      "timestamp": 1791093614899,
+      "freePhysicalBytes": 1881137152,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8036683776,
+      "timestamp": 1791093615672,
+      "freePhysicalBytes": 1878933504,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8066363392,
+      "timestamp": 1791093616240,
+      "freePhysicalBytes": 1890185216,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8032227328,
+      "timestamp": 1791093617054,
+      "freePhysicalBytes": 1863155712,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8034230272,
+      "timestamp": 1791093617621,
+      "freePhysicalBytes": 1855373312,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8033366016,
+      "timestamp": 1791093618428,
+      "freePhysicalBytes": 1860395008,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8035815424,
+      "timestamp": 1791093619348,
+      "freePhysicalBytes": 1858568192,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34873344,
+      "freeVirtualBytes": 8035356672,
+      "timestamp": 1791093619921,
+      "freePhysicalBytes": 1855533056,
+      "ollamaPrivateBytes": 118448128,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 37523456,
+      "freeVirtualBytes": 8871698432,
+      "timestamp": 1791093621010,
+      "freePhysicalBytes": 2666639360,
+      "ollamaPrivateBytes": 121303040,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 37527552,
+      "freeVirtualBytes": 8815693824,
+      "timestamp": 1791093621653,
+      "freePhysicalBytes": 2600185856,
+      "ollamaPrivateBytes": 121303040,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 37531648,
+      "freeVirtualBytes": 7505670144,
+      "timestamp": 1791093622245,
+      "freePhysicalBytes": 2314162176,
+      "ollamaPrivateBytes": 121303040,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 37531648,
+      "freeVirtualBytes": 7467839488,
+      "timestamp": 1791093622843,
+      "freePhysicalBytes": 1761153024,
+      "ollamaPrivateBytes": 121303040,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 37531648,
+      "freeVirtualBytes": 7522078720,
+      "timestamp": 1791093623433,
+      "freePhysicalBytes": 1295065088,
+      "ollamaPrivateBytes": 121303040,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 37531648,
+      "freeVirtualBytes": 7193997312,
+      "timestamp": 1791093624210,
+      "freePhysicalBytes": 1098416128,
+      "ollamaPrivateBytes": 121303040,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 37593088,
+      "freeVirtualBytes": 7145254912,
+      "timestamp": 1791093627441,
+      "freePhysicalBytes": 1056399360,
+      "ollamaPrivateBytes": 121376768,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34131968,
+      "freeVirtualBytes": 7183175680,
+      "timestamp": 1791093628588,
+      "freePhysicalBytes": 1085952000,
+      "ollamaPrivateBytes": 117895168,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34131968,
+      "freeVirtualBytes": 7185346560,
+      "timestamp": 1791093629166,
+      "freePhysicalBytes": 1080287232,
+      "ollamaPrivateBytes": 117895168,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34267136,
+      "freeVirtualBytes": 7184625664,
+      "timestamp": 1791093630162,
+      "freePhysicalBytes": 1085165568,
+      "ollamaPrivateBytes": 118018048,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34275328,
+      "freeVirtualBytes": 7183507456,
+      "timestamp": 1791093631012,
+      "freePhysicalBytes": 1099243520,
+      "ollamaPrivateBytes": 118026240,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34275328,
+      "freeVirtualBytes": 7188029440,
+      "timestamp": 1791093631603,
+      "freePhysicalBytes": 1096097792,
+      "ollamaPrivateBytes": 118026240,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34246656,
+      "freeVirtualBytes": 7198658560,
+      "timestamp": 1791093633731,
+      "freePhysicalBytes": 1115127808,
+      "ollamaPrivateBytes": 117927936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34246656,
+      "freeVirtualBytes": 7178891264,
+      "timestamp": 1791093636177,
+      "freePhysicalBytes": 1114157056,
+      "ollamaPrivateBytes": 117927936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34246656,
+      "freeVirtualBytes": 7183601664,
+      "timestamp": 1791093636805,
+      "freePhysicalBytes": 1096462336,
+      "ollamaPrivateBytes": 117927936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34250752,
+      "freeVirtualBytes": 7173922816,
+      "timestamp": 1791093641390,
+      "freePhysicalBytes": 1099325440,
+      "ollamaPrivateBytes": 117927936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34250752,
+      "freeVirtualBytes": 7144599552,
+      "timestamp": 1791093643063,
+      "freePhysicalBytes": 1073950720,
+      "ollamaPrivateBytes": 117927936,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34291712,
+      "freeVirtualBytes": 7173365760,
+      "timestamp": 1791093643639,
+      "freePhysicalBytes": 1077252096,
+      "ollamaPrivateBytes": 117977088,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34365440,
+      "freeVirtualBytes": 7178657792,
+      "timestamp": 1791093645390,
+      "freePhysicalBytes": 1088499712,
+      "ollamaPrivateBytes": 118059008,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34365440,
+      "freeVirtualBytes": 7182802944,
+      "timestamp": 1791093646817,
+      "freePhysicalBytes": 1102168064,
+      "ollamaPrivateBytes": 118059008,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34365440,
+      "freeVirtualBytes": 7190016000,
+      "timestamp": 1791093648008,
+      "freePhysicalBytes": 1105133568,
+      "ollamaPrivateBytes": 118059008,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34365440,
+      "freeVirtualBytes": 7163215872,
+      "timestamp": 1791093649812,
+      "freePhysicalBytes": 1086570496,
+      "ollamaPrivateBytes": 118059008,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34365440,
+      "freeVirtualBytes": 7154929664,
+      "timestamp": 1791093650735,
+      "freePhysicalBytes": 1084395520,
+      "ollamaPrivateBytes": 118059008,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34406400,
+      "freeVirtualBytes": 7184945152,
+      "timestamp": 1791093651354,
+      "freePhysicalBytes": 1087627264,
+      "ollamaPrivateBytes": 118108160,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34488320,
+      "freeVirtualBytes": 7190929408,
+      "timestamp": 1791093653231,
+      "freePhysicalBytes": 1098534912,
+      "ollamaPrivateBytes": 118190080,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34488320,
+      "freeVirtualBytes": 7193681920,
+      "timestamp": 1791093654830,
+      "freePhysicalBytes": 1100873728,
+      "ollamaPrivateBytes": 118190080,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34488320,
+      "freeVirtualBytes": 7165206528,
+      "timestamp": 1791093658189,
+      "freePhysicalBytes": 1085915136,
+      "ollamaPrivateBytes": 118190080,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34488320,
+      "freeVirtualBytes": 7196581888,
+      "timestamp": 1791093658772,
+      "freePhysicalBytes": 1090211840,
+      "ollamaPrivateBytes": 118190080,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34099200,
+      "freeVirtualBytes": 7199117312,
+      "timestamp": 1791093660141,
+      "freePhysicalBytes": 1096105984,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34099200,
+      "freeVirtualBytes": 7196233728,
+      "timestamp": 1791093660708,
+      "freePhysicalBytes": 1100611584,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34099200,
+      "freeVirtualBytes": 7198887936,
+      "timestamp": 1791093662531,
+      "freePhysicalBytes": 1105084416,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34099200,
+      "freeVirtualBytes": 7166701568,
+      "timestamp": 1791093663133,
+      "freePhysicalBytes": 1085116416,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34099200,
+      "freeVirtualBytes": 7136768000,
+      "timestamp": 1791093665450,
+      "freePhysicalBytes": 1061314560,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34099200,
+      "freeVirtualBytes": 7168839680,
+      "timestamp": 1791093666120,
+      "freePhysicalBytes": 1064820736,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34107392,
+      "freeVirtualBytes": 7174443008,
+      "timestamp": 1791093667870,
+      "freePhysicalBytes": 1073459200,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34107392,
+      "freeVirtualBytes": 7175409664,
+      "timestamp": 1791093669151,
+      "freePhysicalBytes": 1076477952,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    },
+    {
+      "ollamaWorkingSetBytes": 34107392,
+      "freeVirtualBytes": 7178797056,
+      "timestamp": 1791093669721,
+      "freePhysicalBytes": 1068621824,
+      "ollamaPrivateBytes": 117772288,
+      "pids": [
+        22856,
+        11016
+      ],
+      "totalPhysicalBytes": 8468492288
+    }
+  ],
+  "samplerError": ""
+}

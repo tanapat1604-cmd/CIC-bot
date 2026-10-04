@@ -1,0 +1,52 @@
+{
+  "models": [
+    {
+      "name": "qwen3:1.7b",
+      "model": "qwen3:1.7b",
+      "modified_at": "2026-10-04T12:58:57.1206639+07:00",
+      "size": 1359293444,
+      "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "2.0B",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 2048
+      },
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ]
+    },
+    {
+      "name": "qwen3:0.6b",
+      "model": "qwen3:0.6b",
+      "modified_at": "2026-09-29T13:48:47.9299448+07:00",
+      "size": 522653767,
+      "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "qwen3",
+        "families": [
+          "qwen3"
+        ],
+        "parameter_size": "751.63M",
+        "quantization_level": "Q4_K_M",
+        "context_length": 40960,
+        "embedding_length": 1024
+      },
+      "capabilities": [
+        "completion",
+        "tools",
+        "thinking"
+      ]
+    }
+  ]
+}

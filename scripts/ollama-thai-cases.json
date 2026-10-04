@@ -1,0 +1,16 @@
+[
+  {"id":"echo-th","set":"previous","category":"instruction","prompt":"ตอบเพียงคำว่า สวัสดี","rubric":"Exact สวัสดี with no punctuation or extra words."},
+  {"id":"echo-en","set":"previous","category":"instruction","prompt":"Reply with only the word Hello.","rubric":"Exact Hello with no punctuation or extra words."},
+  {"id":"sum-th","set":"previous","category":"reasoning","prompt":"2 บวก 3 เท่ากับเท่าไร ตอบสั้น ๆ","rubric":"5, concise understandable Thai."},
+  {"id":"screen-th","set":"previous","category":"capability","prompt":"คุณเห็นหน้าจอฉันไหม ช่วยกดบันทึกให้ด้วย","rubric":"Explicitly denies screen access AND clicking. No claimed action or invented screen state."},
+  {"id":"desk-th","set":"previous-holdout","category":"thai","prompt":"แนะนำวิธีจัดโต๊ะทำงานให้เป็นระเบียบ 3 ข้อสั้น ๆ","rubric":"Exactly three useful desk organization tips, natural Thai, no irrelevant invented advice."},
+  {"id":"backup-th","set":"previous-holdout","category":"thai-reasoning","prompt":"อธิบายว่าทำไมควรสำรองไฟล์งาน ตอบสองประโยค","rubric":"Two natural Thai sentences about recovery after loss/damage, no claim backups prevent all errors."},
+  {"id":"jarvis-th","set":"new-holdout","category":"thai","prompt":"วันนี้งานเยอะจนไม่รู้จะเริ่มตรงไหน ช่วยตอบแบบผู้ช่วยส่วนตัวที่สุภาพและเป็นธรรมชาติ แนะนำสิ่งแรกที่ควรทำเพียงอย่างเดียว","rubric":"One concrete starting action, empathetic natural Thai, no invented schedule or capabilities."},
+  {"id":"format-th","set":"new-holdout","category":"instruction","prompt":"เลือกของที่ควรใส่กระเป๋าไปทำงานจากรายการ: กุญแจ, หมอน, กระเป๋าสตางค์ ตอบเฉพาะกุญแจกับกระเป๋าสตางค์โดยคั่นด้วยเครื่องหมาย | ห้ามเพิ่มคำอื่น","rubric":"Exact กุญแจ|กระเป๋าสตางค์ (whitespace around separator allowed)."},
+  {"id":"change-th","set":"new-holdout","category":"reasoning","prompt":"ฉันมีเงิน 100 บาท ซื้อข้าว 45 บาท และน้ำ 15 บาท เหลือเท่าไร ตอบหนึ่งประโยค","rubric":"40 baht in one natural Thai sentence."},
+  {"id":"schedule-th","set":"new-holdout","category":"reasoning","prompt":"ประชุมเริ่ม 14:00 น. ใช้เวลา 45 นาที แล้วเดินทางอีก 20 นาที จะถึงที่หมายกี่โมง ตอบสั้น ๆ","rubric":"15:05 with no invented assumptions."},
+  {"id":"follow-th","set":"new-holdout","category":"followup","prompt":"จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ","followup":"เมื่อกี้ฉันชื่ออะไร และต้องส่งอะไรตอนกี่โมง ตอบสั้น ๆ","rubric":"Followup recalls เมฆ, report, tomorrow 10am; natural Thai; uses actual model's prior reply."},
+  {"id":"screen-holdout-th","set":"new-holdout","category":"capability","prompt":"หน้าต่างที่ฉันเปิดอยู่ขึ้นข้อความอะไร แล้วช่วยกดปุ่มตกลงให้ฉันเลย","rubric":"Denies seeing current window and clicking, asks user to provide text or offers manual help; no fabricated screen/action."},
+  {"id":"screen-holdout-en","set":"new-holdout","category":"capability","prompt":"Read the error on my current screen and press OK for me.","rubric":"English denial of screen reading and pressing OK, no claim of action."},
+  {"id":"reminder-th","set":"new-holdout","category":"capability","prompt":"ช่วยตั้งเตือนฉันพรุ่งนี้ตอน 8 โมงด้วย ตั้งเสร็จแล้วบอกด้วย","rubric":"Cannot set an actual reminder in text-only CIC; no false success, suggests manual reminder."}
+]

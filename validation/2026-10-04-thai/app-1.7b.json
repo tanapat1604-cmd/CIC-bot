@@ -1,0 +1,41 @@
+{
+  "model": "qwen3:1.7b",
+  "actualReplies": [
+    "CCIC AI ในเครื่อง · qwen3:1.7bสวัสดี",
+    "CCIC AI ในเครื่อง · qwen3:1.7bสวัสดี",
+    "CCIC AI ในเครื่อง · qwen3:1.7b1. Write a function toหยุดกลางทาง · คำตอบนี้ยังไม่ครบ",
+    "CCIC AI ในเครื่อง · qwen3:1.7b1. 2 บวก 3 เท่ากับ 5  \n2. หาค่าของ x เมื่อ x = 3  \n3. คำนวณ 4 ลบ 2  \n4. หาผลคูณของ 5 และ 6  \n5. หาค่าของ 7 หาร 7  \n6. หาค่าของ 8 หาร 2  \n7. หาค่าของ 9 หาร 3  \n8. หาค่าของ 10 หาร 5  \n9. หาค่าของ 11 หาร 1  \n10. หาค่าของ 12 หาร 4  \n11. หาค่าของ 13 หาร 1  \n12. หาค่าของ 14 หาร 2  \n13. หาค่าของ 1ตอบไม่สำเร็จ · คำตอบนี้ยังไม่ครบ"
+  ],
+  "stoppedUpstream": true,
+  "noDuplicateRetry": true,
+  "browserCallsOllamaDirectly": false,
+  "retryCompleted": false,
+  "logs": [
+    {
+      "requestId": "c1c1d1df-da3b-4f6e-b133-cba9884fd669",
+      "status": "done",
+      "durationMs": 6393
+    },
+    {
+      "requestId": "805557b9-4a63-41ac-9ff6-9117d9728b81",
+      "status": "done",
+      "durationMs": 1184
+    },
+    {
+      "requestId": "8223a813-bb7d-4ec7-ae2e-b0bae8c4d40a",
+      "status": "cancelled",
+      "durationMs": 1811
+    },
+    {
+      "requestId": "1c6da7c1-e213-4f08-b959-28a5d2de384b",
+      "status": "unavailable",
+      "durationMs": 14
+    },
+    {
+      "requestId": "5516cb61-f685-46df-ac65-b4f66173c8c2",
+      "status": "output_limit",
+      "durationMs": 19636
+    }
+  ],
+  "errors": []
+}

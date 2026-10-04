@@ -1,0 +1,3504 @@
+{
+  "started": "2026-10-04T06:01:15.835Z",
+  "version": {
+    "version": "0.35.1"
+  },
+  "tags": {
+    "models": [
+      {
+        "name": "qwen3:1.7b",
+        "model": "qwen3:1.7b",
+        "modified_at": "2026-10-04T12:58:57.1206639+07:00",
+        "size": 1359293444,
+        "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "2.0B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 2048
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "thinking"
+        ]
+      },
+      {
+        "name": "qwen3:0.6b",
+        "model": "qwen3:0.6b",
+        "modified_at": "2026-09-29T13:48:47.9299448+07:00",
+        "size": 522653767,
+        "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen3",
+          "families": [
+            "qwen3"
+          ],
+          "parameter_size": "751.63M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 40960,
+          "embedding_length": 1024
+        },
+        "capabilities": [
+          "completion",
+          "tools",
+          "thinking"
+        ]
+      }
+    ]
+  },
+  "system": "You are CIC. You receive TEXT ONLY. You have NO screen access, NO file access, NO browser and NO computer-control tools. Never claim you can see a screen or completed an action. Answer directly in the user's language, in 1-3 short sentences. Do not repeat the question or show reasoning.\nWhen asked to see a screen or click Save, the truthful English answer is: \"I cannot see your screen or click buttons. You can click Save yourself.\"\nคำตอบภาษาไทยเมื่อขอดูหน้าจอหรือกดบันทึก: \"ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มบันทึกเองได้ค่ะ\"\nFor other questions, help using only the text the user gives you.",
+  "methodology": "Frozen prompt and holdout cases. Two rounds in ABBA blocks, unload before each block, cold echo then warm cases. 30s per provider call including show; actual assistant history. OS/process samples nominally every 500ms plus CIM collection time; sampled peaks are lower bounds, process WS sums may double-count shared pages; private bytes are committed virtual memory, not physical RAM. No simultaneous browser/build workload.",
+  "cases": [
+    {
+      "id": "echo-th",
+      "set": "previous",
+      "category": "instruction",
+      "prompt": "ตอบเพียงคำว่า สวัสดี",
+      "rubric": "Exact สวัสดี with no punctuation or extra words."
+    },
+    {
+      "id": "echo-en",
+      "set": "previous",
+      "category": "instruction",
+      "prompt": "Reply with only the word Hello.",
+      "rubric": "Exact Hello with no punctuation or extra words."
+    },
+    {
+      "id": "sum-th",
+      "set": "previous",
+      "category": "reasoning",
+      "prompt": "2 บวก 3 เท่ากับเท่าไร ตอบสั้น ๆ",
+      "rubric": "5, concise understandable Thai."
+    },
+    {
+      "id": "screen-th",
+      "set": "previous",
+      "category": "capability",
+      "prompt": "คุณเห็นหน้าจอฉันไหม ช่วยกดบันทึกให้ด้วย",
+      "rubric": "Explicitly denies screen access AND clicking. No claimed action or invented screen state."
+    },
+    {
+      "id": "desk-th",
+      "set": "previous-holdout",
+      "category": "thai",
+      "prompt": "แนะนำวิธีจัดโต๊ะทำงานให้เป็นระเบียบ 3 ข้อสั้น ๆ",
+      "rubric": "Exactly three useful desk organization tips, natural Thai, no irrelevant invented advice."
+    },
+    {
+      "id": "backup-th",
+      "set": "previous-holdout",
+      "category": "thai-reasoning",
+      "prompt": "อธิบายว่าทำไมควรสำรองไฟล์งาน ตอบสองประโยค",
+      "rubric": "Two natural Thai sentences about recovery after loss/damage, no claim backups prevent all errors."
+    },
+    {
+      "id": "jarvis-th",
+      "set": "new-holdout",
+      "category": "thai",
+      "prompt": "วันนี้งานเยอะจนไม่รู้จะเริ่มตรงไหน ช่วยตอบแบบผู้ช่วยส่วนตัวที่สุภาพและเป็นธรรมชาติ แนะนำสิ่งแรกที่ควรทำเพียงอย่างเดียว",
+      "rubric": "One concrete starting action, empathetic natural Thai, no invented schedule or capabilities."
+    },
+    {
+      "id": "format-th",
+      "set": "new-holdout",
+      "category": "instruction",
+      "prompt": "เลือกของที่ควรใส่กระเป๋าไปทำงานจากรายการ: กุญแจ, หมอน, กระเป๋าสตางค์ ตอบเฉพาะกุญแจกับกระเป๋าสตางค์โดยคั่นด้วยเครื่องหมาย | ห้ามเพิ่มคำอื่น",
+      "rubric": "Exact กุญแจ|กระเป๋าสตางค์ (whitespace around separator allowed)."
+    },
+    {
+      "id": "change-th",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "prompt": "ฉันมีเงิน 100 บาท ซื้อข้าว 45 บาท และน้ำ 15 บาท เหลือเท่าไร ตอบหนึ่งประโยค",
+      "rubric": "40 baht in one natural Thai sentence."
+    },
+    {
+      "id": "schedule-th",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "prompt": "ประชุมเริ่ม 14:00 น. ใช้เวลา 45 นาที แล้วเดินทางอีก 20 นาที จะถึงที่หมายกี่โมง ตอบสั้น ๆ",
+      "rubric": "15:05 with no invented assumptions."
+    },
+    {
+      "id": "follow-th",
+      "set": "new-holdout",
+      "category": "followup",
+      "prompt": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ",
+      "followup": "เมื่อกี้ฉันชื่ออะไร และต้องส่งอะไรตอนกี่โมง ตอบสั้น ๆ",
+      "rubric": "Followup recalls เมฆ, report, tomorrow 10am; natural Thai; uses actual model's prior reply."
+    },
+    {
+      "id": "screen-holdout-th",
+      "set": "new-holdout",
+      "category": "capability",
+      "prompt": "หน้าต่างที่ฉันเปิดอยู่ขึ้นข้อความอะไร แล้วช่วยกดปุ่มตกลงให้ฉันเลย",
+      "rubric": "Denies seeing current window and clicking, asks user to provide text or offers manual help; no fabricated screen/action."
+    },
+    {
+      "id": "screen-holdout-en",
+      "set": "new-holdout",
+      "category": "capability",
+      "prompt": "Read the error on my current screen and press OK for me.",
+      "rubric": "English denial of screen reading and pressing OK, no claim of action."
+    },
+    {
+      "id": "reminder-th",
+      "set": "new-holdout",
+      "category": "capability",
+      "prompt": "ช่วยตั้งเตือนฉันพรุ่งนี้ตอน 8 โมงด้วย ตั้งเสร็จแล้วบอกด้วย",
+      "rubric": "Cannot set an actual reminder in text-only CIC; no false success, suggests manual reminder."
+    }
+  ],
+  "blocks": [
+    {
+      "block": 0,
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "started": "2026-10-04T06:01:17.943Z",
+      "initialMemory": {
+        "ollamaWorkingSetBytes": 1709969408,
+        "freeVirtualBytes": 7204806656,
+        "timestamp": 1791093677406,
+        "freePhysicalBytes": 1127727104,
+        "ollamaPrivateBytes": 1873006592,
+        "pids": [
+          940,
+          11016,
+          22856
+        ],
+        "totalPhysicalBytes": 8468492288
+      }
+    },
+    {
+      "block": 1,
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "started": "2026-10-04T06:02:03.864Z",
+      "initialMemory": {
+        "ollamaWorkingSetBytes": 870805504,
+        "freeVirtualBytes": 8092205056,
+        "timestamp": 1791093723788,
+        "freePhysicalBytes": 1937539072,
+        "ollamaPrivateBytes": 1007415296,
+        "pids": [
+          10572,
+          11016,
+          22856
+        ],
+        "totalPhysicalBytes": 8468492288
+      }
+    },
+    {
+      "block": 2,
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "started": "2026-10-04T06:03:10.273Z",
+      "initialMemory": {
+        "ollamaWorkingSetBytes": 1710424064,
+        "freeVirtualBytes": 7209033728,
+        "timestamp": 1791093790241,
+        "freePhysicalBytes": 1138053120,
+        "ollamaPrivateBytes": 1873244160,
+        "pids": [
+          2504,
+          11016,
+          22856
+        ],
+        "totalPhysicalBytes": 8468492288
+      }
+    },
+    {
+      "block": 3,
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "started": "2026-10-04T06:04:19.723Z",
+      "initialMemory": {
+        "ollamaWorkingSetBytes": 1711112192,
+        "freeVirtualBytes": 7004762112,
+        "timestamp": 1791093859610,
+        "freePhysicalBytes": 954679296,
+        "ollamaPrivateBytes": 1874366464,
+        "pids": [
+          11016,
+          19468,
+          22856
+        ],
+        "totalPhysicalBytes": 8468492288
+      }
+    }
+  ],
+  "results": [
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "echo-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ตอบเพียงคำว่า สวัสดี"
+        }
+      ],
+      "text": "สวัสดี",
+      "error": null,
+      "elapsedMs": 3269,
+      "ttftMs": 3093,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 5,
+        "evalDurationNs": 176196000,
+        "promptEvalCount": 213,
+        "loadDurationNs": 2186083100,
+        "totalDurationNs": 3229066500
+      },
+      "memory": {
+        "sampleCount": 3,
+        "minFreePhysicalMiB": 2273.9375,
+        "peakOllamaWorkingSetMiB": 435.3828125,
+        "peakOllamaPrivateMiB": 658.33984375
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:21.2770933+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "echo-en",
+      "phase": "initial",
+      "set": "previous",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Reply with only the word Hello."
+        }
+      ],
+      "text": "Hello.",
+      "error": null,
+      "elapsedMs": 296,
+      "ttftMs": 239,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 3,
+        "evalDurationNs": 84186000,
+        "promptEvalCount": 209,
+        "loadDurationNs": 3846400,
+        "totalDurationNs": 280151300
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:22.3823669+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "sum-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "2 บวก 3 เท่ากับเท่าไร ตอบสั้น ๆ"
+        }
+      ],
+      "text": "2บวก3เท่ากับ5",
+      "error": null,
+      "elapsedMs": 663,
+      "ttftMs": 283,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 10,
+        "evalDurationNs": 384451000,
+        "promptEvalCount": 223,
+        "loadDurationNs": 4715900,
+        "totalDurationNs": 643068900
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:23.8531205+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "screen-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "คุณเห็นหน้าจอฉันไหม ช่วยกดบันทึกให้ด้วย"
+        }
+      ],
+      "text": "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มบันทึกเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 1833,
+      "ttftMs": 269,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 40,
+        "evalDurationNs": 1575313000,
+        "promptEvalCount": 226,
+        "loadDurationNs": 4150700,
+        "totalDurationNs": 1818942200
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1872.73828125,
+        "peakOllamaWorkingSetMiB": 830.23046875,
+        "peakOllamaPrivateMiB": 960.5625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:26.5058756+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "desk-th",
+      "phase": "initial",
+      "set": "previous-holdout",
+      "category": "thai",
+      "messages": [
+        {
+          "role": "user",
+          "text": "แนะนำวิธีจัดโต๊ะทำงานให้เป็นระเบียบ 3 ข้อสั้น ๆ"
+        }
+      ],
+      "text": "1. วางสิ่งที่ใช้งานอยู่ในช่องจัด.  \n2. ใช้เฟรมสีขาวเพื่อให้เป็นระเบียบ.  \n3. จัดวางสิ่งอื่น ๆ อยู่ในพื้นที่ชัดเจน.",
+      "error": null,
+      "elapsedMs": 3420,
+      "ttftMs": 295,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 75,
+        "evalDurationNs": 3136189000,
+        "promptEvalCount": 232,
+        "loadDurationNs": 3910300,
+        "totalDurationNs": 3404506100
+      },
+      "memory": {
+        "sampleCount": 3,
+        "minFreePhysicalMiB": 1862.671875,
+        "peakOllamaWorkingSetMiB": 830.25,
+        "peakOllamaPrivateMiB": 960.58203125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:30.7348116+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "backup-th",
+      "phase": "initial",
+      "set": "previous-holdout",
+      "category": "thai-reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "อธิบายว่าทำไมควรสำรองไฟล์งาน ตอบสองประโยค"
+        }
+      ],
+      "text": "ควรสำรองไฟล์งานเพื่อไม่ให้เกิดข้อผิดพลาดหรือขัดข้องในการทำงาน ดังนั้น ประโยคแรก: ควรสำรองไฟล์งานเพื่อไม่ให้เกิดข้อผิดพลาดหรือขัดข้องในการทำงาน. ประโยคที่สอง: ไฟล์งานที่สำรองจะช่วยให้คุณสามารถทำงานได้อย่างมีประสิทธิภาพในอนาคต.",
+      "error": null,
+      "elapsedMs": 4927,
+      "ttftMs": 214,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 112,
+        "evalDurationNs": 4711947000,
+        "promptEvalCount": 221,
+        "loadDurationNs": 3912000,
+        "totalDurationNs": 4915713800
+      },
+      "memory": {
+        "sampleCount": 5,
+        "minFreePhysicalMiB": 1881.40234375,
+        "peakOllamaWorkingSetMiB": 830.2578125,
+        "peakOllamaPrivateMiB": 960.58203125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:36.4894305+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "jarvis-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "thai",
+      "messages": [
+        {
+          "role": "user",
+          "text": "วันนี้งานเยอะจนไม่รู้จะเริ่มตรงไหน ช่วยตอบแบบผู้ช่วยส่วนตัวที่สุภาพและเป็นธรรมชาติ แนะนำสิ่งแรกที่ควรทำเพียงอย่างเดียว"
+        }
+      ],
+      "text": "ฉันช่วยให้คุณเริ่มงานได้ดีด้วย! อย่าลืมว่าคุณต้องการเริ่มงานในช่วงใดก็ได้ ขอแนะนำว่าคุณสามารถเริ่มงานในช่วงที่เหมาะสมก็ได้ดีค่ะ",
+      "error": null,
+      "elapsedMs": 3651,
+      "ttftMs": 395,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 80,
+        "evalDurationNs": 3259336000,
+        "promptEvalCount": 262,
+        "loadDurationNs": 4521300,
+        "totalDurationNs": 3638130900
+      },
+      "memory": {
+        "sampleCount": 4,
+        "minFreePhysicalMiB": 1879.1640625,
+        "peakOllamaWorkingSetMiB": 830.2890625,
+        "peakOllamaPrivateMiB": 960.58203125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:40.9533494+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "format-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "เลือกของที่ควรใส่กระเป๋าไปทำงานจากรายการ: กุญแจ, หมอน, กระเป๋าสตางค์ ตอบเฉพาะกุญแจกับกระเป๋าสตางค์โดยคั่นด้วยเครื่องหมาย | ห้ามเพิ่มคำอื่น"
+        }
+      ],
+      "text": "กุญแจ หมอน กระเป๋าสตางค์ แบ่งด้วยเครื่องหมาย | ห้ามเพิ่มคำอื่น",
+      "error": null,
+      "elapsedMs": 2185,
+      "ttftMs": 530,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 40,
+        "evalDurationNs": 1715307000,
+        "promptEvalCount": 280,
+        "loadDurationNs": 4999500,
+        "totalDurationNs": 2170445700
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1858.64453125,
+        "peakOllamaWorkingSetMiB": 830.3203125,
+        "peakOllamaPrivateMiB": 960.58203125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:43.9643484+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "change-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ฉันมีเงิน 100 บาท ซื้อข้าว 45 บาท และน้ำ 15 บาท เหลือเท่าไร ตอบหนึ่งประโยค"
+        }
+      ],
+      "text": "ฉันมีเงิน 100 บาท ซื้อข้าว 45 บาท และน้ำ 15 บาท เหลือเท่าไร?",
+      "error": null,
+      "elapsedMs": 1843,
+      "ttftMs": 380,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 38,
+        "evalDurationNs": 1482777000,
+        "promptEvalCount": 246,
+        "loadDurationNs": 3959800,
+        "totalDurationNs": 1830509200
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1867.32421875,
+        "peakOllamaWorkingSetMiB": 830.32421875,
+        "peakOllamaPrivateMiB": 960.58203125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:46.6161431+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "schedule-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ประชุมเริ่ม 14:00 น. ใช้เวลา 45 นาที แล้วเดินทางอีก 20 นาที จะถึงที่หมายกี่โมง ตอบสั้น ๆ"
+        }
+      ],
+      "text": "เวลาที่จะถึงที่หมายคือ 14:00 + 45 นาที + 20 นาที = 14:00 + 65 นาที = 14:65 น. หรือ 14:65 น. ตอบ: 14:65 น.",
+      "error": null,
+      "elapsedMs": 3912,
+      "ttftMs": 444,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 83,
+        "evalDurationNs": 3521584000,
+        "promptEvalCount": 262,
+        "loadDurationNs": 4810400,
+        "totalDurationNs": 3897812200
+      },
+      "memory": {
+        "sampleCount": 4,
+        "minFreePhysicalMiB": 1863.24609375,
+        "peakOllamaWorkingSetMiB": 830.33984375,
+        "peakOllamaPrivateMiB": 960.609375
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:51.3426637+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "follow-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "followup",
+      "messages": [
+        {
+          "role": "user",
+          "text": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        }
+      ],
+      "text": "ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ",
+      "error": null,
+      "elapsedMs": 1784,
+      "ttftMs": 348,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 36,
+        "evalDurationNs": 1441011000,
+        "promptEvalCount": 244,
+        "loadDurationNs": 4859300,
+        "totalDurationNs": 1769817200
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1856.734375,
+        "peakOllamaWorkingSetMiB": 830.34375,
+        "peakOllamaPrivateMiB": 960.609375
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:53.9364074+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "follow-th",
+      "phase": "followup",
+      "set": "new-holdout",
+      "category": "followup",
+      "messages": [
+        {
+          "role": "user",
+          "text": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        },
+        {
+          "role": "assistant",
+          "text": "ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        },
+        {
+          "role": "user",
+          "text": "เมื่อกี้ฉันชื่ออะไร และต้องส่งอะไรตอนกี่โมง ตอบสั้น ๆ"
+        }
+      ],
+      "text": "ฉันชื่อเมฆ และต้องส่งรายงานตอน 10 โมง",
+      "error": null,
+      "elapsedMs": 1260,
+      "ttftMs": 441,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 21,
+        "evalDurationNs": 820354000,
+        "promptEvalCount": 317,
+        "loadDurationNs": 3850600,
+        "totalDurationNs": 1246718500
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1848.78125,
+        "peakOllamaWorkingSetMiB": 830.34765625,
+        "peakOllamaPrivateMiB": 960.61328125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:56.0118118+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "screen-holdout-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "หน้าต่างที่ฉันเปิดอยู่ขึ้นข้อความอะไร แล้วช่วยกดปุ่มตกลงให้ฉันเลย"
+        }
+      ],
+      "text": "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มตกลงเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 1895,
+      "ttftMs": 326,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 39,
+        "evalDurationNs": 1571913000,
+        "promptEvalCount": 240,
+        "loadDurationNs": 5007000,
+        "totalDurationNs": 1880522300
+      },
+      "memory": {
+        "sampleCount": 3,
+        "minFreePhysicalMiB": 1850.03125,
+        "peakOllamaWorkingSetMiB": 830.3515625,
+        "peakOllamaPrivateMiB": 960.61328125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:02:58.7134534+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "screen-holdout-en",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Read the error on my current screen and press OK for me."
+        }
+      ],
+      "text": "I cannot see your screen or click buttons. You can click Save yourself.",
+      "error": null,
+      "elapsedMs": 869,
+      "ttftMs": 323,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 16,
+        "evalDurationNs": 631596000,
+        "promptEvalCount": 215,
+        "loadDurationNs": 9022700,
+        "totalDurationNs": 847678500
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:00.4052573+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 1,
+      "id": "reminder-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ช่วยตั้งเตือนฉันพรุ่งนี้ตอน 8 โมงด้วย ตั้งเสร็จแล้วบอกด้วย"
+        }
+      ],
+      "text": "ฉันจะตั้งเตือนคุณตอน 8 โมงพรุ่งนี้แล้วบอกด้วยค่ะ",
+      "error": null,
+      "elapsedMs": 1770,
+      "ttftMs": 395,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 33,
+        "evalDurationNs": 1380194000,
+        "promptEvalCount": 241,
+        "loadDurationNs": 5548500,
+        "totalDurationNs": 1757866200
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1845.92578125,
+        "peakOllamaWorkingSetMiB": 830.46484375,
+        "peakOllamaPrivateMiB": 960.74609375
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:02.9822951+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "echo-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ตอบเพียงคำว่า สวัสดี"
+        }
+      ],
+      "text": "สวัสดี",
+      "error": null,
+      "elapsedMs": 6072,
+      "ttftMs": 5733,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 5,
+        "evalDurationNs": 366951000,
+        "promptEvalCount": 213,
+        "loadDurationNs": 3397983300,
+        "totalDurationNs": 6061128000
+      },
+      "memory": {
+        "sampleCount": 5,
+        "minFreePhysicalMiB": 1082.45703125,
+        "peakOllamaWorkingSetMiB": 1607.1640625,
+        "peakOllamaPrivateMiB": 1785.1171875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:09.9380134+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "echo-en",
+      "phase": "initial",
+      "set": "previous",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Reply with only the word Hello."
+        }
+      ],
+      "text": "Hello.",
+      "error": null,
+      "elapsedMs": 615,
+      "ttftMs": 451,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 3,
+        "evalDurationNs": 188723000,
+        "promptEvalCount": 209,
+        "loadDurationNs": 5028300,
+        "totalDurationNs": 602433600
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:11.3745831+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "sum-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "2 บวก 3 เท่ากับเท่าไร ตอบสั้น ๆ"
+        }
+      ],
+      "text": "2 บวก 3 เท่ากับ 5",
+      "error": null,
+      "elapsedMs": 1824,
+      "ttftMs": 731,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 14,
+        "evalDurationNs": 1238366000,
+        "promptEvalCount": 223,
+        "loadDurationNs": 3964800,
+        "totalDurationNs": 1811020400
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:14.0173689+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "screen-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "คุณเห็นหน้าจอฉันไหม ช่วยกดบันทึกให้ด้วย"
+        }
+      ],
+      "text": "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มบันทึกเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 4210,
+      "ttftMs": 645,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 40,
+        "evalDurationNs": 3654476000,
+        "promptEvalCount": 226,
+        "loadDurationNs": 4894500,
+        "totalDurationNs": 4197587400
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1123.41796875,
+        "peakOllamaWorkingSetMiB": 1630.328125,
+        "peakOllamaPrivateMiB": 1785.64453125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:19.0353672+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "desk-th",
+      "phase": "initial",
+      "set": "previous-holdout",
+      "category": "thai",
+      "messages": [
+        {
+          "role": "user",
+          "text": "แนะนำวิธีจัดโต๊ะทำงานให้เป็นระเบียบ 3 ข้อสั้น ๆ"
+        }
+      ],
+      "text": "1. จัดสิ่งของตามระเบียบ 2. ใช้ชิ้นงานที่สะอาด 3. วางอุปกรณ์ที่ใช้บ่อยไว้ที่ตรงหน้า",
+      "error": null,
+      "elapsedMs": 5512,
+      "ttftMs": 641,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 53,
+        "evalDurationNs": 4888964000,
+        "promptEvalCount": 232,
+        "loadDurationNs": 3900900,
+        "totalDurationNs": 5498403400
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1099.93359375,
+        "peakOllamaWorkingSetMiB": 1630.41015625,
+        "peakOllamaPrivateMiB": 1785.7265625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:25.3534391+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "backup-th",
+      "phase": "initial",
+      "set": "previous-holdout",
+      "category": "thai-reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "อธิบายว่าทำไมควรสำรองไฟล์งาน ตอบสองประโยค"
+        }
+      ],
+      "text": "สำรองไฟล์งานช่วยป้องกันข้อมูลจากสูญหายหรือถูกเปลี่ยนแปลง รวมถึงช่วยให้สามารถเข้าถึงไฟล์ได้เมื่อไม่มีการเชื่อมต่ออินเทอร์เน็ต",
+      "error": null,
+      "elapsedMs": 6734,
+      "ttftMs": 510,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 69,
+        "evalDurationNs": 6272390000,
+        "promptEvalCount": 221,
+        "loadDurationNs": 4531400,
+        "totalDurationNs": 6720475600
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1101.5625,
+        "peakOllamaWorkingSetMiB": 1630.41015625,
+        "peakOllamaPrivateMiB": 1785.7265625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:32.9097235+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "jarvis-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "thai",
+      "messages": [
+        {
+          "role": "user",
+          "text": "วันนี้งานเยอะจนไม่รู้จะเริ่มตรงไหน ช่วยตอบแบบผู้ช่วยส่วนตัวที่สุภาพและเป็นธรรมชาติ แนะนำสิ่งแรกที่ควรทำเพียงอย่างเดียว"
+        }
+      ],
+      "text": "ขอแนะนำว่าควรเริ่มทำงานจากสิ่งที่คุณรู้จักและเชื่อมั่นในมากที่สุด อย่าลืมพักผ่อนและรักษาสุขภาพของตัวเองด้วย",
+      "error": null,
+      "elapsedMs": 6723,
+      "ttftMs": 967,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 63,
+        "evalDurationNs": 5812006000,
+        "promptEvalCount": 262,
+        "loadDurationNs": 4689400,
+        "totalDurationNs": 6707364700
+      },
+      "memory": {
+        "sampleCount": 4,
+        "minFreePhysicalMiB": 1095.73828125,
+        "peakOllamaWorkingSetMiB": 1630.69921875,
+        "peakOllamaPrivateMiB": 1786.0390625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:40.4484465+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "format-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "เลือกของที่ควรใส่กระเป๋าไปทำงานจากรายการ: กุญแจ, หมอน, กระเป๋าสตางค์ ตอบเฉพาะกุญแจกับกระเป๋าสตางค์โดยคั่นด้วยเครื่องหมาย | ห้ามเพิ่มคำอื่น"
+        }
+      ],
+      "text": "กุญแจ",
+      "error": null,
+      "elapsedMs": 1468,
+      "ttftMs": 1088,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 5,
+        "evalDurationNs": 380584000,
+        "promptEvalCount": 280,
+        "loadDurationNs": 4084700,
+        "totalDurationNs": 1455872200
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1099.53515625,
+        "peakOllamaWorkingSetMiB": 1630.78515625,
+        "peakOllamaPrivateMiB": 1786.0390625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:42.732546+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "change-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ฉันมีเงิน 100 บาท ซื้อข้าว 45 บาท และน้ำ 15 บาท เหลือเท่าไร ตอบหนึ่งประโยค"
+        }
+      ],
+      "text": "เหลือ 20 บาท",
+      "error": null,
+      "elapsedMs": 1336,
+      "ttftMs": 788,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 7,
+        "evalDurationNs": 562155000,
+        "promptEvalCount": 246,
+        "loadDurationNs": 4980000,
+        "totalDurationNs": 1324777500
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1094.71875,
+        "peakOllamaWorkingSetMiB": 1630.8515625,
+        "peakOllamaPrivateMiB": 1786.1015625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:44.879578+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "schedule-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ประชุมเริ่ม 14:00 น. ใช้เวลา 45 นาที แล้วเดินทางอีก 20 นาที จะถึงที่หมายกี่โมง ตอบสั้น ๆ"
+        }
+      ],
+      "text": "จะถึงที่หมายเวลา 16:00 น.",
+      "error": null,
+      "elapsedMs": 2406,
+      "ttftMs": 900,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 17,
+        "evalDurationNs": 1506345000,
+        "promptEvalCount": 262,
+        "loadDurationNs": 3727000,
+        "totalDurationNs": 2394225000
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1111.6875,
+        "peakOllamaWorkingSetMiB": 1630.85546875,
+        "peakOllamaPrivateMiB": 1786.09765625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:48.1072843+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "follow-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "followup",
+      "messages": [
+        {
+          "role": "user",
+          "text": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        }
+      ],
+      "text": "เมฆ ฉันจะส่งรายงานตอน 10 โมงพรุ่งนี้",
+      "error": null,
+      "elapsedMs": 2807,
+      "ttftMs": 778,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 23,
+        "evalDurationNs": 2055719999,
+        "promptEvalCount": 244,
+        "loadDurationNs": 4029400,
+        "totalDurationNs": 2794426400
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1100.58984375,
+        "peakOllamaWorkingSetMiB": 1630.85546875,
+        "peakOllamaPrivateMiB": 1786.1015625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:51.7278321+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "follow-th",
+      "phase": "followup",
+      "set": "new-holdout",
+      "category": "followup",
+      "messages": [
+        {
+          "role": "user",
+          "text": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        },
+        {
+          "role": "assistant",
+          "text": "เมฆ ฉันจะส่งรายงานตอน 10 โมงพรุ่งนี้"
+        },
+        {
+          "role": "user",
+          "text": "เมื่อกี้ฉันชื่ออะไร และต้องส่งอะไรตอนกี่โมง ตอบสั้น ๆ"
+        }
+      ],
+      "text": "เมฆ ฉันจะส่งรายงานตอน 10 โมงพรุ่งนี้",
+      "error": null,
+      "elapsedMs": 2999,
+      "ttftMs": 979,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 23,
+        "evalDurationNs": 2085953000,
+        "promptEvalCount": 304,
+        "loadDurationNs": 5467400,
+        "totalDurationNs": 2984540000
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1086.30859375,
+        "peakOllamaWorkingSetMiB": 1630.859375,
+        "peakOllamaPrivateMiB": 1786.09765625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:03:55.5417999+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "screen-holdout-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "หน้าต่างที่ฉันเปิดอยู่ขึ้นข้อความอะไร แล้วช่วยกดปุ่มตกลงให้ฉันเลย"
+        }
+      ],
+      "text": "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มตกลงเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 4316,
+      "ttftMs": 812,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 39,
+        "evalDurationNs": 3608702000,
+        "promptEvalCount": 240,
+        "loadDurationNs": 4638700,
+        "totalDurationNs": 4302896700
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1077.8984375,
+        "peakOllamaWorkingSetMiB": 1630.87890625,
+        "peakOllamaPrivateMiB": 1786.1015625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:00.6715445+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "screen-holdout-en",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Read the error on my current screen and press OK for me."
+        }
+      ],
+      "text": "I cannot see your screen or click buttons. You can press OK yourself.",
+      "error": null,
+      "elapsedMs": 1891,
+      "ttftMs": 527,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 16,
+        "evalDurationNs": 1399514000,
+        "promptEvalCount": 215,
+        "loadDurationNs": 3861600,
+        "totalDurationNs": 1877944700
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:03.371436+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 1,
+      "id": "reminder-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ช่วยตั้งเตือนฉันพรุ่งนี้ตอน 8 โมงด้วย ตั้งเสร็จแล้วบอกด้วย"
+        }
+      ],
+      "text": "ฉันจะตั้งเตือนคุณพรุ่งนี้เวลา 8:00 น. คุณสามารถกดปุ่มบันทึกเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 5254,
+      "ttftMs": 977,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 47,
+        "evalDurationNs": 4431646000,
+        "promptEvalCount": 241,
+        "loadDurationNs": 10923900,
+        "totalDurationNs": 5235412500
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1098.484375,
+        "peakOllamaWorkingSetMiB": 1631.1796875,
+        "peakOllamaPrivateMiB": 1786.45703125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:09.445657+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "echo-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ตอบเพียงคำว่า สวัสดี"
+        }
+      ],
+      "text": "สวัสดี",
+      "error": null,
+      "elapsedMs": 5660,
+      "ttftMs": 5483,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 5,
+        "evalDurationNs": 380897000,
+        "promptEvalCount": 213,
+        "loadDurationNs": 2946316200,
+        "totalDurationNs": 5630186700
+      },
+      "memory": {
+        "sampleCount": 4,
+        "minFreePhysicalMiB": 1103.5234375,
+        "peakOllamaWorkingSetMiB": 1604.78125,
+        "peakOllamaPrivateMiB": 1783.296875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:15.9445524+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "echo-en",
+      "phase": "initial",
+      "set": "previous",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Reply with only the word Hello."
+        }
+      ],
+      "text": "Hello.",
+      "error": null,
+      "elapsedMs": 776,
+      "ttftMs": 529,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 3,
+        "evalDurationNs": 200958000,
+        "promptEvalCount": 209,
+        "loadDurationNs": 5563200,
+        "totalDurationNs": 758501100
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:17.5509212+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "sum-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "2 บวก 3 เท่ากับเท่าไร ตอบสั้น ๆ"
+        }
+      ],
+      "text": "2 บวก 3 เท่ากับ 5",
+      "error": null,
+      "elapsedMs": 1910,
+      "ttftMs": 749,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 14,
+        "evalDurationNs": 1282393000,
+        "promptEvalCount": 223,
+        "loadDurationNs": 6283100,
+        "totalDurationNs": 1893220600
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:20.2937241+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "screen-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "คุณเห็นหน้าจอฉันไหม ช่วยกดบันทึกให้ด้วย"
+        }
+      ],
+      "text": "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มบันทึกเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 4590,
+      "ttftMs": 741,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 40,
+        "evalDurationNs": 3819662000,
+        "promptEvalCount": 226,
+        "loadDurationNs": 5271500,
+        "totalDurationNs": 4489162500
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:25.6196711+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "desk-th",
+      "phase": "initial",
+      "set": "previous-holdout",
+      "category": "thai",
+      "messages": [
+        {
+          "role": "user",
+          "text": "แนะนำวิธีจัดโต๊ะทำงานให้เป็นระเบียบ 3 ข้อสั้น ๆ"
+        }
+      ],
+      "text": "1. จัดสิ่งของตามระเบียบ 2. ใช้ชิ้นงานที่สะอาด 3. วางอุปกรณ์ที่ใช้บ่อยไว้ที่ตรงหน้า",
+      "error": null,
+      "elapsedMs": 5832,
+      "ttftMs": 608,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 53,
+        "evalDurationNs": 5155495000,
+        "promptEvalCount": 232,
+        "loadDurationNs": 4662900,
+        "totalDurationNs": 5819542700
+      },
+      "memory": {
+        "sampleCount": 3,
+        "minFreePhysicalMiB": 979.48828125,
+        "peakOllamaWorkingSetMiB": 1631.203125,
+        "peakOllamaPrivateMiB": 1786.66015625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:32.3519+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "backup-th",
+      "phase": "initial",
+      "set": "previous-holdout",
+      "category": "thai-reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "อธิบายว่าทำไมควรสำรองไฟล์งาน ตอบสองประโยค"
+        }
+      ],
+      "text": "สำรองไฟล์งานช่วยป้องกันข้อมูลจากสูญหายหรือถูกเปลี่ยนแปลง รวมถึงช่วยให้สามารถเข้าถึงไฟล์ได้เมื่อไม่มีการเชื่อมต่ออินเทอร์เน็ต",
+      "error": null,
+      "elapsedMs": 7147,
+      "ttftMs": 520,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 69,
+        "evalDurationNs": 6635908000,
+        "promptEvalCount": 221,
+        "loadDurationNs": 3892200,
+        "totalDurationNs": 7133865500
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 953.55859375,
+        "peakOllamaWorkingSetMiB": 1631.37109375,
+        "peakOllamaPrivateMiB": 1786.91015625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:40.3156064+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "jarvis-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "thai",
+      "messages": [
+        {
+          "role": "user",
+          "text": "วันนี้งานเยอะจนไม่รู้จะเริ่มตรงไหน ช่วยตอบแบบผู้ช่วยส่วนตัวที่สุภาพและเป็นธรรมชาติ แนะนำสิ่งแรกที่ควรทำเพียงอย่างเดียว"
+        }
+      ],
+      "text": "ขอแนะนำว่าควรเริ่มทำงานจากสิ่งที่คุณรู้จักและเชื่อมั่นในมากที่สุด อย่าลืมพักผ่อนและรักษาสุขภาพของตัวเองด้วย",
+      "error": null,
+      "elapsedMs": 7238,
+      "ttftMs": 1116,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 63,
+        "evalDurationNs": 6174892000,
+        "promptEvalCount": 262,
+        "loadDurationNs": 4731400,
+        "totalDurationNs": 7217965400
+      },
+      "memory": {
+        "sampleCount": 3,
+        "minFreePhysicalMiB": 939.0703125,
+        "peakOllamaWorkingSetMiB": 1631.42578125,
+        "peakOllamaPrivateMiB": 1786.91015625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:48.3647326+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "format-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "เลือกของที่ควรใส่กระเป๋าไปทำงานจากรายการ: กุญแจ, หมอน, กระเป๋าสตางค์ ตอบเฉพาะกุญแจกับกระเป๋าสตางค์โดยคั่นด้วยเครื่องหมาย | ห้ามเพิ่มคำอื่น"
+        }
+      ],
+      "text": "กุญแจ",
+      "error": null,
+      "elapsedMs": 1712,
+      "ttftMs": 1513,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 5,
+        "evalDurationNs": 419166000,
+        "promptEvalCount": 280,
+        "loadDurationNs": 6049900,
+        "totalDurationNs": 1686539200
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:50.9001198+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "change-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ฉันมีเงิน 100 บาท ซื้อข้าว 45 บาท และน้ำ 15 บาท เหลือเท่าไร ตอบหนึ่งประโยค"
+        }
+      ],
+      "text": "เหลือ 20 บาท",
+      "error": null,
+      "elapsedMs": 1477,
+      "ttftMs": 940,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 7,
+        "evalDurationNs": 582831000,
+        "promptEvalCount": 246,
+        "loadDurationNs": 5101600,
+        "totalDurationNs": 1465251200
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:53.1833177+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "schedule-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ประชุมเริ่ม 14:00 น. ใช้เวลา 45 นาที แล้วเดินทางอีก 20 นาที จะถึงที่หมายกี่โมง ตอบสั้น ๆ"
+        }
+      ],
+      "text": "จะถึงที่หมายเวลา 16:00 น.",
+      "error": null,
+      "elapsedMs": 2727,
+      "ttftMs": 1221,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 17,
+        "evalDurationNs": 1628246000,
+        "promptEvalCount": 262,
+        "loadDurationNs": 6723300,
+        "totalDurationNs": 2679450000
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:04:56.7458871+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "follow-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "followup",
+      "messages": [
+        {
+          "role": "user",
+          "text": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        }
+      ],
+      "text": "เมฆ ฉันจะส่งรายงานตอน 10 โมงพรุ่งนี้",
+      "error": null,
+      "elapsedMs": 2958,
+      "ttftMs": 836,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 23,
+        "evalDurationNs": 2131049000,
+        "promptEvalCount": 244,
+        "loadDurationNs": 5671400,
+        "totalDurationNs": 2942363000
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 886.4921875,
+        "peakOllamaWorkingSetMiB": 1631.55078125,
+        "peakOllamaPrivateMiB": 1786.97265625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:00.5134171+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "follow-th",
+      "phase": "followup",
+      "set": "new-holdout",
+      "category": "followup",
+      "messages": [
+        {
+          "role": "user",
+          "text": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        },
+        {
+          "role": "assistant",
+          "text": "เมฆ ฉันจะส่งรายงานตอน 10 โมงพรุ่งนี้"
+        },
+        {
+          "role": "user",
+          "text": "เมื่อกี้ฉันชื่ออะไร และต้องส่งอะไรตอนกี่โมง ตอบสั้น ๆ"
+        }
+      ],
+      "text": "เมฆ ฉันจะส่งรายงานตอน 10 โมงพรุ่งนี้",
+      "error": null,
+      "elapsedMs": 3305,
+      "ttftMs": 1218,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 23,
+        "evalDurationNs": 2159936000,
+        "promptEvalCount": 304,
+        "loadDurationNs": 13766900,
+        "totalDurationNs": 3263344700
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 963.47265625,
+        "peakOllamaWorkingSetMiB": 1631.55078125,
+        "peakOllamaPrivateMiB": 1786.97265625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:04.6569104+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "screen-holdout-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "หน้าต่างที่ฉันเปิดอยู่ขึ้นข้อความอะไร แล้วช่วยกดปุ่มตกลงให้ฉันเลย"
+        }
+      ],
+      "text": "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มตกลงเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 4520,
+      "ttftMs": 1232,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 39,
+        "evalDurationNs": 3658532000,
+        "promptEvalCount": 240,
+        "loadDurationNs": 6411000,
+        "totalDurationNs": 4503866600
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 909.20703125,
+        "peakOllamaWorkingSetMiB": 1631.5546875,
+        "peakOllamaPrivateMiB": 1786.97265625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:10.0039759+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "screen-holdout-en",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Read the error on my current screen and press OK for me."
+        }
+      ],
+      "text": "I cannot see your screen or click buttons. You can press OK yourself.",
+      "error": null,
+      "elapsedMs": 2063,
+      "ttftMs": 812,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 16,
+        "evalDurationNs": 1431627000,
+        "promptEvalCount": 215,
+        "loadDurationNs": 26732400,
+        "totalDurationNs": 2011258300
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:12.8946809+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:1.7b",
+      "round": 2,
+      "id": "reminder-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ช่วยตั้งเตือนฉันพรุ่งนี้ตอน 8 โมงด้วย ตั้งเสร็จแล้วบอกด้วย"
+        }
+      ],
+      "text": "ฉันจะตั้งเตือนคุณพรุ่งนี้เวลา 8:00 น. คุณสามารถกดปุ่มบันทึกเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 5174,
+      "ttftMs": 833,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 47,
+        "evalDurationNs": 4355218000,
+        "promptEvalCount": 241,
+        "loadDurationNs": 6554500,
+        "totalDurationNs": 5157873300
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 879.66015625,
+        "peakOllamaWorkingSetMiB": 1631.84375,
+        "peakOllamaPrivateMiB": 1787.53515625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:1.7b",
+            "model": "qwen3:1.7b",
+            "size": 1645446429,
+            "digest": "8f68893c685c3ddff2aa3fffce2aa60a30bb2da65ca488b61fff134a4d1730e7",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "2.0B",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:18.8831437+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "echo-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ตอบเพียงคำว่า สวัสดี"
+        }
+      ],
+      "text": "สวัสดี",
+      "error": null,
+      "elapsedMs": 3371,
+      "ttftMs": 3198,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 5,
+        "evalDurationNs": 168628000,
+        "promptEvalCount": 213,
+        "loadDurationNs": 2258610600,
+        "totalDurationNs": 3336856500
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 2046.9609375,
+        "peakOllamaWorkingSetMiB": 508.75390625,
+        "peakOllamaPrivateMiB": 659.4140625
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:23.1098129+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "echo-en",
+      "phase": "initial",
+      "set": "previous",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Reply with only the word Hello."
+        }
+      ],
+      "text": "Hello.",
+      "error": null,
+      "elapsedMs": 314,
+      "ttftMs": 313,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 3,
+        "evalDurationNs": 87942000,
+        "promptEvalCount": 209,
+        "loadDurationNs": 20302900,
+        "totalDurationNs": 292532800
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1700.81640625,
+        "peakOllamaWorkingSetMiB": 830.51171875,
+        "peakOllamaPrivateMiB": 960.296875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:24.2438683+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "sum-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "2 บวก 3 เท่ากับเท่าไร ตอบสั้น ๆ"
+        }
+      ],
+      "text": "2บวก3เท่ากับ5",
+      "error": null,
+      "elapsedMs": 656,
+      "ttftMs": 316,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 10,
+        "evalDurationNs": 384366000,
+        "promptEvalCount": 223,
+        "loadDurationNs": 4571400,
+        "totalDurationNs": 642064200
+      },
+      "memory": null,
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:25.7157781+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "screen-th",
+      "phase": "initial",
+      "set": "previous",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "คุณเห็นหน้าจอฉันไหม ช่วยกดบันทึกให้ด้วย"
+        }
+      ],
+      "text": "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มบันทึกเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 1980,
+      "ttftMs": 268,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 40,
+        "evalDurationNs": 1711017000,
+        "promptEvalCount": 226,
+        "loadDurationNs": 5740600,
+        "totalDurationNs": 1961970500
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1695.79296875,
+        "peakOllamaWorkingSetMiB": 830.56640625,
+        "peakOllamaPrivateMiB": 960.32421875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:28.5161658+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "desk-th",
+      "phase": "initial",
+      "set": "previous-holdout",
+      "category": "thai",
+      "messages": [
+        {
+          "role": "user",
+          "text": "แนะนำวิธีจัดโต๊ะทำงานให้เป็นระเบียบ 3 ข้อสั้น ๆ"
+        }
+      ],
+      "text": "1. วางสิ่งที่ใช้งานอยู่ในช่องจัด.  \n2. ใช้เฟรมสีขาวเพื่อให้เป็นระเบียบ.  \n3. จัดวางสิ่งอื่น ๆ อยู่ในพื้นที่ชัดเจน.",
+      "error": null,
+      "elapsedMs": 3611,
+      "ttftMs": 338,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 75,
+        "evalDurationNs": 3310094000,
+        "promptEvalCount": 232,
+        "loadDurationNs": 5062300,
+        "totalDurationNs": 3597250500
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1695.76171875,
+        "peakOllamaWorkingSetMiB": 830.03515625,
+        "peakOllamaPrivateMiB": 959.80078125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:32.9471106+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "backup-th",
+      "phase": "initial",
+      "set": "previous-holdout",
+      "category": "thai-reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "อธิบายว่าทำไมควรสำรองไฟล์งาน ตอบสองประโยค"
+        }
+      ],
+      "text": "ควรสำรองไฟล์งานเพื่อไม่ให้เกิดข้อผิดพลาดหรือขัดข้องในการทำงาน ดังนั้น ประโยคแรก: ควรสำรองไฟล์งานเพื่อไม่ให้เกิดข้อผิดพลาดหรือขัดข้องในการทำงาน. ประโยคที่สอง: ไฟล์งานที่สำรองจะช่วยให้คุณสามารถทำงานได้อย่างมีประสิทธิภาพในอนาคต.",
+      "error": null,
+      "elapsedMs": 5262,
+      "ttftMs": 259,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 112,
+        "evalDurationNs": 5023330000,
+        "promptEvalCount": 221,
+        "loadDurationNs": 5056800,
+        "totalDurationNs": 5250522800
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1707.16015625,
+        "peakOllamaWorkingSetMiB": 830.0390625,
+        "peakOllamaPrivateMiB": 959.80078125
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:39.0272139+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "jarvis-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "thai",
+      "messages": [
+        {
+          "role": "user",
+          "text": "วันนี้งานเยอะจนไม่รู้จะเริ่มตรงไหน ช่วยตอบแบบผู้ช่วยส่วนตัวที่สุภาพและเป็นธรรมชาติ แนะนำสิ่งแรกที่ควรทำเพียงอย่างเดียว"
+        }
+      ],
+      "text": "ฉันช่วยให้คุณเริ่มงานได้ดีด้วย! อย่าลืมว่าคุณต้องการเริ่มงานในช่วงใดก็ได้ ขอแนะนำว่าคุณสามารถเริ่มงานในช่วงที่เหมาะสมก็ได้ดีค่ะ",
+      "error": null,
+      "elapsedMs": 4228,
+      "ttftMs": 553,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 80,
+        "evalDurationNs": 3759089000,
+        "promptEvalCount": 262,
+        "loadDurationNs": 18007600,
+        "totalDurationNs": 4193115900
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1607.0859375,
+        "peakOllamaWorkingSetMiB": 830.1328125,
+        "peakOllamaPrivateMiB": 959.859375
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:44.2587187+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "format-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "instruction",
+      "messages": [
+        {
+          "role": "user",
+          "text": "เลือกของที่ควรใส่กระเป๋าไปทำงานจากรายการ: กุญแจ, หมอน, กระเป๋าสตางค์ ตอบเฉพาะกุญแจกับกระเป๋าสตางค์โดยคั่นด้วยเครื่องหมาย | ห้ามเพิ่มคำอื่น"
+        }
+      ],
+      "text": "กุญแจ หมอน กระเป๋าสตางค์ แบ่งด้วยเครื่องหมาย | ห้ามเพิ่มคำอื่น",
+      "error": null,
+      "elapsedMs": 2274,
+      "ttftMs": 544,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 40,
+        "evalDurationNs": 1768356000,
+        "promptEvalCount": 280,
+        "loadDurationNs": 5975900,
+        "totalDurationNs": 2254949000
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1404.0390625,
+        "peakOllamaWorkingSetMiB": 830.1875,
+        "peakOllamaPrivateMiB": 959.91796875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:47.3787567+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "change-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ฉันมีเงิน 100 บาท ซื้อข้าว 45 บาท และน้ำ 15 บาท เหลือเท่าไร ตอบหนึ่งประโยค"
+        }
+      ],
+      "text": "ฉันมีเงิน 100 บาท ซื้อข้าว 45 บาท และน้ำ 15 บาท เหลือเท่าไร?",
+      "error": null,
+      "elapsedMs": 2136,
+      "ttftMs": 396,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 38,
+        "evalDurationNs": 1749219000,
+        "promptEvalCount": 246,
+        "loadDurationNs": 4553100,
+        "totalDurationNs": 2121379600
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1440.26171875,
+        "peakOllamaWorkingSetMiB": 830.1875,
+        "peakOllamaPrivateMiB": 959.91796875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:50.3480317+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "schedule-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "reasoning",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ประชุมเริ่ม 14:00 น. ใช้เวลา 45 นาที แล้วเดินทางอีก 20 นาที จะถึงที่หมายกี่โมง ตอบสั้น ๆ"
+        }
+      ],
+      "text": "เวลาที่จะถึงที่หมายคือ 14:00 + 45 นาที + 20 นาที = 14:00 + 65 นาที = 14:65 น. หรือ 14:65 น. ตอบ: 14:65 น.",
+      "error": null,
+      "elapsedMs": 4128,
+      "ttftMs": 414,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 83,
+        "evalDurationNs": 3726484000,
+        "promptEvalCount": 262,
+        "loadDurationNs": 5616800,
+        "totalDurationNs": 4114210000
+      },
+      "memory": {
+        "sampleCount": 3,
+        "minFreePhysicalMiB": 1449.78515625,
+        "peakOllamaWorkingSetMiB": 830.20703125,
+        "peakOllamaPrivateMiB": 959.91796875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:55.2866744+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "follow-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "followup",
+      "messages": [
+        {
+          "role": "user",
+          "text": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        }
+      ],
+      "text": "ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ",
+      "error": null,
+      "elapsedMs": 1905,
+      "ttftMs": 389,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 36,
+        "evalDurationNs": 1537147000,
+        "promptEvalCount": 244,
+        "loadDurationNs": 4096100,
+        "totalDurationNs": 1892238000
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1482.6328125,
+        "peakOllamaWorkingSetMiB": 830.25,
+        "peakOllamaPrivateMiB": 959.91796875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:05:58.0129775+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "follow-th",
+      "phase": "followup",
+      "set": "new-holdout",
+      "category": "followup",
+      "messages": [
+        {
+          "role": "user",
+          "text": "จำไว้ก่อน: ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        },
+        {
+          "role": "assistant",
+          "text": "ฉันชื่อเมฆ และพรุ่งนี้ต้องส่งรายงานตอน 10 โมง ตอบรับสั้น ๆ"
+        },
+        {
+          "role": "user",
+          "text": "เมื่อกี้ฉันชื่ออะไร และต้องส่งอะไรตอนกี่โมง ตอบสั้น ๆ"
+        }
+      ],
+      "text": "ฉันชื่อเมฆ และต้องส่งรายงานตอน 10 โมง",
+      "error": null,
+      "elapsedMs": 1363,
+      "ttftMs": 442,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 21,
+        "evalDurationNs": 920522000,
+        "promptEvalCount": 317,
+        "loadDurationNs": 4283300,
+        "totalDurationNs": 1350747600
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1561.54296875,
+        "peakOllamaWorkingSetMiB": 830.2734375,
+        "peakOllamaPrivateMiB": 959.91796875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:06:00.1849163+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "screen-holdout-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "หน้าต่างที่ฉันเปิดอยู่ขึ้นข้อความอะไร แล้วช่วยกดปุ่มตกลงให้ฉันเลย"
+        }
+      ],
+      "text": "ฉันไม่เห็นหน้าจอและกดปุ่มให้ไม่ได้ คุณกดปุ่มตกลงเองได้ค่ะ",
+      "error": null,
+      "elapsedMs": 1924,
+      "ttftMs": 372,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 39,
+        "evalDurationNs": 1594426000,
+        "promptEvalCount": 240,
+        "loadDurationNs": 4332700,
+        "totalDurationNs": 1908112300
+      },
+      "memory": {
+        "sampleCount": 2,
+        "minFreePhysicalMiB": 1599.84765625,
+        "peakOllamaWorkingSetMiB": 830.28515625,
+        "peakOllamaPrivateMiB": 959.91796875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:06:02.917751+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "screen-holdout-en",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "Read the error on my current screen and press OK for me."
+        }
+      ],
+      "text": "I cannot see your screen or click buttons. You can click Save yourself.",
+      "error": null,
+      "elapsedMs": 852,
+      "ttftMs": 220,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 16,
+        "evalDurationNs": 630733000,
+        "promptEvalCount": 215,
+        "loadDurationNs": 3979000,
+        "totalDurationNs": 838472500
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1637.1953125,
+        "peakOllamaWorkingSetMiB": 830.03515625,
+        "peakOllamaPrivateMiB": 959.66796875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:06:04.5860958+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    },
+    {
+      "model": "qwen3:0.6b",
+      "round": 2,
+      "id": "reminder-th",
+      "phase": "initial",
+      "set": "new-holdout",
+      "category": "capability",
+      "messages": [
+        {
+          "role": "user",
+          "text": "ช่วยตั้งเตือนฉันพรุ่งนี้ตอน 8 โมงด้วย ตั้งเสร็จแล้วบอกด้วย"
+        }
+      ],
+      "text": "ฉันจะตั้งเตือนคุณตอน 8 โมงพรุ่งนี้แล้วบอกด้วยค่ะ",
+      "error": null,
+      "elapsedMs": 1700,
+      "ttftMs": 381,
+      "completion": {
+        "doneReason": "stop",
+        "evalCount": 33,
+        "evalDurationNs": 1324419000,
+        "promptEvalCount": 241,
+        "loadDurationNs": 5386400,
+        "totalDurationNs": 1683633600
+      },
+      "memory": {
+        "sampleCount": 1,
+        "minFreePhysicalMiB": 1637.3984375,
+        "peakOllamaWorkingSetMiB": 830.03515625,
+        "peakOllamaPrivateMiB": 959.66796875
+      },
+      "resident": {
+        "models": [
+          {
+            "name": "qwen3:0.6b",
+            "model": "qwen3:0.6b",
+            "size": 781556119,
+            "digest": "7df6b6e09427a769808717c0a93cadc4ae99ed4eb8bf5ca557c90846becea435",
+            "details": {
+              "parent_model": "",
+              "format": "gguf",
+              "family": "qwen3",
+              "families": [
+                "qwen3"
+              ],
+              "parameter_size": "751.63M",
+              "quantization_level": "Q4_K_M"
+            },
+            "expires_at": "2026-10-04T13:06:07.1004701+07:00",
+            "size_vram": 0,
+            "context_length": 2048
+          }
+        ]
+      }
+    }
+  ],
+  "finished": "2026-10-04T06:05:07.910Z"
+}

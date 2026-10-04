@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "ready": true,
+  "kind": "live",
+  "capabilities": [
+    "text-stream"
+  ],
+  "model": "qwen3:0.6b",
+  "location": "local"
+}

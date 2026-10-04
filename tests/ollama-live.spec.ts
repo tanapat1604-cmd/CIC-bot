@@ -8,9 +8,10 @@ import { createOllamaProvider, ollamaConfig } from '../backend/ollama'
 test('installed Ollama answers in the app, follows chat history, stops upstream and retries once', async ({ page }) => {
   test.skip(process.env.CIC_TEST_OLLAMA !== '1', 'Requires explicit local-model test opt-in')
   test.setTimeout(90000)
+  const model = process.env.AI_MODEL || 'qwen3:0.6b'
   const signals: AbortSignal[] = [], logs: { status: string }[] = [], payloads: { messages: { role: string; content: string }[] }[] = []
   let failNext = false
-  const provider = createOllamaProvider(ollamaConfig({ AI_MODEL: process.env.AI_MODEL || 'qwen3:0.6b' }), async (url, init) => {
+  const provider = createOllamaProvider(ollamaConfig({ AI_MODEL: model }), async (url, init) => {
     if (String(url).endsWith('/api/chat')) {
       if (failNext) { failNext = false; throw new Error('controlled connection outage') }
       signals.push(init!.signal as AbortSignal); payloads.push(JSON.parse(String(init!.body)))
@@ -26,17 +27,19 @@ test('installed Ollama answers in the app, follows chat history, stops upstream 
     await page.goto('./#/app')
     await page.getByRole('button', { name: 'การเชื่อมต่อ', exact: true }).click()
     await page.getByRole('button', { name: 'ตรวจการเชื่อมต่อ backend', exact: true }).click()
-    await expect(page.getByRole('dialog')).toContainText('qwen3:0.6b')
+    await expect(page.getByRole('dialog')).toContainText(model)
     await page.getByRole('button', { name: 'เริ่มแชต AI ในเครื่อง', exact: true }).click()
     await expect(page.getByRole('button', { name: 'การเชื่อมต่อ', exact: true })).toHaveText('AI ในเครื่อง')
     await send('ตอบเพียงคำว่า สวัสดี')
     const replies = page.getByRole('article', { name: 'คำตอบ CIC', exact: true })
     await expect(page.getByRole('button', { name: 'หยุดงาน', exact: true })).toBeDisabled({ timeout: 30000 })
     await expect(replies.last()).toContainText('สวัสดี')
-    await expect(replies.last()).toContainText('AI ในเครื่อง · qwen3:0.6b')
+    await expect(replies.last()).toContainText('AI ในเครื่อง · ' + model)
     await send('เมื่อกี้ฉันขอให้คุณพูดคำว่าอะไร ตอบสั้น ๆ')
     await expect(page.getByRole('button', { name: 'หยุดงาน', exact: true })).toBeDisabled({ timeout: 30000 })
     await expect(replies.last()).toContainText('สวัสดี')
+    expect(logs.at(-1)?.status).toBe('done')
+    await expect(page.getByRole('alert')).toHaveCount(0)
     expect(payloads[1].messages.map(m => m.role)).toEqual(['system', 'user', 'assistant', 'user'])
     await page.screenshot({ path: 'test-results/ollama-live-chat.png' })
     await send('Write a detailed list of 50 small programming tasks, one sentence each.')
@@ -61,6 +64,10 @@ test('installed Ollama answers in the app, follows chat history, stops upstream 
     await page.setViewportSize({ width: 390, height: 844 })
     await expect(page.getByRole('textbox', { name: 'ข้อความถึง CIC' })).toBeInViewport()
     await page.screenshot({ path: 'test-results/ollama-live-mobile.png' })
-    await writeFile('test-results/ollama-live.json', JSON.stringify({ model: provider.model, actualReplies: await replies.allTextContents(), stoppedUpstream: true, noDuplicateRetry: true, browserCallsOllamaDirectly: false, logs, errors }, null, 2))
+    await writeFile('test-results/ollama-live.json', JSON.stringify({ model: provider.model, actualReplies: await replies.allTextContents(), stoppedUpstream: true, noDuplicateRetry: true, browserCallsOllamaDirectly: false, retryCompleted: logs.at(-1)?.status === 'done', logs, errors }, null, 2))
+    // A disabled Stop button also occurs on failure: require actual upstream completion.
+    expect(logs.at(-1)?.status).toBe('done')
+    await expect(page.getByRole('alert')).toHaveCount(0)
+    await expect(replies.last()).not.toContainText('คำตอบนี้ยังไม่ครบ')
   } finally { server.closeAllConnections(); await new Promise<void>(resolve => server.close(() => resolve())) }
 })
