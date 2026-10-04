@@ -1,0 +1,41 @@
+{
+  "productionFreezeUnchanged": true,
+  "checked": "2026-10-04T14:30:30.5433434Z",
+  "listeners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 11434
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8787
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5173
+    }
+  ],
+  "freeRAMKiB": 1934432,
+  "health": {
+    "version": 1,
+    "ready": true,
+    "kind": "live",
+    "capabilities": [
+      "text-stream"
+    ],
+    "capabilityProfile": {
+      "version": 1,
+      "textChat": true,
+      "calculator": true,
+      "timeArithmetic": true,
+      "reminders": false,
+      "futureWork": false,
+      "screenRead": false,
+      "computerControl": false,
+      "fileAccess": false,
+      "webAccess": false
+    },
+    "model": "qwen3:0.6b",
+    "location": "local"
+  }
+}
