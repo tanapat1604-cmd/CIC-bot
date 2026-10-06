@@ -35,3 +35,9 @@ No aggregate score used to mask drafting failures. Observed model times7287/3286
 
 ## Next
 Wait for the user to choose architecture and FIRST new capability from the cards. Local specialized tools are recommended, chess is the suggested first milestone. Any missing engine/dependency download or external data/cost requires a concrete separate choice/authorization. For slides need a content/design brief; for video need input files and edit/generation scope; for puzzles choose rules. Stop unbounded prompt tuning. Read WORK-PROGRESS.md for final commit/CI/readiness.
+
+## Final delivery
+
+Stages1–2 delivered: code c8d75e04fb57473b15e3d273610e0db2e8f4a423 pushed; CI https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37547518626 SUCCESS (lint/builds/default tests/frontend-only deploy). Actual public demo desktop/mobile/controls/reload/WebGL PASS, no page/console/asset errors or localhost/Ollama requests; asset /CIC-bot/assets/index-Bp3ilC9k.js matches local build. Local app restored and ready0.6b on loopback. No model/prompt changes, downloads, external AI or training. First new capability and architecture remain awaiting user selection; do NOT start several capabilities or treat no reply as approval.
+
+Inspected actual public desktop/mobile screenshots. ci.json and public-demo.json preserve job/flow evidence; code hashes in readiness.json remained unchanged after the held set. Final docs checkpoint uses [skip ci]; tested implementation remains c8d75e0. Browser model retry completed but raw reply is a list of arithmetic questions, not a correct2+3 answer; it is deliberately not a reasoning-quality pass.
