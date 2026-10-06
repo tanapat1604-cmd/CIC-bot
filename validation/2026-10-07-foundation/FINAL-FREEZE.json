@@ -1,0 +1,37 @@
+{
+  "frozen": "2026-10-07T06:29:38.2447167+07:00",
+  "hashes": [
+    {
+      "file": "backend/requestPlan.ts",
+      "sha256": "A479DECCFC499E56AFE101F859801981250EC7BE01F54873A0EC7E11EA327101"
+    },
+    {
+      "file": "backend/liveReply.ts",
+      "sha256": "D42E974799D4D191F348C7931C232C8B0650BD99D29ED9635291567FC50AF018"
+    },
+    {
+      "file": "backend/toolRunner.ts",
+      "sha256": "05ADE385224CF7AF81AA05C498C4F67618AF320DECC97DA69F6C213DE655EEC2"
+    },
+    {
+      "file": "backend/provider.ts",
+      "sha256": "8925EF77A8CDCD13543F59F34C60AE751B304E59FD44F32CE7133E7037D11E2C"
+    },
+    {
+      "file": "backend/ollama.ts",
+      "sha256": "02E30CAD1168D3B4A5383937593EC5ACC145DFAA6560C644EB9F71CF03DA775C"
+    },
+    {
+      "file": "shared/capabilities.ts",
+      "sha256": "E177B19C9314D28DBA050260EB9AA9F4400199C944E64348ED1832963EE1E2FB"
+    },
+    {
+      "file": "src/workspace/ConnectionSettings.tsx",
+      "sha256": "7C403916E464F3E00197D33A585A370C729E9E75621E8320D6AEFC6EF43C89C0"
+    },
+    {
+      "file": "scripts/foundation-cases.json",
+      "sha256": "46DA4069E75B403C573AF0A5288547FBECA180F23E4A6598F61BEFC5899FCC62"
+    }
+  ]
+}

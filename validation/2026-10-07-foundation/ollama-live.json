@@ -1,0 +1,41 @@
+{
+  "model": "qwen3:0.6b",
+  "actualReplies": [
+    "CCIC AI ในเครื่อง · qwen3:0.6bสวัสดี!ส่งคำตอบจากโมเดลแล้ว · ยังไม่ได้ทำงานภายนอก ข้อความอาจคลาดเคลื่อน",
+    "CCIC AI ในเครื่อง · qwen3:0.6bสวัสดี!ส่งคำตอบจากโมเดลแล้ว · ยังไม่ได้ทำงานภายนอก ข้อความอาจคลาดเคลื่อน",
+    "CCIC AI ในเครื่อง · qwen3:0.6b- Write a simple program to add two numbers  \nหยุดกลางทาง · คำตอบนี้ยังไม่ครบยังไม่ได้ทำงานภายนอก · ข้อความ AI ไม่ใช่ผลการทำงานจริง",
+    "CCIC AI ในเครื่อง · qwen3:0.6b- บวก 2 บวก 3 เท่าไร?  \n- บวก 4 บวก 5 เท่าไร?  \n- บวก 6 บวก 7 เท่าไร?  \n- บวก 8 บวก 9 เท่าไร?  \n- บวก 10 บวก 11 เท่าไร?ส่งคำตอบจากโมเดลแล้ว · ยังไม่ได้ทำงานภายนอก ข้อความอาจคลาดเคลื่อน"
+  ],
+  "stoppedUpstream": true,
+  "noDuplicateRetry": true,
+  "browserCallsOllamaDirectly": false,
+  "retryCompleted": true,
+  "logs": [
+    {
+      "requestId": "1b6c01bd-faa7-4d5f-bd3b-4f8cc1394ff7",
+      "status": "done",
+      "durationMs": 538
+    },
+    {
+      "requestId": "7da4d91e-bce1-4418-8735-59c63864bafc",
+      "status": "done",
+      "durationMs": 699
+    },
+    {
+      "requestId": "0e4bdb2c-f134-4989-b04d-162eebe40c6e",
+      "status": "cancelled",
+      "durationMs": 971
+    },
+    {
+      "requestId": "2cad2be1-9be6-4274-893a-55d333705b4c",
+      "status": "unavailable",
+      "durationMs": 16
+    },
+    {
+      "requestId": "9c7ba8a8-d4f5-4b6b-80ed-d350a0730606",
+      "status": "done",
+      "durationMs": 4277
+    }
+  ],
+  "errors": []
+}

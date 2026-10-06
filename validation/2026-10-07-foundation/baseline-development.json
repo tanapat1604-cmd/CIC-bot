@@ -1,0 +1,279 @@
+[
+  {
+    "set": "development",
+    "id": "d-team",
+    "turns": [
+      "/calc 48 + 6 แล้วส่งผลการคำนวณให้ทีม"
+    ],
+    "kind": "mixed",
+    "contains": "= 54",
+    "plan": {
+      "kind": "model",
+      "original": "/calc 48 + 6 แล้วส่งผลการคำนวณให้ทีม",
+      "allowed": [
+        "/calc 48 + 6 แล้วส่งผลการคำนวณให้ทีม"
+      ],
+      "denied": []
+    },
+    "source": "calculator",
+    "text": "คำนวณไม่ได้: รองรับตัวเลข + - * / และวงเล็บ ไม่เกิน 128 ตัวอักษร",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 4.125200000000007,
+    "pass": false
+  },
+  {
+    "set": "development",
+    "id": "d-draft",
+    "turns": [
+      "ช่วยร่างข้อความส่งผลการคำนวณให้ทีม ฉันจะส่งเอง"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "ช่วยร่างข้อความส่งผลการคำนวณให้ทีม ฉันจะส่งเอง",
+      "allowed": [
+        "ช่วยร่างข้อความส่งผลการคำนวณให้ทีม ฉันจะส่งเอง"
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.3427000000000362,
+    "pass": true
+  },
+  {
+    "set": "development",
+    "id": "d-send",
+    "turns": [
+      "กรุณาส่งผลการคำนวณให้ทีม"
+    ],
+    "kind": "system",
+    "plan": {
+      "kind": "model",
+      "original": "กรุณาส่งผลการคำนวณให้ทีม",
+      "allowed": [
+        "กรุณาส่งผลการคำนวณให้ทีม"
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.09199999999998454,
+    "pass": false
+  },
+  {
+    "set": "development",
+    "id": "d-en",
+    "turns": [
+      "/calc 7 * 8 then send the calculation result to my team"
+    ],
+    "kind": "mixed",
+    "contains": "= 56",
+    "plan": {
+      "kind": "mixed",
+      "original": "/calc 7 * 8 then send the calculation result to my team",
+      "allowed": [
+        "/calc 7 * 8"
+      ],
+      "denied": [
+        "send the calculation result to my team"
+      ]
+    },
+    "source": "mixed",
+    "text": "System: no message was sent, reminder set, screen viewed, button pressed or future work scheduled.\nParts not performed: \"send the calculation result to my team\"\n\nLocal tool (calculator):\n7 * 8 = 56\n",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 1.3371000000000208,
+    "pass": true
+  },
+  {
+    "set": "development",
+    "id": "d-en-draft",
+    "turns": [
+      "Draft a message with the calculation result for my team. I will send it myself."
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "Draft a message with the calculation result for my team. I will send it myself.",
+      "allowed": [
+        "Draft a message with the calculation result for my team. I will send it myself."
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.18379999999996244,
+    "pass": true
+  },
+  {
+    "set": "development",
+    "id": "d-quoted",
+    "turns": [
+      "แปล \"ส่งผลการคำนวณให้ทีม\" เป็นอังกฤษ"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "แปล \"ส่งผลการคำนวณให้ทีม\" เป็นอังกฤษ",
+      "allowed": [
+        "แปล \"ส่งผลการคำนวณให้ทีม\" เป็นอังกฤษ"
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.3882000000000403,
+    "pass": true
+  },
+  {
+    "set": "development",
+    "id": "d-negated",
+    "turns": [
+      "ไม่ต้องส่งผลการคำนวณให้ทีม แค่ร่างข้อความให้ฉัน"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "ไม่ต้องส่งผลการคำนวณให้ทีม แค่ร่างข้อความให้ฉัน",
+      "allowed": [
+        "ไม่ต้องส่งผลการคำนวณให้ทีม แค่ร่างข้อความให้ฉัน"
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.11240000000003647,
+    "pass": true
+  },
+  {
+    "set": "development",
+    "id": "d-correction",
+    "turns": [
+      "ส่งผลการคำนวณให้ทีม",
+      "เปลี่ยนเป็นร่างข้อความส่งผลการคำนวณให้ทีม",
+      "ทำเลย"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "ทำเลย",
+      "allowed": [
+        "ร่างข้อความส่งผลการคำนวณให้ทีม"
+      ],
+      "denied": [],
+      "effective": "ร่างข้อความส่งผลการคำนวณให้ทีม",
+      "resolvedFrom": 2
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.39479999999997517,
+    "pass": true
+  },
+  {
+    "set": "development",
+    "id": "d-reverse",
+    "turns": [
+      "ร่างข้อความส่งผลการคำนวณให้ทีม",
+      "เปลี่ยนเป็นส่งผลการคำนวณให้ทีม",
+      "ทำเลย"
+    ],
+    "kind": "system",
+    "plan": {
+      "kind": "model",
+      "original": "ทำเลย",
+      "allowed": [
+        "ส่งผลการคำนวณให้ทีม"
+      ],
+      "denied": [],
+      "effective": "ส่งผลการคำนวณให้ทีม",
+      "resolvedFrom": 2
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.25480000000004566,
+    "pass": false
+  },
+  {
+    "set": "development",
+    "id": "d-barrier",
+    "turns": [
+      "ส่งผลการคำนวณให้ทีม",
+      "แก้คำสั่งเป็นอีกแบบ",
+      "ทำเลย"
+    ],
+    "kind": "clarify",
+    "plan": {
+      "kind": "clarify",
+      "original": "ทำเลย",
+      "allowed": [],
+      "denied": []
+    },
+    "source": "capabilities",
+    "text": "ต้องการให้ช่วยส่วนข้อความ: ร่างข้อความ หรืออธิบายวิธีทำเอง? ยังไม่ได้ทำงานภายนอก และ CIC ส่งข้อความหรือตั้งเตือนให้ไม่ได้",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 0.36829999999997654,
+    "pass": true
+  },
+  {
+    "set": "development",
+    "id": "d-invalid",
+    "turns": [
+      "/calc 1 / 0 แล้วส่งผลการคำนวณให้ทีม"
+    ],
+    "kind": "mixed",
+    "contains": "หารด้วยศูนย์",
+    "plan": {
+      "kind": "model",
+      "original": "/calc 1 / 0 แล้วส่งผลการคำนวณให้ทีม",
+      "allowed": [
+        "/calc 1 / 0 แล้วส่งผลการคำนวณให้ทีม"
+      ],
+      "denied": []
+    },
+    "source": "calculator",
+    "text": "คำนวณไม่ได้: รองรับตัวเลข + - * / และวงเล็บ ไม่เกิน 128 ตัวอักษร",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 0.25950000000000273,
+    "pass": false
+  },
+  {
+    "set": "development",
+    "id": "d-help",
+    "turns": [
+      "บอกวิธีส่งผลการคำนวณให้ทีม"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "บอกวิธีส่งผลการคำนวณให้ทีม",
+      "allowed": [
+        "บอกวิธีส่งผลการคำนวณให้ทีม"
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.1904999999999859,
+    "pass": true
+  }
+]

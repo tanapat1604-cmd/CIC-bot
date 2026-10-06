@@ -62,16 +62,11 @@ export function planRequest(messages: readonly TextMessage[], depth = 0): Reques
     const negatedSend = /(?:ไม่ต้อง|อย่า|ห้าม).{0,10}ส่ง|(?:do not|don't).{0,10}send/i.test(text)
     const userSends = /(?:ฉัน|ผม|เรา|i).{0,8}(?:จะ)?ส่ง.{0,15}เอง|i will send/i.test(text)
     const send = !negatedSend && !userSends && /(?:ส่งผล|ส่งคำตอบ|ส่งให้|ส่งเลย|ส่งข้อความ|send).+/i.test(text)
-    // A task word inside the object of "send" does not make sending a text task.
-    // An instruction to draft/translate BEFORE send still describes a supported text task.
-    const sendAt = text.search(/ส่งผล|ส่งคำตอบ|ส่งให้|ส่งเลย|ส่งข้อความ|send/i)
-    const taskAt = text.search(task)
-    const sendIsAction = send && (taskAt < 0 || sendAt < taskAt)
     const falseCompletion = /(?:ตอบ|บอก|พูด|say|tell).*(?:สำเร็จ|เรียบร้อย|เสร็จ|done|completed)/i.test(text + (task.test(text) ? '' : original)) && !task.test(text)
     const explicitEnact = /(?:ทำให้จริง|ทำจริง|ทำแบบนั้น|บนเครื่องฉัน|กดให้|ส่งให้)/i.test(text) && !task.test(text) && !/(?:ไม่ต้อง|อย่า).{0,8}(?:ทำ|กด|ส่ง)/i.test(text)
     if (systemHelp(part, text)) { allowed.push(part); continue }
     const intent = requestIntent(part, messages)
-    if (falseCompletion || sendIsAction || explicitEnact || intent.kind === 'refuse') denied.push(part)
+    if (falseCompletion || (send && !task.test(text)) || explicitEnact || intent.kind === 'refuse') denied.push(part)
     else if (/^(?:ไม่ต้อง|อย่า|ห้าม)\s*(?:ร่าง|เขียน|สอน|อธิบาย|แนะนำ|แปล)/u.test(text)) cancelledText = true
     else if (/^\/(?:calc|time)\b/i.test(part) || task.test(text)) allowed.push(part)
     else if (intent.kind === 'clarify') return empty('clarify')

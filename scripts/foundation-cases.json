@@ -1,0 +1,213 @@
+[
+  {
+    "set": "development",
+    "id": "d-team",
+    "turns": [
+      "/calc 48 + 6 แล้วส่งผลการคำนวณให้ทีม"
+    ],
+    "kind": "mixed",
+    "contains": "= 54"
+  },
+  {
+    "set": "development",
+    "id": "d-draft",
+    "turns": [
+      "ช่วยร่างข้อความส่งผลการคำนวณให้ทีม ฉันจะส่งเอง"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "development",
+    "id": "d-send",
+    "turns": [
+      "กรุณาส่งผลการคำนวณให้ทีม"
+    ],
+    "kind": "system"
+  },
+  {
+    "set": "development",
+    "id": "d-en",
+    "turns": [
+      "/calc 7 * 8 then send the calculation result to my team"
+    ],
+    "kind": "mixed",
+    "contains": "= 56"
+  },
+  {
+    "set": "development",
+    "id": "d-en-draft",
+    "turns": [
+      "Draft a message with the calculation result for my team. I will send it myself."
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "development",
+    "id": "d-quoted",
+    "turns": [
+      "แปล \"ส่งผลการคำนวณให้ทีม\" เป็นอังกฤษ"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "development",
+    "id": "d-negated",
+    "turns": [
+      "ไม่ต้องส่งผลการคำนวณให้ทีม แค่ร่างข้อความให้ฉัน"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "development",
+    "id": "d-correction",
+    "turns": [
+      "ส่งผลการคำนวณให้ทีม",
+      "เปลี่ยนเป็นร่างข้อความส่งผลการคำนวณให้ทีม",
+      "ทำเลย"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "development",
+    "id": "d-reverse",
+    "turns": [
+      "ร่างข้อความส่งผลการคำนวณให้ทีม",
+      "เปลี่ยนเป็นส่งผลการคำนวณให้ทีม",
+      "ทำเลย"
+    ],
+    "kind": "system"
+  },
+  {
+    "set": "development",
+    "id": "d-barrier",
+    "turns": [
+      "ส่งผลการคำนวณให้ทีม",
+      "แก้คำสั่งเป็นอีกแบบ",
+      "ทำเลย"
+    ],
+    "kind": "clarify"
+  },
+  {
+    "set": "development",
+    "id": "d-invalid",
+    "turns": [
+      "/calc 1 / 0 แล้วส่งผลการคำนวณให้ทีม"
+    ],
+    "kind": "mixed",
+    "contains": "หารด้วยศูนย์"
+  },
+  {
+    "set": "development",
+    "id": "d-help",
+    "turns": [
+      "บอกวิธีส่งผลการคำนวณให้ทีม"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "holdout",
+    "id": "h-share-analysis",
+    "turns": [
+      "/calc (18 + 7) * 2 แล้วส่งผลวิเคราะห์ให้หัวหน้า"
+    ],
+    "kind": "mixed",
+    "contains": "= 50"
+  },
+  {
+    "set": "holdout",
+    "id": "h-summary-draft",
+    "turns": [
+      "เขียนข้อความส่งผลสรุปให้เพื่อนโดยฉันจะส่งเอง"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "holdout",
+    "id": "h-send-summary",
+    "turns": [
+      "ช่วยส่งผลสรุปให้ผู้จัดการ"
+    ],
+    "kind": "system"
+  },
+  {
+    "set": "holdout",
+    "id": "h-english",
+    "turns": [
+      "/calc 99 / 3 and send the translated answer to Sam"
+    ],
+    "kind": "mixed",
+    "contains": "= 33"
+  },
+  {
+    "set": "holdout",
+    "id": "h-en-text",
+    "turns": [
+      "Please explain how to send the translated answer to Sam"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "holdout",
+    "id": "h-clock",
+    "turns": [
+      "/time 23:50 + 20 แล้วส่งคำตอบการคำนวณให้ครู"
+    ],
+    "kind": "mixed",
+    "contains": "00:10 (+1 วัน)"
+  },
+  {
+    "set": "holdout",
+    "id": "h-negation",
+    "turns": [
+      "อย่าส่งผลสรุปให้ใคร ช่วยเขียนร่างให้ฉันตรวจ"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "holdout",
+    "id": "h-quote",
+    "turns": [
+      "ตรวจประโยค \"ส่งผลสรุปให้ผู้จัดการ\""
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "holdout",
+    "id": "h-latest",
+    "turns": [
+      "ส่งผลสรุปให้ผู้จัดการ",
+      "แก้เป็นแปลคำว่า cat เป็นไทย",
+      "ทำเลย"
+    ],
+    "kind": "model"
+  },
+  {
+    "set": "holdout",
+    "id": "h-latest-send",
+    "turns": [
+      "เขียนร่างส่งผลวิเคราะห์ให้ครู",
+      "แก้เป็นส่งผลวิเคราะห์ให้ครู",
+      "ทำเลย"
+    ],
+    "kind": "system"
+  },
+  {
+    "set": "holdout",
+    "id": "h-unknown",
+    "turns": [
+      "ส่งคำตอบให้ครู",
+      "ยกเลิก",
+      "ทำเลย"
+    ],
+    "kind": "clarify"
+  },
+  {
+    "set": "holdout",
+    "id": "h-bad-calc",
+    "turns": [
+      "/calc 3 ** 2 แล้วส่งผลสรุปให้เพื่อน"
+    ],
+    "kind": "mixed",
+    "contains": "คำนวณไม่ได้"
+  }
+]

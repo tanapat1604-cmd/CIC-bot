@@ -1,5 +1,14 @@
 // CIC's implemented capabilities; model text can never grant or complete an external action.
 export const CIC_CAPABILITIES = Object.freeze({ version: 1, textChat: true, calculator: true, timeArithmetic: true, reminders: false, futureWork: false, screenRead: false, computerControl: false, fileAccess: false, webAccess: false })
+export const CAPABILITY_CATALOG = [
+  { id: 'calculator', status: 'available', label: 'คำนวณเลขและเวลา', detail: '/calc และ /time — เครื่องมือในเครื่อง มีขอบเขตรูปแบบคำสั่ง' },
+  { id: 'chat', status: 'experimental', label: 'สนทนาและร่างข้อความ', detail: 'โมเดลในเครื่อง — ภาษาไทยและเหตุผลยังอาจผิด ต้องตรวจคำตอบ' },
+  { id: 'chess', status: 'unsupported', label: 'หมากรุก', detail: 'ยังไม่ได้เชื่อม engine สำหรับเล่นหรือวิเคราะห์' },
+  { id: 'slides', status: 'unsupported', label: 'สไลด์', detail: 'ยังสร้างไฟล์ PPTX จากแอปไม่ได้' },
+  { id: 'video', status: 'unsupported', label: 'วิดีโอ', detail: 'ยังไม่มีการตัดต่อหรือสร้างไฟล์วิดีโอจากแอป' },
+  { id: 'puzzles', status: 'unsupported', label: 'เกมและปริศนา', detail: 'ยังไม่มี solver ที่ตรวจคำตอบได้' },
+] as const
+export const CAPABILITY_STATUS = { available: 'ใช้ได้จริง', experimental: 'ทดลอง', unsupported: 'ยังไม่รองรับ' } as const
 export type ReplySource = 'model' | 'calculator' | 'time-calculator' | 'capabilities' | 'mixed' | 'help'
 export const REPLY_SOURCES: readonly ReplySource[] = ['model', 'calculator', 'time-calculator', 'capabilities', 'mixed', 'help']
 export const CAPABILITY_NOTICE = 'ส่งข้อความเท่านั้น · ไม่ได้ตั้งเตือน ดูหน้าจอ กดปุ่ม หรือทำงานภายหลัง'

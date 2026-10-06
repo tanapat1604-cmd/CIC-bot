@@ -1,5 +1,15 @@
 # CIC app foundation — progress
 
+## Current round: 2026-10-07 capability foundation (verification/delivery; choice pending)
+- Installed-model browser2/2PASS23.0s, final lintPASS. Actual local app restored and54+unsent/help/correction/errors verified; readiness.json confirms loopback-only and all frozen production/case hashes unchanged. Commit/CI/demo next. Choices still pending.
+- Routing development8/12→12/12, frozen new holdout12/12. No retuning from held results. Common runner and Settings capability catalog implemented. Frontend/backend build+lint pass, full default77PASS/2modelSKIP (1.9m). Initial English assertion mistake fixed without changing production; focused5/5 then full passed.
+- New real model audit retains three important failures: Thai draft unusable, latest no-confirmation ignored, English draft missing. English correction and both unknown-fact probes pass. Actual tool result20+unsent passes with zero model calls. No prompt change or general Thai acceptance. Report validation/2026-10-07-foundation/RESULTS.md.
+- Next: finish opt-in model browser verification, final lint for diagnostic scripts, restore local app, commit/push, CI/public demo, final checkpoint. First new capability remains awaiting user choice; do not download or choose on their behalf.
+- Started clean fe686c6 and origin/main equal. Read routing RESULTS and actual source; RAM free ~688MiB, Ollama0.35.1 and both0.6b/1.7b installed. No AGENTS.md found in repo/checked parents. No downloads/prompt changes/training/public backend.
+- User choices pending via two question cards: local/hybrid/stronger machine and first capability. Recommended local tools + chess; no download approved yet. Independent authorized work: close calculation-result sending defect, common validated/cancellable tool runner and capability status.
+- Frozen acceptance/development12/new-holdout12 in validation/2026-10-07-foundation/PLAN.md and scripts/foundation-cases.json BEFORE edits. Preserve failures; do not tune from held results.
+
+
 ## Current round: send-result intent, latest corrections and animation diagnosis
 - Started clean ccb9efa / origin main (previous tested f1eeb1f); read progress/help report, no overwritten work. Default0.6b/prompt/settings unchanged,1.7b retained, no pulls/public backend/external capabilities.
 - User chose targeted clarification and separate prompt experiment. No callable immediate notification tool: question cards/final chat, no delivery claim/automation. Optional next-round choice is independent of completing this round.

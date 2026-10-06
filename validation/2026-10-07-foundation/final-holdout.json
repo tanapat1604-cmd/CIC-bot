@@ -1,0 +1,286 @@
+[
+  {
+    "set": "holdout",
+    "id": "h-share-analysis",
+    "turns": [
+      "/calc (18 + 7) * 2 แล้วส่งผลวิเคราะห์ให้หัวหน้า"
+    ],
+    "kind": "mixed",
+    "contains": "= 50",
+    "plan": {
+      "kind": "mixed",
+      "original": "/calc (18 + 7) * 2 แล้วส่งผลวิเคราะห์ให้หัวหน้า",
+      "allowed": [
+        "/calc (18 + 7) * 2"
+      ],
+      "denied": [
+        "ส่งผลวิเคราะห์ให้หัวหน้า"
+      ]
+    },
+    "source": "mixed",
+    "text": "ข้อมูลจากระบบ: ไม่ได้ส่งข้อความ ตั้งเตือน ดูหน้าจอ กดปุ่ม หรือทำงานภายหลังให้\nส่วนที่ไม่ได้ทำ: \"ส่งผลวิเคราะห์ให้หัวหน้า\"\n\nผลเครื่องมือในเครื่อง (calculator):\n(18 + 7) * 2 = 50\n",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 5.232700000000008,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-summary-draft",
+    "turns": [
+      "เขียนข้อความส่งผลสรุปให้เพื่อนโดยฉันจะส่งเอง"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "เขียนข้อความส่งผลสรุปให้เพื่อนโดยฉันจะส่งเอง",
+      "allowed": [
+        "เขียนข้อความส่งผลสรุปให้เพื่อนโดยฉันจะส่งเอง"
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.5228999999999928,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-send-summary",
+    "turns": [
+      "ช่วยส่งผลสรุปให้ผู้จัดการ"
+    ],
+    "kind": "system",
+    "plan": {
+      "kind": "system",
+      "original": "ช่วยส่งผลสรุปให้ผู้จัดการ",
+      "allowed": [],
+      "denied": [
+        "ช่วยส่งผลสรุปให้ผู้จัดการ"
+      ]
+    },
+    "source": "capabilities",
+    "text": "ข้อมูลจากระบบ: ไม่ได้ส่งข้อความ ตั้งเตือน ดูหน้าจอ กดปุ่ม หรือทำงานภายหลังให้",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 0.06570000000000675,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-english",
+    "turns": [
+      "/calc 99 / 3 and send the translated answer to Sam"
+    ],
+    "kind": "mixed",
+    "contains": "= 33",
+    "plan": {
+      "kind": "mixed",
+      "original": "/calc 99 / 3 and send the translated answer to Sam",
+      "allowed": [
+        "/calc 99 / 3"
+      ],
+      "denied": [
+        "send the translated answer to Sam"
+      ]
+    },
+    "source": "mixed",
+    "text": "System: no message was sent, reminder set, screen viewed, button pressed or future work scheduled.\nParts not performed: \"send the translated answer to Sam\"\n\nLocal tool (calculator):\n99 / 3 = 33\n",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 0.587600000000009,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-en-text",
+    "turns": [
+      "Please explain how to send the translated answer to Sam"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "Please explain how to send the translated answer to Sam",
+      "allowed": [
+        "Please explain how to send the translated answer to Sam"
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.20350000000000534,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-clock",
+    "turns": [
+      "/time 23:50 + 20 แล้วส่งคำตอบการคำนวณให้ครู"
+    ],
+    "kind": "mixed",
+    "contains": "00:10 (+1 วัน)",
+    "plan": {
+      "kind": "mixed",
+      "original": "/time 23:50 + 20 แล้วส่งคำตอบการคำนวณให้ครู",
+      "allowed": [
+        "/time 23:50 + 20"
+      ],
+      "denied": [
+        "ส่งคำตอบการคำนวณให้ครู"
+      ]
+    },
+    "source": "mixed",
+    "text": "ข้อมูลจากระบบ: ไม่ได้ส่งข้อความ ตั้งเตือน ดูหน้าจอ กดปุ่ม หรือทำงานภายหลังให้\nส่วนที่ไม่ได้ทำ: \"ส่งคำตอบการคำนวณให้ครู\"\n\nผลเครื่องมือในเครื่อง (time-calculator):\n23:50 + 20 = 00:10 (+1 วัน)\nคำนวณเวลาเท่านั้น ไม่ได้ตั้งเตือนหรือนัดหมาย\n",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 0.7102000000000004,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-negation",
+    "turns": [
+      "อย่าส่งผลสรุปให้ใคร ช่วยเขียนร่างให้ฉันตรวจ"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "อย่าส่งผลสรุปให้ใคร ช่วยเขียนร่างให้ฉันตรวจ",
+      "allowed": [
+        "อย่าส่งผลสรุปให้ใคร ช่วยเขียนร่างให้ฉันตรวจ"
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.16390000000001237,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-quote",
+    "turns": [
+      "ตรวจประโยค \"ส่งผลสรุปให้ผู้จัดการ\""
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "ตรวจประโยค \"ส่งผลสรุปให้ผู้จัดการ\"",
+      "allowed": [
+        "ตรวจประโยค \"ส่งผลสรุปให้ผู้จัดการ\""
+      ],
+      "denied": []
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.8807999999999936,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-latest",
+    "turns": [
+      "ส่งผลสรุปให้ผู้จัดการ",
+      "แก้เป็นแปลคำว่า cat เป็นไทย",
+      "ทำเลย"
+    ],
+    "kind": "model",
+    "plan": {
+      "kind": "model",
+      "original": "ทำเลย",
+      "allowed": [
+        "แปลคำว่า cat เป็นไทย"
+      ],
+      "denied": [],
+      "effective": "แปลคำว่า cat เป็นไทย",
+      "resolvedFrom": 2
+    },
+    "source": "model",
+    "text": "RAW MODEL FIXTURE",
+    "error": null,
+    "modelCalls": 1,
+    "ms": 0.191599999999994,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-latest-send",
+    "turns": [
+      "เขียนร่างส่งผลวิเคราะห์ให้ครู",
+      "แก้เป็นส่งผลวิเคราะห์ให้ครู",
+      "ทำเลย"
+    ],
+    "kind": "system",
+    "plan": {
+      "kind": "system",
+      "original": "ทำเลย",
+      "allowed": [],
+      "denied": [
+        "ส่งผลวิเคราะห์ให้ครู"
+      ],
+      "effective": "ส่งผลวิเคราะห์ให้ครู",
+      "resolvedFrom": 2
+    },
+    "source": "capabilities",
+    "text": "ข้อมูลจากระบบ: ไม่ได้ส่งข้อความ ตั้งเตือน ดูหน้าจอ กดปุ่ม หรือทำงานภายหลังให้",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 0.3008000000000095,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-unknown",
+    "turns": [
+      "ส่งคำตอบให้ครู",
+      "ยกเลิก",
+      "ทำเลย"
+    ],
+    "kind": "clarify",
+    "plan": {
+      "kind": "clarify",
+      "original": "ทำเลย",
+      "allowed": [],
+      "denied": []
+    },
+    "source": "capabilities",
+    "text": "ต้องการให้ช่วยส่วนข้อความ: ร่างข้อความ หรืออธิบายวิธีทำเอง? ยังไม่ได้ทำงานภายนอก และ CIC ส่งข้อความหรือตั้งเตือนให้ไม่ได้",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 0.11499999999999488,
+    "pass": true
+  },
+  {
+    "set": "holdout",
+    "id": "h-bad-calc",
+    "turns": [
+      "/calc 3 ** 2 แล้วส่งผลสรุปให้เพื่อน"
+    ],
+    "kind": "mixed",
+    "contains": "คำนวณไม่ได้",
+    "plan": {
+      "kind": "mixed",
+      "original": "/calc 3 ** 2 แล้วส่งผลสรุปให้เพื่อน",
+      "allowed": [
+        "/calc 3 ** 2"
+      ],
+      "denied": [
+        "ส่งผลสรุปให้เพื่อน"
+      ]
+    },
+    "source": "mixed",
+    "text": "ข้อมูลจากระบบ: ไม่ได้ส่งข้อความ ตั้งเตือน ดูหน้าจอ กดปุ่ม หรือทำงานภายหลังให้\nส่วนที่ไม่ได้ทำ: \"ส่งผลสรุปให้เพื่อน\"\n\nผลเครื่องมือในเครื่อง (calculator):\nคำนวณไม่ได้: คาดว่าจะเป็นตัวเลข\n",
+    "error": null,
+    "modelCalls": 0,
+    "ms": 0.4364999999999952,
+    "pass": true
+  }
+]
