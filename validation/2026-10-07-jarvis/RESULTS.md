@@ -21,3 +21,7 @@ Original SHA256 unchanged after revision and A creation. Original job selected f
 Manual reviewed outline, text only, Windows PowerPoint, job index in memory. Existing PDF Thai copy/search limitation and local WebGL timeout retained; this round did not retest/fix them. No new model intelligence claim. Public demo cannot create files or call local backend. Native tests are separate from CI Linux tests.
 
 Commit/push/CI/public verification status is tracked in WORK-PROGRESS.md.
+
+## Final delivery
+
+Code 8f75bcbc8c4f56717089c79e3ce5f71f09f72ec3 pushed. CI 37619615516 SUCCESS. Actual public desktop/mobile/short/reload/A-B selector PASS; create disabled, no local calls or browser/console/asset errors. Public entry SHA256 matches local dist: F1F5DE1F3AA6364C78E6FE0068F5A4C9B5E47DEDB55EB82D923FF332F01428BE. Screenshots visually inspected. Independent PDF renderer inspected all 10 pages and matched native slides. Local backend restored, qwen ready, Stockfish ready/idle, slides configured with A/B. No PowerPoint process left. Native artifacts retained locally.
