@@ -1,0 +1,15 @@
+{
+  "at": "2026-10-07T05:02:55.800Z",
+  "url": "https://tanapat1604-cmd.github.io/CIC-bot/#/chess",
+  "asset": "/CIC-bot/assets/index-CJ9N1g5h.js",
+  "sha256": "a24d78eca980bb2fc9a69a9e1f124447d2084a37daf79957d0949094cd51b635",
+  "desktop": true,
+  "mobile": true,
+  "short": true,
+  "reload": true,
+  "board": true,
+  "license": true,
+  "localBackendDisabled": true,
+  "localRequests": [],
+  "errors": []
+}

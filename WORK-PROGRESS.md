@@ -1,5 +1,18 @@
 # CIC app foundation — progress
 
+## FINAL 2026-10-07: chess capability assessment delivered
+- Tested code **b8bccd960952308abd519d43af5e9477141293db**, pushed; final CI/Pages https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37574024936 SUCCESS. Actual public chess desktop/mobile/short/reload/license/backend-disabled PASS; asset /CIC-bot/assets/index-CJ9N1g5h.js SHA256matcheslocal. Existing public app/controls/compact/approval/reload/landingWebGL PASS, no page/console/asseterrors orlocalhostcalls.
+- Local backend restored on127.0.0.1:8787 (finalcode), frontend5173, Ollama11434; healthready0.6b and actualchessanalysisPASS; engineidle/noprocessleft. Open http://127.0.0.1:5173/CIC-bot/#/chess → เชื่อมต่อ Stockfish. Public https://tanapat1604-cmd.github.io/CIC-bot/#/chess is demo only.
+- System checks: full87PASS/4opt-inSKIP; targeted17PASSinclengine2, actualOllama2PASS; finalPGNfix10PASS+downloadedPGN1PASS; builds/lintPASS and finalCI. Standard/specialrules, stop/retry/newgame/stale/route, responsiveviews covered. Engine probes2/2mate and2winsvsSkill0/150ms (strongSkill20/800ms, bothcolors47/46ply). NoElo/globalstrength guarantee. No modelintelligenceimprovement claimed.
+- Report validation/2026-10-07-chess/RESULTS.md separates rules/system/engine/model and retains failures, rawresults, games, sampledRAMpeak320MiB, exactlimits. README/CHESS.md/license/notices updated. Latest user clarified this is ability assessment for later app/screen/control integration; **NOT training/fine-tuning**. Screen/control/slides/video remain unimplemented. Do not start them automatically.
+- Round complete; no pending code/test/push/deployment checks. Final documentation checkpoint [skip ci] retains deployedcodeb8bccd9. User notification via currentchat only, no popup claim.
+
+
+## Latest user intent: ability assessment before future screen control
+- User clarified this round is checking intelligence/capability for later use when app/screen sharing/control are connected. Explained that this work is tool integration and evaluation, NOT model training/fine-tuning or evidence that qwen improved. Stockfish results belong to the engine; CIC results concern safe orchestration/UI. No screen/control implementation started; do not infer authorization to control the actual computer from this note. Finish verification of already implemented chess, preserve checkpoint; no slides/video/new model work.
+- Final tested code b8bccd960952308abd519d43af5e9477141293db pushed. CI37574024936SUCCESS and exact Pages assetverified; previous eb94a3e CI37573667526passed. Final delivery above supersedes pending entries below.
+
+
 ## Current: chess final PGN fix passed; final CI / public verification pending
 - Checkpoint: eb94a3e pushed and CI37573667526SUCCESS. Post-commit imported resignation/agreed draw Result defect fixed; all3 results retained before continuation and reset only on new move, unit+actual downloaded PGN checked. Build/backend build/lintPASS, related10PASS/2opt-inSKIP + export browser1PASS. Final fix to commit/push next, then verify exact final Pages asset. Backend restored127.0.0.1:8787, frontend5173, healthready0.6b, actual chess analysisPASS, no engineleft.
 - FINAL LOCAL: default87PASS/4opt-inSKIP, targeted chess+foundation17/17inclengine2PASS, existing real Ollama2/2PASS. Both builds/lintPASS. Newmate2/2, actual matchesSkill20/800ms vsSkill0/150ms won both colors47/46ply; noElo claim. Rawresults/PGNs/failures + resourcepeak sample320MiB in validation/2026-10-07-chess/RESULTS.md. Exportmetadata fixed/replayed, enginehashunchanged. Backend restoration + commit/CI/public verification next.

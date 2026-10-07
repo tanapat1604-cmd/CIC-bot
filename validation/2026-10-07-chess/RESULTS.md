@@ -1,6 +1,8 @@
 # CIC local chess — ผลตรวจ 2026-10-07
 
-สถานะ: implementation และการตรวจในเครื่องผ่านแล้ว; commit/CI/เว็บสาธารณะกำลังตรวจต่อ (ดู WORK-PROGRESS.md สำหรับ checkpoint ล่าสุด)
+สถานะ: **ส่งมอบรอบตรวจความสามารถหมากรุกแล้ว** โค้ดที่ทดสอบและเผยแพร่ b8bccd960952308abd519d43af5e9477141293db; [CI/Pages ผ่าน](https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37574024936) ตรวจเว็บจริงหลังdeployแล้ว ไม่ใช่การรับรองว่าAIทั่วไปฉลาดขึ้นหรือควบคุมคอมได้
+
+จุดประสงค์ตามคำชี้แจงล่าสุด: ตรวจความสามารถเพื่อใช้กับแอป/แชร์จอ/ควบคุมในอนาคต การทำครั้งนี้เป็น integration + evaluation ไม่ใช่training/fine-tuning ผลengineไม่ใช่คะแนนความฉลาดของqwen และยังไม่มีระบบแชร์จอหรือควบคุมคอมจริง
 
 ## สิ่งที่ใช้ได้จริง
 หน้า #/chess เชื่อมจากหน้าแชต เล่นกับ Stockfish19 เลือกขาว/ดำและ3ระดับ เริ่มใหม่/หยุด/เดินต่อ วิเคราะห์ตาและคะแนนพร้อม provenance นำเข้า/ส่งออก FEN/PGN ตรวจข้อมูลผิด เลื่อนเบี้ย4ชนิด ตรวจรุก/ฆาต/เสมอ/เข้าป้อม/en passant คำอธิบายจากกติกาและข้อมูล engine เท่านั้น ไม่ใช้โมเดลภาษา
@@ -57,3 +59,10 @@ UIตรวจChromium+viewportจำลอง ไม่ใช่อุปกร
 chess.js1.4.0 BSD-2-Clause noticeรวมในpublic/THIRD-PARTY-NOTICES.txt; Stockfish19 GPLv3 archiveSHA256ตรวจตรงofficialdigest (engine-download.json) เก็บsource/license/AUTHORSไว้กับarchiveใน.toolsซึ่งignored ไม่มีbinaryหรือbackendในPages/repo ถ้าจะแจกengineต้องทบทวนcorrespondingsource/GPLตามรุ่นจริง ไม่ดาวน์โหลดAImodel/เรียกบริการเสียเงิน/ส่งเกมให้บริการAIภายนอก
 
 [วิธีเปิดใช้และข้อจำกัด](../../CHESS.md) · [จุดต่อ](../../WORK-PROGRESS.md)
+
+## Final delivery
+- Final CI/Pages37574024936SUCCESS: lint/build/frontend/backend/default suite/deploy. Final PGN fix rechecked locally with rules/API/UI10PASS + downloaded-file browser1PASS; earlier full87PASS/4opt-inSKIP and actualengine+Ollama4/4PASS remain separately stated above.
+- Public chess actual desktop/mobile/short/reload/board/license PASS, no console/page/asset errors and zero localhost/Ollama requests. Asset /CIC-bot/assets/index-CJ9N1g5h.js, SHA256 a24d78eca980bb2fc9a69a9e1f124447d2084a37daf79957d0949094cd51b635 exactly matches local dist. Public existing chat/controls/compact/approval/reload/landingWebGL alsoPASS. Screenshots inspected.
+- First public navigation had connection reset before loading; retry reached page, then Node HTTP certificate verification required --use-system-ca. Final verification completed with TLS verification enabled; these environment failures are not hidden or counted as successful first attempts.
+- Local backend restarted with final compiled code and actual frontend chess analysisPASS; healthready/live/qwen3:0.6b, engineidle, listeners5173/8787/11434all127.0.0.1, no Stockfish process left. Services manually started, not autostart/reboot guarantee.
+- Final source hashes still match final-freeze.json. No new model/prompt/training/screen/control work. Checkpoint documents the user's clarified purpose: assess capabilities for future integration. No outside-chat popup sent or claimed.

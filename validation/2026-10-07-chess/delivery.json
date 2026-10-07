@@ -1,0 +1,13 @@
+{
+  "at": "2026-10-07T05:04:42.314Z",
+  "testedCode": "b8bccd960952308abd519d43af5e9477141293db",
+  "ci": "https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37574024936",
+  "sourceFreezeUnchanged": true,
+  "publicAsset": "/CIC-bot/assets/index-CJ9N1g5h.js",
+  "publicSha256": "a24d78eca980bb2fc9a69a9e1f124447d2084a37daf79957d0949094cd51b635",
+  "backend": "127.0.0.1:8787",
+  "frontend": "127.0.0.1:5173",
+  "engineIdle": true,
+  "notification": "Current chat only; no popup claimed",
+  "purpose": "Tool-assisted capability assessment, not model training or screen control"
+}
