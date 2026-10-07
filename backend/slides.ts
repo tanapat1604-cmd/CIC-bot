@@ -44,7 +44,7 @@ export function createSlidesManager(options: { root?: string; execute?: Execute;
   const snapshot = (item: Stored) => ({ ...item.job })
   function own(owner: string, id: string) { const item=jobs.get(id); if(!item || item.owner!==owner) throw new SlidesError('not-found'); return item }
   return {
-    status: () => ({ configured, format: 'professional-text-v1', limits: { minPages:2,maxPages:8,maxJobs:16,concurrency:1,timeoutMs:options.timeoutMs??90000 }, source:'local-file-builder', planning:'user-reviewed-outline' }),
+    status: () => ({ configured, format: 'text-v2', designs: ['professional', 'jarvis'], limits: { minPages:2,maxPages:8,maxJobs:16,concurrency:1,timeoutMs:options.timeoutMs??90000 }, source:'local-file-builder', planning:'user-reviewed-outline' }),
     isBusy: () => occupied,
     create(owner: string, value: unknown) {
       if(!configured)throw new SlidesError('unavailable')
@@ -53,7 +53,7 @@ export function createSlidesManager(options: { root?: string; execute?: Execute;
       let brief: SlideBrief;try{brief=parseSlideBrief(value)}catch{throw new SlidesError('invalid')}
       if(brief.parentId && own(owner,brief.parentId).job.state!=='ready')throw new SlidesError('invalid')
       const id=randomUUID(), controller=new AbortController(), directory=path.join(root,id)
-      const item:Stored={owner,controller,directory,job:{id,title:brief.title,state:'queued',pageCount:brief.pages.length,created:Date.now(),...(brief.parentId?{parentId:brief.parentId}:{})}}
+      const item:Stored={owner,controller,directory,job:{id,title:brief.title,state:'queued',design:brief.design??'professional',pageCount:brief.pages.length,created:Date.now(),...(brief.parentId?{parentId:brief.parentId}:{})}}
       occupied=true;jobs.set(id,item)
       const timer=setTimeout(()=>controller.abort(Error('timeout')),options.timeoutMs??90000)
       void (async()=>{

@@ -1,0 +1,26 @@
+[
+  {
+    "tag": "B-original",
+    "slides": 4,
+    "pdfPages": 4,
+    "findings": [],
+    "editableTextExact": true,
+    "nativeRender": true
+  },
+  {
+    "tag": "B-revision",
+    "slides": 4,
+    "pdfPages": 4,
+    "findings": [],
+    "editableTextExact": true,
+    "nativeRender": true
+  },
+  {
+    "tag": "A-regression",
+    "slides": 2,
+    "pdfPages": 2,
+    "findings": [],
+    "editableTextExact": true,
+    "nativeRender": true
+  }
+]

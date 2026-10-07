@@ -8,13 +8,20 @@ if(!directory.startsWith(approvedRoot+path.sep)||!path.isAbsolute(process.env.CI
 const brief=JSON.parse(await fs.readFile(path.join(directory,'brief.json'),'utf8'))
 const PptxGenJS=createRequire(import.meta.url)(process.env.CIC_SLIDES_MODULE)
 const pptx=new PptxGenJS();pptx.layout='LAYOUT_WIDE';pptx.author='CIC local file builder';pptx.subject=brief.brief;pptx.title=brief.title;pptx.lang='th-TH'
+if(brief.design!==undefined&&!['professional','jarvis'].includes(brief.design))throw Error('Invalid slide design')
+const dark=brief.design==='jarvis'
 for(const [i,page] of brief.pages.entries()){
- const slide=pptx.addSlide();slide.background={color:'F7F8FA'}
- const opts={fontFace:'Leelawadee UI',margin:0,breakLine:false,valign:'top',color:'14243A'}
+ const slide=pptx.addSlide();slide.background={color:dark?'071923':'F7F8FA'}
+ const opts={fontFace:'Leelawadee UI',margin:0,breakLine:false,valign:'top',color:dark?'EFF7FA':'14243A'}
  slide.addText(page.title,{...opts,x:0.65,y:0.55,w:12,h:1.25,fontSize:30,bold:true})
- for(const [n,line] of page.body.entries())slide.addText(line,{...opts,x:0.7,y:2.1+n*1.32,w:11.9,h:1.12,fontSize:24})
- slide.addText(`CIC เครื่องมือสร้างไฟล์ในเครื่อง   ${i+1}/${brief.pages.length}`,{...opts,x:0.7,y:7.03,w:11.8,h:0.25,fontSize:11,color:'4C6078'})
- slide.addNotes(`Source: user-reviewed outline. No model planning or screen control. Brief: ${brief.brief}`)
+ for(const [n,line] of page.body.entries()) {
+  if(dark){
+   slide.addText(String(n+1).padStart(2,'0'),{...opts,x:0.7,y:2.1+n*1.32,w:0.65,h:1.12,fontSize:24,bold:true,color:'67E8F9'})
+   slide.addText(line,{...opts,x:1.55,y:2.1+n*1.32,w:11.05,h:1.12,fontSize:24,color:n===0?'67E8F9':'EFF7FA',bold:n===0})
+  } else slide.addText(line,{...opts,x:0.7,y:2.1+n*1.32,w:11.9,h:1.12,fontSize:24})
+ }
+ slide.addText(`CIC เครื่องมือสร้างไฟล์ในเครื่อง   ${i+1}/${brief.pages.length}`,{...opts,x:0.7,y:7.03,w:11.8,h:0.25,fontSize:11,color:dark?'ABC2CF':'4C6078'})
+ slide.addNotes(`Design: ${brief.design??'professional'}. Source: user-reviewed outline. No model planning or screen control. Brief: ${brief.brief}`)
 }
 await pptx.writeFile({fileName:path.join(directory,'deck-draft.pptx'),compression:true})
 // PptxGenJS 4.0.1 emits unused slideMaster content-type overrides for text decks.

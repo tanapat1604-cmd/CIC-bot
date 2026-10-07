@@ -11,14 +11,14 @@ const files=async(b:SlideBrief,d:string)=>{for(const f of ['deck.pptx','deck.pdf
 test('brief validation bounds native text and refuses executable or arbitrary-path inputs',()=>{
  expect(parseSlideBrief(brief)).toEqual(brief)
  expect(outlinePages('ชื่อหน้า\nข้อความ\n\nหน้าสอง\nข้อความสอง')).toHaveLength(2)
- for(const input of [{...brief,path:'C:/Windows'},{...brief,pages:[]},{...brief,pages:[...brief.pages,{title:'x'.repeat(66),body:['text']}]},{...brief,pages:[...brief.pages,{title:'valid',body:['x'.repeat(116)]}]},{...brief,parentId:'../../other'}])expect(()=>parseSlideBrief(input)).toThrow()
+ for(const input of [{...brief,design:'unknown'},{...brief,design:123},{...brief,path:'C:/Windows'},{...brief,pages:[]},{...brief,pages:[...brief.pages,{title:'x'.repeat(66),body:['text']}]},{...brief,pages:[...brief.pages,{title:'valid',body:['x'.repeat(116)]}]},{...brief,parentId:'../../other'}])expect(()=>parseSlideBrief(input)).toThrow()
 })
 test('new revisions preserve originals and enforce ownership and filename allowlist',async()=>{
  const manager=createSlidesManager({root:await folder(),ready:true,execute:files})
- const first=manager.create('owner',brief);await expect.poll(()=>manager.get('owner',first.id).state).toBe('ready')
+ const first=manager.create('owner',{...brief,design:'professional'});await expect.poll(()=>manager.get('owner',first.id).state).toBe('ready')
  const original=await manager.file('owner',first.id,'deck.pptx')
- const revision=manager.create('owner',{...brief,title:'ฉบับแก้ไข',parentId:first.id});await expect.poll(()=>manager.get('owner',revision.id).state).toBe('ready')
- expect(revision.id).not.toBe(first.id);expect(revision.parentId).toBe(first.id);expect(await manager.file('owner',first.id,'deck.pptx')).toEqual(original)
+ const revision=manager.create('owner',{...brief,title:'ฉบับแก้ไข',design:'jarvis',parentId:first.id});await expect.poll(()=>manager.get('owner',revision.id).state).toBe('ready')
+ expect(first.design).toBe('professional');expect(revision.design).toBe('jarvis');expect(revision.id).not.toBe(first.id);expect(revision.parentId).toBe(first.id);expect(await manager.file('owner',first.id,'deck.pptx')).toEqual(original)
  expect(()=>manager.get('other',first.id)).toThrow('not-found');expect(()=>manager.cancel('other',first.id)).toThrow('not-found')
  await expect(manager.file('owner',first.id,'../../package.json')).rejects.toThrow('not-found')
 })
@@ -50,19 +50,19 @@ test('slide API requires local session and Origin, protects job ownership and fi
  }finally{server.closeAllConnections();server.close();await once(server,'close')}
 })
 test('slides UI preserves outline, shows cancel/error/result and fits desktop/mobile/short',async({page})=>{
- let state='running',posts=0;const id='11111111-1111-4111-8111-111111111111'
+ let state='running',posts=0;let submitted:SlideBrief|undefined;const id='11111111-1111-4111-8111-111111111111'
  await page.route('http://127.0.0.1:8787/**',async route=>{
   const url=new URL(route.request().url());let body:unknown={}
   if(url.pathname==='/slides/status')body={configured:true}
-  else if(url.pathname==='/slides/jobs'&&route.request().method()==='POST'){posts++;body={id,title:brief.title,state,pageCount:2,created:0}}
+  else if(url.pathname==='/slides/jobs'&&route.request().method()==='POST'){posts++;submitted=route.request().postDataJSON();body={id,title:brief.title,state,pageCount:2,created:0}}
   else if(url.pathname.endsWith('/cancel')){state='cancelled';body={id,title:brief.title,state,pageCount:2,created:0}}
   else if(url.pathname.includes('/slides/jobs/'))body={id,title:brief.title,state,pageCount:2,created:0,...(state==='error'?{error:'render-failed'}:{})}
   await route.fulfill({json:body})
  })
  await page.goto('./#/slides');await page.getByRole('button',{name:'ตรวจเครื่องมือในเครื่อง'}).click()
  await page.getByLabel('ชื่อผลงาน',{exact:true}).fill(brief.title);await page.getByLabel('โจทย์และข้อเท็จจริง').fill(brief.brief);await page.getByLabel('โครงเรื่อง 2–8 หน้า').fill(brief.pages.map(p=>p.title+'\n'+p.body.join('\n')).join('\n\n'))
- await page.getByRole('button',{name:'ตรวจโครงเรื่อง'}).click();await page.getByRole('checkbox').check();await page.getByRole('button',{name:'สร้างไฟล์สไลด์'}).click();await expect(page.getByRole('status')).toContainText('กำลังสร้าง')
- await page.getByRole('button',{name:'ยกเลิกงานสไลด์'}).click();await expect(page.getByRole('status')).toContainText('ยกเลิกแล้ว');expect(posts).toBe(1)
+ await expect(page.getByRole('radio',{name:/แบบ B/})).toBeChecked();await page.getByRole('button',{name:'ตรวจโครงเรื่อง'}).click();await page.getByRole('checkbox').check();await page.getByRole('radio',{name:/แบบ A/}).check();await expect(page.getByRole('checkbox')).toHaveCount(0);await page.getByRole('button',{name:'ตรวจโครงเรื่อง'}).click();await page.getByRole('checkbox').check();await page.getByRole('button',{name:'สร้างไฟล์สไลด์'}).click();await expect(page.getByRole('status')).toContainText('กำลังสร้าง')
+ await page.getByRole('button',{name:'ยกเลิกงานสไลด์'}).click();await expect(page.getByRole('status')).toContainText('ยกเลิกแล้ว');expect(posts).toBe(1);expect(submitted?.design).toBe('professional')
  state='error';await page.getByRole('button',{name:'สร้างไฟล์สไลด์'}).click();await expect(page.getByRole('status')).toContainText('สร้างไม่สำเร็จ');await expect(page.getByLabel('ชื่อผลงาน',{exact:true})).toHaveValue(brief.title)
  for(const[width,height]of[[1440,900],[390,844],[360,480]]){await page.setViewportSize({width,height});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:`.tools/slides-ui-${width}.png`,fullPage:true})}
 })
@@ -80,4 +80,9 @@ test('unverified native stop is an error and blocks subsequent compute jobs',asy
  const manager=createSlidesManager({root:await folder(),ready:true,execute:async()=>{throw Error('stop-unverified')}})
  const job=manager.create('owner',brief);await expect.poll(()=>manager.get('owner',job.id).state).toBe('error')
  expect(manager.get('owner',job.id).error).toBe('stop-unverified');expect(manager.isBusy()).toBe(true);expect(()=>manager.create('owner',brief)).toThrow('busy')
+})
+
+test('supported designs retain text and reject non-string design values',()=>{
+ for(const design of ['professional','jarvis'] as const){const value=parseSlideBrief({...brief,design});expect(value.design).toBe(design);expect(value.pages).toEqual(brief.pages)}
+ for(const design of [['jarvis'],{toString:()=> 'jarvis'},null])expect(()=>parseSlideBrief({...brief,design})).toThrow()
 })
