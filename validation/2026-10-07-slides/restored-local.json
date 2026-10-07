@@ -1,0 +1,80 @@
+{
+  "models": [
+    {
+      "name": "qwen3:1.7b",
+      "size": 1359293444
+    },
+    {
+      "name": "qwen3:0.6b",
+      "size": 522653767
+    }
+  ],
+  "memory": {
+    "TotalVisibleMemorySize": 8270012,
+    "FreePhysicalMemory": 1297976
+  },
+  "listeners": [
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 11434,
+      "OwningProcess": 11580
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 8787,
+      "OwningProcess": 13380
+    },
+    {
+      "LocalAddress": "127.0.0.1",
+      "LocalPort": 5173,
+      "OwningProcess": 9540
+    }
+  ],
+  "health": {
+    "version": 1,
+    "ready": true,
+    "kind": "live",
+    "capabilities": [
+      "text-stream"
+    ],
+    "capabilityProfile": {
+      "version": 1,
+      "textChat": true,
+      "calculator": true,
+      "timeArithmetic": true,
+      "reminders": false,
+      "futureWork": false,
+      "screenRead": false,
+      "computerControl": false,
+      "fileAccess": false,
+      "webAccess": false
+    },
+    "model": "qwen3:0.6b",
+    "location": "local"
+  },
+  "checked": "10/7/2026 11:47:03 AM +00:00",
+  "powerpointProcesses": [],
+  "slides": {
+    "configured": true,
+    "format": "professional-text-v1",
+    "limits": {
+      "minPages": 2,
+      "maxPages": 8,
+      "maxJobs": 16,
+      "concurrency": 1,
+      "timeoutMs": 90000
+    },
+    "source": "local-file-builder",
+    "planning": "user-reviewed-outline"
+  },
+  "genericScreenControl": false,
+  "chess": {
+    "ready": true,
+    "busy": false,
+    "engine": "Stockfish 19",
+    "threads": 1,
+    "hashMiB": 16,
+    "freeMiB": 1345,
+    "location": "local"
+  }
+}

@@ -1,3 +1,17 @@
+## Final delivery verified
+
+Code **656ddd183eedbdbb5704f26c808c42be176c064a** committed/pushed from c410c37. CI [37616087033](https://github.com/tanapat1604-cmd/CIC-bot/actions/runs/37616087033) completed SUCCESS: lint/frontend+backend builds/default tests/frontend-only Pages deploy. CI success does not erase the two local WebGL screenshot timeouts or imply PowerPoint/real-model tests ran on Linux; native/model/engine evidence is separately recorded above/below.
+
+Public #/slides desktop/mobile/short/reload/app-link PASS. Filled+confirmed a demo outline and create remained disabled. No localhost/Ollama/backend requests, console/page/asset errors. Public chess legal board move and disabled local-engine connection PASS; old chat/compact PASS. Screenshots inspected. Served asset /CIC-bot/assets/index-BOQ8tBnY.js SHA256 4cd3c5cdc3cf6bf13815bc96f8f23c6e0ff34c27d2e2567f122c42ed2d16781a exactly matches local dist. First public verifier used an overly broad status locator (two legitimate status elements); fixed the verifier only, retained this diagnostic, no production change.
+
+Local restored: 5173/frontend,8787/backend,11434/Ollama all127.0.0.1. ready/live/default0.6b, installed1.7b retained, Stockfishready/idle, slidesconfigured with existingPptxGenJS/PowerPoint. NoPowerPointprocess left at readiness check. .tools/local-app-processes.json refreshed to actual PIDs. No autostart/reboot guarantee.
+
+Deliver developer three-reference decks at checkpointc410 (PPTX/PDF/21PNG/comparison/ZIP) and distinct **CIC-validated-meeting** original+revision from realCICjobs afterpackage repair. Keep old officeoutputs as invalid-package development evidence only. Native7meetingpair package0findings, editabletext exact, PDF/PNG visually checked, originalhashretained. All files/images remain local/ignored, not inPages/Git. Plans completed in NEXT-CAPABILITIES.md and current CAPABILITY-ROADMAP.md; screen/code capabilities remain plans, no generalcontrol enabled.
+
+Completed current scope: samplechoiceA, bounded usable slide-file slice, honest model/system/tool assessment, coding/screen acceptance plans, tests/build/lint/nativeQA/commit/CI/public/service checks. No unfinished mandatory work. Remaining product limits: manualuser-reviewedoutline/texttemplate2–8pages, runtimeWindowsPowerPoint,16jobs/nonpersistentindex, PDFThai copy/search limitations, busyPowerPoint guard and unverifiedstop pause, experimentalmodelplanning, localWebGLreadbacktimeouts. Future enhancements require their own scope and fresh evaluation cases; no training/modeldownload/externalAI authorized.
+
+Notification via this chat/questioncard/CICstatus only. No OS popup sent or claimed.
+
 ## Latest accepted file delivery: package repair verified
 
 Final structural review of the first office7-page files found six unused slideMaster content-type overrides emitted by existing PptxGenJS4.0.1. Although PowerPoint opened and PNG/PDF looked correct, these files are **not the final deliverables**. Failures retained in package-quality.json; no change to model/routing or tuning from held language tests.
