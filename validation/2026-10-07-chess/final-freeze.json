@@ -1,13 +1,13 @@
 {
-  "at": "2026-10-07T04:53:26.783Z",
+  "at": "2026-10-07T04:58:06.357Z",
   "files": {
     "backend/chessEngine.ts": "53be233e4888b66231ab4d6857252c176af06d0f63b6acb016ae38ff17ac25a5",
     "backend/server.ts": "d8c4bd9a578bdd234b26a1f211cf99c9fdaba30b9da29892ed8544b182b488d7",
-    "shared/chess.ts": "742f38c4acbd2dabd9451ce6c8374f891addf5ce2421c408307360131097565d",
-    "src/chess/ChessPage.tsx": "f0c050781be7a16788f078ca65705abb5fdf1deca63462f892cae9828c3b6f10",
+    "shared/chess.ts": "d3d94096f8b92d38d2f53ea3fde09ce028e7b3e83119ba85f72b797ebb67c0a2",
+    "src/chess/ChessPage.tsx": "df6803f9ba13f4979b5809e4a2132367c78df9dc9926f169b41e16382cfc315e",
     "src/chess/chess.css": "4eb9557a36594935a7a45e224060a109251cb5e373bcfe0ca7854c758e54714f",
-    "tests/chess.spec.ts": "6768570d61a0aa81c4917cfcf85fe0276fe8843586094b9bf15e2173818d59ae",
-    "tests/chess-ui.spec.ts": "15f9b15e7b38d25a432ad57b88de3ac5e3fdd7f4f80022a9975bc0c3c42d1984"
+    "tests/chess.spec.ts": "db99970b8a5ce72a58b33c13c7f637aee96c700cffe5c67f62af9314bab6984f",
+    "tests/chess-ui.spec.ts": "427c4e532655bcd07526405a02849a14d575c2b6998c746900a2c52b8330efbb"
   },
   "engineUnchangedSinceEvaluation": true
 }

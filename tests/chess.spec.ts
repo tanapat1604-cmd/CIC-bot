@@ -56,6 +56,10 @@ test('explanations use legal facts and score with white perspective, never model
 test('exported PGN carries terminal result and imports starting side/fullmove; bad result payloads rejected', () => {
   const mate = new Chess(); ['f3', 'e5', 'g4', 'Qh4#'].forEach(m => mate.move(m))
   expect(exportPgn(mate)).toContain('[Result "0-1"]'); expect(parseGame(exportPgn(mate), 'pgn').isCheckmate()).toBe(true)
+  for (const result of ['1-0', '0-1', '1/2-1/2']) {
+    const ended = parseGame(`[Result "${result}"]\n\n1. e4 e5 ${result}`, 'pgn')
+    expect(parseGame(exportPgn(ended), 'pgn').getHeaders().Result).toBe(result)
+  }
   const draw = parseGame('7k/8/8/8/8/8/8/K7 w - - 0 1', 'fen'); expect(exportPgn(draw)).toContain('[Result "1/2-1/2"]')
   const black = parseGame('7k/8/8/8/8/8/R7/K7 b - - 0 35', 'fen'); black.move('Kg8'); expect(exportPgn(black)).toContain('35. ... Kg8'); expect(parseGame(exportPgn(black), 'pgn').fen()).toBe(black.fen())
   expect(() => parseGame('7k/8/8/8/8/8/8/K7 w - d6 0 1', 'fen')).toThrow()

@@ -46,6 +46,8 @@ Ollama /api/ps ว่างตอนเก็บresource จึงไม่จ�
 3. PGNรายงานชุดแรก setHeaderหลายคู่ในคำสั่งเดียวซึ่งAPIรับทีละคู่ ทำให้White/Black/Resultไม่ครบ เก็บไฟล์ before-header-fix.pgn ไว้ แก้เฉพาะmetadataจากตาเดินดิบแล้วตรวจreplay/finalFEN/checkmate/roundtrip ไม่รันengineใหม่หรือเปลี่ยนผลแข่ง เพิ่มexportผลเกมและเลขตาสำหรับFENในUI พร้อมtestsเฉพาะ แล้วrerunทั้งหมด
 4. evaluation-freezeเป็นโค้ดก่อนแก้PGN; final-freezeเป็นโค้ดส่งมอบ **backend/chessEngine.ts SHA256ตรงกัน** ไม่มีปรับengineหรืออธิบายจากผลชุดใหม่แล้วใช้คะแนนเก่าอ้างว่าดีขึ้น Export testsหลังแก้เป็นregressionแยกจากคะแนนengineเดิม
 
+5. Post-commit review found imported resignation/agreed-draw PGN Result was replaced with * on export. Confirmed actual 1-0→* before fix; now preserves original result until a new move is played, then resets to*. Added all3 result regression checks and downloaded/re-read both files through actual UI (1-0 before continuation, * plus Nf3 afterward). Builds/lintPASS; chess10PASS/2opt-inSKIP plus strengthened export browser1/1PASS. Engine/search unchanged; first CI37573667526passed, final fix CI/public verification pending.
+
 ## สิ่งที่ยังไม่รองรับ/ยังไม่ตรวจ
 ไม่มีนาฬิกา/Chess960/undo/persistent games/online matchmaking; กติกาCICจบthreefoldและ50movesอัตโนมัติ ไม่ใช่tournament claim workflow FENไม่มีประวัติการซ้ำก่อนหน้า และไม่พิสูจน์retrograde reachabilityทุกตำแหน่ง chess.js insufficient-materialไม่ใช่solverของdead-positionซับซ้อนทุกชนิด
 อธิบายเป็นข้อเท็จจริงสั้น ๆ ไม่ใช่coachกลยุทธ์ภาษาธรรมชาติเต็มรูปแบบ; ภาษาไทยทั่วไปของqwenยังทดลอง ไม่ได้ฝึกโมเดลหรือปรับpromptในรอบนี้ สไลด์/วิดีโอยังไม่เริ่ม

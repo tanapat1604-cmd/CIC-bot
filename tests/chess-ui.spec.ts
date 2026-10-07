@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test'
 import { Chess } from 'chess.js'
-import { mkdirSync } from 'node:fs'
+import { mkdirSync, readFileSync } from 'node:fs'
 import { once } from 'node:events'
 import { createChatServer } from '../backend/server'
 import { createChessEngine } from '../backend/chessEngine'
@@ -18,6 +18,11 @@ test('chess board import promotion export and responsive layouts', async ({ page
   await page.getByRole('button', { name: 'a7 ขาว เบี้ย', exact: true }).click(); await page.getByRole('button', { name: 'a8 ว่าง', exact: true }).click(); await page.getByRole('button', { name: 'ม้า', exact: true }).click()
   await expect(page.getByRole('button', { name: 'a8 ขาว ม้า', exact: true })).toBeVisible()
   const download = page.waitForEvent('download'); await page.getByRole('button', { name: 'ส่งออก PGN' }).click(); expect((await download).suggestedFilename()).toBe('cic-chess.pgn')
+  await page.getByLabel('รูปแบบ', { exact: true }).selectOption('pgn')
+  await page.getByLabel('ข้อมูลนำเข้า').fill('[Result "1-0"]\n\n1. e4 e5 1-0'); await page.getByRole('button', { name: 'นำเข้า', exact: true }).click()
+  const endedFile = page.waitForEvent('download'); await page.getByRole('button', { name: 'ส่งออก PGN' }).click(); expect(readFileSync((await (await endedFile).path())!, 'utf8')).toContain('[Result "1-0"]')
+  await page.getByRole('button', { name: 'g1 ขาว ม้า', exact: true }).click(); await page.getByRole('button', { name: 'f3 ว่าง', exact: true }).click()
+  const continuedFile = page.waitForEvent('download'); await page.getByRole('button', { name: 'ส่งออก PGN' }).click(); const continued = readFileSync((await (await continuedFile).path())!, 'utf8'); expect(continued).toContain('[Result "*"]'); expect(continued).toContain('Nf3')
   await page.getByRole('button', { name: 'เริ่มเกมใหม่', exact: true }).click()
   mkdirSync('test-results', { recursive: true })
   for (const [label, width, height] of [['desktop', 1440, 900], ['mobile', 390, 844], ['short', 360, 480]] as const) {

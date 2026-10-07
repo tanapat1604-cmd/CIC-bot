@@ -19,6 +19,7 @@ export function parseGame(text: string, format: 'fen' | 'pgn'): Chess {
     }
   } else {
     game.loadPgn(text, { strict: true })
+    if (!['*', '1-0', '0-1', '1/2-1/2'].includes(game.getHeaders().Result ?? '*')) throw Error('ผล PGN ไม่ถูกต้อง')
     const initial = game.history({ verbose: true })[0]?.before ?? game.fen()
     parseGame(initial, 'fen')
   }
@@ -80,7 +81,7 @@ export function gameStatus(game: Chess) {
 }
 export function exportPgn(game: Chess) {
   const copy = game.pgn().trim() ? parseGame(game.pgn(), 'pgn') : new Chess()
-  copy.setHeader('Result', game.isCheckmate() ? game.turn() === 'w' ? '0-1' : '1-0' : game.isDraw() ? '1/2-1/2' : '*')
+  copy.setHeader('Result', game.isCheckmate() ? game.turn() === 'w' ? '0-1' : '1-0' : game.isDraw() ? '1/2-1/2' : copy.getHeaders().Result ?? '*')
   return copy.pgn()
 }
 export function scoreText(result: ChessResult) {

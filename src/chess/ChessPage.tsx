@@ -60,7 +60,7 @@ export default function ChessPage() {
       const move = uciMove(next, value.move)
       if (move.san !== value.san) throw Error('unavailable')
       if (analysis) { explainResult(value); setResult(value) }
-      else { gameRef.current = next; setGame(next); setSelected(null) }
+      else { next.setHeader('Result', '*'); gameRef.current = next; setGame(next); setSelected(null) }
       setNotice(`Stockfish 19 • คิด ${value.thinkMs} ms • รวม ${Math.round(value.elapsedMs)} ms • engine ปิดแล้ว`)
       setPaused(false)
     } catch (e) {
@@ -79,7 +79,7 @@ export default function ChessPage() {
   }, [game, connected, side])
   const move = (from: Square, to: Square, promote?: string) => {
     const next = game.pgn().trim() ? parseGame(game.pgn(), 'pgn') : new Chess()
-    try { next.move({ from, to, ...(promote ? { promotion: promote } : {}) }); install(next); setPaused(false) }
+    try { next.move({ from, to, ...(promote ? { promotion: promote } : {}) }); next.setHeader('Result', '*'); install(next); setPaused(false) }
     catch { setError('เดินตานี้ไม่ได้') }
   }
   const click = (square: Square) => {
