@@ -1,0 +1,2559 @@
+{
+  "at": "2026-10-07T04:41:32.350Z",
+  "config": {
+    "ready": true,
+    "busy": false,
+    "engine": "Stockfish 19",
+    "threads": 1,
+    "hashMiB": 16,
+    "freeMiB": 1388,
+    "location": "local"
+  },
+  "freeMiB": 1388,
+  "tactics": [
+    {
+      "fen": "6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - - 0 1",
+      "result": {
+        "gameId": "evaluation",
+        "requestId": "cfabb533-3e4b-4e89-8c0b-f1a75512a6b1",
+        "fen": "6k1/5ppp/8/8/8/8/5PPP/4R1K1 w - - 0 1",
+        "engine": "Stockfish 19",
+        "move": "e1e8",
+        "san": "Re8#",
+        "pv": [
+          "Re8#"
+        ],
+        "depth": 245,
+        "score": {
+          "type": "mate",
+          "value": 1,
+          "bound": "exact"
+        },
+        "elapsedMs": 518,
+        "thinkMs": 1000
+      },
+      "checkmate": true
+    },
+    {
+      "fen": "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1",
+      "result": {
+        "gameId": "evaluation",
+        "requestId": "8a7b66a1-6c0a-4cb0-ba2b-eeecd74ccde7",
+        "fen": "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1",
+        "engine": "Stockfish 19",
+        "move": "f7g7",
+        "san": "Qg7#",
+        "pv": [
+          "Qg7#"
+        ],
+        "depth": 245,
+        "score": {
+          "type": "mate",
+          "value": 1,
+          "bound": "exact"
+        },
+        "elapsedMs": 595,
+        "thinkMs": 1000
+      },
+      "checkmate": true
+    }
+  ],
+  "matches": [
+    {
+      "strongColor": "w",
+      "outcome": "strong-win",
+      "plies": 47,
+      "durationMs": 46057,
+      "finalFen": "r5k1/p1p2bQp/2p4P/3p4/5q2/1N6/PPP1rPP1/1K1R3R b - - 4 24",
+      "moves": [
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "f110f366-e6ad-4368-9830-f9b976417de6",
+          "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+          "engine": "Stockfish 19",
+          "move": "e2e4",
+          "san": "e4",
+          "pv": [
+            "e4",
+            "c5"
+          ],
+          "depth": 21,
+          "score": {
+            "type": "cp",
+            "value": 31,
+            "bound": "upperbound"
+          },
+          "elapsedMs": 1260,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "33d94cc3-18fa-414a-bb87-30fe0ec39861",
+          "fen": "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1",
+          "engine": "Stockfish 19",
+          "move": "b8c6",
+          "san": "Nc6",
+          "pv": [
+            "Nc6",
+            "d4"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 613,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "7f92f85f-f5f5-4fc3-b1cb-79a3979c31a2",
+          "fen": "r1bqkbnr/pppppppp/2n5/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 1 2",
+          "engine": "Stockfish 19",
+          "move": "d2d4",
+          "san": "d4",
+          "pv": [
+            "d4",
+            "d5",
+            "e5",
+            "Bf5",
+            "c3",
+            "e6",
+            "Nd2",
+            "f6",
+            "f4",
+            "Nh6",
+            "Be2",
+            "Be7"
+          ],
+          "depth": 21,
+          "score": {
+            "type": "cp",
+            "value": 56,
+            "bound": "exact"
+          },
+          "elapsedMs": 1262,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "f94e3575-60c3-4441-90ea-622b09e02bb3",
+          "fen": "r1bqkbnr/pppppppp/2n5/8/3PP3/8/PPP2PPP/RNBQKBNR b KQkq - 0 2",
+          "engine": "Stockfish 19",
+          "move": "d7d5",
+          "san": "d5",
+          "pv": [
+            "d5",
+            "exd5",
+            "Qxd5",
+            "Nf3",
+            "Bg4",
+            "Nc3",
+            "Qf5",
+            "Be2"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 42,
+            "bound": "exact"
+          },
+          "elapsedMs": 611,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "715fb205-e982-478d-94a5-2ae1c6a6aab3",
+          "fen": "r1bqkbnr/ppp1pppp/2n5/3p4/3PP3/8/PPP2PPP/RNBQKBNR w KQkq - 0 3",
+          "engine": "Stockfish 19",
+          "move": "e4e5",
+          "san": "e5",
+          "pv": [
+            "e5",
+            "Bf5",
+            "Be2",
+            "e6",
+            "c3",
+            "f6",
+            "f4",
+            "Nh6",
+            "Nf3",
+            "Be7",
+            "O-O",
+            "fxe5"
+          ],
+          "depth": 20,
+          "score": {
+            "type": "cp",
+            "value": 55,
+            "bound": "exact"
+          },
+          "elapsedMs": 1258,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "1fc8faec-e10e-4ffc-83e2-3048716dd9f9",
+          "fen": "r1bqkbnr/ppp1pppp/2n5/3pP3/3P4/8/PPP2PPP/RNBQKBNR b KQkq - 0 3",
+          "engine": "Stockfish 19",
+          "move": "f7f6",
+          "san": "f6",
+          "pv": [
+            "f6",
+            "Bb5",
+            "Bd7",
+            "Nc3",
+            "e6",
+            "Nf3",
+            "Nge7",
+            "Bd3",
+            "Ng6"
+          ],
+          "depth": 10,
+          "score": {
+            "type": "cp",
+            "value": 52,
+            "bound": "exact"
+          },
+          "elapsedMs": 644,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "89df323f-28f3-4bd8-8388-6c56a11322bd",
+          "fen": "r1bqkbnr/ppp1p1pp/2n2p2/3pP3/3P4/8/PPP2PPP/RNBQKBNR w KQkq - 0 4",
+          "engine": "Stockfish 19",
+          "move": "f1b5",
+          "san": "Bb5",
+          "pv": [
+            "Bb5",
+            "Bf5"
+          ],
+          "depth": 19,
+          "score": {
+            "type": "cp",
+            "value": 48,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1278,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "b3095b70-8b79-47a9-aae4-c2046e958136",
+          "fen": "r1bqkbnr/ppp1p1pp/2n2p2/1B1pP3/3P4/8/PPP2PPP/RNBQK1NR b KQkq - 1 4",
+          "engine": "Stockfish 19",
+          "move": "c8f5",
+          "san": "Bf5",
+          "pv": [
+            "Bf5",
+            "Nf3",
+            "e6",
+            "Nh4",
+            "Be4",
+            "Nc3",
+            "fxe5",
+            "Bxc6+",
+            "bxc6",
+            "Qh5+",
+            "Kd7"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 58,
+            "bound": "exact"
+          },
+          "elapsedMs": 620,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "e8ac4e68-aea3-4608-8270-51f8619564d1",
+          "fen": "r2qkbnr/ppp1p1pp/2n2p2/1B1pPb2/3P4/8/PPP2PPP/RNBQK1NR w KQkq - 2 5",
+          "engine": "Stockfish 19",
+          "move": "b5c6",
+          "san": "Bxc6+",
+          "pv": [
+            "Bxc6+",
+            "bxc6",
+            "Nf3",
+            "e6",
+            "Nh4",
+            "Ne7",
+            "Nd2",
+            "Ng6",
+            "Nxf5",
+            "exf5",
+            "O-O",
+            "fxe5"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 44,
+            "bound": "exact"
+          },
+          "elapsedMs": 1470,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "70ad88ec-3351-491c-a6dc-cf2835b0b0d7",
+          "fen": "r2qkbnr/ppp1p1pp/2B2p2/3pPb2/3P4/8/PPP2PPP/RNBQK1NR b KQkq - 0 5",
+          "engine": "Stockfish 19",
+          "move": "b7c6",
+          "san": "bxc6",
+          "pv": [
+            "bxc6",
+            "Nf3"
+          ],
+          "depth": 14,
+          "score": {
+            "type": "cp",
+            "value": 42,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 637,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "ee5c7a46-4890-4b44-a238-2f843f827db0",
+          "fen": "r2qkbnr/p1p1p1pp/2p2p2/3pPb2/3P4/8/PPP2PPP/RNBQK1NR w KQkq - 0 6",
+          "engine": "Stockfish 19",
+          "move": "g1f3",
+          "san": "Nf3",
+          "pv": [
+            "Nf3",
+            "e6"
+          ],
+          "depth": 20,
+          "score": {
+            "type": "cp",
+            "value": 39,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1327,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "59d1cb29-a431-4a52-8a48-3fc1420d9677",
+          "fen": "r2qkbnr/p1p1p1pp/2p2p2/3pPb2/3P4/5N2/PPP2PPP/RNBQK2R b KQkq - 1 6",
+          "engine": "Stockfish 19",
+          "move": "e7e6",
+          "san": "e6",
+          "pv": [
+            "e6",
+            "O-O",
+            "Ne7",
+            "Nh4",
+            "fxe5",
+            "dxe5",
+            "Bg6",
+            "Bg5",
+            "Qd7",
+            "Re1"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": 59,
+            "bound": "exact"
+          },
+          "elapsedMs": 610,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "d565d8e7-70ec-4189-8cd9-7f9ec7d166d2",
+          "fen": "r2qkbnr/p1p3pp/2p1pp2/3pPb2/3P4/5N2/PPP2PPP/RNBQK2R w KQkq - 0 7",
+          "engine": "Stockfish 19",
+          "move": "b1d2",
+          "san": "Nbd2",
+          "pv": [
+            "Nbd2",
+            "Ne7"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 56,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1260,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "864e91a2-dd5a-44d8-972b-93786295e890",
+          "fen": "r2qkbnr/p1p3pp/2p1pp2/3pPb2/3P4/5N2/PPPN1PPP/R1BQK2R b KQkq - 1 7",
+          "engine": "Stockfish 19",
+          "move": "g8e7",
+          "san": "Ne7",
+          "pv": [
+            "Ne7",
+            "Nh4",
+            "Bg6",
+            "Nb3",
+            "Nf5",
+            "Nxg6",
+            "hxg6"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": 47,
+            "bound": "exact"
+          },
+          "elapsedMs": 609,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "bbada086-f22f-4e9f-9311-450857362d8d",
+          "fen": "r2qkb1r/p1p1n1pp/2p1pp2/3pPb2/3P4/5N2/PPPN1PPP/R1BQK2R w KQkq - 2 8",
+          "engine": "Stockfish 19",
+          "move": "e5f6",
+          "san": "exf6",
+          "pv": [
+            "exf6",
+            "gxf6"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 32,
+            "bound": "upperbound"
+          },
+          "elapsedMs": 1276,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "52e249ca-9466-4d57-9871-52e7ca103bd7",
+          "fen": "r2qkb1r/p1p1n1pp/2p1pP2/3p1b2/3P4/5N2/PPPN1PPP/R1BQK2R b KQkq - 0 8",
+          "engine": "Stockfish 19",
+          "move": "e7g6",
+          "san": "Ng6",
+          "pv": [
+            "Ng6",
+            "h4",
+            "gxf6",
+            "h5",
+            "Ne7",
+            "Nh4",
+            "Rg8",
+            "Nb3",
+            "e5"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 44,
+            "bound": "exact"
+          },
+          "elapsedMs": 647,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "dee028f4-0e0f-4505-9be9-fae9740d797d",
+          "fen": "r2qkb1r/p1p3pp/2p1pPn1/3p1b2/3P4/5N2/PPPN1PPP/R1BQK2R w KQkq - 1 9",
+          "engine": "Stockfish 19",
+          "move": "f6g7",
+          "san": "fxg7",
+          "pv": [
+            "fxg7",
+            "Bxg7"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 77,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1262,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "030bb9de-8aa6-45b7-9df0-904d4d4ba0ab",
+          "fen": "r2qkb1r/p1p3Pp/2p1p1n1/3p1b2/3P4/5N2/PPPN1PPP/R1BQK2R b KQkq - 0 9",
+          "engine": "Stockfish 19",
+          "move": "f8g7",
+          "san": "Bxg7",
+          "pv": [
+            "Bxg7",
+            "Nb3"
+          ],
+          "depth": 14,
+          "score": {
+            "type": "cp",
+            "value": 52,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 614,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "b7a7cab3-7570-4bb6-9e46-1ee61ad3ba82",
+          "fen": "r2qk2r/p1p3bp/2p1p1n1/3p1b2/3P4/5N2/PPPN1PPP/R1BQK2R w KQkq - 0 10",
+          "engine": "Stockfish 19",
+          "move": "d2b3",
+          "san": "Nb3",
+          "pv": [
+            "Nb3",
+            "O-O"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 78,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1261,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "bbf5f247-8946-4ddb-bc4e-4076f2df610b",
+          "fen": "r2qk2r/p1p3bp/2p1p1n1/3p1b2/3P4/1N3N2/PPP2PPP/R1BQK2R b KQkq - 1 10",
+          "engine": "Stockfish 19",
+          "move": "d8d6",
+          "san": "Qd6",
+          "pv": [
+            "Qd6",
+            "Be3",
+            "O-O",
+            "Qd2",
+            "a5",
+            "O-O",
+            "a4",
+            "Nc5",
+            "e5",
+            "Nxe5",
+            "Nxe5",
+            "dxe5"
+          ],
+          "depth": 10,
+          "score": {
+            "type": "cp",
+            "value": 53,
+            "bound": "exact"
+          },
+          "elapsedMs": 615,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "e54b468a-10fc-4572-bc9b-d02636c3d609",
+          "fen": "r3k2r/p1p3bp/2pqp1n1/3p1b2/3P4/1N3N2/PPP2PPP/R1BQK2R w KQkq - 2 11",
+          "engine": "Stockfish 19",
+          "move": "c1e3",
+          "san": "Be3",
+          "pv": [
+            "Be3",
+            "O-O",
+            "Qd2",
+            "a5",
+            "O-O",
+            "a4",
+            "Nc5",
+            "e5",
+            "Nb7",
+            "Qe6",
+            "Nxe5",
+            "Nxe5"
+          ],
+          "depth": 19,
+          "score": {
+            "type": "cp",
+            "value": 95,
+            "bound": "exact"
+          },
+          "elapsedMs": 1273,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "8ce1efc7-ba44-4fde-9d12-db7c8cf05366",
+          "fen": "r3k2r/p1p3bp/2pqp1n1/3p1b2/3P4/1N2BN2/PPP2PPP/R2QK2R b KQkq - 3 11",
+          "engine": "Stockfish 19",
+          "move": "e6e5",
+          "san": "e5",
+          "pv": [
+            "e5",
+            "dxe5",
+            "Nxe5",
+            "Nxe5",
+            "Bxe5",
+            "Bc5",
+            "Qg6",
+            "Qe2",
+            "O-O-O",
+            "O-O-O",
+            "Rhe8"
+          ],
+          "depth": 10,
+          "score": {
+            "type": "cp",
+            "value": 116,
+            "bound": "exact"
+          },
+          "elapsedMs": 615,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "3a14f2c2-4d24-4170-810a-221afa60f838",
+          "fen": "r3k2r/p1p3bp/2pq2n1/3ppb2/3P4/1N2BN2/PPP2PPP/R2QK2R w KQkq - 0 12",
+          "engine": "Stockfish 19",
+          "move": "d4e5",
+          "san": "dxe5",
+          "pv": [
+            "dxe5",
+            "Nxe5"
+          ],
+          "depth": 19,
+          "score": {
+            "type": "cp",
+            "value": 94,
+            "bound": "upperbound"
+          },
+          "elapsedMs": 1281,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "dd25d015-3a07-4bcc-bf05-096b853a23c0",
+          "fen": "r3k2r/p1p3bp/2pq2n1/3pPb2/8/1N2BN2/PPP2PPP/R2QK2R b KQkq - 0 12",
+          "engine": "Stockfish 19",
+          "move": "g6e5",
+          "san": "Nxe5",
+          "pv": [
+            "Nxe5",
+            "Bc5"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": 99,
+            "bound": "upperbound"
+          },
+          "elapsedMs": 600,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "2cc23a0f-bdc0-438d-a310-8d29efd1d288",
+          "fen": "r3k2r/p1p3bp/2pq4/3pnb2/8/1N2BN2/PPP2PPP/R2QK2R w KQkq - 0 13",
+          "engine": "Stockfish 19",
+          "move": "f3e5",
+          "san": "Nxe5",
+          "pv": [
+            "Nxe5",
+            "Bxe5",
+            "Qd2",
+            "Bxb2",
+            "Rb1",
+            "Bg7",
+            "O-O",
+            "Qg6",
+            "Bd4",
+            "O-O",
+            "Bxg7",
+            "Qxg7"
+          ],
+          "depth": 19,
+          "score": {
+            "type": "cp",
+            "value": 119,
+            "bound": "exact"
+          },
+          "elapsedMs": 1288,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "1210aef6-91ad-4ed6-94ef-e9fe1a8c4144",
+          "fen": "r3k2r/p1p3bp/2pq4/3pNb2/8/1N2B3/PPP2PPP/R2QK2R b KQkq - 0 13",
+          "engine": "Stockfish 19",
+          "move": "g7e5",
+          "san": "Bxe5",
+          "pv": [
+            "Bxe5",
+            "Qe2"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": 100,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 602,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "526da4e9-c552-482f-8706-90442842dcc9",
+          "fen": "r3k2r/p1p4p/2pq4/3pbb2/8/1N2B3/PPP2PPP/R2QK2R w KQkq - 0 14",
+          "engine": "Stockfish 19",
+          "move": "d1d2",
+          "san": "Qd2",
+          "pv": [
+            "Qd2",
+            "Bxb2"
+          ],
+          "depth": 17,
+          "score": {
+            "type": "cp",
+            "value": 105,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1316,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "c2371024-8a53-4fb6-87e7-c5aaa76324c4",
+          "fen": "r3k2r/p1p4p/2pq4/3pbb2/8/1N2B3/PPPQ1PPP/R3K2R b KQkq - 1 14",
+          "engine": "Stockfish 19",
+          "move": "e8g8",
+          "san": "O-O",
+          "pv": [
+            "O-O",
+            "O-O-O",
+            "a5",
+            "Bc5",
+            "Qf6",
+            "Bd4",
+            "a4",
+            "Bxe5",
+            "Qxe5",
+            "Qg5+",
+            "Kh8",
+            "Rhe1"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": 132,
+            "bound": "exact"
+          },
+          "elapsedMs": 602,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "cd5e0320-5b65-4383-9c95-d1fd18b31299",
+          "fen": "r4rk1/p1p4p/2pq4/3pbb2/8/1N2B3/PPPQ1PPP/R3K2R w KQ - 2 15",
+          "engine": "Stockfish 19",
+          "move": "e1c1",
+          "san": "O-O-O",
+          "pv": [
+            "O-O-O",
+            "Bg6",
+            "h4",
+            "Qf6",
+            "Bd4",
+            "Bxd4",
+            "Nxd4",
+            "Qxf2",
+            "Nxc6",
+            "Qxd2+",
+            "Rxd2",
+            "Rae8"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 144,
+            "bound": "exact"
+          },
+          "elapsedMs": 1269,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "e84d8558-f067-49d6-ae33-51f984d8dfa6",
+          "fen": "r4rk1/p1p4p/2pq4/3pbb2/8/1N2B3/PPPQ1PPP/2KR3R b - - 3 15",
+          "engine": "Stockfish 19",
+          "move": "f8b8",
+          "san": "Rfb8",
+          "pv": [
+            "Rfb8",
+            "f4",
+            "Bg7",
+            "Rhe1",
+            "a5",
+            "Bd4",
+            "a4"
+          ],
+          "depth": 10,
+          "score": {
+            "type": "cp",
+            "value": 146,
+            "bound": "exact"
+          },
+          "elapsedMs": 659,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "3980b03d-779a-483c-be03-b8851f794d74",
+          "fen": "rr4k1/p1p4p/2pq4/3pbb2/8/1N2B3/PPPQ1PPP/2KR3R w - - 4 16",
+          "engine": "Stockfish 19",
+          "move": "e3d4",
+          "san": "Bd4",
+          "pv": [
+            "Bd4",
+            "Bf4",
+            "Be3",
+            "Bxe3",
+            "Qxe3",
+            "Rf8",
+            "h4",
+            "a5",
+            "Qg5+",
+            "Kh8",
+            "Rhe1",
+            "h6"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 229,
+            "bound": "exact"
+          },
+          "elapsedMs": 1272,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "b19f8e82-c39c-4b66-9b35-6d00b4301794",
+          "fen": "rr4k1/p1p4p/2pq4/3pbb2/3B4/1N6/PPPQ1PPP/2KR3R b - - 5 16",
+          "engine": "Stockfish 19",
+          "move": "e5f4",
+          "san": "Bf4",
+          "pv": [
+            "Bf4",
+            "Be3",
+            "Be5",
+            "f4",
+            "Bf6",
+            "Bd4",
+            "a5",
+            "Be5",
+            "Qf8",
+            "Nd4",
+            "Be4",
+            "Rhe1"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 219,
+            "bound": "exact"
+          },
+          "elapsedMs": 656,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "a82a19c5-0cbb-4099-9d49-f1b1a9852210",
+          "fen": "rr4k1/p1p4p/2pq4/3p1b2/3B1b2/1N6/PPPQ1PPP/2KR3R w - - 6 17",
+          "engine": "Stockfish 19",
+          "move": "d4e3",
+          "san": "Be3",
+          "pv": [
+            "Be3",
+            "Be5"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 242,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1276,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "13d52adc-1d53-40a3-ba0a-a7b2caf1d607",
+          "fen": "rr4k1/p1p4p/2pq4/3p1b2/5b2/1N2B3/PPPQ1PPP/2KR3R b - - 7 17",
+          "engine": "Stockfish 19",
+          "move": "f4e3",
+          "san": "Bxe3",
+          "pv": [
+            "Bxe3",
+            "Qxe3",
+            "Rf8",
+            "Nd4",
+            "Bg6",
+            "Rhe1",
+            "Rae8",
+            "Qg3",
+            "Qxg3",
+            "fxg3"
+          ],
+          "depth": 10,
+          "score": {
+            "type": "cp",
+            "value": 167,
+            "bound": "exact"
+          },
+          "elapsedMs": 607,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "13d99c9f-ba20-436d-9178-9371f313a923",
+          "fen": "rr4k1/p1p4p/2pq4/3p1b2/8/1N2b3/PPPQ1PPP/2KR3R w - - 0 18",
+          "engine": "Stockfish 19",
+          "move": "d2e3",
+          "san": "Qxe3",
+          "pv": [
+            "Qxe3",
+            "Rf8",
+            "Qd2",
+            "a5",
+            "Nd4",
+            "Bd7",
+            "Rhe1",
+            "Rf6",
+            "a3",
+            "a4",
+            "f3",
+            "Rg6"
+          ],
+          "depth": 19,
+          "score": {
+            "type": "cp",
+            "value": 237,
+            "bound": "exact"
+          },
+          "elapsedMs": 1272,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "806fc12e-22e4-4c90-990e-6e86e9b6562b",
+          "fen": "rr4k1/p1p4p/2pq4/3p1b2/8/1N2Q3/PPP2PPP/2KR3R b - - 0 18",
+          "engine": "Stockfish 19",
+          "move": "f5g6",
+          "san": "Bg6",
+          "pv": [
+            "Bg6",
+            "h4",
+            "Re8",
+            "Qd2",
+            "Re5",
+            "Rhe1",
+            "Rae8",
+            "Rxe5",
+            "Rxe5",
+            "Nd4",
+            "c5",
+            "Nf3"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": 226,
+            "bound": "exact"
+          },
+          "elapsedMs": 608,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "5571f4f4-b9f8-4328-aec7-0b9cac414e50",
+          "fen": "rr4k1/p1p4p/2pq2b1/3p4/8/1N2Q3/PPP2PPP/2KR3R w - - 1 19",
+          "engine": "Stockfish 19",
+          "move": "h2h4",
+          "san": "h4",
+          "pv": [
+            "h4",
+            "Re8",
+            "Qd2",
+            "Re5",
+            "Rhe1",
+            "Rae8",
+            "Rxe5",
+            "Qxe5",
+            "g4",
+            "h5",
+            "gxh5",
+            "Qxh5"
+          ],
+          "depth": 20,
+          "score": {
+            "type": "cp",
+            "value": 257,
+            "bound": "exact"
+          },
+          "elapsedMs": 1310,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "9064ffbf-4639-4889-a266-5df705b383b1",
+          "fen": "rr4k1/p1p4p/2pq2b1/3p4/7P/1N2Q3/PPP2PP1/2KR3R b - - 0 19",
+          "engine": "Stockfish 19",
+          "move": "b8f8",
+          "san": "Rf8",
+          "pv": [
+            "Rf8",
+            "h5",
+            "Rae8",
+            "Qc3",
+            "Bf5",
+            "f3",
+            "Re2",
+            "Rd2",
+            "Rfe8",
+            "Rxe2",
+            "Qh6+",
+            "Kb1"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": 346,
+            "bound": "exact"
+          },
+          "elapsedMs": 606,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "0174f4c1-4710-43ae-8d12-6f955848f7bc",
+          "fen": "r4rk1/p1p4p/2pq2b1/3p4/7P/1N2Q3/PPP2PP1/2KR3R w - - 1 20",
+          "engine": "Stockfish 19",
+          "move": "h4h5",
+          "san": "h5",
+          "pv": [
+            "h5",
+            "Bf5",
+            "Rhe1",
+            "h6",
+            "f3",
+            "a5",
+            "a3",
+            "a4",
+            "Nc5",
+            "Rae8",
+            "Qd4",
+            "Bh7"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 408,
+            "bound": "exact"
+          },
+          "elapsedMs": 1271,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "dce782b9-e3a5-49f6-a8ac-e58746591e57",
+          "fen": "r4rk1/p1p4p/2pq2b1/3p3P/8/1N2Q3/PPP2PP1/2KR3R b - - 0 20",
+          "engine": "Stockfish 19",
+          "move": "f8e8",
+          "san": "Rfe8",
+          "pv": [
+            "Rfe8",
+            "Qc3"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 611,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "722c5532-2e22-4906-a429-2ced62b973f3",
+          "fen": "r3r1k1/p1p4p/2pq2b1/3p3P/8/1N2Q3/PPP2PP1/2KR3R w - - 1 21",
+          "engine": "Stockfish 19",
+          "move": "e3c3",
+          "san": "Qc3",
+          "pv": [
+            "Qc3",
+            "Bf5",
+            "Rde1",
+            "h6",
+            "a3",
+            "a5",
+            "Qd4",
+            "Rf8",
+            "f3",
+            "a4",
+            "Nc5",
+            "Qg3"
+          ],
+          "depth": 17,
+          "score": {
+            "type": "cp",
+            "value": 445,
+            "bound": "exact"
+          },
+          "elapsedMs": 1280,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "6e7ce169-08b5-4969-b3f5-b8e6ed211630",
+          "fen": "r3r1k1/p1p4p/2pq2b1/3p3P/8/1NQ5/PPP2PP1/2KR3R b - - 2 21",
+          "engine": "Stockfish 19",
+          "move": "g6f7",
+          "san": "Bf7",
+          "pv": [
+            "Bf7",
+            "h6",
+            "Qf8",
+            "f4",
+            "Re4",
+            "f5",
+            "Rae8",
+            "Qg3+",
+            "Kh8",
+            "Qxc7",
+            "Bg8",
+            "Qg3"
+          ],
+          "depth": 14,
+          "score": {
+            "type": "cp",
+            "value": 430,
+            "bound": "exact"
+          },
+          "elapsedMs": 617,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "76bf0648-4e81-445b-a163-fec55f69cd31",
+          "fen": "r3r1k1/p1p2b1p/2pq4/3p3P/8/1NQ5/PPP2PP1/2KR3R w - - 3 22",
+          "engine": "Stockfish 19",
+          "move": "h5h6",
+          "san": "h6",
+          "pv": [
+            "h6",
+            "Qe5",
+            "Nd4",
+            "Bg6",
+            "Qxc6",
+            "Rad8",
+            "a3",
+            "Qd6",
+            "Qxd6",
+            "Rxd6",
+            "Rhe1",
+            "Rxe1"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": 459,
+            "bound": "exact"
+          },
+          "elapsedMs": 1335,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "ad8ecf5c-7bc6-4e58-bc90-13e900ae384b",
+          "fen": "r3r1k1/p1p2b1p/2pq3P/3p4/8/1NQ5/PPP2PP1/2KR3R b - - 0 22",
+          "engine": "Stockfish 19",
+          "move": "d6f4",
+          "san": "Qf4+",
+          "pv": [
+            "Qf4+",
+            "Kb1",
+            "Qe5",
+            "Nd4",
+            "a5",
+            "a4",
+            "Rab8",
+            "Rh3"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": 519,
+            "bound": "exact"
+          },
+          "elapsedMs": 613,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "f4b00438-155d-4da6-a2c5-d4a6935c26f7",
+          "fen": "r3r1k1/p1p2b1p/2p4P/3p4/5q2/1NQ5/PPP2PP1/2KR3R w - - 1 23",
+          "engine": "Stockfish 19",
+          "move": "c1b1",
+          "san": "Kb1",
+          "pv": [
+            "Kb1",
+            "Qe5",
+            "Nd4",
+            "Rad8",
+            "f4",
+            "Qf6",
+            "f5",
+            "Re4",
+            "Qg3+",
+            "Kh8",
+            "Qxc7",
+            "Rg8"
+          ],
+          "depth": 19,
+          "score": {
+            "type": "cp",
+            "value": 529,
+            "bound": "exact"
+          },
+          "elapsedMs": 1280,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "da21f8b6-57ff-4186-aee8-9b9f4e4feb3a",
+          "fen": "r3r1k1/p1p2b1p/2p4P/3p4/5q2/1NQ5/PPP2PP1/1K1R3R b - - 2 23",
+          "engine": "Stockfish 19",
+          "move": "e8e2",
+          "san": "Re2",
+          "pv": [
+            "Re2"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 608,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "e8887979-889a-476e-a984-73772d6a67da",
+          "fen": "r5k1/p1p2b1p/2p4P/3p4/5q2/1NQ5/PPP1rPP1/1K1R3R w - - 3 24",
+          "engine": "Stockfish 19",
+          "move": "c3g7",
+          "san": "Qg7#",
+          "pv": [
+            "Qg7#"
+          ],
+          "depth": 245,
+          "score": {
+            "type": "mate",
+            "value": 1,
+            "bound": "exact"
+          },
+          "elapsedMs": 547,
+          "thinkMs": 800
+        }
+      ]
+    },
+    {
+      "strongColor": "b",
+      "outcome": "strong-win",
+      "plies": 46,
+      "durationMs": 44284,
+      "finalFen": "r3k2r/p7/7p/4p2P/4Pp2/5p2/PP3PP1/3q1K2 w kq - 2 24",
+      "moves": [
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "880f6727-0709-4f7d-97b0-c9772b935c8f",
+          "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+          "engine": "Stockfish 19",
+          "move": "c2c4",
+          "san": "c4",
+          "pv": [
+            "c4",
+            "e5"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 609,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "9b41ad2f-00d2-4fad-b87e-0d644347e0c2",
+          "fen": "rnbqkbnr/pppppppp/8/8/2P5/8/PP1PPPPP/RNBQKBNR b KQkq - 0 1",
+          "engine": "Stockfish 19",
+          "move": "e7e5",
+          "san": "e5",
+          "pv": [
+            "e5",
+            "g3"
+          ],
+          "depth": 20,
+          "score": {
+            "type": "cp",
+            "value": 21,
+            "bound": "upperbound"
+          },
+          "elapsedMs": 1317,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "7358cb9d-2e88-46ce-846d-cf89012b8077",
+          "fen": "rnbqkbnr/pppp1ppp/8/4p3/2P5/8/PP1PPPPP/RNBQKBNR w KQkq - 0 2",
+          "engine": "Stockfish 19",
+          "move": "d2d3",
+          "san": "d3",
+          "pv": [
+            "d3",
+            "Nf6",
+            "Nf3",
+            "Nc6",
+            "g3",
+            "d5",
+            "cxd5",
+            "Nxd5",
+            "Bg2",
+            "Be7",
+            "O-O",
+            "Be6"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 5,
+            "bound": "exact"
+          },
+          "elapsedMs": 598,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "04757da7-415a-406f-b7c0-5a304d951e6b",
+          "fen": "rnbqkbnr/pppp1ppp/8/4p3/2P5/3P4/PP2PPPP/RNBQKBNR b KQkq - 0 2",
+          "engine": "Stockfish 19",
+          "move": "g8f6",
+          "san": "Nf6",
+          "pv": [
+            "Nf6",
+            "Nf3"
+          ],
+          "depth": 20,
+          "score": {
+            "type": "cp",
+            "value": 11,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1282,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "368dd0e2-16a1-437e-8e21-235086fa216c",
+          "fen": "rnbqkb1r/pppp1ppp/5n2/4p3/2P5/3P4/PP2PPPP/RNBQKBNR w KQkq - 1 3",
+          "engine": "Stockfish 19",
+          "move": "c1g5",
+          "san": "Bg5",
+          "pv": [
+            "Bg5"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 609,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "c6a1a70a-75ad-4f6a-8f79-20fabe79d10d",
+          "fen": "rnbqkb1r/pppp1ppp/5n2/4p1B1/2P5/3P4/PP2PPPP/RN1QKBNR b KQkq - 2 3",
+          "engine": "Stockfish 19",
+          "move": "h7h6",
+          "san": "h6",
+          "pv": [
+            "h6",
+            "Bxf6"
+          ],
+          "depth": 20,
+          "score": {
+            "type": "cp",
+            "value": -15,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1266,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "010cffd8-0ff9-42a3-a336-ee9d8801e4aa",
+          "fen": "rnbqkb1r/pppp1pp1/5n1p/4p1B1/2P5/3P4/PP2PPPP/RN1QKBNR w KQkq - 0 4",
+          "engine": "Stockfish 19",
+          "move": "g5h4",
+          "san": "Bh4",
+          "pv": [
+            "Bh4",
+            "g5",
+            "Bg3",
+            "Nc6",
+            "Nf3",
+            "e4",
+            "dxe4",
+            "Nxe4",
+            "Nfd2",
+            "Nxg3",
+            "hxg3",
+            "d5"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": -33,
+            "bound": "exact"
+          },
+          "elapsedMs": 642,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "610126b8-ba8e-423d-83cc-772d27fc658a",
+          "fen": "rnbqkb1r/pppp1pp1/5n1p/4p3/2P4B/3P4/PP2PPPP/RN1QKBNR b KQkq - 1 4",
+          "engine": "Stockfish 19",
+          "move": "g7g5",
+          "san": "g5",
+          "pv": [
+            "g5",
+            "Bg3"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": -60,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1273,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "94f2d042-cefb-4359-bbb7-8a8cec9ddb0b",
+          "fen": "rnbqkb1r/pppp1p2/5n1p/4p1p1/2P4B/3P4/PP2PPPP/RN1QKBNR w KQkq - 0 5",
+          "engine": "Stockfish 19",
+          "move": "h4g3",
+          "san": "Bg3",
+          "pv": [
+            "Bg3",
+            "Nc6",
+            "Nf3",
+            "e4",
+            "dxe4",
+            "Nxe4",
+            "Nfd2",
+            "Nxg3",
+            "hxg3",
+            "Bg7",
+            "Nc3",
+            "Bxc3"
+          ],
+          "depth": 14,
+          "score": {
+            "type": "cp",
+            "value": -43,
+            "bound": "exact"
+          },
+          "elapsedMs": 608,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "24ed8de7-7b1f-41c4-8542-7dfbda6717f9",
+          "fen": "rnbqkb1r/pppp1p2/5n1p/4p1p1/2P5/3P2B1/PP2PPPP/RN1QKBNR b KQkq - 1 5",
+          "engine": "Stockfish 19",
+          "move": "b8c6",
+          "san": "Nc6",
+          "pv": [
+            "Nc6",
+            "e3"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": -50,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1268,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "9eee0fab-34a0-4bfe-897c-4debcd3369db",
+          "fen": "r1bqkb1r/pppp1p2/2n2n1p/4p1p1/2P5/3P2B1/PP2PPPP/RN1QKBNR w KQkq - 2 6",
+          "engine": "Stockfish 19",
+          "move": "b1c3",
+          "san": "Nc3",
+          "pv": [
+            "Nc3",
+            "d5"
+          ],
+          "depth": 10,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 605,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "c4c0801e-2045-4eb3-8dba-14e5193ca785",
+          "fen": "r1bqkb1r/pppp1p2/2n2n1p/4p1p1/2P5/2NP2B1/PP2PPPP/R2QKBNR b KQkq - 3 6",
+          "engine": "Stockfish 19",
+          "move": "d7d5",
+          "san": "d5",
+          "pv": [
+            "d5",
+            "e4"
+          ],
+          "depth": 20,
+          "score": {
+            "type": "cp",
+            "value": -100,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1266,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "880e32bc-fc4b-4bf9-9f0e-4910b1ed2fd3",
+          "fen": "r1bqkb1r/ppp2p2/2n2n1p/3pp1p1/2P5/2NP2B1/PP2PPPP/R2QKBNR w KQkq - 0 7",
+          "engine": "Stockfish 19",
+          "move": "c4d5",
+          "san": "cxd5",
+          "pv": [
+            "cxd5",
+            "Nxd5"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": -134,
+            "bound": "upperbound"
+          },
+          "elapsedMs": 609,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "d4d0f7c2-056b-4946-bd9e-25a8ea7a9cdf",
+          "fen": "r1bqkb1r/ppp2p2/2n2n1p/3Pp1p1/8/2NP2B1/PP2PPPP/R2QKBNR b KQkq - 0 7",
+          "engine": "Stockfish 19",
+          "move": "f6d5",
+          "san": "Nxd5",
+          "pv": [
+            "Nxd5",
+            "h4"
+          ],
+          "depth": 17,
+          "score": {
+            "type": "cp",
+            "value": -117,
+            "bound": "upperbound"
+          },
+          "elapsedMs": 1254,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "538989d3-c2a2-47ab-9a91-ebd1e271f534",
+          "fen": "r1bqkb1r/ppp2p2/2n4p/3np1p1/8/2NP2B1/PP2PPPP/R2QKBNR w KQkq - 0 8",
+          "engine": "Stockfish 19",
+          "move": "h2h4",
+          "san": "h4",
+          "pv": [
+            "h4",
+            "g4",
+            "e3",
+            "Be6",
+            "Nge2",
+            "f5",
+            "d4",
+            "f4",
+            "exf4",
+            "exd4",
+            "Nxd4",
+            "Nxc3"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": -124,
+            "bound": "exact"
+          },
+          "elapsedMs": 608,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "7ad1614e-6bb4-49c9-87c1-bfaa0ec51f37",
+          "fen": "r1bqkb1r/ppp2p2/2n4p/3np1p1/7P/2NP2B1/PP2PPP1/R2QKBNR b KQkq - 0 8",
+          "engine": "Stockfish 19",
+          "move": "g5g4",
+          "san": "g4",
+          "pv": [
+            "g4",
+            "e4"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": -113,
+            "bound": "lowerbound"
+          },
+          "elapsedMs": 1257,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "62023869-82f4-42af-8ccf-cd19f36a4e97",
+          "fen": "r1bqkb1r/ppp2p2/2n4p/3np3/6pP/2NP2B1/PP2PPP1/R2QKBNR w KQkq - 0 9",
+          "engine": "Stockfish 19",
+          "move": "a1c1",
+          "san": "Rc1",
+          "pv": [
+            "Rc1",
+            "f5",
+            "e3",
+            "f4",
+            "exf4",
+            "exf4"
+          ],
+          "depth": 10,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 635,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "4f4eb9ba-bfca-4214-8eb4-4109412083a0",
+          "fen": "r1bqkb1r/ppp2p2/2n4p/3np3/6pP/2NP2B1/PP2PPP1/2RQKBNR b Kkq - 1 9",
+          "engine": "Stockfish 19",
+          "move": "f7f5",
+          "san": "f5",
+          "pv": [
+            "f5",
+            "e3"
+          ],
+          "depth": 19,
+          "score": {
+            "type": "cp",
+            "value": -306,
+            "bound": "upperbound"
+          },
+          "elapsedMs": 1298,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "518fe0d0-c577-431c-96d4-df0e3b66f337",
+          "fen": "r1bqkb1r/ppp5/2n4p/3npp2/6pP/2NP2B1/PP2PPP1/2RQKBNR w Kkq - 0 10",
+          "engine": "Stockfish 19",
+          "move": "h4h5",
+          "san": "h5",
+          "pv": [
+            "h5",
+            "Nxc3",
+            "bxc3",
+            "f4",
+            "Bh4",
+            "Be7",
+            "g3",
+            "Bxh4",
+            "Rxh4",
+            "Qg5",
+            "Bg2",
+            "fxg3"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": -344,
+            "bound": "exact"
+          },
+          "elapsedMs": 610,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "8a510796-8522-4978-8c57-dc0afc89b259",
+          "fen": "r1bqkb1r/ppp5/2n4p/3npp1P/6p1/2NP2B1/PP2PPP1/2RQKBNR b Kkq - 0 10",
+          "engine": "Stockfish 19",
+          "move": "f8e7",
+          "san": "Be7",
+          "pv": [
+            "Be7",
+            "e4",
+            "Nxc3",
+            "bxc3",
+            "f4",
+            "Bh2",
+            "Bd6",
+            "Ne2",
+            "Qe7",
+            "Bg1",
+            "Be6",
+            "Qa4"
+          ],
+          "depth": 17,
+          "score": {
+            "type": "cp",
+            "value": -357,
+            "bound": "exact"
+          },
+          "elapsedMs": 1261,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "9eef4458-dd50-4e55-a1ee-18b7316e3b00",
+          "fen": "r1bqk2r/ppp1b3/2n4p/3npp1P/6p1/2NP2B1/PP2PPP1/2RQKBNR w Kkq - 1 11",
+          "engine": "Stockfish 19",
+          "move": "e2e4",
+          "san": "e4",
+          "pv": [
+            "e4",
+            "Nxc3",
+            "bxc3",
+            "f4",
+            "Bh2",
+            "Bd6",
+            "Ne2",
+            "Rf8",
+            "Rb1",
+            "Qh4",
+            "d4",
+            "exd4"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": -391,
+            "bound": "exact"
+          },
+          "elapsedMs": 611,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "0c1cfa6c-8962-402e-a8d0-06ba8e184f44",
+          "fen": "r1bqk2r/ppp1b3/2n4p/3npp1P/4P1p1/2NP2B1/PP3PP1/2RQKBNR b Kkq - 0 11",
+          "engine": "Stockfish 19",
+          "move": "d5c3",
+          "san": "Nxc3",
+          "pv": [
+            "Nxc3",
+            "bxc3",
+            "f4",
+            "Bh2",
+            "Qd6",
+            "Ne2",
+            "Rf8",
+            "d4",
+            "Bd7",
+            "dxe5",
+            "Qxe5",
+            "Qd5"
+          ],
+          "depth": 16,
+          "score": {
+            "type": "cp",
+            "value": -395,
+            "bound": "exact"
+          },
+          "elapsedMs": 1287,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "ecb65856-a9f1-4560-8cba-566a99c04162",
+          "fen": "r1bqk2r/ppp1b3/2n4p/4pp1P/4P1p1/2nP2B1/PP3PP1/2RQKBNR w Kkq - 0 12",
+          "engine": "Stockfish 19",
+          "move": "c1c3",
+          "san": "Rxc3",
+          "pv": [
+            "Rxc3",
+            "f4",
+            "Bh2",
+            "Bb4",
+            "a3",
+            "Bxc3+",
+            "bxc3",
+            "Qd6",
+            "d4",
+            "Bd7",
+            "Bd3",
+            "Qxa3"
+          ],
+          "depth": 14,
+          "score": {
+            "type": "cp",
+            "value": -602,
+            "bound": "exact"
+          },
+          "elapsedMs": 663,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "e0a88968-d20e-40b1-bf62-f4044a428ba8",
+          "fen": "r1bqk2r/ppp1b3/2n4p/4pp1P/4P1p1/2RP2B1/PP3PP1/3QKBNR b Kkq - 0 12",
+          "engine": "Stockfish 19",
+          "move": "f5f4",
+          "san": "f4",
+          "pv": [
+            "f4",
+            "Bh2",
+            "Bb4",
+            "a3",
+            "Bxc3+",
+            "bxc3",
+            "Qg5",
+            "d4",
+            "Bd7",
+            "Bd3",
+            "O-O-O",
+            "Qd2"
+          ],
+          "depth": 17,
+          "score": {
+            "type": "cp",
+            "value": -568,
+            "bound": "exact"
+          },
+          "elapsedMs": 1253,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "fe9af830-82ae-4173-bb95-5ca321a3ae3c",
+          "fen": "r1bqk2r/ppp1b3/2n4p/4p2P/4Ppp1/2RP2B1/PP3PP1/3QKBNR w Kkq - 0 13",
+          "engine": "Stockfish 19",
+          "move": "g3h4",
+          "san": "Bh4",
+          "pv": [
+            "Bh4",
+            "Bxh4",
+            "d4",
+            "g3",
+            "Nf3",
+            "gxf2+",
+            "Kd2",
+            "Bg3",
+            "d5",
+            "Nd4",
+            "Nxd4",
+            "exd4"
+          ],
+          "depth": 14,
+          "score": {
+            "type": "cp",
+            "value": -645,
+            "bound": "exact"
+          },
+          "elapsedMs": 612,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "1d435f51-2d79-49d4-8610-b12c1b8f71d9",
+          "fen": "r1bqk2r/ppp1b3/2n4p/4p2P/4PppB/2RP4/PP3PP1/3QKBNR b Kkq - 1 13",
+          "engine": "Stockfish 19",
+          "move": "e7h4",
+          "san": "Bxh4",
+          "pv": [
+            "Bxh4",
+            "d4",
+            "g3",
+            "Nf3",
+            "gxf2+",
+            "Kd2",
+            "Be7",
+            "Rxc6",
+            "bxc6",
+            "Qa4",
+            "Qd6",
+            "Nxe5"
+          ],
+          "depth": 16,
+          "score": {
+            "type": "cp",
+            "value": -664,
+            "bound": "exact"
+          },
+          "elapsedMs": 1283,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "a69aeaa3-3f6f-4efc-857c-0e4bf4886311",
+          "fen": "r1bqk2r/ppp5/2n4p/4p2P/4Pppb/2RP4/PP3PP1/3QKBNR w Kkq - 0 14",
+          "engine": "Stockfish 19",
+          "move": "h1h4",
+          "san": "Rxh4",
+          "pv": [
+            "Rxh4",
+            "Qxh4",
+            "d4",
+            "Qe7",
+            "Bb5",
+            "Bd7",
+            "Bxc6",
+            "bxc6",
+            "Ne2",
+            "Qd6",
+            "Qc2",
+            "Rb8"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": -703,
+            "bound": "exact"
+          },
+          "elapsedMs": 621,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "ae49c20d-24ec-4ae1-a49f-1a8da67b8413",
+          "fen": "r1bqk2r/ppp5/2n4p/4p2P/4PppR/2RP4/PP3PP1/3QKBN1 b kq - 0 14",
+          "engine": "Stockfish 19",
+          "move": "d8h4",
+          "san": "Qxh4",
+          "pv": [
+            "Qxh4",
+            "d4",
+            "Qe7",
+            "Bb5",
+            "Bd7",
+            "d5",
+            "Nd4",
+            "Bxd7+",
+            "Qxd7",
+            "Ne2",
+            "O-O-O",
+            "Nxf4"
+          ],
+          "depth": 22,
+          "score": {
+            "type": "cp",
+            "value": -722,
+            "bound": "exact"
+          },
+          "elapsedMs": 1295,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "f1202679-2fa0-478f-85ea-8b2456c5d7ad",
+          "fen": "r1b1k2r/ppp5/2n4p/4p2P/4Pppq/2RP4/PP3PP1/3QKBN1 w kq - 0 15",
+          "engine": "Stockfish 19",
+          "move": "g1f3",
+          "san": "Nf3",
+          "pv": [
+            "Nf3",
+            "Qe7",
+            "Rxc6",
+            "bxc6",
+            "Qc2",
+            "Bd7",
+            "Nd2"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 614,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "63ea9e2e-abad-431b-98a0-47774eced6c9",
+          "fen": "r1b1k2r/ppp5/2n4p/4p2P/4Pppq/2RP1N2/PP3PP1/3QKB2 b kq - 1 15",
+          "engine": "Stockfish 19",
+          "move": "g4f3",
+          "san": "gxf3",
+          "pv": [
+            "gxf3",
+            "Rxc6",
+            "bxc6",
+            "Qc2",
+            "Bd7",
+            "Qc5",
+            "Qf6",
+            "gxf3",
+            "Rd8",
+            "Qxa7",
+            "Rg8",
+            "Qc5"
+          ],
+          "depth": 20,
+          "score": {
+            "type": "cp",
+            "value": -872,
+            "bound": "exact"
+          },
+          "elapsedMs": 1295,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "8e370919-eda9-45c8-9e03-b8aae39560cf",
+          "fen": "r1b1k2r/ppp5/2n4p/4p2P/4Pp1q/2RP1p2/PP3PP1/3QKB2 w kq - 0 16",
+          "engine": "Stockfish 19",
+          "move": "d1b3",
+          "san": "Qb3",
+          "pv": [
+            "Qb3",
+            "fxg2",
+            "Bxg2",
+            "Qf6",
+            "Bh3",
+            "Bxh3",
+            "Qxb7",
+            "Bd7",
+            "Qxa8+",
+            "Nd8",
+            "Rxc7",
+            "a6"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": -862,
+            "bound": "exact"
+          },
+          "elapsedMs": 630,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "3fd07bd2-ed90-46bb-90c2-db2366d7a156",
+          "fen": "r1b1k2r/ppp5/2n4p/4p2P/4Pp1q/1QRP1p2/PP3PP1/4KB2 b kq - 1 16",
+          "engine": "Stockfish 19",
+          "move": "h4e7",
+          "san": "Qe7",
+          "pv": [
+            "Qe7",
+            "Rxc6",
+            "bxc6",
+            "d4",
+            "exd4",
+            "gxf3",
+            "a6",
+            "Bg2",
+            "Bd7",
+            "Qa3",
+            "a5",
+            "Qxe7+"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": -873,
+            "bound": "exact"
+          },
+          "elapsedMs": 1285,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "c46f3f96-b7dd-495a-86cf-f12e341abda6",
+          "fen": "r1b1k2r/ppp1q3/2n4p/4p2P/4Pp2/1QRP1p2/PP3PP1/4KB2 w kq - 2 17",
+          "engine": "Stockfish 19",
+          "move": "d3d4",
+          "san": "d4",
+          "pv": [
+            "d4",
+            "Nxd4",
+            "gxf3"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 610,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "24f1b40b-f1aa-4962-aa22-925edf0bbbd7",
+          "fen": "r1b1k2r/ppp1q3/2n4p/4p2P/3PPp2/1QR2p2/PP3PP1/4KB2 b kq - 0 17",
+          "engine": "Stockfish 19",
+          "move": "c6d4",
+          "san": "Nxd4",
+          "pv": [
+            "Nxd4",
+            "Qa3",
+            "Qxa3",
+            "bxa3",
+            "Be6",
+            "Rxc7",
+            "Rd8",
+            "Rc5",
+            "fxg2",
+            "Bxg2",
+            "b5",
+            "a4"
+          ],
+          "depth": 21,
+          "score": {
+            "type": "cp",
+            "value": -974,
+            "bound": "exact"
+          },
+          "elapsedMs": 1317,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "48dbd52c-ec0c-4eaf-a762-b8a5120633e3",
+          "fen": "r1b1k2r/ppp1q3/7p/4p2P/3nPp2/1QR2p2/PP3PP1/4KB2 w kq - 0 18",
+          "engine": "Stockfish 19",
+          "move": "b3b5",
+          "san": "Qb5+",
+          "pv": [
+            "Qb5+",
+            "Nxb5",
+            "Bxb5+",
+            "c6"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 610,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "ead8fdeb-6aad-4192-8cd0-aed94044ea69",
+          "fen": "r1b1k2r/ppp1q3/7p/1Q2p2P/3nPp2/2R2p2/PP3PP1/4KB2 b kq - 1 18",
+          "engine": "Stockfish 19",
+          "move": "d4b5",
+          "san": "Nxb5",
+          "pv": [
+            "Nxb5",
+            "Bxb5+",
+            "c6",
+            "Bf1",
+            "fxg2",
+            "Bxg2",
+            "Rg8",
+            "Bf1",
+            "Rg1",
+            "a3",
+            "Be6",
+            "b4"
+          ],
+          "depth": 22,
+          "score": {
+            "type": "cp",
+            "value": -1338,
+            "bound": "exact"
+          },
+          "elapsedMs": 1271,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "d14344a8-12d1-4410-b9d1-ff9fe43c4cd9",
+          "fen": "r1b1k2r/ppp1q3/7p/1n2p2P/4Pp2/2R2p2/PP3PP1/4KB2 w kq - 0 19",
+          "engine": "Stockfish 19",
+          "move": "f1b5",
+          "san": "Bxb5+",
+          "pv": [
+            "Bxb5+",
+            "c6",
+            "Bf1",
+            "Be6",
+            "gxf3",
+            "a5",
+            "a3"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": -1171,
+            "bound": "exact"
+          },
+          "elapsedMs": 666,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "a16f8071-02c6-402f-aa4e-8fa16ae02d91",
+          "fen": "r1b1k2r/ppp1q3/7p/1B2p2P/4Pp2/2R2p2/PP3PP1/4K3 b kq - 0 19",
+          "engine": "Stockfish 19",
+          "move": "c7c6",
+          "san": "c6",
+          "pv": [
+            "c6",
+            "Rxf3",
+            "cxb5",
+            "Rc3",
+            "Bg4",
+            "Kf1",
+            "Rd8",
+            "f3",
+            "Qh4",
+            "fxg4",
+            "Rd1+",
+            "Ke2"
+          ],
+          "depth": 18,
+          "score": {
+            "type": "cp",
+            "value": -1341,
+            "bound": "exact"
+          },
+          "elapsedMs": 1326,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "38f22e77-407e-452f-b881-68fdfd45b24c",
+          "fen": "r1b1k2r/pp2q3/2p4p/1B2p2P/4Pp2/2R2p2/PP3PP1/4K3 w kq - 0 20",
+          "engine": "Stockfish 19",
+          "move": "c3c6",
+          "san": "Rxc6",
+          "pv": [
+            "Rxc6",
+            "bxc6",
+            "Bxc6+",
+            "Bd7",
+            "Bxd7+",
+            "Kxd7",
+            "gxf3",
+            "Qb4+",
+            "Kf1",
+            "Qc4+",
+            "Kg1"
+          ],
+          "depth": 11,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 636,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "2b32caff-7ea5-476b-a68f-5ad9622b7f01",
+          "fen": "r1b1k2r/pp2q3/2R4p/1B2p2P/4Pp2/5p2/PP3PP1/4K3 b kq - 0 20",
+          "engine": "Stockfish 19",
+          "move": "b7c6",
+          "san": "bxc6",
+          "pv": [
+            "bxc6",
+            "Bxc6+",
+            "Kd8",
+            "g4",
+            "Qb4+",
+            "Kd1",
+            "Rb8",
+            "b3",
+            "Rb6",
+            "Bb5",
+            "Rxb5",
+            "a4"
+          ],
+          "depth": 22,
+          "score": {
+            "type": "cp",
+            "value": -1957,
+            "bound": "exact"
+          },
+          "elapsedMs": 1289,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "549fa6e4-ef1b-4fb3-9671-620ab6429814",
+          "fen": "r1b1k2r/p3q3/2p4p/1B2p2P/4Pp2/5p2/PP3PP1/4K3 w kq - 0 21",
+          "engine": "Stockfish 19",
+          "move": "b5c6",
+          "san": "Bxc6+",
+          "pv": [
+            "Bxc6+",
+            "Bd7",
+            "Bxa8",
+            "Qb4+",
+            "Kf1",
+            "fxg2+",
+            "Kxg2",
+            "f3+",
+            "Kxf3",
+            "Rf8+",
+            "Kg2",
+            "Rg8+"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": -1181,
+            "bound": "exact"
+          },
+          "elapsedMs": 610,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "69b3bd92-cb9a-44c8-aea5-8bf9811d4367",
+          "fen": "r1b1k2r/p3q3/2B4p/4p2P/4Pp2/5p2/PP3PP1/4K3 b kq - 0 21",
+          "engine": "Stockfish 19",
+          "move": "c8d7",
+          "san": "Bd7",
+          "pv": [
+            "Bd7",
+            "Bb7",
+            "Qb4+",
+            "Kf1",
+            "Qd2",
+            "Kg1",
+            "Qe1+",
+            "Kh2",
+            "Qxf2",
+            "Bxa8",
+            "Qxg2#"
+          ],
+          "depth": 43,
+          "score": {
+            "type": "mate",
+            "value": -6,
+            "bound": "exact"
+          },
+          "elapsedMs": 1280,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "b5f146f4-0b98-4424-ae87-c53b00da1a0c",
+          "fen": "r3k2r/p2bq3/2B4p/4p2P/4Pp2/5p2/PP3PP1/4K3 w kq - 1 22",
+          "engine": "Stockfish 19",
+          "move": "c6d7",
+          "san": "Bxd7+",
+          "pv": [
+            "Bxd7+",
+            "Kxd7",
+            "gxf3",
+            "Qb4+",
+            "Kf1",
+            "Qxb2",
+            "Kg2",
+            "Rag8+",
+            "Kh1",
+            "Qb1+",
+            "Kh2"
+          ],
+          "depth": 13,
+          "score": {
+            "type": "cp",
+            "value": -1454,
+            "bound": "exact"
+          },
+          "elapsedMs": 610,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "5e233700-e599-4ed9-9844-3dde39c17d6d",
+          "fen": "r3k2r/p2Bq3/7p/4p2P/4Pp2/5p2/PP3PP1/4K3 b kq - 0 22",
+          "engine": "Stockfish 19",
+          "move": "e7d7",
+          "san": "Qxd7",
+          "pv": [
+            "Qxd7",
+            "gxf3",
+            "Rg8",
+            "Ke2",
+            "Rg1",
+            "b4",
+            "Qd1#"
+          ],
+          "depth": 245,
+          "score": {
+            "type": "mate",
+            "value": -4,
+            "bound": "exact"
+          },
+          "elapsedMs": 1015,
+          "thinkMs": 800
+        },
+        {
+          "level": "easy",
+          "gameId": "evaluation",
+          "requestId": "02514c1c-250d-4423-adf2-7d69cb3c61b9",
+          "fen": "r3k2r/p2q4/7p/4p2P/4Pp2/5p2/PP3PP1/4K3 w kq - 0 23",
+          "engine": "Stockfish 19",
+          "move": "e1f1",
+          "san": "Kf1",
+          "pv": [
+            "Kf1",
+            "Qd1#"
+          ],
+          "depth": 12,
+          "score": {
+            "type": "cp",
+            "value": 0,
+            "bound": "exact"
+          },
+          "elapsedMs": 620,
+          "thinkMs": 150
+        },
+        {
+          "level": "hard",
+          "gameId": "evaluation",
+          "requestId": "194c9aad-9e81-4c9f-8095-46809e0c9e49",
+          "fen": "r3k2r/p2q4/7p/4p2P/4Pp2/5p2/PP3PP1/5K2 b kq - 1 23",
+          "engine": "Stockfish 19",
+          "move": "d7d1",
+          "san": "Qd1#",
+          "pv": [
+            "Qd1#"
+          ],
+          "depth": 245,
+          "score": {
+            "type": "mate",
+            "value": -1,
+            "bound": "exact"
+          },
+          "elapsedMs": 534,
+          "thinkMs": 800
+        }
+      ]
+    }
+  ]
+}

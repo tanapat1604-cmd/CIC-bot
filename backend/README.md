@@ -1,3 +1,5 @@
+Chess extension: see [local chess setup, limits, licensing and tests](../CHESS.md). /chess/status and authenticated /chess/analyze are independent of Ollama availability; no public backend.
+
 # CIC text backend — local Ollama (3B) and test provider
 
 This release supports the installed **local Ollama model** and a free deterministic test provider. No paid/cloud API or public backend is configured. Do not expose it with a tunnel, reverse proxy or public listener. The local trust model is not public user authentication. Actual results and remaining Thai-language limitations: [OLLAMA-VALIDATION.md](../OLLAMA-VALIDATION.md).

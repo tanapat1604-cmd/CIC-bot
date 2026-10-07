@@ -1,3 +1,5 @@
+import { createChessEngine, EngineError, type ChessEngine } from './chessEngine.js'
+import { parseChessRequest } from '../shared/chess.js'
 import { CIC_CAPABILITIES } from '../shared/capabilities.js'
 import { createLiveReply } from './liveReply.js'
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http'
@@ -6,7 +8,7 @@ import { once } from 'node:events'
 import { ChatError, LIMITS, validateRequest, type ErrorCode, type TextEvent } from '../shared/chatProtocol.js'
 import { SYSTEM_INSTRUCTION, testProvider, type Provider } from './provider.js'
 
-type Options = { origins?: string[]; provider?: Provider; timeoutMs?: number; requestsPerMinute?: number; maxRequests?: number; maxConcurrent?: number; enabled?: boolean; log?: (entry: { requestId: string; status: string; durationMs: number }) => void }
+type Options = { chess?: ChessEngine; origins?: string[]; provider?: Provider; timeoutMs?: number; requestsPerMinute?: number; maxRequests?: number; maxConcurrent?: number; enabled?: boolean; log?: (entry: { requestId: string; status: string; durationMs: number }) => void }
 type Access = { expires: number; active: number; window: number; count: number; operations: Set<string> }
 const loopback = (address?: string) => address === '127.0.0.1' || address === '::1' || address === '::ffff:127.0.0.1'
 export function createChatServer(options: Options = {}) {
@@ -14,6 +16,8 @@ export function createChatServer(options: Options = {}) {
   // Local trust boundary only. Public deployment needs a separately reviewed identity layer.
   if (origins.some(origin => { const url = new URL(origin); return url.origin !== origin || url.protocol !== 'http:' || url.hostname !== '127.0.0.1' })) throw new Error('Only explicit 127.0.0.1 development origins are supported')
   const provider = options.provider ?? testProvider
+  const chess = options.chess ?? createChessEngine()
+  let chessWindow = Date.now(), chessCalls = 0
   const access = new Map<string, Access>(), controllers = new Set<AbortController>()
   let active = 0, spent = 0, bootstrapWindow = Date.now(), bootstraps = 0
   const json = (res: ServerResponse, status: number, value: unknown) => { res.writeHead(status, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(value)) }
@@ -29,6 +33,7 @@ export function createChatServer(options: Options = {}) {
     if (origin && !origins.includes(origin)) { fail(res, 403, 'unauthorized'); return }
     if (origin) { res.setHeader('Access-Control-Allow-Origin', origin); res.setHeader('Access-Control-Allow-Credentials', 'true'); res.setHeader('Vary', 'Origin') }
     if (req.method === 'OPTIONS' && origin) { res.writeHead(204, { 'Access-Control-Allow-Methods': 'POST, GET', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '600' }); res.end(); return }
+    if (req.url === '/chess/status' && req.method === 'GET') { json(res, 200, chess.status()); return }
     if (req.url === '/health' && req.method === 'GET') {
       let ready = options.enabled !== false && spent < (options.maxRequests ?? 100)
       let code: ErrorCode | undefined
@@ -54,10 +59,35 @@ export function createChatServer(options: Options = {}) {
       res.setHeader('Set-Cookie', `cic_local=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=600`)
       json(res, 200, { ready: true }); return
     }
-    if (req.url !== '/chat') { fail(res, 404, 'invalid'); return }
+    if (req.url !== '/chat' && req.url !== '/chess/analyze') { fail(res, 404, 'invalid'); return }
     const token = /(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie ?? '')?.[1]
     const session = token ? access.get(token) : undefined
     if (!session || session.expires < Date.now()) { fail(res, 401, 'unauthorized'); return }
+    if (req.url === '/chess/analyze') {
+      if (req.headers['content-type']?.split(';')[0] !== 'application/json' || req.headers['content-encoding']) { fail(res, 400, 'invalid'); return }
+      if (Date.now() - chessWindow > 60000) { chessWindow = Date.now(); chessCalls = 0 }
+      if (active || ++chessCalls > 90) { json(res, 429, { code: 'busy' }); req.resume(); return }
+      const controller = new AbortController(), start = Date.now(), requestId = randomUUID()
+      const closed = () => controller.abort()
+      const timer = setTimeout(() => controller.abort(), 12000)
+      controllers.add(controller); res.once('close', closed); active++; session.active++
+      let status = 'error'
+      try {
+        let request
+        try { request = parseChessRequest(await readBody(req, controller.signal)) } catch { throw new EngineError('invalid') }
+        const result = await chess.run(request, controller.signal)
+        if (!controller.signal.aborted && !res.destroyed) { json(res, 200, result); status = 'done' }
+      } catch (error) {
+        const code = error instanceof EngineError ? error.code : 'unavailable'
+        status = controller.signal.aborted ? 'cancelled' : code
+        if (!res.destroyed) json(res, code === 'invalid' ? 400 : code === 'busy' ? 429 : 503, { code })
+      } finally {
+        clearTimeout(timer); controller.abort(); controllers.delete(controller); res.off('close', closed); active--; session.active--
+        if (!res.destroyed && !res.writableEnded) res.end()
+        options.log?.({ requestId, status: 'chess-' + status, durationMs: Date.now() - start })
+      }
+      return
+    }
     if (options.enabled === false) { fail(res, 503, 'unavailable'); return }
     if (spent >= (options.maxRequests ?? 100)) { fail(res, 429, 'limited'); return }
     if (Date.now() - session.window > 60000) { session.window = Date.now(); session.count = 0 }

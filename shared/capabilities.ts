@@ -3,7 +3,7 @@ export const CIC_CAPABILITIES = Object.freeze({ version: 1, textChat: true, calc
 export const CAPABILITY_CATALOG = [
   { id: 'calculator', status: 'available', label: 'คำนวณเลขและเวลา', detail: '/calc และ /time — เครื่องมือในเครื่อง มีขอบเขตรูปแบบคำสั่ง' },
   { id: 'chat', status: 'experimental', label: 'สนทนาและร่างข้อความ', detail: 'โมเดลในเครื่อง — ภาษาไทยและเหตุผลยังอาจผิด ต้องตรวจคำตอบ' },
-  { id: 'chess', status: 'unsupported', label: 'หมากรุก', detail: 'ยังไม่ได้เชื่อม engine สำหรับเล่นหรือวิเคราะห์' },
+  { id: 'chess', status: 'available', label: 'หมากรุกในเครื่อง', detail: 'เปิดปุ่มหมากรุก — ต้องติดตั้ง Stockfish 19 และเปิด backend ในเครื่อง; เว็บสาธารณะเป็นตัวอย่างกระดาน' },
   { id: 'slides', status: 'unsupported', label: 'สไลด์', detail: 'ยังสร้างไฟล์ PPTX จากแอปไม่ได้' },
   { id: 'video', status: 'unsupported', label: 'วิดีโอ', detail: 'ยังไม่มีการตัดต่อหรือสร้างไฟล์วิดีโอจากแอป' },
   { id: 'puzzles', status: 'unsupported', label: 'เกมและปริศนา', detail: 'ยังไม่มี solver ที่ตรวจคำตอบได้' },

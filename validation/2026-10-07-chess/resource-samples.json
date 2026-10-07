@@ -1,0 +1,92 @@
+[
+  {
+    "Id": 18644,
+    "WorkingSet64": 219414528,
+    "PeakWorkingSet64": 219418624,
+    "CPU": 0.3125
+  },
+  {
+    "Id": 10028,
+    "WorkingSet64": 134574080,
+    "PeakWorkingSet64": 134578176,
+    "CPU": 0.046875
+  },
+  {
+    "Id": 10028,
+    "WorkingSet64": 268595200,
+    "PeakWorkingSet64": 335585280,
+    "CPU": 0.453125
+  },
+  {
+    "Id": 10028,
+    "WorkingSet64": 268640256,
+    "PeakWorkingSet64": 335585280,
+    "CPU": 0.859375
+  },
+  {
+    "Id": 3444,
+    "WorkingSet64": 2256896,
+    "PeakWorkingSet64": 2260992,
+    "CPU": 0.0
+  },
+  {
+    "Id": 3444,
+    "WorkingSet64": 307625984,
+    "PeakWorkingSet64": 307630080,
+    "CPU": 0.375
+  },
+  {
+    "Id": 2936,
+    "WorkingSet64": 195145728,
+    "PeakWorkingSet64": 195149824,
+    "CPU": 0.125
+  },
+  {
+    "Id": 2936,
+    "WorkingSet64": 268574720,
+    "PeakWorkingSet64": 335585280,
+    "CPU": 0.515625
+  },
+  {
+    "Id": 2936,
+    "WorkingSet64": 268619776,
+    "PeakWorkingSet64": 335585280,
+    "CPU": 0.921875
+  },
+  {
+    "Id": 3788,
+    "WorkingSet64": 115580928,
+    "PeakWorkingSet64": 115585024,
+    "CPU": 0.03125
+  },
+  {
+    "Id": 3788,
+    "WorkingSet64": 268599296,
+    "PeakWorkingSet64": 335585280,
+    "CPU": 0.4375
+  },
+  {
+    "Id": 9332,
+    "WorkingSet64": 211939328,
+    "PeakWorkingSet64": 211943424,
+    "CPU": 0.21875
+  },
+  {
+    "Id": 9332,
+    "WorkingSet64": 268574720,
+    "PeakWorkingSet64": 335577088,
+    "CPU": 0.625
+  },
+  {
+    "Id": 9332,
+    "WorkingSet64": 268599296,
+    "PeakWorkingSet64": 335577088,
+    "CPU": 1.03125
+  },
+  {
+    "Id": 12912,
+    "WorkingSet64": 197263360,
+    "PeakWorkingSet64": 197267456,
+    "CPU": 0.125
+  }
+]

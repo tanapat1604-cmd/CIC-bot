@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-07T04:41:32.347Z",
+  "files": {
+    "backend/chessEngine.ts": "53be233e4888b66231ab4d6857252c176af06d0f63b6acb016ae38ff17ac25a5",
+    "shared/chess.ts": "ee6cd9628dfcb53c39c3ffd794c974b7bf9bc7d14ac3bfb8bfc7263b9e5462fb",
+    "src/chess/ChessPage.tsx": "4a04152a57fb504fe35d03171b8a4233d7c251369da1c0cb109dc46a49696133",
+    "scripts/chess-evaluate.mjs": "ec07d1aa88fb8fe2707b5b47c58520ebacc4fa4f71c77453585df75ba407431c",
+    "validation/2026-10-07-chess/PLAN.md": "8520334219f7bc2f542be1eecb718ad90c2934de1a67edce7b79b1219618c828"
+  }
+}

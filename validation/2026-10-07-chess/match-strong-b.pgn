@@ -1,0 +1,9 @@
+[Event "CIC bounded local engine evaluation"]
+[Site "?"]
+[Date "2026.10.07"]
+[Round "?"]
+[White "Stockfish19 Skill0 150ms"]
+[Black "Stockfish19 Skill20 800ms"]
+[Result "0-1"]
+
+1. c4 e5 2. d3 Nf6 3. Bg5 h6 4. Bh4 g5 5. Bg3 Nc6 6. Nc3 d5 7. cxd5 Nxd5 8. h4 g4 9. Rc1 f5 10. h5 Be7 11. e4 Nxc3 12. Rxc3 f4 13. Bh4 Bxh4 14. Rxh4 Qxh4 15. Nf3 gxf3 16. Qb3 Qe7 17. d4 Nxd4 18. Qb5+ Nxb5 19. Bxb5+ c6 20. Rxc6 bxc6 21. Bxc6+ Bd7 22. Bxd7+ Qxd7 23. Kf1 Qd1# 0-1

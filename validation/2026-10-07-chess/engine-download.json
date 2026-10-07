@@ -1,0 +1,8 @@
+{
+  "bytes": 81431614,
+  "sha256": "3C8BF1F9EA66A09350A40DF4F632288285AC206D99F33AB5842C408FC30B48A7",
+  "license": "GPL-3.0",
+  "version": "Stockfish 19",
+  "url": "https://github.com/official-stockfish/Stockfish/releases/download/sf_19/stockfish-windows-x86-64-universal.zip",
+  "distribution": "Local-only unmodified official binary; not included in repository or Pages"
+}
