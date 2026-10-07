@@ -1,0 +1,29 @@
+{
+  "created": "2026-10-07T09:49:02.999Z",
+  "health": {
+    "version": 1,
+    "ready": true,
+    "kind": "live",
+    "capabilities": [
+      "text-stream"
+    ],
+    "capabilityProfile": {
+      "version": 1,
+      "textChat": true,
+      "calculator": true,
+      "timeArithmetic": true,
+      "reminders": false,
+      "futureWork": false,
+      "screenRead": false,
+      "computerControl": false,
+      "fileAccess": false,
+      "webAccess": false
+    },
+    "model": "qwen3:0.6b",
+    "location": "local"
+  },
+  "task": "/calc 48 + 6",
+  "expected": "48 + 6 = 54",
+  "actual": "48 + 6 = 54",
+  "errors": []
+}

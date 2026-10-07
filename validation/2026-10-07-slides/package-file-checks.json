@@ -1,0 +1,32 @@
+[
+  {
+    "jobId": "8c21854a-b2f5-490d-abf4-0e874d2429c6",
+    "tag": "original",
+    "pages": 7,
+    "editableTextVerified": true,
+    "pdfTextExactMatches": 15,
+    "pdfTextTotal": 21,
+    "pdfExtractionLimitation": "PowerPoint Thai PDF extractors omit some sara-am components; independent PDF render needs visual check. No blanket exact text extraction claim.",
+    "pdfRenderedPages": 7,
+    "pngsComplete": true,
+    "nativeOpen": true,
+    "sourceUnchanged": true,
+    "sha256": "67337137b099755e343534a2813c4a2f66b88b3563b87c2f7dd44a4a0f59e898",
+    "renderFreePhysicalKiB": 1476128
+  },
+  {
+    "jobId": "322e2be6-48ec-4e34-9c4d-9b2826c3bd86",
+    "tag": "revision",
+    "pages": 7,
+    "editableTextVerified": true,
+    "pdfTextExactMatches": 15,
+    "pdfTextTotal": 21,
+    "pdfExtractionLimitation": "PowerPoint Thai PDF extractors omit some sara-am components; independent PDF render needs visual check. No blanket exact text extraction claim.",
+    "pdfRenderedPages": 7,
+    "pngsComplete": true,
+    "nativeOpen": true,
+    "sourceUnchanged": true,
+    "sha256": "4e21dbd19b669ebc4b06233c3eec1451194602c2d800d01061da29950eb55687",
+    "renderFreePhysicalKiB": 1369720
+  }
+]

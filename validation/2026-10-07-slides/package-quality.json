@@ -1,0 +1,20 @@
+{
+  "firstOfficeValidation": {
+    "missingUnusedMasterContentTypes": 6,
+    "passed": false,
+    "notFinalDelivery": true
+  },
+  "repairedMeetingValidation": {
+    "originalFindings": 0,
+    "revisionFindings": 0,
+    "pages": 7,
+    "openedInPowerPoint": true
+  },
+  "cosmeticLintChange": "Removed redundant escaped quote, identical regex semantics. No task/content/template tuning.",
+  "replay": {
+    "originalPassed": true,
+    "revisionStopped": "powerpoint-busy",
+    "otherProgramsNotClosed": true
+  },
+  "finalSourceSha256": "55e13afed83a904f60d18e0e3935ac9649f78fc009f8e5712de18b25050f5044"
+}

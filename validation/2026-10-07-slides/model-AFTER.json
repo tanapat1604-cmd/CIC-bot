@@ -1,0 +1,13 @@
+{
+  "created": "2026-10-07T09:56:49.355Z",
+  "codeHashes": {
+    "backend/provider.ts": "8925ef77a8cdcd13543f59f34c60ae751b304e59fd44f32ce7133e7037d11e2c",
+    "backend/ollama.ts": "02e30cad1168d3b4a5383937593ec5acc145dfaa6560c644eb9f71cf03da775c",
+    "backend/liveReply.ts": "d42e974799d4d191f348c7931c232c8b0650bd99d29ed9635291567fc50af018",
+    "backend/requestPlan.ts": "a479deccfc499e56afe101f859801981250ec7be01f54873a0ec7e11ea327101",
+    "backend/requestIntent.ts": "0e95ee45f2d2533e3ac79ab9d4b9211d408426f462ca66eacb99f7e5e2ffff97",
+    "backend/toolRunner.ts": "05ade385224cf7af81aa05c498c4f67618af320decc97da69f6c213de655eec2",
+    "shared/capabilities.ts": "2670695f402f04661fc830c66ea9fa9359db6fdf830ff80e6b38c96d0776a1e9"
+  },
+  "unchanged": true
+}

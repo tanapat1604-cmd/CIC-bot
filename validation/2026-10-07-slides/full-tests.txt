@@ -1,0 +1,180 @@
+
+> cic-bot-landing@1.0.0 test
+> playwright test
+
+[WebServer] (node:6576) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:18056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 97 tests using 1 worker
+
+(node:19356) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › tests\animation-observer.spec.ts:4:81 › opening assertion rejects none (4.4s)
+  ok  2 [chromium] › tests\animation-observer.spec.ts:4:81 › opening assertion rejects opacity 700ms linear, transform 700ms linear (2.4s)
+  ok  3 [chromium] › tests\backend-ui.spec.ts:18:1 › browser connects to local backend, isolates demo history and keeps text-only UI usable at four sizes (3.2s)
+  ok  4 [chromium] › tests\backend-ui.spec.ts:53:1 › browser stop, new chat, switch and route departure abort upstream without late replies (2.5s)
+  ok  5 [chromium] › tests\backend-ui.spec.ts:79:1 › unavailable backend stays an error; explicit retry does not duplicate user input (1.7s)
+  ok  6 [chromium] › tests\backend.spec.ts:19:1 › backend validates text-only schema, authenticates local callers, restricts origins/host and hides internals (470ms)
+  ok  7 [chromium] › tests\backend.spec.ts:53:1 › backend abort reaches provider, frees concurrency, times out and enforces rate/budget/kill switch (996ms)
+  ok  8 [chromium] › tests\backend.spec.ts:79:1 › backend sanitizes upstream errors, bounds output and logs metadata only (50ms)
+  ok  9 [chromium] › tests\chess-ui.spec.ts:8:1 › chess board import promotion export and responsive layouts (4.0s)
+  ok 10 [chromium] › tests\chess-ui.spec.ts:34:1 › late engine replies cannot move a reset or departed game; stop and retry one move (2.0s)
+  -  11 [chromium] › tests\chess-ui.spec.ts:62:1 › actual local engine from app: both sides, analysis, stop, retry and route abort
+  ok 12 [chromium] › tests\chess.spec.ts:9:1 › standard perft start and Kiwipete match known counts through depth three (304ms)
+  ok 13 [chromium] › tests\chess.spec.ts:14:1 › castling both wings and attacked transit squares (17ms)
+  ok 14 [chromium] › tests\chess.spec.ts:22:1 › en passant and pinned en passant; all four promotion choices (11ms)
+  ok 15 [chromium] › tests\chess.spec.ts:32:1 › check mate stalemate insufficient material repetition and fifty moves (25ms)
+  ok 16 [chromium] › tests\chess.spec.ts:43:1 › strict FEN PGN import roundtrip and invalid data do not become commands (64ms)
+  ok 17 [chromium] › tests\chess.spec.ts:51:1 › explanations use legal facts and score with white perspective, never model (7ms)
+  ok 18 [chromium] › tests\chess.spec.ts:56:1 › exported PGN carries terminal result and imports starting side/fullmove; bad result payloads rejected (42ms)
+  ok 19 [chromium] › tests\chess.spec.ts:70:1 › chess API preserves auth, strict inputs, errors and disconnect cancellation independent of model (271ms)
+  -  20 [chromium] › tests\chess.spec.ts:87:1 › actual Stockfish validates moves, cancels, times out and releases single-job lock
+  ok 21 [chromium] › tests\correctness.spec.ts:8:1 › bounded arithmetic uses exact decimal/rational math, precedence and rejects executable/ambiguous inputs (47ms)
+  ok 22 [chromium] › tests\correctness.spec.ts:21:1 › wall clock additions handle day boundaries, negative offsets, and reject actual dates or scheduling (9ms)
+  ok 23 [chromium] › tests\correctness.spec.ts:28:1 › source metadata is validated independently of reply text and cannot grant external actions (13ms)
+  ok 24 [chromium] › tests\correctness.spec.ts:34:1 › real app uses system source for tools; fabricated model success stays unverified text, not an executed task (1.5s)
+  ok 25 [chromium] › tests\foundation.spec.ts:9:1 › development routes send objects separately from drafting and latest user corrections (27ms)
+  ok 26 [chromium] › tests\foundation.spec.ts:23:1 › registered tools return exact results and reject unregistered or malformed calls (7ms)
+  ok 27 [chromium] › tests\foundation.spec.ts:32:1 › tool timeout and caller cancellation reach execution and ignore late results (49ms)
+  ok 28 [chromium] › tests\foundation.spec.ts:44:1 › tool results and internal errors cannot forge provenance or expose internal strings (13ms)
+  ok 29 [chromium] › tests\foundation.spec.ts:53:1 › app shows real tool result plus unsent status, draft source, capability limits at three sizes (2.5s)
+  ok 30 [chromium] › tests\help.spec.ts:11:1 › bounded system help distinguishes instruction, enactment, quotes, negation and corrections; other prose reaches model (23ms)
+  ok 31 [chromium] › tests\help.spec.ts:28:1 › documented utility limits have real boundary behavior and never fallback to a model (17ms)
+  ok 32 [chromium] › tests\help.spec.ts:45:1 › app labels help, tools, raw AI and unfinished mixed streams across desktop, mobile and short screens (8.2s)
+  ok 33 [chromium] › tests\intent.spec.ts:9:1 › development contrast pairs scope quoting, negation and followup user context (19ms)
+  ok 34 [chromium] › tests\intent.spec.ts:21:1 › app routes real requests and ambiguity to system; text tasks use model and cannot claim executed actions (1.7s)
+  ok 35 [chromium] › tests\landing.spec.ts:6:1 › production assets, real 3D, scroll story, and desktop layout (4.1s)
+  ok 36 [chromium] › tests\landing.spec.ts:31:1 › all action buttons, native dialog focus, Escape and concept link (2.3s)
+  ok 37 [chromium] › tests\landing.spec.ts:57:1 › five concept tabs work with click and keyboard; FAQ disclosures (2.4s)
+  ok 38 [chromium] › tests\landing.spec.ts:82:1 › mobile and tablet do not overflow; mobile navigation works (4.6s)
+  ok 39 [chromium] › tests\landing.spec.ts:108:1 › reduced motion stops scene animation and smooth scrolling (3.1s)
+  ok 40 [chromium] › tests\landing.spec.ts:123:1 › no WebGL: CSS concept remains visible and controls still work (1.7s)
+  ok 41 [chromium] › tests\landing.spec.ts:139:1 › 3D chunk fails: page and CSS fallback survive (1.3s)
+  ok 42 [chromium] › tests\landing.spec.ts:151:1 › normal motion animates and document visibility pauses rendering (5.9s)
+  ok 43 [chromium] › tests\mixed.spec.ts:10:1 › development mixed planning keeps original clauses, user corrections and full submitted bounded history (18ms)
+  ok 44 [chromium] › tests\mixed.spec.ts:24:1 › mixed tools are actual calculations; raw fabricated model text stays visible and abort/bounds apply (7ms)
+  ok 45 [chromium] › tests\mixed.spec.ts:36:1 › browser shows mixed source during stream, preserves failed reply and retry adds no user duplicate (1.6s)
+  ok 46 [chromium] › tests\motion.spec.ts:7:1 › rapid tabs settle on latest choice, keep layout and move the indicator (4.0s)
+  ok 47 [chromium] › tests\motion.spec.ts:40:1 › dialog animates while focus, Escape, rapid reopen and links stay immediate (4.3s)
+  ok 48 [chromium] › tests\motion.spec.ts:67:1 › FAQ reverses smoothly and the mobile menu becomes inert immediately on close (2.3s)
+  ok 49 [chromium] › tests\motion.spec.ts:102:1 › animated fallback pauses offscreen and respects reduced motion (2.8s)
+  x  50 [chromium] › tests\motion.spec.ts:121:1 › WebGL renders and scrolls both directions (1.5m)
+(node:10824) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 51 [chromium] › tests\motion.spec.ts:142:1 › real WebGL context loss shows the fallback (1.8s)
+  -  52 [chromium] › tests\ollama-live.spec.ts:8:1 › installed Ollama answers in the app, follows chat history, stops upstream and retries once
+  -  53 [chromium] › tests\ollama-switch.spec.ts:7:1 › installed model aborts when switching chats; interrupted text and sources remain isolated
+  ok 54 [chromium] › tests\ollama.spec.ts:13:1 › Ollama sends local model/settings/system/text only and decodes split Thai without forwarding thinking (21ms)
+  ok 55 [chromium] › tests\ollama.spec.ts:25:1 › Ollama rejects missing/cloud/unsupported models, invalid config and never pulls or falls back (15ms)
+  ok 56 [chromium] › tests\ollama.spec.ts:35:1 › Ollama handles length cap, incomplete streams, malformed/tool/error responses as errors (10ms)
+  ok 57 [chromium] › tests\ollama.spec.ts:41:1 › backend stop cancels real upstream HTTP request and reports readiness failures (204ms)
+  ok 58 [chromium] › tests\readiness.spec.ts:12:1 › save action is accurate; compact preserves pending approval, source, draft and image (3.0s)
+  ok 59 [chromium] › tests\readiness.spec.ts:42:1 › partial streaming can stop and leave the app without late replies; new work starts normally (1.9s)
+  ok 60 [chromium] › tests\readiness.spec.ts:68:1 › attachment removal does not send draft, invalid images and limits recover, refresh clears session (2.6s)
+  ok 61 [chromium] › tests\readiness.spec.ts:102:1 › long chat title, small height and nested context dialog preserve controls and focus (1.5s)
+  ok 62 [chromium] › tests\routing.spec.ts:9:1 › development routes actual sending, draft/quote/negation and latest corrections without trusting assistant claims (34ms)
+  ok 63 [chromium] › tests\routing.spec.ts:27:1 › app preserves sources, actual tool results and latest user intent; raw model claims never create an action (1.9s)
+  ok 64 [chromium] › tests\slides.spec.ts:11:1 › brief validation bounds native text and refuses executable or arbitrary-path inputs (9ms)
+  ok 65 [chromium] › tests\slides.spec.ts:16:1 › new revisions preserve originals and enforce ownership and filename allowlist (241ms)
+  x  66 [chromium] › tests\slides.spec.ts:25:1 › one worker, caller cancellation and late completion never publish cancelled files (4.9s)
+(node:19524) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 67 [chromium] › tests\slides.spec.ts:33:1 › deadline and missing preview fail closed and sanitize internal errors (302ms)
+  ok 68 [chromium] › tests\slides.spec.ts:39:1 › slide API requires local session and Origin, protects job ownership and files (215ms)
+  ok 69 [chromium] › tests\slides.spec.ts:51:1 › slides UI preserves outline, shows cancel/error/result and fits desktop/mobile/short (1.6s)
+  ok 70 [chromium] › tests\store.spec.ts:8:1 › stop and chat switch reject even adapters that ignore AbortSignal (319ms)
+  ok 71 [chromium] › tests\store.spec.ts:24:1 › approvals bind to source, mode, session and operation; duplicate approval is ignored (1.7s)
+  ok 72 [chromium] › tests\store.spec.ts:50:1 › rejection, completion and layout preserve the same session (853ms)
+  ok 73 [chromium] › tests\store.spec.ts:66:1 › deterministic errors retry once without duplicating user messages; source errors recover (1.2s)
+  ok 74 [chromium] › tests\store.spec.ts:80:1 › chat excludes screen context; analysis never requests control; execution errors need new permission (1.6s)
+  ok 75 [chromium] › tests\store.spec.ts:100:1 › URL validation blocks executable protocols and credentials; cancellation rejects promise (21ms)
+  ok 76 [chromium] › tests\streaming.spec.ts:11:1 › explicit save/type scenarios match details and execution; advice and unknown commands never propose unrelated actions (1.4s)
+  ok 77 [chromium] › tests\streaming.spec.ts:36:1 › typed history and attachments reach adapter; chat mode strips retained screen context (587ms)
+  ok 78 [chromium] › tests\streaming.spec.ts:52:1 › stop, mode change, chat switch and source change discard late stream events, preserve interrupted text (836ms)
+  ok 79 [chromium] › tests\streaming.spec.ts:84:1 › partial error/retry and adapter cancellation remain distinct from completed answers (332ms)
+  ok 80 [chromium] › tests\streaming.spec.ts:103:1 › bad identities, malformed/unauthorized actions and missing terminal events fail closed (655ms)
+  ok 81 [chromium] › tests\streaming.spec.ts:125:1 › same-kind source reselection gets a fresh identity and cancels pending approval; chat switch cannot restore it (964ms)
+  ok 82 [chromium] › tests\transport.spec.ts:17:1 › NDJSON handles split UTF-8, batched lines, terminal errors/cancel and rejects incomplete or foreign/action events (24ms)
+  ok 83 [chromium] › tests\transport.spec.ts:26:1 › abort cancels the reader and emits no delayed delta (3ms)
+  ok 84 [chromium] › tests\transport.spec.ts:34:1 › history is a bounded whole-message suffix, drops partial replies and rejects non-text payloads (11ms)
+  ok 85 [chromium] › tests\transport.spec.ts:47:1 › transport/store retry creates new operations, keeps history isolated and never falls back to demo (598ms)
+  ok 86 [chromium] › tests\transport.spec.ts:67:1 › public host cannot enable local/live endpoint and frontend bundle excludes server code/secrets (14ms)
+  ok 87 [chromium] › tests\workspace.spec.ts:10:1 › hash routes, direct refresh, history, landing anchors, and app avoids Three.js (1.9s)
+  ok 88 [chromium] › tests\workspace.spec.ts:31:1 › suggestions, Enter/Shift+Enter/IME, session history and layout share messages and drafts (1.7s)
+  ok 89 [chromium] › tests\workspace.spec.ts:56:1 › context permissions, approval, reject, stop and stale request invalidation (6.1s)
+  ok 90 [chromium] › tests\workspace.spec.ts:84:1 › local attachments validate, preview, revoke URLs, preserve on send and never fetch attached URL (3.1s)
+  ok 91 [chromium] › tests\workspace.spec.ts:117:1 › modal keyboard, focus restoration and mobile navigation/context drawer (1.3s)
+  ok 92 [chromium] › tests\workspace.spec.ts:135:1 › reading older messages stays put when a reply arrives; latest-message button resumes following (1.3s)
+  ok 93 [chromium] › tests\workspace.spec.ts:149:1 › app motion, rapid modal reopen and context toggle keep composer position (1.4s)
+  ok 94 [chromium] › tests\workspace.spec.ts:169:3 › visual layout 1440x900, long content and reduced motion (1.4s)
+  ok 95 [chromium] › tests\workspace.spec.ts:169:3 › visual layout 1280x720, long content and reduced motion (1.3s)
+  ok 96 [chromium] › tests\workspace.spec.ts:169:3 › visual layout 390x844, long content and reduced motion (1.3s)
+  ok 97 [chromium] › tests\workspace.spec.ts:169:3 › visual layout 360x480, long content and reduced motion (1.4s)
+
+
+  1) [chromium] › tests\motion.spec.ts:121:1 › WebGL renders and scrolls both directions ───────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error: page.screenshot: Test timeout of 90000ms exceeded.
+    Call log:
+      - taking page screenshot
+      - waiting for fonts to load...
+      - fonts loaded
+
+
+      136 |     await expect(page.locator(`[data-step="${index}"]`)).toHaveClass(/active/)
+      137 |     await page.waitForTimeout(550)
+    > 138 |     await page.screenshot({ path: `test-results/story-${label}.png` })
+          |                ^
+      139 |   }
+      140 | })
+      141 |
+        at D:\CIC bot\CIC-bot\tests\motion.spec.ts:138:16
+
+    Error Context: test-results\motion-WebGL-renders-and-scrolls-both-directions-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\motion-WebGL-renders-and-scrolls-both-directions-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\motion-WebGL-renders-and-scrolls-both-directions-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › tests\slides.spec.ts:25:1 › one worker, caller cancellation and late completion never publish cancelled files 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "running"
+    Received: "ready"
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      27 |  const manager=createSlidesManager({root:await folder(),ready:true,execute:async(b,d,s)=>{signal=s;await new Promise(resolve=>setTimeout(resolve,60));await files(b,d)}})
+      28 |  const job=manager.create('owner',brief);expect(()=>manager.create('owner',brief)).toThrow('busy')
+    > 29 |  await expect.poll(()=>manager.get('owner',job.id).state).toBe('running');manager.cancel('owner',job.id)
+         |                                                           ^
+      30 |  expect(signal?.aborted).toBe(true);await expect.poll(()=>manager.get('owner',job.id).state).toBe('cancelled')
+      31 |  await expect(manager.file('owner',job.id,'deck.pptx')).rejects.toThrow('not-found')
+      32 | })
+        at D:\CIC bot\CIC-bot\tests\slides.spec.ts:29:59
+
+    Error Context: test-results\slides-one-worker-caller-c-22a3d-ver-publish-cancelled-files-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\slides-one-worker-caller-c-22a3d-ver-publish-cancelled-files-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\slides-one-worker-caller-c-22a3d-ver-publish-cancelled-files-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    [chromium] › tests\motion.spec.ts:121:1 › WebGL renders and scrolls both directions ────────────
+    [chromium] › tests\slides.spec.ts:25:1 › one worker, caller cancellation and late completion never publish cancelled files 
+  4 skipped
+  91 passed (4.1m)

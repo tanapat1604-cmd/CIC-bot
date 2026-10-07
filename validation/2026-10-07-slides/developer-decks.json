@@ -1,0 +1,32 @@
+[
+  {
+    "file": "CIC-professional.pptx",
+    "bytes": 171247,
+    "sha256": "a0306e5279c5b7d3dd6499223f9899f33ba09c8ac9100ccdf48ea6457c4fb487"
+  },
+  {
+    "file": "CIC-professional.pdf",
+    "bytes": 200477,
+    "sha256": "2d4a30181bd4f2387b949c7664b83c31272bebce95daf9c76046530f10b192ed"
+  },
+  {
+    "file": "CIC-jarvis.pptx",
+    "bytes": 140141,
+    "sha256": "f2a497e0ef92de80bb0fa5e19fa477626d81d501ea475d48eb8e64c39e520d32"
+  },
+  {
+    "file": "CIC-jarvis.pdf",
+    "bytes": 163588,
+    "sha256": "51732c35ed32a170be126f8a84e4f7b1752f253f4c064e0c1e2692832e140cfc"
+  },
+  {
+    "file": "CIC-story-v2.pptx",
+    "bytes": 422387,
+    "sha256": "c0f216765bb31e42490878eb5bfe281530e9011e309f0986b6f3d7117927fe8f"
+  },
+  {
+    "file": "CIC-story-v2.pdf",
+    "bytes": 431802,
+    "sha256": "4ff731a609e5a29eb99adc5b922cd6c8f69b2050373315e216d447a84db1cb98"
+  }
+]

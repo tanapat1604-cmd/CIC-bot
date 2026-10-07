@@ -1,0 +1,37 @@
+[WebServer] (node:13944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:7600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 26 tests using 1 worker
+
+(node:13624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › tests\chess-ui.spec.ts:8:1 › chess board import promotion export and responsive layouts (6.5s)
+  ok  2 [chromium] › tests\chess-ui.spec.ts:34:1 › late engine replies cannot move a reset or departed game; stop and retry one move (2.6s)
+  ok  3 [chromium] › tests\chess-ui.spec.ts:62:1 › actual local engine from app: both sides, analysis, stop, retry and route abort (9.3s)
+  ok  4 [chromium] › tests\chess.spec.ts:9:1 › standard perft start and Kiwipete match known counts through depth three (301ms)
+  ok  5 [chromium] › tests\chess.spec.ts:14:1 › castling both wings and attacked transit squares (16ms)
+  ok  6 [chromium] › tests\chess.spec.ts:22:1 › en passant and pinned en passant; all four promotion choices (13ms)
+  ok  7 [chromium] › tests\chess.spec.ts:32:1 › check mate stalemate insufficient material repetition and fifty moves (21ms)
+  ok  8 [chromium] › tests\chess.spec.ts:43:1 › strict FEN PGN import roundtrip and invalid data do not become commands (68ms)
+  ok  9 [chromium] › tests\chess.spec.ts:51:1 › explanations use legal facts and score with white perspective, never model (4ms)
+  ok 10 [chromium] › tests\chess.spec.ts:56:1 › exported PGN carries terminal result and imports starting side/fullmove; bad result payloads rejected (61ms)
+  ok 11 [chromium] › tests\chess.spec.ts:70:1 › chess API preserves auth, strict inputs, errors and disconnect cancellation independent of model (328ms)
+  ok 12 [chromium] › tests\chess.spec.ts:87:1 › actual Stockfish validates moves, cancels, times out and releases single-job lock (4.8s)
+  ok 13 [chromium] › tests\foundation.spec.ts:9:1 › development routes send objects separately from drafting and latest user corrections (59ms)
+  ok 14 [chromium] › tests\foundation.spec.ts:23:1 › registered tools return exact results and reject unregistered or malformed calls (21ms)
+  ok 15 [chromium] › tests\foundation.spec.ts:32:1 › tool timeout and caller cancellation reach execution and ignore late results (45ms)
+  ok 16 [chromium] › tests\foundation.spec.ts:44:1 › tool results and internal errors cannot forge provenance or expose internal strings (11ms)
+  ok 17 [chromium] › tests\foundation.spec.ts:53:1 › app shows real tool result plus unsent status, draft source, capability limits at three sizes (2.9s)
+  ok 18 [chromium] › tests\ollama-live.spec.ts:8:1 › installed Ollama answers in the app, follows chat history, stops upstream and retries once (21.6s)
+  ok 19 [chromium] › tests\ollama-switch.spec.ts:7:1 › installed model aborts when switching chats; interrupted text and sources remain isolated (4.5s)
+  ok 20 [chromium] › tests\slides.spec.ts:11:1 › brief validation bounds native text and refuses executable or arbitrary-path inputs (12ms)
+  ok 21 [chromium] › tests\slides.spec.ts:16:1 › new revisions preserve originals and enforce ownership and filename allowlist (243ms)
+  ok 22 [chromium] › tests\slides.spec.ts:25:1 › one worker, caller cancellation and late completion never publish cancelled files (122ms)
+  ok 23 [chromium] › tests\slides.spec.ts:34:1 › deadline and missing preview fail closed and sanitize internal errors (232ms)
+  ok 24 [chromium] › tests\slides.spec.ts:40:1 › slide API requires local session and Origin, protects job ownership and files (185ms)
+  ok 25 [chromium] › tests\slides.spec.ts:52:1 › slides UI preserves outline, shows cancel/error/result and fits desktop/mobile/short (1.6s)
+  ok 26 [chromium] › tests\slides.spec.ts:70:1 › leaving the slide route stops its active job at the navigation boundary (1.3s)
+
+  26 passed (1.1m)

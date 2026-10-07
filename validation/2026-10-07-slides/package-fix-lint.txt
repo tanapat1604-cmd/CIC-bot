@@ -1,0 +1,10 @@
+
+> cic-bot-landing@1.0.0 lint
+> eslint .
+
+
+D:\CIC bot\CIC-bot\scripts\slides-worker.mjs
+  24:51  error  Unnecessary escape character: \"  no-useless-escape
+
+✖ 1 problem (1 error, 0 warnings)
+

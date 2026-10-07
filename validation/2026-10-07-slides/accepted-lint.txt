@@ -1,0 +1,10 @@
+
+> cic-bot-landing@1.0.0 lint
+> eslint .
+
+
+D:\CIC bot\CIC-bot\backend\slides.ts
+  38:15  error  Unsafe usage of ThrowStatement  no-unsafe-finally
+
+✖ 1 problem (1 error, 0 warnings)
+

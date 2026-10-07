@@ -1,3 +1,22 @@
+## Latest file-quality checkpoint (supersedes office-file acceptance)
+- Package review found unusedmasteroverrides in firstCICoffice7 outputs. Notfinaldelivery. Repairedworker viaexistingJSZip beforePowerPoint; freshmeeting7+Friday→MondayrevisionPASS10.705/7.210s, originalhashpreserved, structuralvalidator0/0findings. Editabletext/nativePNG/PDFvisualchecked. FinaldeliverCIC-validated-meeting files; developerthree initialdecksremainvalid/checkpointreference.
+- Cosmeticquoteescape lintfix only; final lintPASS. ReplayoriginalPASS9.487s, revisionpowerpoint-busy correctlyfailedclosedwithoutclosingapp; failurepreserved, notcountedasnewholdoutpass. Models/prompt/engine/sceneunchanged. Commit/CI/publicverificationnext.
+
+## Local delivery verified; commit/CI/public pending
+- Finalfresh7pages+revision downloaded/nativeopened/rendered/XMLexact/PDFvisualPASS; originalhashretained, finalfreezeunchanged. UI19.602/10.521s, backend15.474/9.246s. Actualfinalcooperativecancel1.647s toterminal/download404/ownedPowerPointgone. NoforcedPowerPointkill; unknownstopfailsclosed. PDFThai extraction16/21 exact despitecorrectvisuals, PPTXexact. Source no retuneafterfinalnew.
+- Full91PASS/2FAIL/4SKIP retained: cancellationtesttimingfixedthroughbarrier; oldWebGL90sscreenshottimeoutpersistsunchanged. Related26PASSinclactualengine/model, afterrenderer12PASS andfinalslide8PASS; finalbackendbuild/lintPASS. Reportseparatesmodel/routing/tool/files/prototype/plans. Code/plans/docs/evidence toreview+commit+push, thenCI/demo/serviceverification.
+
+# CIC round 2026-10-07: slides A selected, final verification in progress
+
+- Started clean checkpoint c410c37. Read progress/roadmap/latest chess+foundation/source and checked actual services/RAM. Initial free451MiB, listeners5173/8787/11434loopback, ready/live/qwen3:0.6b, installed1.7b retained,0.6b no vision. No model/dependency downloads/paidAPI/externalAI/prompt/training/native screen control.
+- FIRST choice delivered: three different Thai7-slide developer decks editablePPTX/nativePDF/all21PNG/comparison/ZIP, opened/rendered/visually inspected. Developer source/output local in C:/Users/This PC/Documents/ChatGPT/cic bot/slides-round; copy examples to ignored.tools only. User chose A via card. These files are NOT CIC-generation evidence.
+- Implemented bounded #/slides: user-reviewed brief/outline,2–8textpages/nativePPTX/PowerPointPNG+PDF/download/revision newUUID. Oneworker/90s/cancel/late suppression/sessionownership/strictschema/fixedfiles/localstorage. Operator existingruntime configured only forlocalbackend; publicdemo disabled. No reliable autonomous model planning claimed.
+- Development actual3pages→2revisionPASS (16.095/12.448s including download), originalhashunchanged. First failed because WindowsPowerShellRestricted; retained rawfailure and usedprocess-onlyRemoteSigned, notsystempolicychange. ActualPowerPointcancelPASS, ownedPID gone and download404. Newwater4pages+revisionPASS9.931/9.422s on freeze; review then fixedstopafterquota/sessionreconnect/deadline/duration. Fresh finalnewtask required for finalcode rather than reusing water score unchanged.
+- Model audit10cases12turns frozen before production edits: raw retained and BEFORE/AFTER hashes unchanged. Planning fails, Thai draft fails, corrections hit clarificationrouting beforemodel; unknowncashpasses. No generalintelligence score. Model/routing/tool/files separated in report.
+- Related19PASS/1engineSKIP before finalreview. Finalbuilds/lint/full regression then actualengine/Ollama, finalnewCICfiles/visualQA/service restoration/commit/push/CI/public checks pending. SLIDES.md/NEXT-CAPABILITIES.md/currentroadmap separate actual/prototype/plan and coding/screen acceptance.
+
+## Previous checkpoints (retained)
+
 # CIC app foundation — progress
 
 ## FINAL 2026-10-07: chess capability assessment delivered

@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "tag": "original",
+      "id": "93263ce6-cd20-4a53-9820-9353894e8126",
+      "ms": 19602,
+      "status": "ไฟล์พร้อมแล้ว",
+      "sha256": "9f67dd6ef71696eff7e0d58c34fdbad61418ee6bae843974b970ceda83ba9edf"
+    },
+    {
+      "tag": "revision",
+      "id": "e8bd64b3-6ee6-4274-bbd4-f20e6ede4f5e",
+      "ms": 10521,
+      "status": "ไฟล์พร้อมแล้ว",
+      "sha256": "e0dbba4551c791780e6cabc1c79cd28c55cd056f03e5710aed8d5fe3da6ce603"
+    }
+  ],
+  "errors": [],
+  "originalUnchanged": true,
+  "revisionHasParent": true,
+  "hashes": {
+    "backend/slides.ts": "206acc01e4eacfd5953419b734c9df82ae8f4b700e61c644802427a7428b0c81",
+    "backend/server.ts": "9511cbb98d4b86329680e684fb95e3fad1bbee2b1ccd4d11d86b7fcb25342420",
+    "shared/slides.ts": "9885f7825fb607c9cb517e851b2ef891ae42871c8ea713251fd3b951f9469696",
+    "scripts/slides-worker.mjs": "22531c16a4ea2df29e607cdbddd81e42b52e061fdb80158aa9725c1db1b06ffa",
+    "scripts/slides-render.ps1": "add48aba5371010e5e9b949a1dc53cdfead58bd438f580f10edbfd3d2a0077e2",
+    "src/slides/SlidesPage.tsx": "cbe9ee141d5e18bce3c1c752ea7c6c0bee0df833e2ca0c43b47538281f79e6e2"
+  }
+}

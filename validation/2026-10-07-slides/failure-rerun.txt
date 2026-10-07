@@ -1,0 +1,32 @@
+[WebServer] (node:20248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2360) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:17976) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 [chromium] › tests\motion.spec.ts:121:1 › WebGL renders and scrolls both directions (1.6m)
+(node:13624) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 2 [chromium] › tests\slides.spec.ts:25:1 › one worker, caller cancellation and late completion never publish cancelled files (167ms)
+
+
+  1) [chromium] › tests\motion.spec.ts:121:1 › WebGL renders and scrolls both directions ───────────
+
+    Test timeout of 90000ms exceeded.
+
+    Error Context: test-results\motion-WebGL-renders-and-scrolls-both-directions-chromium\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\motion-WebGL-renders-and-scrolls-both-directions-chromium\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\motion-WebGL-renders-and-scrolls-both-directions-chromium\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    [chromium] › tests\motion.spec.ts:121:1 › WebGL renders and scrolls both directions ────────────
+  1 passed (1.8m)

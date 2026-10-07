@@ -64,7 +64,7 @@ test('app shows real tool result plus unsent status, draft source, capability li
     const catalog = page.getByRole('region', { name: 'ความสามารถ CIC' })
     await expect(catalog).toContainText('หมากรุกในเครื่อง · ใช้ได้จริง')
     await expect(catalog).toContainText('ต้องติดตั้ง Stockfish 19 และเปิด backend ในเครื่อง')
-    await expect(catalog).toContainText('สไลด์ · ยังไม่รองรับ')
+    await expect(catalog).toContainText('สไลด์ · ทดลอง')
     await expect(catalog).toContainText('สนทนาและร่างข้อความ · ทดลอง')
     await page.getByRole('button', { name: 'เริ่มแชต AI ในเครื่อง', exact: true }).click()
     const replies = page.getByRole('article', { name: 'คำตอบ CIC', exact: true })

@@ -1,0 +1,32 @@
+[WebServer] (node:18424) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:8760) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 20 tests using 1 worker
+
+(node:596) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › tests\chess.spec.ts:9:1 › standard perft start and Kiwipete match known counts through depth three (395ms)
+  ok  2 [chromium] › tests\chess.spec.ts:14:1 › castling both wings and attacked transit squares (20ms)
+  ok  3 [chromium] › tests\chess.spec.ts:22:1 › en passant and pinned en passant; all four promotion choices (27ms)
+  ok  4 [chromium] › tests\chess.spec.ts:32:1 › check mate stalemate insufficient material repetition and fifty moves (21ms)
+  ok  5 [chromium] › tests\chess.spec.ts:43:1 › strict FEN PGN import roundtrip and invalid data do not become commands (103ms)
+  ok  6 [chromium] › tests\chess.spec.ts:51:1 › explanations use legal facts and score with white perspective, never model (4ms)
+  ok  7 [chromium] › tests\chess.spec.ts:56:1 › exported PGN carries terminal result and imports starting side/fullmove; bad result payloads rejected (59ms)
+  ok  8 [chromium] › tests\chess.spec.ts:70:1 › chess API preserves auth, strict inputs, errors and disconnect cancellation independent of model (368ms)
+  -   9 [chromium] › tests\chess.spec.ts:87:1 › actual Stockfish validates moves, cancels, times out and releases single-job lock
+  ok 10 [chromium] › tests\foundation.spec.ts:9:1 › development routes send objects separately from drafting and latest user corrections (129ms)
+  ok 11 [chromium] › tests\foundation.spec.ts:23:1 › registered tools return exact results and reject unregistered or malformed calls (37ms)
+  ok 12 [chromium] › tests\foundation.spec.ts:32:1 › tool timeout and caller cancellation reach execution and ignore late results (52ms)
+  ok 13 [chromium] › tests\foundation.spec.ts:44:1 › tool results and internal errors cannot forge provenance or expose internal strings (12ms)
+  ok 14 [chromium] › tests\foundation.spec.ts:53:1 › app shows real tool result plus unsent status, draft source, capability limits at three sizes (4.2s)
+  ok 15 [chromium] › tests\slides.spec.ts:11:1 › brief validation bounds native text and refuses executable or arbitrary-path inputs (14ms)
+  ok 16 [chromium] › tests\slides.spec.ts:16:1 › new revisions preserve originals and enforce ownership and filename allowlist (260ms)
+  ok 17 [chromium] › tests\slides.spec.ts:25:1 › one worker, caller cancellation and late completion never publish cancelled files (233ms)
+  ok 18 [chromium] › tests\slides.spec.ts:33:1 › deadline and missing preview fail closed and sanitize internal errors (240ms)
+  ok 19 [chromium] › tests\slides.spec.ts:39:1 › slide API requires local session and Origin, protects job ownership and files (174ms)
+  ok 20 [chromium] › tests\slides.spec.ts:50:1 › slides UI preserves outline, shows cancel/error/result and fits desktop/mobile/short (1.5s)
+
+  1 skipped
+  19 passed (21.0s)

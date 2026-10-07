@@ -72,3 +72,7 @@ Live requests may be planned as explicit allowed and denied clauses (up to4; lar
 ## Common local tool runner (2026-10-07)
 
 `toolRunner.ts` validates registered tool IDs, exact input/result shapes, bounded expression/output, timeout and AbortSignal. Calculator/time use the existing exact parsers. `liveReply.ts` invokes the runner for explicit commands including allowed parts of mixed requests; source is registry-owned. No model-authored shell/URL/file command execution. Timeout races suppress late results and propagate cancellation; future subprocess tools must additionally stop their process. Built-in synchronous calculations have bounded token/number sizes, not arbitrary uninterruptible work. See `CAPABILITY-ROADMAP.md` and the foundation validation report.
+
+## Local slide builder
+
+Optional operator-only `CIC_SLIDES_MODULE` absolute path to an already installed PptxGenJS 4.0.1 CJS module. No download/import path from user input. Windows PowerPoint and Leelawadee UI required. Run backend from repository root. `/slides/status`, session-owned `/slides/jobs` plus status/cancel/fixed files. One job at a time blocks model/chess compute; bounded worker and cooperative renderer cancellation, preserving other PowerPoint documents, with process-only RemoteSigned, unchanged machine execution policy. `.cic-user-files` ignored, no automatic deletion. File/PDF/PNG not ready unless all native outputs exist. See [SLIDES.md](../SLIDES.md). This is a specialized file tool, not general file access/shell/desktop control.

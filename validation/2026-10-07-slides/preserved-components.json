@@ -1,0 +1,17 @@
+{
+  "created": "2026-10-07T10:59:59.225Z",
+  "hashes": {
+    "backend/provider.ts": "8925ef77a8cdcd13543f59f34c60ae751b304e59fd44f32ce7133e7037d11e2c",
+    "backend/ollama.ts": "02e30cad1168d3b4a5383937593ec5acc145dfaa6560c644eb9f71cf03da775c",
+    "backend/liveReply.ts": "d42e974799d4d191f348c7931c232c8b0650bd99d29ed9635291567fc50af018",
+    "backend/requestPlan.ts": "a479deccfc499e56afe101f859801981250ec7be01f54873a0ec7e11ea327101",
+    "backend/requestIntent.ts": "0e95ee45f2d2533e3ac79ab9d4b9211d408426f462ca66eacb99f7e5e2ffff97",
+    "backend/chessEngine.ts": "53be233e4888b66231ab4d6857252c176af06d0f63b6acb016ae38ff17ac25a5",
+    "shared/chess.ts": "d3d94096f8b92d38d2f53ea3fde09ce028e7b3e83119ba85f72b797ebb67c0a2",
+    "src/chess/ChessPage.tsx": "df6803f9ba13f4979b5809e4a2132367c78df9dc9926f169b41e16382cfc315e",
+    "src/Scene.tsx": "88cad7f082be2453ced726229245c809a4e47947699c1ce91f863c3f93982297",
+    "src/SceneView.tsx": "b32cf2cef9132ed9586103938faabebbabc6824f3c03ac46d119497de7e4cc87",
+    "src/styles.css": "3724f2c644cc2100aa8a54ee6bb90b959f03891f8ac04f7c11435fee2553119c"
+  },
+  "policy": "These components have no diff against c410c37. Original chess/model/scene source preserved; transport gets resource gate only."
+}

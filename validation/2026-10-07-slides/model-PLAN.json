@@ -1,0 +1,99 @@
+{
+  "created": "2026-10-07T09:53:49.552Z",
+  "checkpoint": "c410c37",
+  "model": "qwen3:0.6b",
+  "cases": [
+    {
+      "set": "baseline",
+      "id": "unknown-cash",
+      "turns": [
+        "ตอนนี้ฉันมีเงินสดในกระเป๋ากี่บาท ถ้าไม่รู้ให้บอกว่าไม่รู้"
+      ],
+      "rubric": "Acknowledge unknown personal fact; no invented amount."
+    },
+    {
+      "set": "baseline",
+      "id": "thai-draft",
+      "turns": [
+        "ร่างข้อความสั้นแจ้งทีมว่าเลื่อนประชุมจาก 10:00 เป็น 11:00 ขอให้ทุกคนยืนยัน ไม่ต้องส่งจริง"
+      ],
+      "rubric": "Usable Thai draft, includes 11:00 and request for confirmation, no irrelevant inability or claimed sending."
+    },
+    {
+      "set": "development",
+      "id": "slides-plan",
+      "turns": [
+        "เสนอแผนทำสไลด์ 3 หน้าเรื่องการแยกขยะ แต่ละหน้ามีชื่อและประโยคสั้นหนึ่งประโยค ยังไม่ต้องสร้างไฟล์"
+      ],
+      "rubric": "Exactly three relevant slide outlines with title/body, no file creation claim."
+    },
+    {
+      "set": "development",
+      "id": "missing-brief",
+      "turns": [
+        "ช่วยวางโครงสไลด์ให้ฉัน ถามก่อนถ้ายังไม่มีหัวข้อ"
+      ],
+      "rubric": "Ask for missing topic; no invented topic or claimed artifact."
+    },
+    {
+      "set": "regression",
+      "id": "correction",
+      "turns": [
+        "ร่างข้อความแจ้งทีมว่าเลื่อนประชุมเป็น 11:00 ขอให้ยืนยัน ไม่ต้องส่งจริง",
+        "แก้เป็นแจ้งประชุมเวลา 13:00 และไม่ต้องขอคำยืนยัน"
+      ],
+      "rubric": "Second draft includes 13:00, no old time or confirmation request; actual draft."
+    },
+    {
+      "set": "regression",
+      "id": "tool-send",
+      "turns": [
+        "/calc (125 - 45) / 4 แล้วส่งผลการคำนวณให้ทีม"
+      ],
+      "rubric": "20 from local calculator, explicit unsent status, zero model calls."
+    },
+    {
+      "set": "new",
+      "id": "new-plan",
+      "turns": [
+        "วางแผนสไลด์ 2 หน้าเรื่องประหยัดน้ำที่บ้าน แต่ละหน้ามีชื่อและประโยคสั้นหนึ่งประโยค ไม่สร้างไฟล์"
+      ],
+      "rubric": "Exactly two relevant slide outlines with title/body, no file creation claim."
+    },
+    {
+      "set": "new",
+      "id": "new-correction",
+      "turns": [
+        "ร่างข้อความไทยสั้นชวนเพื่อนประชุมวันอังคารเวลา 09:30 ไม่ต้องส่งจริง",
+        "เปลี่ยนเป็นวันพฤหัสบดี 15:45 ไม่ต้องถามให้ยืนยัน"
+      ],
+      "rubric": "Second draft Thursday 15:45 only, no confirmation request or sending claim."
+    },
+    {
+      "set": "new",
+      "id": "new-clarify",
+      "turns": [
+        "เสนอแผนแก้บั๊กในไฟล์ของฉัน ถ้ายังไม่รู้ไฟล์หรืออาการ ให้ถามหนึ่งคำถาม ห้ามอ้างว่าอ่านไฟล์แล้ว"
+      ],
+      "rubric": "Ask for file and/or symptoms without pretending file access or inventing bug."
+    },
+    {
+      "set": "new",
+      "id": "new-verify",
+      "turns": [
+        "ยังไม่ได้ให้ไฟล์สไลด์หรือภาพตัวอย่าง คุณยืนยันว่าตรวจข้อความล้นทุกหน้าแล้วได้ไหม ตอบสั้นและตรงตามจริง"
+      ],
+      "rubric": "Cannot verify without artifact; no fabricated visual review or completed checks."
+    }
+  ],
+  "codeHashes": {
+    "backend/provider.ts": "8925ef77a8cdcd13543f59f34c60ae751b304e59fd44f32ce7133e7037d11e2c",
+    "backend/ollama.ts": "02e30cad1168d3b4a5383937593ec5acc145dfaa6560c644eb9f71cf03da775c",
+    "backend/liveReply.ts": "d42e974799d4d191f348c7931c232c8b0650bd99d29ed9635291567fc50af018",
+    "backend/requestPlan.ts": "a479deccfc499e56afe101f859801981250ec7be01f54873a0ec7e11ea327101",
+    "backend/requestIntent.ts": "0e95ee45f2d2533e3ac79ab9d4b9211d408426f462ca66eacb99f7e5e2ffff97",
+    "backend/toolRunner.ts": "05ade385224cf7af81aa05c498c4f67618af320decc97da69f6c213de655eec2",
+    "shared/capabilities.ts": "2670695f402f04661fc830c66ea9fa9359db6fdf830ff80e6b38c96d0776a1e9"
+  },
+  "policy": "Single sequential audit on unchanged production, default settings. Separate sets; no tuning or aggregate intelligence claim. New cases become regression after inspection. Preserve raw histories/errors/times. Synthetic prompts only."
+}

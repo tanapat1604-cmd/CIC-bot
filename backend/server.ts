@@ -1,3 +1,4 @@
+import { createSlidesManager, SlidesError } from './slides.js'
 import { createChessEngine, EngineError, type ChessEngine } from './chessEngine.js'
 import { parseChessRequest } from '../shared/chess.js'
 import { CIC_CAPABILITIES } from '../shared/capabilities.js'
@@ -8,7 +9,7 @@ import { once } from 'node:events'
 import { ChatError, LIMITS, validateRequest, type ErrorCode, type TextEvent } from '../shared/chatProtocol.js'
 import { SYSTEM_INSTRUCTION, testProvider, type Provider } from './provider.js'
 
-type Options = { chess?: ChessEngine; origins?: string[]; provider?: Provider; timeoutMs?: number; requestsPerMinute?: number; maxRequests?: number; maxConcurrent?: number; enabled?: boolean; log?: (entry: { requestId: string; status: string; durationMs: number }) => void }
+type Options = { slides?: ReturnType<typeof createSlidesManager>; chess?: ChessEngine; origins?: string[]; provider?: Provider; timeoutMs?: number; requestsPerMinute?: number; maxRequests?: number; maxConcurrent?: number; enabled?: boolean; log?: (entry: { requestId: string; status: string; durationMs: number }) => void }
 type Access = { expires: number; active: number; window: number; count: number; operations: Set<string> }
 const loopback = (address?: string) => address === '127.0.0.1' || address === '::1' || address === '::ffff:127.0.0.1'
 export function createChatServer(options: Options = {}) {
@@ -17,6 +18,7 @@ export function createChatServer(options: Options = {}) {
   if (origins.some(origin => { const url = new URL(origin); return url.origin !== origin || url.protocol !== 'http:' || url.hostname !== '127.0.0.1' })) throw new Error('Only explicit 127.0.0.1 development origins are supported')
   const provider = options.provider ?? testProvider
   const chess = options.chess ?? createChessEngine()
+  const slides = options.slides ?? createSlidesManager()
   let chessWindow = Date.now(), chessCalls = 0
   const access = new Map<string, Access>(), controllers = new Set<AbortController>()
   let active = 0, spent = 0, bootstrapWindow = Date.now(), bootstraps = 0
@@ -33,6 +35,7 @@ export function createChatServer(options: Options = {}) {
     if (origin && !origins.includes(origin)) { fail(res, 403, 'unauthorized'); return }
     if (origin) { res.setHeader('Access-Control-Allow-Origin', origin); res.setHeader('Access-Control-Allow-Credentials', 'true'); res.setHeader('Vary', 'Origin') }
     if (req.method === 'OPTIONS' && origin) { res.writeHead(204, { 'Access-Control-Allow-Methods': 'POST, GET', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '600' }); res.end(); return }
+    if (req.url === '/slides/status' && req.method === 'GET') { json(res, 200, slides.status()); return }
     if (req.url === '/chess/status' && req.method === 'GET') { json(res, 200, chess.status()); return }
     if (req.url === '/health' && req.method === 'GET') {
       let ready = options.enabled !== false && spent < (options.maxRequests ?? 100)
@@ -47,6 +50,30 @@ export function createChatServer(options: Options = {}) {
     }
     // No shared secret in the frontend: issue a short-lived HttpOnly local session.
     // Any trusted local process can bootstrap; this is not public user authentication.
+    if (req.url?.startsWith('/slides/jobs')) {
+      const token = /(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie ?? '')?.[1]
+      const session = token ? access.get(token) : undefined
+      if (!session || session.expires < Date.now()) { fail(res, 401, 'unauthorized'); return }
+      try {
+        const match = /^\/slides\/jobs\/([a-f0-9-]{36})(?:\/(cancel)|\/files\/(deck\.pptx|deck\.pdf|slide-0[1-8]\.png))?$/.exec(req.url)
+        if (req.method === 'GET' && match && !match[2]) {
+          if (!match[3]) { json(res, 200, slides.get(token!, match[1])); return }
+          const data = await slides.file(token!, match[1], match[3])
+          res.writeHead(200, { 'Content-Type': match[3].endsWith('.png') ? 'image/png' : match[3].endsWith('.pdf') ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'Content-Length': data.length, ...(match[3].startsWith('deck.') ? { 'Content-Disposition': 'attachment; filename="CIC-' + match[1] + '-' + match[3] + '"' } : {}) }); res.end(data); return
+        }
+        if (!origin || req.method !== 'POST' || req.headers['content-type']?.split(';')[0] !== 'application/json' || req.headers['content-encoding']) { fail(res, 403, 'unauthorized'); return }
+        if (!match?.[2] && (session.active || active)) { json(res, 429, { code: 'busy' }); req.resume(); return }
+        if (Date.now() - session.window > 60000) { session.window=Date.now();session.count=0 }
+        // Stopping an owned job remains possible after the creation quota is spent.
+        if (!match?.[2] && ++session.count > (options.requestsPerMinute ?? 10)) { fail(res,429,'limited');return }
+        const value = await readBody(req, AbortSignal.timeout(5000))
+        if (match?.[2]) { if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).length) throw new SlidesError('invalid');json(res,200,slides.cancel(token!,match[1]));return }
+        if (req.url !== '/slides/jobs') throw new SlidesError('invalid')
+        const job = slides.create(token!, value)
+        res.once('close', () => { if (!res.writableFinished) slides.cancel(token!,job.id) })
+        json(res,202,job);return
+      } catch(error) { const code = error instanceof SlidesError ? error.code : error instanceof ChatError ? error.code : 'unavailable'; json(res,code==='not-found'?404:code==='invalid'?400:code==='busy'||code==='capacity'?429:503,{code});return }
+    }
     if (!origin || req.method !== 'POST') { fail(res, 403, 'unauthorized'); return }
     if (req.url === '/session') {
       if (Number(req.headers['content-length'] ?? 0) !== 0 || req.headers['transfer-encoding']) { fail(res, 400, 'invalid'); return }
@@ -63,6 +90,7 @@ export function createChatServer(options: Options = {}) {
     const token = /(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie ?? '')?.[1]
     const session = token ? access.get(token) : undefined
     if (!session || session.expires < Date.now()) { fail(res, 401, 'unauthorized'); return }
+    if (slides.isBusy()) { json(res,429,{ code: 'limited' });req.resume();return }
     if (req.url === '/chess/analyze') {
       if (req.headers['content-type']?.split(';')[0] !== 'application/json' || req.headers['content-encoding']) { fail(res, 400, 'invalid'); return }
       if (Date.now() - chessWindow > 60000) { chessWindow = Date.now(); chessCalls = 0 }
@@ -142,7 +170,7 @@ export function createChatServer(options: Options = {}) {
     }
   })
   server.requestTimeout = 10000; server.headersTimeout = 10000; server.maxHeadersCount = 30
-  server.on('close', () => { controllers.forEach(controller => controller.abort()); access.clear() })
+  server.on('close', () => { controllers.forEach(controller => controller.abort()); slides.close(); access.clear() })
   return server
 }
 async function abortable<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {

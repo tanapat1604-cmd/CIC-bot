@@ -1,0 +1,4 @@
+
+> cic-bot-landing@1.0.0 backend:build
+> tsc -p backend/tsconfig.json
+

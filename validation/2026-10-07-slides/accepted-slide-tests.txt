@@ -1,0 +1,19 @@
+[WebServer] (node:20248) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:5800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:21488) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 [chromium] › tests\slides.spec.ts:11:1 › brief validation bounds native text and refuses executable or arbitrary-path inputs (41ms)
+  ok 2 [chromium] › tests\slides.spec.ts:16:1 › new revisions preserve originals and enforce ownership and filename allowlist (255ms)
+  ok 3 [chromium] › tests\slides.spec.ts:25:1 › one worker, caller cancellation and late completion never publish cancelled files (134ms)
+  ok 4 [chromium] › tests\slides.spec.ts:34:1 › deadline and missing preview fail closed and sanitize internal errors (252ms)
+  ok 5 [chromium] › tests\slides.spec.ts:40:1 › slide API requires local session and Origin, protects job ownership and files (252ms)
+  ok 6 [chromium] › tests\slides.spec.ts:52:1 › slides UI preserves outline, shows cancel/error/result and fits desktop/mobile/short (2.0s)
+  ok 7 [chromium] › tests\slides.spec.ts:70:1 › leaving the slide route stops its active job at the navigation boundary (1.2s)
+  ok 8 [chromium] › tests\slides.spec.ts:79:1 › unverified native stop is an error and blocks subsequent compute jobs (118ms)
+
+  8 passed (15.4s)

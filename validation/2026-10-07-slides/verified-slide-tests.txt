@@ -1,0 +1,23 @@
+[WebServer] (node:20528) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2220) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:13028) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok  1 [chromium] › tests\foundation.spec.ts:9:1 › development routes send objects separately from drafting and latest user corrections (77ms)
+  ok  2 [chromium] › tests\foundation.spec.ts:23:1 › registered tools return exact results and reject unregistered or malformed calls (17ms)
+  ok  3 [chromium] › tests\foundation.spec.ts:32:1 › tool timeout and caller cancellation reach execution and ignore late results (54ms)
+  ok  4 [chromium] › tests\foundation.spec.ts:44:1 › tool results and internal errors cannot forge provenance or expose internal strings (21ms)
+  ok  5 [chromium] › tests\foundation.spec.ts:53:1 › app shows real tool result plus unsent status, draft source, capability limits at three sizes (2.7s)
+  ok  6 [chromium] › tests\slides.spec.ts:11:1 › brief validation bounds native text and refuses executable or arbitrary-path inputs (13ms)
+  ok  7 [chromium] › tests\slides.spec.ts:16:1 › new revisions preserve originals and enforce ownership and filename allowlist (270ms)
+  ok  8 [chromium] › tests\slides.spec.ts:25:1 › one worker, caller cancellation and late completion never publish cancelled files (117ms)
+  ok  9 [chromium] › tests\slides.spec.ts:34:1 › deadline and missing preview fail closed and sanitize internal errors (244ms)
+  ok 10 [chromium] › tests\slides.spec.ts:40:1 › slide API requires local session and Origin, protects job ownership and files (210ms)
+  ok 11 [chromium] › tests\slides.spec.ts:52:1 › slides UI preserves outline, shows cancel/error/result and fits desktop/mobile/short (1.5s)
+  ok 12 [chromium] › tests\slides.spec.ts:70:1 › leaving the slide route stops its active job at the navigation boundary (1.1s)
+
+  12 passed (16.3s)
