@@ -1,0 +1,8 @@
+{
+  "manifestSHA256": "c944a7bd676fd01f255d5b5b2cf7c0e59e900929115cd2f47904c558eb115978",
+  "images": 32,
+  "language": "en-US",
+  "preprocessing": "only predetermined fixture transforms; no result-based tuning",
+  "confidence": "not provided by native engine",
+  "gate": "Thai and mixed must have <=5% normalized CER on every clear new image, no omitted Thai lines; English/numbers <=2%; blank zero words; column order must match; boxes contain visible glyphs; no sensitive data; otherwise do not integrate OCR UI"
+}

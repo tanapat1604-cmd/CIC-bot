@@ -1,0 +1,3 @@
+# Frozen OCR trial plan — 2026-10-07
+
+Acceptance was serialized in evidence/FREEZE.json before any read: 16 development and16 new image cases, immutable image/manifest hashes; only fixed native en-US then user-approved fast tha+eng OEM1/PSM3/OMP1, no retune after candidate new. Full audit and limitations in RESULTS.md. Sources/fixture images/raw TSV remain local delivery ZIP; raw.json preserves engine results exactly, results.json and tesseract-results.json preserve metrics/resources. No scoring aggregate and no confidence fabrication. Gate failed: do not integrate UI in this round. This narrative summarizes already frozen plan; original FREEZE/config records are retained with their hashes.

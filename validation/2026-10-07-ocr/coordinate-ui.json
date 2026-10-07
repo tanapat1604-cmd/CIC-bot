@@ -1,0 +1,81 @@
+{
+  "checks": [
+    {
+      "width": 1440,
+      "height": 900,
+      "fits": true,
+      "rects": [
+        {
+          "id": "new-crop",
+          "width": 902,
+          "maxError": 0.0000152587890625,
+          "viewBox": [
+            740,
+            210
+          ]
+        },
+        {
+          "id": "new-reduced",
+          "width": 902,
+          "maxError": 0,
+          "viewBox": [
+            450,
+            220
+          ]
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "fits": true,
+      "rects": [
+        {
+          "id": "new-crop",
+          "width": 342,
+          "maxError": 0.0000152587890625,
+          "viewBox": [
+            740,
+            210
+          ]
+        },
+        {
+          "id": "new-reduced",
+          "width": 342,
+          "maxError": 0.0000152587890625,
+          "viewBox": [
+            450,
+            220
+          ]
+        }
+      ]
+    },
+    {
+      "width": 360,
+      "height": 480,
+      "fits": true,
+      "rects": [
+        {
+          "id": "new-crop",
+          "width": 312,
+          "maxError": 0,
+          "viewBox": [
+            740,
+            210
+          ]
+        },
+        {
+          "id": "new-reduced",
+          "width": 312,
+          "maxError": 0.000030517578125,
+          "viewBox": [
+            450,
+            220
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "scope": "Developer diagnostic SVG only. Not CIC OCR UI, native DPI, multi-monitor or control validation."
+}

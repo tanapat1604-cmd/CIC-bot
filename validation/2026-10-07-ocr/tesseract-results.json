@@ -1,0 +1,7567 @@
+[
+  {
+    "id": "development-en-light",
+    "set": "development",
+    "category": "English",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Choose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself.\n\nRead text on this device only.\n",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 47,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 91.0,
+        "height": 21.0,
+        "nativeWordScore": 96.761353
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 84.0,
+        "width": 28.0,
+        "height": 14.0,
+        "nativeWordScore": 95.542953
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 77.0,
+        "width": 73.0,
+        "height": 27.0,
+        "nativeWordScore": 95.542953
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 77.0,
+        "width": 101.0,
+        "height": 27.0,
+        "nativeWordScore": 95.851036
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 57.0,
+        "height": 21.0,
+        "nativeWordScore": 96.757317
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.921379
+      },
+      {
+        "text": "on",
+        "x": 189.0,
+        "y": 149.0,
+        "width": 30.0,
+        "height": 14.0,
+        "nativeWordScore": 96.921379
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 142.0,
+        "width": 43.0,
+        "height": 21.0,
+        "nativeWordScore": 96.978142
+      },
+      {
+        "text": "device",
+        "x": 281.0,
+        "y": 142.0,
+        "width": 77.0,
+        "height": 21.0,
+        "nativeWordScore": 96.950874
+      },
+      {
+        "text": "only.",
+        "x": 367.0,
+        "y": 142.0,
+        "width": 55.0,
+        "height": 27.0,
+        "nativeWordScore": 94.988747
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 266.9,
+    "processPeakSampleMiB": 34.6,
+    "processPrivatePeakSampleMiB": 26.6,
+    "systemFreeBeforeMiB": 1421.6,
+    "systemFreeMinimumMiB": 1379.7,
+    "systemFreeAfterMiB": 1415.0,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-th-light",
+    "set": "development",
+    "category": "Thai",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "actual": "ผู้ใช้เลือกภาพด้วยตนเอง\n\nอ่านข้อความในเครื่องเท่านั้น\n",
+    "actualLines": [
+      "ผู ้ ใช ้ เล ื อ ก ภา พ ด ้ ว ย ต น เอ ง",
+      "อ ่ า น ข้ อ ค ว า ม ใน เค ร ื ่ อ ง เท ่ า น ั ้ น"
+    ],
+    "metrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 42,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 42,
+    "mappedOriginalWords": [
+      {
+        "text": "ผู",
+        "x": 63.0,
+        "y": 68.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 92.902374
+      },
+      {
+        "text": "้",
+        "x": 83.0,
+        "y": 68.0,
+        "width": 9.0,
+        "height": 41.0,
+        "nativeWordScore": 93.305977
+      },
+      {
+        "text": "ใช",
+        "x": 91.0,
+        "y": 68.0,
+        "width": 19.0,
+        "height": 41.0,
+        "nativeWordScore": 93.289124
+      },
+      {
+        "text": "้",
+        "x": 111.0,
+        "y": 84.0,
+        "width": 6.0,
+        "height": 14.0,
+        "nativeWordScore": 93.30085
+      },
+      {
+        "text": "เล",
+        "x": 119.0,
+        "y": 68.0,
+        "width": 19.0,
+        "height": 41.0,
+        "nativeWordScore": 93.269234
+      },
+      {
+        "text": "ื",
+        "x": 137.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.306244
+      },
+      {
+        "text": "อ",
+        "x": 148.0,
+        "y": 84.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.929054
+      },
+      {
+        "text": "ก",
+        "x": 163.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 96.562164
+      },
+      {
+        "text": "ภา",
+        "x": 170.0,
+        "y": 68.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 96.89035
+      },
+      {
+        "text": "พ",
+        "x": 196.0,
+        "y": 84.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.874382
+      },
+      {
+        "text": "ด",
+        "x": 212.0,
+        "y": 77.0,
+        "width": 10.0,
+        "height": 21.0,
+        "nativeWordScore": 93.241562
+      },
+      {
+        "text": "้",
+        "x": 227.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.302208
+      },
+      {
+        "text": "ว",
+        "x": 234.0,
+        "y": 68.0,
+        "width": 11.0,
+        "height": 41.0,
+        "nativeWordScore": 96.845924
+      },
+      {
+        "text": "ย",
+        "x": 244.0,
+        "y": 84.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 97.01429
+      },
+      {
+        "text": "ต",
+        "x": 257.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.296822
+      },
+      {
+        "text": "น",
+        "x": 271.0,
+        "y": 84.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 97.020813
+      },
+      {
+        "text": "เอ",
+        "x": 289.0,
+        "y": 84.0,
+        "width": 30.0,
+        "height": 14.0,
+        "nativeWordScore": 96.826729
+      },
+      {
+        "text": "ง",
+        "x": 306.0,
+        "y": 68.0,
+        "width": 16.0,
+        "height": 41.0,
+        "nativeWordScore": 96.872787
+      },
+      {
+        "text": "อ",
+        "x": 66.0,
+        "y": 143.0,
+        "width": 11.0,
+        "height": 20.0,
+        "nativeWordScore": 93.30146
+      },
+      {
+        "text": "่",
+        "x": 80.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 90.613739
+      },
+      {
+        "text": "า",
+        "x": 87.0,
+        "y": 133.0,
+        "width": 13.0,
+        "height": 40.0,
+        "nativeWordScore": 93.305099
+      },
+      {
+        "text": "น",
+        "x": 99.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.685379
+      },
+      {
+        "text": "ข้",
+        "x": 109.0,
+        "y": 133.0,
+        "width": 23.0,
+        "height": 40.0,
+        "nativeWordScore": 96.984001
+      },
+      {
+        "text": "อ",
+        "x": 132.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 97.023872
+      },
+      {
+        "text": "ค",
+        "x": 144.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.866615
+      },
+      {
+        "text": "ว",
+        "x": 157.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.247719
+      },
+      {
+        "text": "า",
+        "x": 170.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 93.304268
+      },
+      {
+        "text": "ม",
+        "x": 183.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 96.931236
+      },
+      {
+        "text": "ใน",
+        "x": 194.0,
+        "y": 133.0,
+        "width": 18.0,
+        "height": 40.0,
+        "nativeWordScore": 96.735535
+      },
+      {
+        "text": "เค",
+        "x": 212.0,
+        "y": 149.0,
+        "width": 17.0,
+        "height": 14.0,
+        "nativeWordScore": 96.696037
+      },
+      {
+        "text": "ร",
+        "x": 232.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.277252
+      },
+      {
+        "text": "ื",
+        "x": 245.0,
+        "y": 142.0,
+        "width": 7.0,
+        "height": 21.0,
+        "nativeWordScore": 93.29969
+      },
+      {
+        "text": "่",
+        "x": 252.0,
+        "y": 133.0,
+        "width": 8.0,
+        "height": 40.0,
+        "nativeWordScore": 93.302246
+      },
+      {
+        "text": "อ",
+        "x": 259.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.936615
+      },
+      {
+        "text": "ง",
+        "x": 271.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.978294
+      },
+      {
+        "text": "เท",
+        "x": 279.0,
+        "y": 133.0,
+        "width": 11.0,
+        "height": 40.0,
+        "nativeWordScore": 93.297676
+      },
+      {
+        "text": "่",
+        "x": 297.0,
+        "y": 143.0,
+        "width": 8.0,
+        "height": 20.0,
+        "nativeWordScore": 93.292389
+      },
+      {
+        "text": "า",
+        "x": 307.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.21151
+      },
+      {
+        "text": "น",
+        "x": 317.0,
+        "y": 133.0,
+        "width": 10.0,
+        "height": 40.0,
+        "nativeWordScore": 93.248123
+      },
+      {
+        "text": "ั",
+        "x": 327.0,
+        "y": 144.0,
+        "width": 8.0,
+        "height": 19.0,
+        "nativeWordScore": 93.232948
+      },
+      {
+        "text": "้",
+        "x": 336.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 93.182877
+      },
+      {
+        "text": "น",
+        "x": 344.0,
+        "y": 133.0,
+        "width": 11.0,
+        "height": 40.0,
+        "nativeWordScore": 97.022682
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 321.3,
+    "processPeakSampleMiB": 34.8,
+    "processPrivatePeakSampleMiB": 26.9,
+    "systemFreeBeforeMiB": 1414.9,
+    "systemFreeMinimumMiB": 1367.0,
+    "systemFreeAfterMiB": 1409.2,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-mixed",
+    "set": "development",
+    "category": "Mixed",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "ทดสอบ CIC Bot รุ่น 1\nChoose an image yourself.\nผู้ใช้เลือกภาพด้วยตนเอง",
+    "actual": "ทดสอบ CIC Bot su 1\nChoose an image yourself.\n\nผู้ใช้เลือกภาพด้วยตนเอง\n",
+    "actualLines": [
+      "ท ด ส อ บ CIC Bot su 1",
+      "Choose an image yourself.",
+      "ผู ้ ใช ้ เล ื อ ก ภา พ ด ้ ว ย ต น เอ ง"
+    ],
+    "metrics": {
+      "referenceChars": 61,
+      "substitutions": 2,
+      "deletions": 2,
+      "insertions": 0,
+      "cerPercent": 6.56,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 32,
+      "substitutions": 0,
+      "deletions": 4,
+      "insertions": 0,
+      "cerPercent": 12.5,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ทดสอบ CIC Bot รุ่น 1"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 31,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 31,
+    "mappedOriginalWords": [
+      {
+        "text": "ท",
+        "x": 65.0,
+        "y": 84.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.629189
+      },
+      {
+        "text": "ด",
+        "x": 83.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.746643
+      },
+      {
+        "text": "ส",
+        "x": 99.0,
+        "y": 83.0,
+        "width": 8.0,
+        "height": 15.0,
+        "nativeWordScore": 96.952324
+      },
+      {
+        "text": "อ",
+        "x": 114.0,
+        "y": 84.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.642471
+      },
+      {
+        "text": "บ",
+        "x": 128.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 96.962418
+      },
+      {
+        "text": "CIC",
+        "x": 152.0,
+        "y": 78.0,
+        "width": 40.0,
+        "height": 20.0,
+        "nativeWordScore": 96.312744
+      },
+      {
+        "text": "Bot",
+        "x": 203.0,
+        "y": 78.0,
+        "width": 39.0,
+        "height": 20.0,
+        "nativeWordScore": 95.556419
+      },
+      {
+        "text": "su",
+        "x": 251.0,
+        "y": 78.0,
+        "width": 28.0,
+        "height": 27.0,
+        "nativeWordScore": 70.663406
+      },
+      {
+        "text": "1",
+        "x": 290.0,
+        "y": 78.0,
+        "width": 7.0,
+        "height": 20.0,
+        "nativeWordScore": 96.065804
+      },
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 142.0,
+        "width": 91.0,
+        "height": 21.0,
+        "nativeWordScore": 96.761353
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 149.0,
+        "width": 28.0,
+        "height": 14.0,
+        "nativeWordScore": 95.542953
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 142.0,
+        "width": 73.0,
+        "height": 27.0,
+        "nativeWordScore": 95.542953
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 142.0,
+        "width": 101.0,
+        "height": 27.0,
+        "nativeWordScore": 95.851036
+      },
+      {
+        "text": "ผู",
+        "x": 63.0,
+        "y": 198.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 92.902374
+      },
+      {
+        "text": "้",
+        "x": 83.0,
+        "y": 198.0,
+        "width": 9.0,
+        "height": 41.0,
+        "nativeWordScore": 93.305977
+      },
+      {
+        "text": "ใช",
+        "x": 91.0,
+        "y": 198.0,
+        "width": 19.0,
+        "height": 41.0,
+        "nativeWordScore": 93.289124
+      },
+      {
+        "text": "้",
+        "x": 111.0,
+        "y": 214.0,
+        "width": 6.0,
+        "height": 14.0,
+        "nativeWordScore": 93.30085
+      },
+      {
+        "text": "เล",
+        "x": 119.0,
+        "y": 198.0,
+        "width": 19.0,
+        "height": 41.0,
+        "nativeWordScore": 93.269234
+      },
+      {
+        "text": "ื",
+        "x": 137.0,
+        "y": 214.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.306244
+      },
+      {
+        "text": "อ",
+        "x": 148.0,
+        "y": 214.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.929054
+      },
+      {
+        "text": "ก",
+        "x": 163.0,
+        "y": 214.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 96.562164
+      },
+      {
+        "text": "ภา",
+        "x": 170.0,
+        "y": 198.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 96.89035
+      },
+      {
+        "text": "พ",
+        "x": 196.0,
+        "y": 214.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.874382
+      },
+      {
+        "text": "ด",
+        "x": 212.0,
+        "y": 207.0,
+        "width": 10.0,
+        "height": 21.0,
+        "nativeWordScore": 93.241562
+      },
+      {
+        "text": "้",
+        "x": 227.0,
+        "y": 214.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.302208
+      },
+      {
+        "text": "ว",
+        "x": 234.0,
+        "y": 198.0,
+        "width": 11.0,
+        "height": 41.0,
+        "nativeWordScore": 96.845924
+      },
+      {
+        "text": "ย",
+        "x": 244.0,
+        "y": 214.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 97.01429
+      },
+      {
+        "text": "ต",
+        "x": 257.0,
+        "y": 214.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.296822
+      },
+      {
+        "text": "น",
+        "x": 271.0,
+        "y": 214.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 97.020813
+      },
+      {
+        "text": "เอ",
+        "x": 289.0,
+        "y": 214.0,
+        "width": 18.0,
+        "height": 14.0,
+        "nativeWordScore": 96.826729
+      },
+      {
+        "text": "ง",
+        "x": 309.0,
+        "y": 214.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.872787
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 430.5,
+    "processPeakSampleMiB": 36.6,
+    "processPrivatePeakSampleMiB": 28.4,
+    "systemFreeBeforeMiB": 1409.3,
+    "systemFreeMinimumMiB": 1351.7,
+    "systemFreeAfterMiB": 1411.0,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-numbers",
+    "set": "development",
+    "category": "Numbers",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Order 1638   Total 1,250.75\n2026-10-07   14:30   25%",
+    "actual": "Order 1638 Total 1,250.75\n\n2026-10-07 14:30 25%\n",
+    "actualLines": [
+      "Order 1638 Total 1,250.75",
+      "2026-10-07 14:30 25%"
+    ],
+    "metrics": {
+      "referenceChars": 40,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 7,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 7,
+    "mappedOriginalWords": [
+      {
+        "text": "Order",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 70.0,
+        "height": 21.0,
+        "nativeWordScore": 96.923851
+      },
+      {
+        "text": "1638",
+        "x": 147.0,
+        "y": 78.0,
+        "width": 57.0,
+        "height": 20.0,
+        "nativeWordScore": 92.674225
+      },
+      {
+        "text": "Total",
+        "x": 228.0,
+        "y": 77.0,
+        "width": 56.0,
+        "height": 21.0,
+        "nativeWordScore": 69.886772
+      },
+      {
+        "text": "1,250.75",
+        "x": 297.0,
+        "y": 78.0,
+        "width": 98.0,
+        "height": 24.0,
+        "nativeWordScore": 96.236603
+      },
+      {
+        "text": "2026-10-07",
+        "x": 66.0,
+        "y": 143.0,
+        "width": 141.0,
+        "height": 20.0,
+        "nativeWordScore": 95.780891
+      },
+      {
+        "text": "14:30",
+        "x": 234.0,
+        "y": 143.0,
+        "width": 63.0,
+        "height": 20.0,
+        "nativeWordScore": 95.780891
+      },
+      {
+        "text": "25%",
+        "x": 322.0,
+        "y": 143.0,
+        "width": 51.0,
+        "height": 20.0,
+        "nativeWordScore": 96.585991
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 261.4,
+    "processPeakSampleMiB": 34.6,
+    "processPrivatePeakSampleMiB": 26.7,
+    "systemFreeBeforeMiB": 1410.8,
+    "systemFreeMinimumMiB": 1381.5,
+    "systemFreeAfterMiB": 1418.8,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-en-multiline",
+    "set": "development",
+    "category": "English multiline",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Choose an image yourself.\nRead text on this device only.\nNo automatic screen capture.",
+    "actual": "Choose an image yourself.\nRead text on this device only.\n\nNo automatic screen capture.\n",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only.",
+      "No automatic screen capture."
+    ],
+    "metrics": {
+      "referenceChars": 72,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 14,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 14,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 91.0,
+        "height": 21.0,
+        "nativeWordScore": 96.761353
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 84.0,
+        "width": 28.0,
+        "height": 14.0,
+        "nativeWordScore": 95.542953
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 77.0,
+        "width": 73.0,
+        "height": 27.0,
+        "nativeWordScore": 95.542953
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 77.0,
+        "width": 101.0,
+        "height": 27.0,
+        "nativeWordScore": 95.851036
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 57.0,
+        "height": 21.0,
+        "nativeWordScore": 96.757317
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.921379
+      },
+      {
+        "text": "on",
+        "x": 189.0,
+        "y": 149.0,
+        "width": 30.0,
+        "height": 14.0,
+        "nativeWordScore": 96.921379
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 142.0,
+        "width": 43.0,
+        "height": 21.0,
+        "nativeWordScore": 96.978142
+      },
+      {
+        "text": "device",
+        "x": 281.0,
+        "y": 142.0,
+        "width": 77.0,
+        "height": 21.0,
+        "nativeWordScore": 96.950874
+      },
+      {
+        "text": "only.",
+        "x": 367.0,
+        "y": 142.0,
+        "width": 55.0,
+        "height": 27.0,
+        "nativeWordScore": 94.988747
+      },
+      {
+        "text": "No",
+        "x": 67.0,
+        "y": 208.0,
+        "width": 34.0,
+        "height": 20.0,
+        "nativeWordScore": 95.87764
+      },
+      {
+        "text": "automatic",
+        "x": 111.0,
+        "y": 207.0,
+        "width": 122.0,
+        "height": 21.0,
+        "nativeWordScore": 95.87764
+      },
+      {
+        "text": "screen",
+        "x": 242.0,
+        "y": 214.0,
+        "width": 77.0,
+        "height": 14.0,
+        "nativeWordScore": 96.885887
+      },
+      {
+        "text": "capture.",
+        "x": 329.0,
+        "y": 210.0,
+        "width": 97.0,
+        "height": 24.0,
+        "nativeWordScore": 96.687965
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 314.9,
+    "processPeakSampleMiB": 34.5,
+    "processPrivatePeakSampleMiB": 26.5,
+    "systemFreeBeforeMiB": 1418.9,
+    "systemFreeMinimumMiB": 1385.9,
+    "systemFreeAfterMiB": 1412.8,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-th-multiline",
+    "set": "development",
+    "category": "Thai multiline",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nห้ามส่งภาพออกนอกเครื่อง",
+    "actual": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\n\nห้ามส่งภาพออกนอกเครื่อง\n",
+    "actualLines": [
+      "ผู ้ ใช ้ เล ื อ ก ภา พ ด ้ ว ย ต น เอ ง",
+      "อ ่ า น ข้ อ ค ว า ม ใน เค ร ื ่ อ ง เท ่ า น ั ้ น",
+      "ห ้ า ม ส ่ ง ภา พ อ อ ก น อ ก เค ร ื ่ อ ง"
+    ],
+    "metrics": {
+      "referenceChars": 74,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": {
+      "referenceChars": 74,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 63,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 63,
+    "mappedOriginalWords": [
+      {
+        "text": "ผู",
+        "x": 63.0,
+        "y": 68.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 92.902374
+      },
+      {
+        "text": "้",
+        "x": 83.0,
+        "y": 68.0,
+        "width": 9.0,
+        "height": 41.0,
+        "nativeWordScore": 93.305977
+      },
+      {
+        "text": "ใช",
+        "x": 91.0,
+        "y": 68.0,
+        "width": 19.0,
+        "height": 41.0,
+        "nativeWordScore": 93.289124
+      },
+      {
+        "text": "้",
+        "x": 111.0,
+        "y": 84.0,
+        "width": 6.0,
+        "height": 14.0,
+        "nativeWordScore": 93.30085
+      },
+      {
+        "text": "เล",
+        "x": 119.0,
+        "y": 68.0,
+        "width": 19.0,
+        "height": 41.0,
+        "nativeWordScore": 93.269234
+      },
+      {
+        "text": "ื",
+        "x": 137.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.306244
+      },
+      {
+        "text": "อ",
+        "x": 148.0,
+        "y": 84.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.929054
+      },
+      {
+        "text": "ก",
+        "x": 163.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 96.562164
+      },
+      {
+        "text": "ภา",
+        "x": 170.0,
+        "y": 68.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 96.89035
+      },
+      {
+        "text": "พ",
+        "x": 196.0,
+        "y": 84.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.874382
+      },
+      {
+        "text": "ด",
+        "x": 212.0,
+        "y": 77.0,
+        "width": 10.0,
+        "height": 21.0,
+        "nativeWordScore": 93.241562
+      },
+      {
+        "text": "้",
+        "x": 227.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.302208
+      },
+      {
+        "text": "ว",
+        "x": 234.0,
+        "y": 68.0,
+        "width": 11.0,
+        "height": 41.0,
+        "nativeWordScore": 96.845924
+      },
+      {
+        "text": "ย",
+        "x": 244.0,
+        "y": 84.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 97.01429
+      },
+      {
+        "text": "ต",
+        "x": 257.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.296822
+      },
+      {
+        "text": "น",
+        "x": 271.0,
+        "y": 84.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 97.020813
+      },
+      {
+        "text": "เอ",
+        "x": 289.0,
+        "y": 84.0,
+        "width": 30.0,
+        "height": 14.0,
+        "nativeWordScore": 96.826729
+      },
+      {
+        "text": "ง",
+        "x": 306.0,
+        "y": 68.0,
+        "width": 16.0,
+        "height": 41.0,
+        "nativeWordScore": 96.872787
+      },
+      {
+        "text": "อ",
+        "x": 66.0,
+        "y": 143.0,
+        "width": 11.0,
+        "height": 20.0,
+        "nativeWordScore": 93.30146
+      },
+      {
+        "text": "่",
+        "x": 80.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 90.613739
+      },
+      {
+        "text": "า",
+        "x": 87.0,
+        "y": 133.0,
+        "width": 13.0,
+        "height": 40.0,
+        "nativeWordScore": 93.305099
+      },
+      {
+        "text": "น",
+        "x": 99.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.685379
+      },
+      {
+        "text": "ข้",
+        "x": 109.0,
+        "y": 133.0,
+        "width": 23.0,
+        "height": 40.0,
+        "nativeWordScore": 96.984001
+      },
+      {
+        "text": "อ",
+        "x": 132.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 97.023872
+      },
+      {
+        "text": "ค",
+        "x": 144.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.866615
+      },
+      {
+        "text": "ว",
+        "x": 157.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.247719
+      },
+      {
+        "text": "า",
+        "x": 170.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 93.304268
+      },
+      {
+        "text": "ม",
+        "x": 183.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 96.931236
+      },
+      {
+        "text": "ใน",
+        "x": 194.0,
+        "y": 133.0,
+        "width": 18.0,
+        "height": 40.0,
+        "nativeWordScore": 96.735535
+      },
+      {
+        "text": "เค",
+        "x": 212.0,
+        "y": 149.0,
+        "width": 17.0,
+        "height": 14.0,
+        "nativeWordScore": 96.696037
+      },
+      {
+        "text": "ร",
+        "x": 232.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.277252
+      },
+      {
+        "text": "ื",
+        "x": 245.0,
+        "y": 142.0,
+        "width": 7.0,
+        "height": 21.0,
+        "nativeWordScore": 93.29969
+      },
+      {
+        "text": "่",
+        "x": 252.0,
+        "y": 133.0,
+        "width": 8.0,
+        "height": 40.0,
+        "nativeWordScore": 93.302246
+      },
+      {
+        "text": "อ",
+        "x": 259.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.936615
+      },
+      {
+        "text": "ง",
+        "x": 271.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.978294
+      },
+      {
+        "text": "เท",
+        "x": 279.0,
+        "y": 133.0,
+        "width": 11.0,
+        "height": 40.0,
+        "nativeWordScore": 93.297676
+      },
+      {
+        "text": "่",
+        "x": 297.0,
+        "y": 143.0,
+        "width": 8.0,
+        "height": 20.0,
+        "nativeWordScore": 93.292389
+      },
+      {
+        "text": "า",
+        "x": 307.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.21151
+      },
+      {
+        "text": "น",
+        "x": 317.0,
+        "y": 133.0,
+        "width": 10.0,
+        "height": 40.0,
+        "nativeWordScore": 93.248123
+      },
+      {
+        "text": "ั",
+        "x": 327.0,
+        "y": 144.0,
+        "width": 8.0,
+        "height": 19.0,
+        "nativeWordScore": 93.232948
+      },
+      {
+        "text": "้",
+        "x": 336.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 93.182877
+      },
+      {
+        "text": "น",
+        "x": 344.0,
+        "y": 133.0,
+        "width": 11.0,
+        "height": 40.0,
+        "nativeWordScore": 97.022682
+      },
+      {
+        "text": "ห",
+        "x": 65.0,
+        "y": 207.0,
+        "width": 12.0,
+        "height": 21.0,
+        "nativeWordScore": 93.293365
+      },
+      {
+        "text": "้",
+        "x": 81.0,
+        "y": 214.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 93.194069
+      },
+      {
+        "text": "า",
+        "x": 87.0,
+        "y": 203.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 93.16935
+      },
+      {
+        "text": "ม",
+        "x": 98.0,
+        "y": 214.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.996529
+      },
+      {
+        "text": "ส",
+        "x": 111.0,
+        "y": 208.0,
+        "width": 12.0,
+        "height": 20.0,
+        "nativeWordScore": 93.297791
+      },
+      {
+        "text": "่",
+        "x": 125.0,
+        "y": 214.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 93.278
+      },
+      {
+        "text": "ง",
+        "x": 136.0,
+        "y": 214.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.997986
+      },
+      {
+        "text": "ภา",
+        "x": 153.0,
+        "y": 203.0,
+        "width": 20.0,
+        "height": 35.0,
+        "nativeWordScore": 95.98082
+      },
+      {
+        "text": "พ",
+        "x": 172.0,
+        "y": 214.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 95.618233
+      },
+      {
+        "text": "อ",
+        "x": 187.0,
+        "y": 214.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.022064
+      },
+      {
+        "text": "อ",
+        "x": 201.0,
+        "y": 214.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 97.018311
+      },
+      {
+        "text": "ก",
+        "x": 215.0,
+        "y": 214.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.985657
+      },
+      {
+        "text": "น",
+        "x": 230.0,
+        "y": 214.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.727119
+      },
+      {
+        "text": "อ",
+        "x": 247.0,
+        "y": 214.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.625229
+      },
+      {
+        "text": "ก",
+        "x": 255.0,
+        "y": 203.0,
+        "width": 14.0,
+        "height": 35.0,
+        "nativeWordScore": 96.787392
+      },
+      {
+        "text": "เค",
+        "x": 268.0,
+        "y": 214.0,
+        "width": 16.0,
+        "height": 14.0,
+        "nativeWordScore": 96.88266
+      },
+      {
+        "text": "ร",
+        "x": 290.0,
+        "y": 214.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 93.297943
+      },
+      {
+        "text": "ื",
+        "x": 301.0,
+        "y": 207.0,
+        "width": 10.0,
+        "height": 21.0,
+        "nativeWordScore": 93.280724
+      },
+      {
+        "text": "่",
+        "x": 310.0,
+        "y": 203.0,
+        "width": 10.0,
+        "height": 35.0,
+        "nativeWordScore": 83.407562
+      },
+      {
+        "text": "อ",
+        "x": 319.0,
+        "y": 214.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 96.691902
+      },
+      {
+        "text": "ง",
+        "x": 327.0,
+        "y": 214.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.002914
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 363.7,
+    "processPeakSampleMiB": 35.9,
+    "processPrivatePeakSampleMiB": 27.6,
+    "systemFreeBeforeMiB": 1412.8,
+    "systemFreeMinimumMiB": 1371.5,
+    "systemFreeAfterMiB": 1388.5,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-en-dark",
+    "set": "development",
+    "category": "English dark",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Choose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself.\n\nRead text on this device only.\n",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 47,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 91.0,
+        "height": 21.0,
+        "nativeWordScore": 96.209663
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 84.0,
+        "width": 28.0,
+        "height": 14.0,
+        "nativeWordScore": 96.594963
+      },
+      {
+        "text": "image",
+        "x": 204.0,
+        "y": 77.0,
+        "width": 75.0,
+        "height": 27.0,
+        "nativeWordScore": 95.574203
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 77.0,
+        "width": 101.0,
+        "height": 27.0,
+        "nativeWordScore": 96.034668
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 58.0,
+        "height": 21.0,
+        "nativeWordScore": 96.652977
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.683029
+      },
+      {
+        "text": "on",
+        "x": 189.0,
+        "y": 149.0,
+        "width": 30.0,
+        "height": 14.0,
+        "nativeWordScore": 96.94973
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 142.0,
+        "width": 43.0,
+        "height": 21.0,
+        "nativeWordScore": 96.94973
+      },
+      {
+        "text": "device",
+        "x": 280.0,
+        "y": 142.0,
+        "width": 78.0,
+        "height": 21.0,
+        "nativeWordScore": 96.97892
+      },
+      {
+        "text": "only.",
+        "x": 367.0,
+        "y": 142.0,
+        "width": 55.0,
+        "height": 27.0,
+        "nativeWordScore": 94.197884
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 364.1,
+    "processPeakSampleMiB": 35.4,
+    "processPrivatePeakSampleMiB": 27.4,
+    "systemFreeBeforeMiB": 1388.5,
+    "systemFreeMinimumMiB": 1363.3,
+    "systemFreeAfterMiB": 1420.9,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-th-dark",
+    "set": "development",
+    "category": "Thai dark",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "actual": "ผู้ใช้เลือกภาพด้วยตนเอง\n\nอ่านข้อความในเครื่องเท่านั้น\n",
+    "actualLines": [
+      "ผู ้ ใช ้ เล ื อ ก ภา พ ด ้ ว ย ต น เอ ง",
+      "อ ่ า น ข้ อ ค ว า ม ใน เค ร ื ่ อ ง เท ่ า น ั ้ น"
+    ],
+    "metrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 42,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 42,
+    "mappedOriginalWords": [
+      {
+        "text": "ผู",
+        "x": 62.0,
+        "y": 68.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 93.21611
+      },
+      {
+        "text": "้",
+        "x": 82.0,
+        "y": 68.0,
+        "width": 9.0,
+        "height": 41.0,
+        "nativeWordScore": 93.302994
+      },
+      {
+        "text": "ใช",
+        "x": 90.0,
+        "y": 68.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 93.267487
+      },
+      {
+        "text": "้",
+        "x": 111.0,
+        "y": 84.0,
+        "width": 6.0,
+        "height": 14.0,
+        "nativeWordScore": 93.302643
+      },
+      {
+        "text": "เล",
+        "x": 118.0,
+        "y": 68.0,
+        "width": 21.0,
+        "height": 41.0,
+        "nativeWordScore": 93.090286
+      },
+      {
+        "text": "ื",
+        "x": 138.0,
+        "y": 84.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 93.305977
+      },
+      {
+        "text": "อ",
+        "x": 148.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.346695
+      },
+      {
+        "text": "ก",
+        "x": 163.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.031586
+      },
+      {
+        "text": "ภา",
+        "x": 172.0,
+        "y": 68.0,
+        "width": 19.0,
+        "height": 41.0,
+        "nativeWordScore": 97.020042
+      },
+      {
+        "text": "พ",
+        "x": 197.0,
+        "y": 84.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 97.000137
+      },
+      {
+        "text": "ด",
+        "x": 212.0,
+        "y": 77.0,
+        "width": 9.0,
+        "height": 21.0,
+        "nativeWordScore": 93.302216
+      },
+      {
+        "text": "้",
+        "x": 227.0,
+        "y": 84.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 93.305511
+      },
+      {
+        "text": "ว",
+        "x": 233.0,
+        "y": 68.0,
+        "width": 14.0,
+        "height": 41.0,
+        "nativeWordScore": 97.016891
+      },
+      {
+        "text": "ย",
+        "x": 246.0,
+        "y": 84.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 97.024689
+      },
+      {
+        "text": "ต",
+        "x": 259.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.699867
+      },
+      {
+        "text": "น",
+        "x": 272.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.973732
+      },
+      {
+        "text": "เอ",
+        "x": 289.0,
+        "y": 84.0,
+        "width": 19.0,
+        "height": 14.0,
+        "nativeWordScore": 96.445251
+      },
+      {
+        "text": "ง",
+        "x": 309.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.022781
+      },
+      {
+        "text": "อ",
+        "x": 66.0,
+        "y": 143.0,
+        "width": 11.0,
+        "height": 20.0,
+        "nativeWordScore": 93.300385
+      },
+      {
+        "text": "่",
+        "x": 79.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 91.949379
+      },
+      {
+        "text": "า",
+        "x": 87.0,
+        "y": 133.0,
+        "width": 13.0,
+        "height": 40.0,
+        "nativeWordScore": 93.305649
+      },
+      {
+        "text": "น",
+        "x": 99.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.006218
+      },
+      {
+        "text": "ข้",
+        "x": 109.0,
+        "y": 133.0,
+        "width": 23.0,
+        "height": 40.0,
+        "nativeWordScore": 96.978134
+      },
+      {
+        "text": "อ",
+        "x": 132.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 96.985092
+      },
+      {
+        "text": "ค",
+        "x": 144.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 97.024498
+      },
+      {
+        "text": "ว",
+        "x": 157.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.298325
+      },
+      {
+        "text": "า",
+        "x": 169.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.302216
+      },
+      {
+        "text": "ม",
+        "x": 177.0,
+        "y": 133.0,
+        "width": 13.0,
+        "height": 40.0,
+        "nativeWordScore": 96.993057
+      },
+      {
+        "text": "ใน",
+        "x": 189.0,
+        "y": 133.0,
+        "width": 23.0,
+        "height": 40.0,
+        "nativeWordScore": 96.527992
+      },
+      {
+        "text": "เค",
+        "x": 212.0,
+        "y": 149.0,
+        "width": 17.0,
+        "height": 14.0,
+        "nativeWordScore": 96.348785
+      },
+      {
+        "text": "ร",
+        "x": 232.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.266571
+      },
+      {
+        "text": "ื",
+        "x": 245.0,
+        "y": 142.0,
+        "width": 7.0,
+        "height": 21.0,
+        "nativeWordScore": 93.299767
+      },
+      {
+        "text": "่",
+        "x": 252.0,
+        "y": 133.0,
+        "width": 8.0,
+        "height": 40.0,
+        "nativeWordScore": 93.301399
+      },
+      {
+        "text": "อ",
+        "x": 259.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.964035
+      },
+      {
+        "text": "ง",
+        "x": 271.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.993011
+      },
+      {
+        "text": "เท",
+        "x": 279.0,
+        "y": 133.0,
+        "width": 11.0,
+        "height": 40.0,
+        "nativeWordScore": 93.293686
+      },
+      {
+        "text": "่",
+        "x": 297.0,
+        "y": 143.0,
+        "width": 8.0,
+        "height": 20.0,
+        "nativeWordScore": 93.298294
+      },
+      {
+        "text": "า",
+        "x": 307.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.286682
+      },
+      {
+        "text": "น",
+        "x": 317.0,
+        "y": 133.0,
+        "width": 10.0,
+        "height": 40.0,
+        "nativeWordScore": 93.27272
+      },
+      {
+        "text": "ั",
+        "x": 327.0,
+        "y": 144.0,
+        "width": 9.0,
+        "height": 19.0,
+        "nativeWordScore": 93.286713
+      },
+      {
+        "text": "้",
+        "x": 337.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 92.607048
+      },
+      {
+        "text": "น",
+        "x": 347.0,
+        "y": 133.0,
+        "width": 10.0,
+        "height": 40.0,
+        "nativeWordScore": 97.005859
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 313.7,
+    "processPeakSampleMiB": 34.2,
+    "processPrivatePeakSampleMiB": 26.1,
+    "systemFreeBeforeMiB": 1420.9,
+    "systemFreeMinimumMiB": 1387.9,
+    "systemFreeAfterMiB": 1421.4,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-en-small",
+    "set": "development",
+    "category": "English small",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Choose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself,\n\nRead text on this device only.\n",
+    "actualLines": [
+      "Choose an image yourself,",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 47,
+      "substitutions": 1,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 2.13,
+      "exact": false
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [
+      "Choose an image yourself."
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 65.0,
+        "y": 70.0,
+        "width": 40.0,
+        "height": 9.0,
+        "nativeWordScore": 67.923767
+      },
+      {
+        "text": "an",
+        "x": 108.0,
+        "y": 73.0,
+        "width": 12.0,
+        "height": 6.0,
+        "nativeWordScore": 96.626282
+      },
+      {
+        "text": "image",
+        "x": 125.0,
+        "y": 73.0,
+        "width": 32.0,
+        "height": 9.0,
+        "nativeWordScore": 96.744194
+      },
+      {
+        "text": "yourself,",
+        "x": 160.0,
+        "y": 70.0,
+        "width": 44.0,
+        "height": 12.0,
+        "nativeWordScore": 91.83609
+      },
+      {
+        "text": "Read",
+        "x": 66.0,
+        "y": 105.0,
+        "width": 25.0,
+        "height": 9.0,
+        "nativeWordScore": 96.567139
+      },
+      {
+        "text": "text",
+        "x": 94.0,
+        "y": 106.0,
+        "width": 21.0,
+        "height": 8.0,
+        "nativeWordScore": 96.711105
+      },
+      {
+        "text": "on",
+        "x": 118.0,
+        "y": 108.0,
+        "width": 13.0,
+        "height": 6.0,
+        "nativeWordScore": 96.844559
+      },
+      {
+        "text": "this",
+        "x": 135.0,
+        "y": 105.0,
+        "width": 19.0,
+        "height": 9.0,
+        "nativeWordScore": 96.308762
+      },
+      {
+        "text": "device",
+        "x": 157.0,
+        "y": 105.0,
+        "width": 34.0,
+        "height": 9.0,
+        "nativeWordScore": 96.992455
+      },
+      {
+        "text": "only.",
+        "x": 194.0,
+        "y": 105.0,
+        "width": 24.0,
+        "height": 12.0,
+        "nativeWordScore": 93.618126
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 267.2,
+    "processPeakSampleMiB": 34.2,
+    "processPrivatePeakSampleMiB": 26.4,
+    "systemFreeBeforeMiB": 1421.5,
+    "systemFreeMinimumMiB": 1367.6,
+    "systemFreeAfterMiB": 1403.8,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-th-small",
+    "set": "development",
+    "category": "Thai small",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "actual": "ผู้ใช้เลือกภาพด้วยตนเธง\n\nอ่านข้อความในเครื่องเท่านั้น\n",
+    "actualLines": [
+      "ผู ้ ใช ้ เล ื อ ก ภา พ ด ้ ว ย ต น เธ ง",
+      "อ ่ า น ข้ อ ค ว า ม ใน เค ร ื ่ อ ง เท ่ า น ั ้ น"
+    ],
+    "metrics": {
+      "referenceChars": 51,
+      "substitutions": 1,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 1.96,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 1,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 1.96,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 42,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 42,
+    "mappedOriginalWords": [
+      {
+        "text": "ผู",
+        "x": 62.0,
+        "y": 59.0,
+        "width": 10.0,
+        "height": 30.0,
+        "nativeWordScore": 93.229843
+      },
+      {
+        "text": "้",
+        "x": 71.0,
+        "y": 59.0,
+        "width": 5.0,
+        "height": 30.0,
+        "nativeWordScore": 91.471725
+      },
+      {
+        "text": "ใช",
+        "x": 75.0,
+        "y": 59.0,
+        "width": 8.0,
+        "height": 30.0,
+        "nativeWordScore": 93.166718
+      },
+      {
+        "text": "้",
+        "x": 82.0,
+        "y": 59.0,
+        "width": 5.0,
+        "height": 30.0,
+        "nativeWordScore": 92.111961
+      },
+      {
+        "text": "เล",
+        "x": 86.0,
+        "y": 59.0,
+        "width": 7.0,
+        "height": 30.0,
+        "nativeWordScore": 64.932434
+      },
+      {
+        "text": "ื",
+        "x": 93.0,
+        "y": 59.0,
+        "width": 7.0,
+        "height": 30.0,
+        "nativeWordScore": 92.879684
+      },
+      {
+        "text": "อ",
+        "x": 99.0,
+        "y": 73.0,
+        "width": 7.0,
+        "height": 6.0,
+        "nativeWordScore": 96.925827
+      },
+      {
+        "text": "ก",
+        "x": 105.0,
+        "y": 59.0,
+        "width": 4.0,
+        "height": 30.0,
+        "nativeWordScore": 96.307312
+      },
+      {
+        "text": "ภา",
+        "x": 108.0,
+        "y": 59.0,
+        "width": 13.0,
+        "height": 30.0,
+        "nativeWordScore": 96.997597
+      },
+      {
+        "text": "พ",
+        "x": 120.0,
+        "y": 59.0,
+        "width": 6.0,
+        "height": 30.0,
+        "nativeWordScore": 96.998535
+      },
+      {
+        "text": "ด",
+        "x": 125.0,
+        "y": 59.0,
+        "width": 7.0,
+        "height": 30.0,
+        "nativeWordScore": 93.301453
+      },
+      {
+        "text": "้",
+        "x": 131.0,
+        "y": 59.0,
+        "width": 6.0,
+        "height": 30.0,
+        "nativeWordScore": 93.30278
+      },
+      {
+        "text": "ว",
+        "x": 137.0,
+        "y": 69.0,
+        "width": 6.0,
+        "height": 10.0,
+        "nativeWordScore": 97.001816
+      },
+      {
+        "text": "ย",
+        "x": 142.0,
+        "y": 59.0,
+        "width": 7.0,
+        "height": 30.0,
+        "nativeWordScore": 97.019882
+      },
+      {
+        "text": "ต",
+        "x": 148.0,
+        "y": 59.0,
+        "width": 6.0,
+        "height": 30.0,
+        "nativeWordScore": 95.953606
+      },
+      {
+        "text": "น",
+        "x": 153.0,
+        "y": 59.0,
+        "width": 7.0,
+        "height": 30.0,
+        "nativeWordScore": 96.958443
+      },
+      {
+        "text": "เธ",
+        "x": 159.0,
+        "y": 59.0,
+        "width": 10.0,
+        "height": 30.0,
+        "nativeWordScore": 68.251213
+      },
+      {
+        "text": "ง",
+        "x": 168.0,
+        "y": 59.0,
+        "width": 11.0,
+        "height": 30.0,
+        "nativeWordScore": 92.478828
+      },
+      {
+        "text": "อ",
+        "x": 61.0,
+        "y": 97.0,
+        "width": 9.0,
+        "height": 27.0,
+        "nativeWordScore": 79.779503
+      },
+      {
+        "text": "่",
+        "x": 69.0,
+        "y": 105.0,
+        "width": 6.0,
+        "height": 9.0,
+        "nativeWordScore": 93.053909
+      },
+      {
+        "text": "า",
+        "x": 74.0,
+        "y": 97.0,
+        "width": 6.0,
+        "height": 27.0,
+        "nativeWordScore": 93.304794
+      },
+      {
+        "text": "น",
+        "x": 79.0,
+        "y": 104.0,
+        "width": 6.0,
+        "height": 10.0,
+        "nativeWordScore": 96.954689
+      },
+      {
+        "text": "ข้",
+        "x": 84.0,
+        "y": 97.0,
+        "width": 11.0,
+        "height": 27.0,
+        "nativeWordScore": 96.76458
+      },
+      {
+        "text": "อ",
+        "x": 94.0,
+        "y": 97.0,
+        "width": 6.0,
+        "height": 27.0,
+        "nativeWordScore": 96.998199
+      },
+      {
+        "text": "ค",
+        "x": 99.0,
+        "y": 108.0,
+        "width": 6.0,
+        "height": 6.0,
+        "nativeWordScore": 93.868744
+      },
+      {
+        "text": "ว",
+        "x": 104.0,
+        "y": 97.0,
+        "width": 5.0,
+        "height": 27.0,
+        "nativeWordScore": 93.068092
+      },
+      {
+        "text": "า",
+        "x": 108.0,
+        "y": 97.0,
+        "width": 6.0,
+        "height": 27.0,
+        "nativeWordScore": 93.281334
+      },
+      {
+        "text": "ม",
+        "x": 113.0,
+        "y": 97.0,
+        "width": 6.0,
+        "height": 27.0,
+        "nativeWordScore": 97.005684
+      },
+      {
+        "text": "ใน",
+        "x": 118.0,
+        "y": 97.0,
+        "width": 13.0,
+        "height": 27.0,
+        "nativeWordScore": 92.669708
+      },
+      {
+        "text": "เค",
+        "x": 133.0,
+        "y": 97.0,
+        "width": 6.0,
+        "height": 27.0,
+        "nativeWordScore": 86.607018
+      },
+      {
+        "text": "ร",
+        "x": 138.0,
+        "y": 102.0,
+        "width": 6.0,
+        "height": 12.0,
+        "nativeWordScore": 93.304314
+      },
+      {
+        "text": "ื",
+        "x": 143.0,
+        "y": 97.0,
+        "width": 5.0,
+        "height": 27.0,
+        "nativeWordScore": 93.199051
+      },
+      {
+        "text": "่",
+        "x": 147.0,
+        "y": 97.0,
+        "width": 4.0,
+        "height": 27.0,
+        "nativeWordScore": 93.304214
+      },
+      {
+        "text": "อ",
+        "x": 150.0,
+        "y": 108.0,
+        "width": 6.0,
+        "height": 6.0,
+        "nativeWordScore": 96.999542
+      },
+      {
+        "text": "ง",
+        "x": 155.0,
+        "y": 97.0,
+        "width": 4.0,
+        "height": 27.0,
+        "nativeWordScore": 97.00666
+      },
+      {
+        "text": "เท",
+        "x": 158.0,
+        "y": 97.0,
+        "width": 8.0,
+        "height": 27.0,
+        "nativeWordScore": 91.856255
+      },
+      {
+        "text": "่",
+        "x": 165.0,
+        "y": 97.0,
+        "width": 4.0,
+        "height": 27.0,
+        "nativeWordScore": 93.180992
+      },
+      {
+        "text": "า",
+        "x": 169.0,
+        "y": 101.0,
+        "width": 4.0,
+        "height": 13.0,
+        "nativeWordScore": 93.298767
+      },
+      {
+        "text": "น",
+        "x": 172.0,
+        "y": 97.0,
+        "width": 6.0,
+        "height": 27.0,
+        "nativeWordScore": 93.2957
+      },
+      {
+        "text": "ั",
+        "x": 177.0,
+        "y": 97.0,
+        "width": 4.0,
+        "height": 27.0,
+        "nativeWordScore": 91.862549
+      },
+      {
+        "text": "้",
+        "x": 181.0,
+        "y": 108.0,
+        "width": 4.0,
+        "height": 6.0,
+        "nativeWordScore": 93.159676
+      },
+      {
+        "text": "น",
+        "x": 184.0,
+        "y": 97.0,
+        "width": 7.0,
+        "height": 27.0,
+        "nativeWordScore": 86.253143
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 327.0,
+    "processPeakSampleMiB": 32.2,
+    "processPrivatePeakSampleMiB": 25.2,
+    "systemFreeBeforeMiB": 1403.8,
+    "systemFreeMinimumMiB": 1376.4,
+    "systemFreeAfterMiB": 1409.4,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-reduced",
+    "set": "development",
+    "category": "Mixed reduced",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nChoose an image yourself.\nRead text on this device only.",
+    "actual": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\n\nChoose ar\n\nage yourself.\n\nRead text on this device only.\n",
+    "actualLines": [
+      "ผู ้ ใช ้ เล ื อ ก ภา พ ด ้ ว ย ต น เอ ง",
+      "อ ่ า น ข้ อ ค ว า ม ใน เค ร ื ่ อ ง เท ่ า น ั ้ น",
+      "Choose ar",
+      "age yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 98,
+      "substitutions": 1,
+      "deletions": 2,
+      "insertions": 0,
+      "cerPercent": 3.06,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [
+      "Choose an image yourself."
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 52,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 52,
+    "mappedOriginalWords": [
+      {
+        "text": "ผู",
+        "x": 58.0,
+        "y": 64.0,
+        "width": 22.0,
+        "height": 50.0,
+        "nativeWordScore": 93.302071
+      },
+      {
+        "text": "้",
+        "x": 78.0,
+        "y": 64.0,
+        "width": 12.0,
+        "height": 50.0,
+        "nativeWordScore": 93.305923
+      },
+      {
+        "text": "ใช",
+        "x": 88.0,
+        "y": 64.0,
+        "width": 20.0,
+        "height": 50.0,
+        "nativeWordScore": 93.298103
+      },
+      {
+        "text": "้",
+        "x": 108.0,
+        "y": 64.0,
+        "width": 10.0,
+        "height": 50.0,
+        "nativeWordScore": 93.294724
+      },
+      {
+        "text": "เล",
+        "x": 118.0,
+        "y": 64.0,
+        "width": 20.0,
+        "height": 50.0,
+        "nativeWordScore": 93.301422
+      },
+      {
+        "text": "ื",
+        "x": 136.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.277496
+      },
+      {
+        "text": "อ",
+        "x": 148.0,
+        "y": 84.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.051765
+      },
+      {
+        "text": "ก",
+        "x": 164.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 95.937798
+      },
+      {
+        "text": "ภา",
+        "x": 170.0,
+        "y": 64.0,
+        "width": 26.0,
+        "height": 50.0,
+        "nativeWordScore": 97.023666
+      },
+      {
+        "text": "พ",
+        "x": 194.0,
+        "y": 64.0,
+        "width": 14.0,
+        "height": 50.0,
+        "nativeWordScore": 97.024834
+      },
+      {
+        "text": "ด",
+        "x": 212.0,
+        "y": 76.0,
+        "width": 10.0,
+        "height": 22.0,
+        "nativeWordScore": 93.29599
+      },
+      {
+        "text": "้",
+        "x": 228.0,
+        "y": 84.0,
+        "width": 6.0,
+        "height": 14.0,
+        "nativeWordScore": 93.303383
+      },
+      {
+        "text": "ว",
+        "x": 232.0,
+        "y": 64.0,
+        "width": 14.0,
+        "height": 50.0,
+        "nativeWordScore": 97.018005
+      },
+      {
+        "text": "ย",
+        "x": 244.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.024788
+      },
+      {
+        "text": "ต",
+        "x": 258.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 97.023354
+      },
+      {
+        "text": "น",
+        "x": 272.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 97.02285
+      },
+      {
+        "text": "เอ",
+        "x": 282.0,
+        "y": 64.0,
+        "width": 26.0,
+        "height": 50.0,
+        "nativeWordScore": 97.015739
+      },
+      {
+        "text": "ง",
+        "x": 308.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.845581
+      },
+      {
+        "text": "อ",
+        "x": 58.0,
+        "y": 128.0,
+        "width": 14.0,
+        "height": 56.0,
+        "nativeWordScore": 92.234848
+      },
+      {
+        "text": "่",
+        "x": 72.0,
+        "y": 148.0,
+        "width": 6.0,
+        "height": 16.0,
+        "nativeWordScore": 93.18972
+      },
+      {
+        "text": "า",
+        "x": 86.0,
+        "y": 148.0,
+        "width": 12.0,
+        "height": 16.0,
+        "nativeWordScore": 93.305901
+      },
+      {
+        "text": "น",
+        "x": 96.0,
+        "y": 128.0,
+        "width": 16.0,
+        "height": 56.0,
+        "nativeWordScore": 97.009499
+      },
+      {
+        "text": "ข้",
+        "x": 110.0,
+        "y": 142.0,
+        "width": 26.0,
+        "height": 22.0,
+        "nativeWordScore": 96.569023
+      },
+      {
+        "text": "อ",
+        "x": 134.0,
+        "y": 128.0,
+        "width": 12.0,
+        "height": 56.0,
+        "nativeWordScore": 97.023354
+      },
+      {
+        "text": "ค",
+        "x": 144.0,
+        "y": 148.0,
+        "width": 12.0,
+        "height": 16.0,
+        "nativeWordScore": 97.024689
+      },
+      {
+        "text": "ว",
+        "x": 156.0,
+        "y": 128.0,
+        "width": 12.0,
+        "height": 56.0,
+        "nativeWordScore": 93.306046
+      },
+      {
+        "text": "า",
+        "x": 166.0,
+        "y": 128.0,
+        "width": 16.0,
+        "height": 56.0,
+        "nativeWordScore": 93.303276
+      },
+      {
+        "text": "ม",
+        "x": 180.0,
+        "y": 148.0,
+        "width": 12.0,
+        "height": 16.0,
+        "nativeWordScore": 97.024406
+      },
+      {
+        "text": "ใน",
+        "x": 194.0,
+        "y": 128.0,
+        "width": 22.0,
+        "height": 56.0,
+        "nativeWordScore": 95.869476
+      },
+      {
+        "text": "เค",
+        "x": 214.0,
+        "y": 148.0,
+        "width": 24.0,
+        "height": 16.0,
+        "nativeWordScore": 97.02047
+      },
+      {
+        "text": "ร",
+        "x": 236.0,
+        "y": 128.0,
+        "width": 12.0,
+        "height": 56.0,
+        "nativeWordScore": 93.273308
+      },
+      {
+        "text": "ื",
+        "x": 246.0,
+        "y": 142.0,
+        "width": 8.0,
+        "height": 22.0,
+        "nativeWordScore": 93.282684
+      },
+      {
+        "text": "่",
+        "x": 258.0,
+        "y": 148.0,
+        "width": 8.0,
+        "height": 16.0,
+        "nativeWordScore": 93.303406
+      },
+      {
+        "text": "อ",
+        "x": 264.0,
+        "y": 128.0,
+        "width": 8.0,
+        "height": 56.0,
+        "nativeWordScore": 97.015099
+      },
+      {
+        "text": "ง",
+        "x": 272.0,
+        "y": 148.0,
+        "width": 10.0,
+        "height": 16.0,
+        "nativeWordScore": 97.019165
+      },
+      {
+        "text": "เท",
+        "x": 284.0,
+        "y": 128.0,
+        "width": 16.0,
+        "height": 56.0,
+        "nativeWordScore": 93.181778
+      },
+      {
+        "text": "่",
+        "x": 298.0,
+        "y": 144.0,
+        "width": 12.0,
+        "height": 20.0,
+        "nativeWordScore": 93.299866
+      },
+      {
+        "text": "า",
+        "x": 310.0,
+        "y": 128.0,
+        "width": 8.0,
+        "height": 56.0,
+        "nativeWordScore": 93.305237
+      },
+      {
+        "text": "น",
+        "x": 316.0,
+        "y": 128.0,
+        "width": 12.0,
+        "height": 56.0,
+        "nativeWordScore": 93.301468
+      },
+      {
+        "text": "ั",
+        "x": 326.0,
+        "y": 136.0,
+        "width": 10.0,
+        "height": 28.0,
+        "nativeWordScore": 93.259682
+      },
+      {
+        "text": "้",
+        "x": 338.0,
+        "y": 148.0,
+        "width": 8.0,
+        "height": 16.0,
+        "nativeWordScore": 92.62809
+      },
+      {
+        "text": "น",
+        "x": 344.0,
+        "y": 128.0,
+        "width": 16.0,
+        "height": 56.0,
+        "nativeWordScore": 95.27504
+      },
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 206.0,
+        "width": 92.0,
+        "height": 22.0,
+        "nativeWordScore": 90.824226
+      },
+      {
+        "text": "ar",
+        "x": 166.0,
+        "y": 214.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 62.453491
+      },
+      {
+        "text": "age",
+        "x": 234.0,
+        "y": 214.0,
+        "width": 44.0,
+        "height": 20.0,
+        "nativeWordScore": 32.675224
+      },
+      {
+        "text": "yourself.",
+        "x": 286.0,
+        "y": 206.0,
+        "width": 102.0,
+        "height": 28.0,
+        "nativeWordScore": 81.613068
+      },
+      {
+        "text": "Read",
+        "x": 66.0,
+        "y": 272.0,
+        "width": 58.0,
+        "height": 22.0,
+        "nativeWordScore": 96.805573
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 276.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.603127
+      },
+      {
+        "text": "on",
+        "x": 188.0,
+        "y": 278.0,
+        "width": 32.0,
+        "height": 16.0,
+        "nativeWordScore": 96.610641
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 272.0,
+        "width": 44.0,
+        "height": 22.0,
+        "nativeWordScore": 96.929054
+      },
+      {
+        "text": "device",
+        "x": 280.0,
+        "y": 272.0,
+        "width": 78.0,
+        "height": 22.0,
+        "nativeWordScore": 96.929054
+      },
+      {
+        "text": "only.",
+        "x": 366.0,
+        "y": 272.0,
+        "width": 56.0,
+        "height": 28.0,
+        "nativeWordScore": 93.731773
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 262.4,
+    "processPeakSampleMiB": 31.4,
+    "processPrivatePeakSampleMiB": 23.3,
+    "systemFreeBeforeMiB": 1409.3,
+    "systemFreeMinimumMiB": 1394.3,
+    "systemFreeAfterMiB": 1404.5,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-blur",
+    "set": "development",
+    "category": "Mixed blurred",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nChoose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself.\nRead text on this device only.\n",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 98,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 52.04,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 64.0,
+        "y": 206.0,
+        "width": 324.0,
+        "height": 30.0,
+        "nativeWordScore": 96.015411
+      },
+      {
+        "text": "an",
+        "x": 164.0,
+        "y": 202.0,
+        "width": 26.0,
+        "height": 38.0,
+        "nativeWordScore": 96.015411
+      },
+      {
+        "text": "image",
+        "x": 202.0,
+        "y": 202.0,
+        "width": 71.0,
+        "height": 38.0,
+        "nativeWordScore": 96.550972
+      },
+      {
+        "text": "yourself.",
+        "x": 284.0,
+        "y": 206.0,
+        "width": 104.0,
+        "height": 30.0,
+        "nativeWordScore": 82.936569
+      },
+      {
+        "text": "Read",
+        "x": 61.0,
+        "y": 267.0,
+        "width": 56.0,
+        "height": 37.0,
+        "nativeWordScore": 96.933701
+      },
+      {
+        "text": "text",
+        "x": 128.0,
+        "y": 267.0,
+        "width": 51.0,
+        "height": 37.0,
+        "nativeWordScore": 96.12262
+      },
+      {
+        "text": "on",
+        "x": 190.0,
+        "y": 267.0,
+        "width": 26.0,
+        "height": 37.0,
+        "nativeWordScore": 95.673325
+      },
+      {
+        "text": "this",
+        "x": 224.0,
+        "y": 267.0,
+        "width": 47.0,
+        "height": 37.0,
+        "nativeWordScore": 95.673325
+      },
+      {
+        "text": "device",
+        "x": 283.0,
+        "y": 267.0,
+        "width": 71.0,
+        "height": 37.0,
+        "nativeWordScore": 96.831497
+      },
+      {
+        "text": "only.",
+        "x": 366.0,
+        "y": 267.0,
+        "width": 59.0,
+        "height": 37.0,
+        "nativeWordScore": 95.778755
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 261.2,
+    "processPeakSampleMiB": 34.7,
+    "processPrivatePeakSampleMiB": 26.7,
+    "systemFreeBeforeMiB": 1404.8,
+    "systemFreeMinimumMiB": 1373.1,
+    "systemFreeAfterMiB": 1407.7,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-blank",
+    "set": "development",
+    "category": "Blank",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "",
+    "actual": "",
+    "actualLines": [],
+    "metrics": {
+      "referenceChars": 0,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": null,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "no-text",
+    "words": 0,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 0,
+    "mappedOriginalWords": [],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 209.6,
+    "processPeakSampleMiB": 27.8,
+    "processPrivatePeakSampleMiB": 21.1,
+    "systemFreeBeforeMiB": 1407.8,
+    "systemFreeMinimumMiB": 1383.4,
+    "systemFreeAfterMiB": 1412.3,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-columns",
+    "set": "development",
+    "category": "English columns",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "LEFT: Plan\nLEFT: Review\nRIGHT: Create\nRIGHT: Download",
+    "actual": "LEFT: Plan                                 RIGHT: Create\n\nLEFT: Review                                          RIGHT: Download\n",
+    "actualLines": [
+      "LEFT: Plan RIGHT: Create",
+      "LEFT: Review RIGHT: Download"
+    ],
+    "metrics": {
+      "referenceChars": 46,
+      "substitutions": 12,
+      "deletions": 3,
+      "insertions": 3,
+      "cerPercent": 39.13,
+      "exact": false
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "wrong",
+    "words": 8,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 8,
+    "mappedOriginalWords": [
+      {
+        "text": "LEFT:",
+        "x": 67.0,
+        "y": 83.0,
+        "width": 58.0,
+        "height": 20.0,
+        "nativeWordScore": 96.482048
+      },
+      {
+        "text": "Plan",
+        "x": 137.0,
+        "y": 82.0,
+        "width": 48.0,
+        "height": 21.0,
+        "nativeWordScore": 96.826828
+      },
+      {
+        "text": "RIGHT:",
+        "x": 512.0,
+        "y": 83.0,
+        "width": 81.0,
+        "height": 20.0,
+        "nativeWordScore": 95.993996
+      },
+      {
+        "text": "Create",
+        "x": 603.0,
+        "y": 83.0,
+        "width": 77.0,
+        "height": 20.0,
+        "nativeWordScore": 96.637032
+      },
+      {
+        "text": "LEFT:",
+        "x": 67.0,
+        "y": 158.0,
+        "width": 58.0,
+        "height": 20.0,
+        "nativeWordScore": 96.468544
+      },
+      {
+        "text": "Review",
+        "x": 137.0,
+        "y": 157.0,
+        "width": 83.0,
+        "height": 21.0,
+        "nativeWordScore": 96.220573
+      },
+      {
+        "text": "RIGHT:",
+        "x": 512.0,
+        "y": 158.0,
+        "width": 81.0,
+        "height": 20.0,
+        "nativeWordScore": 96.1129
+      },
+      {
+        "text": "Download",
+        "x": 604.0,
+        "y": 157.0,
+        "width": 121.0,
+        "height": 21.0,
+        "nativeWordScore": 96.1129
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 312.5,
+    "processPeakSampleMiB": 34.7,
+    "processPrivatePeakSampleMiB": 26.5,
+    "systemFreeBeforeMiB": 1412.3,
+    "systemFreeMinimumMiB": 1380.4,
+    "systemFreeAfterMiB": 1417.9,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-crop",
+    "set": "development",
+    "category": "English crop",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Choose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself.\n\nRead text on this device only.\n",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 47,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 91.0,
+        "height": 21.0,
+        "nativeWordScore": 96.761353
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 84.0,
+        "width": 28.0,
+        "height": 14.0,
+        "nativeWordScore": 95.542953
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 77.0,
+        "width": 73.0,
+        "height": 27.0,
+        "nativeWordScore": 95.542953
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 77.0,
+        "width": 101.0,
+        "height": 27.0,
+        "nativeWordScore": 95.851036
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 57.0,
+        "height": 21.0,
+        "nativeWordScore": 96.757317
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.921379
+      },
+      {
+        "text": "on",
+        "x": 189.0,
+        "y": 149.0,
+        "width": 30.0,
+        "height": 14.0,
+        "nativeWordScore": 96.921379
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 142.0,
+        "width": 43.0,
+        "height": 21.0,
+        "nativeWordScore": 96.978142
+      },
+      {
+        "text": "device",
+        "x": 281.0,
+        "y": 142.0,
+        "width": 77.0,
+        "height": 21.0,
+        "nativeWordScore": 96.950874
+      },
+      {
+        "text": "only.",
+        "x": 367.0,
+        "y": 142.0,
+        "width": 55.0,
+        "height": 27.0,
+        "nativeWordScore": 94.988747
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 311.4,
+    "processPeakSampleMiB": 33.4,
+    "processPrivatePeakSampleMiB": 25.4,
+    "systemFreeBeforeMiB": 1417.9,
+    "systemFreeMinimumMiB": 1371.7,
+    "systemFreeAfterMiB": 1408.3,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "development-screenshot",
+    "set": "development",
+    "category": "Mixed browser fixture",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "CIC Test - Reader\nเลือกภาพก่อนอ่านข้อความ\nSample 1   14:30\nRead image text",
+    "actual": "CIC Test - Reader\nเลือกภาพก่อนอ่านข้อความ\nSample 1 14:30\n\nRead image text\n\n",
+    "actualLines": [
+      "CIC Test - Reader",
+      "เล ื อ ก ภา พ ก ่ อ น อ ่ า น ข้ อ ค ว า ม",
+      "Sample 1 14:30",
+      "Read image text"
+    ],
+    "metrics": {
+      "referenceChars": 62,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": {
+      "referenceChars": 23,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 30,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 30,
+    "mappedOriginalWords": [
+      {
+        "text": "CIC",
+        "x": 66.0,
+        "y": 78.0,
+        "width": 40.0,
+        "height": 20.0,
+        "nativeWordScore": 95.902779
+      },
+      {
+        "text": "Test",
+        "x": 115.0,
+        "y": 78.0,
+        "width": 47.0,
+        "height": 20.0,
+        "nativeWordScore": 92.838539
+      },
+      {
+        "text": "-",
+        "x": 172.0,
+        "y": 89.0,
+        "width": 8.0,
+        "height": 1.0,
+        "nativeWordScore": 92.70385
+      },
+      {
+        "text": "Reader",
+        "x": 191.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0,
+        "nativeWordScore": 96.497055
+      },
+      {
+        "text": "เล",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 19.0,
+        "height": 21.0,
+        "nativeWordScore": 93.290298
+      },
+      {
+        "text": "ื",
+        "x": 89.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 93.074287
+      },
+      {
+        "text": "อ",
+        "x": 103.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.968468
+      },
+      {
+        "text": "ก",
+        "x": 113.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 96.904961
+      },
+      {
+        "text": "ภา",
+        "x": 124.0,
+        "y": 149.0,
+        "width": 23.0,
+        "height": 14.0,
+        "nativeWordScore": 96.517769
+      },
+      {
+        "text": "พ",
+        "x": 150.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.729218
+      },
+      {
+        "text": "ก",
+        "x": 168.0,
+        "y": 143.0,
+        "width": 7.0,
+        "height": 20.0,
+        "nativeWordScore": 87.373123
+      },
+      {
+        "text": "่",
+        "x": 174.0,
+        "y": 138.0,
+        "width": 14.0,
+        "height": 35.0,
+        "nativeWordScore": 93.301369
+      },
+      {
+        "text": "อ",
+        "x": 187.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.773254
+      },
+      {
+        "text": "น",
+        "x": 198.0,
+        "y": 149.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 97.019478
+      },
+      {
+        "text": "อ",
+        "x": 215.0,
+        "y": 143.0,
+        "width": 8.0,
+        "height": 20.0,
+        "nativeWordScore": 93.30014
+      },
+      {
+        "text": "่",
+        "x": 222.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 91.970863
+      },
+      {
+        "text": "า",
+        "x": 233.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 93.303963
+      },
+      {
+        "text": "น",
+        "x": 246.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.776482
+      },
+      {
+        "text": "ข้",
+        "x": 258.0,
+        "y": 138.0,
+        "width": 24.0,
+        "height": 35.0,
+        "nativeWordScore": 96.914421
+      },
+      {
+        "text": "อ",
+        "x": 281.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 97.015984
+      },
+      {
+        "text": "ค",
+        "x": 294.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 97.008514
+      },
+      {
+        "text": "ว",
+        "x": 306.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 93.303688
+      },
+      {
+        "text": "า",
+        "x": 319.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 93.305191
+      },
+      {
+        "text": "ม",
+        "x": 332.0,
+        "y": 149.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.486565
+      },
+      {
+        "text": "Sample",
+        "x": 66.0,
+        "y": 207.0,
+        "width": 89.0,
+        "height": 27.0,
+        "nativeWordScore": 76.306015
+      },
+      {
+        "text": "1",
+        "x": 171.0,
+        "y": 208.0,
+        "width": 3.0,
+        "height": 20.0,
+        "nativeWordScore": 96.074944
+      },
+      {
+        "text": "14:30",
+        "x": 205.0,
+        "y": 208.0,
+        "width": 63.0,
+        "height": 20.0,
+        "nativeWordScore": 83.877502
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 272.0,
+        "width": 58.0,
+        "height": 21.0,
+        "nativeWordScore": 96.959351
+      },
+      {
+        "text": "image",
+        "x": 136.0,
+        "y": 272.0,
+        "width": 74.0,
+        "height": 27.0,
+        "nativeWordScore": 95.692505
+      },
+      {
+        "text": "text",
+        "x": 218.0,
+        "y": 275.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.775139
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 312.7,
+    "processPeakSampleMiB": 36.4,
+    "processPrivatePeakSampleMiB": 28.2,
+    "systemFreeBeforeMiB": 1408.3,
+    "systemFreeMinimumMiB": 1370.3,
+    "systemFreeAfterMiB": 1409.9,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-en-light",
+    "set": "new",
+    "category": "English",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.",
+    "actual": "Review the text before sending.\n\nMonday meeting at 09:45.\n",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0,
+        "nativeWordScore": 96.605904
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 77.0,
+        "width": 39.0,
+        "height": 21.0,
+        "nativeWordScore": 96.777603
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 80.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.8116
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 77.0,
+        "width": 77.0,
+        "height": 21.0,
+        "nativeWordScore": 96.246758
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 77.0,
+        "width": 102.0,
+        "height": 27.0,
+        "nativeWordScore": 96.507721
+      },
+      {
+        "text": "Monday",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 100.0,
+        "height": 27.0,
+        "nativeWordScore": 96.72934
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 142.0,
+        "width": 98.0,
+        "height": 27.0,
+        "nativeWordScore": 96.444771
+      },
+      {
+        "text": "at",
+        "x": 285.0,
+        "y": 145.0,
+        "width": 22.0,
+        "height": 18.0,
+        "nativeWordScore": 96.943459
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 143.0,
+        "width": 71.0,
+        "height": 20.0,
+        "nativeWordScore": 96.395241
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 261.2,
+    "processPeakSampleMiB": 34.8,
+    "processPrivatePeakSampleMiB": 26.9,
+    "systemFreeBeforeMiB": 1410.0,
+    "systemFreeMinimumMiB": 1374.0,
+    "systemFreeAfterMiB": 1414.3,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-th-light",
+    "set": "new",
+    "category": "Thai",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "actual": "กรุณาตรวจข้อความก่อนส่ง\n\nนัดหมายวันจันทร์ เวลา 09:45\n",
+    "actualLines": [
+      "ก ร ุ ณา ต ร ว จ ข้ อ ค ว า ม ก ่ อ น ส ่ ง",
+      "น ั ด ห ม า ย ว ั น จ ั น ท ร ์ เว ล า 09:45"
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 41,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 41,
+    "mappedOriginalWords": [
+      {
+        "text": "ก",
+        "x": 66.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.480988
+      },
+      {
+        "text": "ร",
+        "x": 81.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 21.0,
+        "nativeWordScore": 92.895256
+      },
+      {
+        "text": "ุ",
+        "x": 91.0,
+        "y": 73.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 93.291672
+      },
+      {
+        "text": "ณา",
+        "x": 102.0,
+        "y": 84.0,
+        "width": 27.0,
+        "height": 14.0,
+        "nativeWordScore": 96.463219
+      },
+      {
+        "text": "ต",
+        "x": 132.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 97.000771
+      },
+      {
+        "text": "ร",
+        "x": 143.0,
+        "y": 73.0,
+        "width": 14.0,
+        "height": 36.0,
+        "nativeWordScore": 96.995285
+      },
+      {
+        "text": "ว",
+        "x": 156.0,
+        "y": 84.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.984482
+      },
+      {
+        "text": "จ",
+        "x": 173.0,
+        "y": 84.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.860039
+      },
+      {
+        "text": "ข้",
+        "x": 181.0,
+        "y": 73.0,
+        "width": 24.0,
+        "height": 36.0,
+        "nativeWordScore": 96.93634
+      },
+      {
+        "text": "อ",
+        "x": 206.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.014618
+      },
+      {
+        "text": "ค",
+        "x": 219.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.995758
+      },
+      {
+        "text": "ว",
+        "x": 234.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.281639
+      },
+      {
+        "text": "า",
+        "x": 246.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.305611
+      },
+      {
+        "text": "ม",
+        "x": 260.0,
+        "y": 84.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.626877
+      },
+      {
+        "text": "ก",
+        "x": 269.0,
+        "y": 73.0,
+        "width": 9.0,
+        "height": 36.0,
+        "nativeWordScore": 92.945953
+      },
+      {
+        "text": "่",
+        "x": 278.0,
+        "y": 78.0,
+        "width": 11.0,
+        "height": 20.0,
+        "nativeWordScore": 93.305679
+      },
+      {
+        "text": "อ",
+        "x": 292.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.906662
+      },
+      {
+        "text": "น",
+        "x": 302.0,
+        "y": 73.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 96.91143
+      },
+      {
+        "text": "ส",
+        "x": 314.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.289742
+      },
+      {
+        "text": "่",
+        "x": 324.0,
+        "y": 78.0,
+        "width": 12.0,
+        "height": 20.0,
+        "nativeWordScore": 93.293892
+      },
+      {
+        "text": "ง",
+        "x": 337.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.666237
+      },
+      {
+        "text": "น",
+        "x": 65.0,
+        "y": 144.0,
+        "width": 10.0,
+        "height": 19.0,
+        "nativeWordScore": 93.248451
+      },
+      {
+        "text": "ั",
+        "x": 74.0,
+        "y": 138.0,
+        "width": 14.0,
+        "height": 35.0,
+        "nativeWordScore": 93.305153
+      },
+      {
+        "text": "ด",
+        "x": 87.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.860062
+      },
+      {
+        "text": "ห",
+        "x": 98.0,
+        "y": 149.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.894539
+      },
+      {
+        "text": "ม",
+        "x": 115.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.299446
+      },
+      {
+        "text": "า",
+        "x": 130.0,
+        "y": 149.0,
+        "width": 6.0,
+        "height": 14.0,
+        "nativeWordScore": 93.28421
+      },
+      {
+        "text": "ย",
+        "x": 135.0,
+        "y": 138.0,
+        "width": 14.0,
+        "height": 35.0,
+        "nativeWordScore": 96.481659
+      },
+      {
+        "text": "ว",
+        "x": 148.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.27668
+      },
+      {
+        "text": "ั",
+        "x": 159.0,
+        "y": 144.0,
+        "width": 12.0,
+        "height": 19.0,
+        "nativeWordScore": 92.120705
+      },
+      {
+        "text": "น",
+        "x": 170.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.775436
+      },
+      {
+        "text": "จ",
+        "x": 181.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 92.484253
+      },
+      {
+        "text": "ั",
+        "x": 192.0,
+        "y": 144.0,
+        "width": 11.0,
+        "height": 19.0,
+        "nativeWordScore": 93.305725
+      },
+      {
+        "text": "น",
+        "x": 203.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.055939
+      },
+      {
+        "text": "ท",
+        "x": 218.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 96.566048
+      },
+      {
+        "text": "ร",
+        "x": 225.0,
+        "y": 138.0,
+        "width": 11.0,
+        "height": 35.0,
+        "nativeWordScore": 93.272964
+      },
+      {
+        "text": "์",
+        "x": 236.0,
+        "y": 142.0,
+        "width": 11.0,
+        "height": 21.0,
+        "nativeWordScore": 90.33387
+      },
+      {
+        "text": "เว",
+        "x": 256.0,
+        "y": 149.0,
+        "width": 44.0,
+        "height": 14.0,
+        "nativeWordScore": 96.968872
+      },
+      {
+        "text": "ล",
+        "x": 279.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 93.303452
+      },
+      {
+        "text": "า",
+        "x": 290.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 92.475266
+      },
+      {
+        "text": "09:45",
+        "x": 310.0,
+        "y": 143.0,
+        "width": 64.0,
+        "height": 20.0,
+        "nativeWordScore": 91.83474
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 314.5,
+    "processPeakSampleMiB": 35.6,
+    "processPrivatePeakSampleMiB": 27.5,
+    "systemFreeBeforeMiB": 1414.3,
+    "systemFreeMinimumMiB": 1376.4,
+    "systemFreeAfterMiB": 1401.9,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-mixed",
+    "set": "new",
+    "category": "Mixed",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "ตรวจงาน CIC Bot รุ่น 2\nReview the text before sending.\nกรุณาตรวจข้อความก่อนส่ง",
+    "actual": "ตรวจงาน (1|6 Bot tu 2\nReview the text before sending.\n\nกรุณาตรวจข้อความก่อนส่ง\n",
+    "actualLines": [
+      "ต ร ว จ ง า น (1|6 Bot tu 2",
+      "Review the text before sending.",
+      "ก ร ุ ณา ต ร ว จ ข้ อ ค ว า ม ก ่ อ น ส ่ ง"
+    ],
+    "metrics": {
+      "referenceChars": 68,
+      "substitutions": 5,
+      "deletions": 2,
+      "insertions": 1,
+      "cerPercent": 11.76,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 34,
+      "substitutions": 0,
+      "deletions": 4,
+      "insertions": 0,
+      "cerPercent": 11.76,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ตรวจงาน CIC Bot รุ่น 2"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 37,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 37,
+    "mappedOriginalWords": [
+      {
+        "text": "ต",
+        "x": 66.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.802574
+      },
+      {
+        "text": "ร",
+        "x": 77.0,
+        "y": 74.0,
+        "width": 14.0,
+        "height": 35.0,
+        "nativeWordScore": 96.819122
+      },
+      {
+        "text": "ว",
+        "x": 90.0,
+        "y": 84.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.729462
+      },
+      {
+        "text": "จ",
+        "x": 107.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.965302
+      },
+      {
+        "text": "ง",
+        "x": 120.0,
+        "y": 84.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 93.288658
+      },
+      {
+        "text": "า",
+        "x": 131.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 93.278816
+      },
+      {
+        "text": "น",
+        "x": 144.0,
+        "y": 84.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.934502
+      },
+      {
+        "text": "(1|6",
+        "x": 169.0,
+        "y": 78.0,
+        "width": 40.0,
+        "height": 20.0,
+        "nativeWordScore": 59.283833
+      },
+      {
+        "text": "Bot",
+        "x": 220.0,
+        "y": 78.0,
+        "width": 39.0,
+        "height": 20.0,
+        "nativeWordScore": 96.699867
+      },
+      {
+        "text": "tu",
+        "x": 268.0,
+        "y": 78.0,
+        "width": 28.0,
+        "height": 27.0,
+        "nativeWordScore": 39.586273
+      },
+      {
+        "text": "2",
+        "x": 305.0,
+        "y": 78.0,
+        "width": 13.0,
+        "height": 20.0,
+        "nativeWordScore": 96.05545
+      },
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 84.0,
+        "height": 21.0,
+        "nativeWordScore": 96.605904
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 142.0,
+        "width": 39.0,
+        "height": 21.0,
+        "nativeWordScore": 96.777603
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.8116
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 142.0,
+        "width": 77.0,
+        "height": 21.0,
+        "nativeWordScore": 96.246758
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 142.0,
+        "width": 102.0,
+        "height": 27.0,
+        "nativeWordScore": 96.507721
+      },
+      {
+        "text": "ก",
+        "x": 66.0,
+        "y": 214.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.480988
+      },
+      {
+        "text": "ร",
+        "x": 81.0,
+        "y": 214.0,
+        "width": 11.0,
+        "height": 21.0,
+        "nativeWordScore": 92.895256
+      },
+      {
+        "text": "ุ",
+        "x": 91.0,
+        "y": 203.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 93.291672
+      },
+      {
+        "text": "ณา",
+        "x": 102.0,
+        "y": 214.0,
+        "width": 27.0,
+        "height": 14.0,
+        "nativeWordScore": 96.463219
+      },
+      {
+        "text": "ต",
+        "x": 132.0,
+        "y": 214.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 97.000771
+      },
+      {
+        "text": "ร",
+        "x": 143.0,
+        "y": 203.0,
+        "width": 14.0,
+        "height": 36.0,
+        "nativeWordScore": 96.995285
+      },
+      {
+        "text": "ว",
+        "x": 156.0,
+        "y": 214.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.984482
+      },
+      {
+        "text": "จ",
+        "x": 173.0,
+        "y": 214.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.860039
+      },
+      {
+        "text": "ข้",
+        "x": 181.0,
+        "y": 203.0,
+        "width": 24.0,
+        "height": 36.0,
+        "nativeWordScore": 96.93634
+      },
+      {
+        "text": "อ",
+        "x": 206.0,
+        "y": 214.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.014618
+      },
+      {
+        "text": "ค",
+        "x": 219.0,
+        "y": 214.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.995758
+      },
+      {
+        "text": "ว",
+        "x": 234.0,
+        "y": 214.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.281639
+      },
+      {
+        "text": "า",
+        "x": 247.0,
+        "y": 214.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 93.305611
+      },
+      {
+        "text": "ม",
+        "x": 260.0,
+        "y": 214.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.626877
+      },
+      {
+        "text": "ก",
+        "x": 269.0,
+        "y": 203.0,
+        "width": 9.0,
+        "height": 36.0,
+        "nativeWordScore": 92.945953
+      },
+      {
+        "text": "่",
+        "x": 278.0,
+        "y": 208.0,
+        "width": 11.0,
+        "height": 20.0,
+        "nativeWordScore": 93.305679
+      },
+      {
+        "text": "อ",
+        "x": 292.0,
+        "y": 214.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.906662
+      },
+      {
+        "text": "น",
+        "x": 302.0,
+        "y": 203.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 96.91143
+      },
+      {
+        "text": "ส",
+        "x": 314.0,
+        "y": 214.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.289742
+      },
+      {
+        "text": "่",
+        "x": 324.0,
+        "y": 208.0,
+        "width": 12.0,
+        "height": 20.0,
+        "nativeWordScore": 93.293892
+      },
+      {
+        "text": "ง",
+        "x": 337.0,
+        "y": 214.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.666237
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 365.7,
+    "processPeakSampleMiB": 37.2,
+    "processPrivatePeakSampleMiB": 29.1,
+    "systemFreeBeforeMiB": 1402.0,
+    "systemFreeMinimumMiB": 1363.2,
+    "systemFreeAfterMiB": 1411.0,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-numbers",
+    "set": "new",
+    "category": "Numbers",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Invoice 5824   Total 2,750.50\n2026-10-12   09:45   40%",
+    "actual": "Invoice 5824 Total 2,750.50\n\n2026-10-12 09:45 40%\n",
+    "actualLines": [
+      "Invoice 5824 Total 2,750.50",
+      "2026-10-12 09:45 40%"
+    ],
+    "metrics": {
+      "referenceChars": 42,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 7,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 7,
+    "mappedOriginalWords": [
+      {
+        "text": "Invoice",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 85.0,
+        "height": 21.0,
+        "nativeWordScore": 96.808136
+      },
+      {
+        "text": "5824",
+        "x": 162.0,
+        "y": 78.0,
+        "width": 58.0,
+        "height": 20.0,
+        "nativeWordScore": 92.940201
+      },
+      {
+        "text": "Total",
+        "x": 244.0,
+        "y": 77.0,
+        "width": 56.0,
+        "height": 21.0,
+        "nativeWordScore": 86.895828
+      },
+      {
+        "text": "2,750.50",
+        "x": 311.0,
+        "y": 78.0,
+        "width": 101.0,
+        "height": 24.0,
+        "nativeWordScore": 95.815147
+      },
+      {
+        "text": "2026-10-12",
+        "x": 66.0,
+        "y": 143.0,
+        "width": 141.0,
+        "height": 20.0,
+        "nativeWordScore": 96.167908
+      },
+      {
+        "text": "09:45",
+        "x": 232.0,
+        "y": 143.0,
+        "width": 64.0,
+        "height": 20.0,
+        "nativeWordScore": 96.167908
+      },
+      {
+        "text": "40%",
+        "x": 320.0,
+        "y": 143.0,
+        "width": 53.0,
+        "height": 20.0,
+        "nativeWordScore": 96.799706
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 371.3,
+    "processPeakSampleMiB": 36.5,
+    "processPrivatePeakSampleMiB": 28.5,
+    "systemFreeBeforeMiB": 1410.9,
+    "systemFreeMinimumMiB": 1356.1,
+    "systemFreeAfterMiB": 1407.9,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-en-multiline",
+    "set": "new",
+    "category": "English multiline",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.\nDo not send images automatically.",
+    "actual": "Review the text before sending.\nMonday meeting at 09:45.\n\nDo not send images automatically.\n",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45.",
+      "Do not send images automatically."
+    ],
+    "metrics": {
+      "referenceChars": 77,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 14,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 14,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0,
+        "nativeWordScore": 96.605904
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 77.0,
+        "width": 39.0,
+        "height": 21.0,
+        "nativeWordScore": 96.777603
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 80.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.8116
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 77.0,
+        "width": 77.0,
+        "height": 21.0,
+        "nativeWordScore": 96.246758
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 77.0,
+        "width": 102.0,
+        "height": 27.0,
+        "nativeWordScore": 96.507721
+      },
+      {
+        "text": "Monday",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 100.0,
+        "height": 27.0,
+        "nativeWordScore": 96.72934
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 142.0,
+        "width": 98.0,
+        "height": 27.0,
+        "nativeWordScore": 96.444771
+      },
+      {
+        "text": "at",
+        "x": 285.0,
+        "y": 145.0,
+        "width": 22.0,
+        "height": 18.0,
+        "nativeWordScore": 96.943459
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 143.0,
+        "width": 71.0,
+        "height": 20.0,
+        "nativeWordScore": 96.395241
+      },
+      {
+        "text": "Do",
+        "x": 67.0,
+        "y": 208.0,
+        "width": 33.0,
+        "height": 20.0,
+        "nativeWordScore": 95.835716
+      },
+      {
+        "text": "not",
+        "x": 111.0,
+        "y": 210.0,
+        "width": 39.0,
+        "height": 18.0,
+        "nativeWordScore": 95.835716
+      },
+      {
+        "text": "send",
+        "x": 159.0,
+        "y": 207.0,
+        "width": 56.0,
+        "height": 21.0,
+        "nativeWordScore": 96.475891
+      },
+      {
+        "text": "images",
+        "x": 227.0,
+        "y": 207.0,
+        "width": 85.0,
+        "height": 27.0,
+        "nativeWordScore": 96.004097
+      },
+      {
+        "text": "automatically.",
+        "x": 322.0,
+        "y": 207.0,
+        "width": 166.0,
+        "height": 27.0,
+        "nativeWordScore": 96.640602
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 316.7,
+    "processPeakSampleMiB": 36.3,
+    "processPrivatePeakSampleMiB": 28.4,
+    "systemFreeBeforeMiB": 1407.7,
+    "systemFreeMinimumMiB": 1364.7,
+    "systemFreeAfterMiB": 1399.9,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-th-multiline",
+    "set": "new",
+    "category": "Thai multiline",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nภาพนี้ไม่มีข้อมูลส่วนตัว",
+    "actual": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\n\nภาพนี้ไม่มีข้อมูลส่วนตัว\n",
+    "actualLines": [
+      "ก ร ุ ณา ต ร ว จ ข้ อ ค ว า ม ก ่ อ น ส ่ ง",
+      "น ั ด ห ม า ย ว ั น จ ั น ท ร ์ เว ล า 09:45",
+      "ภา พ น ี ้ ไม ่ ม ี ข้ อ ม ู ล ส ่ ว น ต ั ว"
+    ],
+    "metrics": {
+      "referenceChars": 72,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": {
+      "referenceChars": 67,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 62,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 62,
+    "mappedOriginalWords": [
+      {
+        "text": "ก",
+        "x": 66.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.480988
+      },
+      {
+        "text": "ร",
+        "x": 81.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 21.0,
+        "nativeWordScore": 92.895256
+      },
+      {
+        "text": "ุ",
+        "x": 91.0,
+        "y": 73.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 93.291672
+      },
+      {
+        "text": "ณา",
+        "x": 102.0,
+        "y": 84.0,
+        "width": 27.0,
+        "height": 14.0,
+        "nativeWordScore": 96.463219
+      },
+      {
+        "text": "ต",
+        "x": 132.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 97.000771
+      },
+      {
+        "text": "ร",
+        "x": 143.0,
+        "y": 73.0,
+        "width": 14.0,
+        "height": 36.0,
+        "nativeWordScore": 96.995285
+      },
+      {
+        "text": "ว",
+        "x": 156.0,
+        "y": 84.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.984482
+      },
+      {
+        "text": "จ",
+        "x": 173.0,
+        "y": 84.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.860039
+      },
+      {
+        "text": "ข้",
+        "x": 181.0,
+        "y": 73.0,
+        "width": 24.0,
+        "height": 36.0,
+        "nativeWordScore": 96.93634
+      },
+      {
+        "text": "อ",
+        "x": 206.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.014618
+      },
+      {
+        "text": "ค",
+        "x": 219.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.995758
+      },
+      {
+        "text": "ว",
+        "x": 234.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.281639
+      },
+      {
+        "text": "า",
+        "x": 246.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.305611
+      },
+      {
+        "text": "ม",
+        "x": 260.0,
+        "y": 84.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.626877
+      },
+      {
+        "text": "ก",
+        "x": 269.0,
+        "y": 73.0,
+        "width": 9.0,
+        "height": 36.0,
+        "nativeWordScore": 92.945953
+      },
+      {
+        "text": "่",
+        "x": 278.0,
+        "y": 78.0,
+        "width": 11.0,
+        "height": 20.0,
+        "nativeWordScore": 93.305679
+      },
+      {
+        "text": "อ",
+        "x": 292.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.906662
+      },
+      {
+        "text": "น",
+        "x": 302.0,
+        "y": 73.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 96.91143
+      },
+      {
+        "text": "ส",
+        "x": 314.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.289742
+      },
+      {
+        "text": "่",
+        "x": 324.0,
+        "y": 78.0,
+        "width": 12.0,
+        "height": 20.0,
+        "nativeWordScore": 93.293892
+      },
+      {
+        "text": "ง",
+        "x": 337.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.666237
+      },
+      {
+        "text": "น",
+        "x": 65.0,
+        "y": 144.0,
+        "width": 10.0,
+        "height": 19.0,
+        "nativeWordScore": 92.828453
+      },
+      {
+        "text": "ั",
+        "x": 74.0,
+        "y": 138.0,
+        "width": 14.0,
+        "height": 36.0,
+        "nativeWordScore": 93.288551
+      },
+      {
+        "text": "ด",
+        "x": 88.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 96.711006
+      },
+      {
+        "text": "ห",
+        "x": 99.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.559906
+      },
+      {
+        "text": "ม",
+        "x": 115.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 93.294273
+      },
+      {
+        "text": "า",
+        "x": 130.0,
+        "y": 149.0,
+        "width": 6.0,
+        "height": 14.0,
+        "nativeWordScore": 93.272278
+      },
+      {
+        "text": "ย",
+        "x": 135.0,
+        "y": 138.0,
+        "width": 14.0,
+        "height": 36.0,
+        "nativeWordScore": 96.199684
+      },
+      {
+        "text": "ว",
+        "x": 148.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.281929
+      },
+      {
+        "text": "ั",
+        "x": 160.0,
+        "y": 144.0,
+        "width": 9.0,
+        "height": 19.0,
+        "nativeWordScore": 93.180283
+      },
+      {
+        "text": "น",
+        "x": 170.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.924034
+      },
+      {
+        "text": "จ",
+        "x": 180.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 93.156372
+      },
+      {
+        "text": "ั",
+        "x": 191.0,
+        "y": 144.0,
+        "width": 12.0,
+        "height": 19.0,
+        "nativeWordScore": 93.305519
+      },
+      {
+        "text": "น",
+        "x": 202.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 97.023636
+      },
+      {
+        "text": "ท",
+        "x": 218.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 96.972107
+      },
+      {
+        "text": "ร",
+        "x": 225.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 93.300774
+      },
+      {
+        "text": "์",
+        "x": 236.0,
+        "y": 142.0,
+        "width": 12.0,
+        "height": 21.0,
+        "nativeWordScore": 92.455948
+      },
+      {
+        "text": "เว",
+        "x": 256.0,
+        "y": 149.0,
+        "width": 44.0,
+        "height": 14.0,
+        "nativeWordScore": 96.653343
+      },
+      {
+        "text": "ล",
+        "x": 279.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 93.302055
+      },
+      {
+        "text": "า",
+        "x": 290.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 93.118156
+      },
+      {
+        "text": "09:45",
+        "x": 310.0,
+        "y": 143.0,
+        "width": 64.0,
+        "height": 20.0,
+        "nativeWordScore": 92.900414
+      },
+      {
+        "text": "ภา",
+        "x": 65.0,
+        "y": 214.0,
+        "width": 25.0,
+        "height": 14.0,
+        "nativeWordScore": 97.022812
+      },
+      {
+        "text": "พ",
+        "x": 89.0,
+        "y": 198.0,
+        "width": 13.0,
+        "height": 41.0,
+        "nativeWordScore": 96.557716
+      },
+      {
+        "text": "น",
+        "x": 102.0,
+        "y": 214.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 89.662094
+      },
+      {
+        "text": "ี",
+        "x": 112.0,
+        "y": 198.0,
+        "width": 8.0,
+        "height": 41.0,
+        "nativeWordScore": 93.226707
+      },
+      {
+        "text": "้",
+        "x": 119.0,
+        "y": 198.0,
+        "width": 12.0,
+        "height": 41.0,
+        "nativeWordScore": 92.933853
+      },
+      {
+        "text": "ไม",
+        "x": 130.0,
+        "y": 198.0,
+        "width": 19.0,
+        "height": 41.0,
+        "nativeWordScore": 93.300301
+      },
+      {
+        "text": "่",
+        "x": 148.0,
+        "y": 198.0,
+        "width": 8.0,
+        "height": 41.0,
+        "nativeWordScore": 93.30619
+      },
+      {
+        "text": "ม",
+        "x": 157.0,
+        "y": 207.0,
+        "width": 10.0,
+        "height": 21.0,
+        "nativeWordScore": 93.305672
+      },
+      {
+        "text": "ี",
+        "x": 166.0,
+        "y": 198.0,
+        "width": 11.0,
+        "height": 41.0,
+        "nativeWordScore": 93.301529
+      },
+      {
+        "text": "ข้",
+        "x": 176.0,
+        "y": 207.0,
+        "width": 21.0,
+        "height": 21.0,
+        "nativeWordScore": 96.971428
+      },
+      {
+        "text": "อ",
+        "x": 196.0,
+        "y": 198.0,
+        "width": 12.0,
+        "height": 41.0,
+        "nativeWordScore": 97.019356
+      },
+      {
+        "text": "ม",
+        "x": 207.0,
+        "y": 214.0,
+        "width": 8.0,
+        "height": 21.0,
+        "nativeWordScore": 93.306152
+      },
+      {
+        "text": "ู",
+        "x": 214.0,
+        "y": 198.0,
+        "width": 11.0,
+        "height": 41.0,
+        "nativeWordScore": 92.477386
+      },
+      {
+        "text": "ล",
+        "x": 225.0,
+        "y": 214.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 96.994743
+      },
+      {
+        "text": "ส",
+        "x": 236.0,
+        "y": 208.0,
+        "width": 10.0,
+        "height": 20.0,
+        "nativeWordScore": 93.297897
+      },
+      {
+        "text": "่",
+        "x": 250.0,
+        "y": 214.0,
+        "width": 6.0,
+        "height": 14.0,
+        "nativeWordScore": 93.305435
+      },
+      {
+        "text": "ว",
+        "x": 255.0,
+        "y": 198.0,
+        "width": 11.0,
+        "height": 41.0,
+        "nativeWordScore": 97.010193
+      },
+      {
+        "text": "น",
+        "x": 266.0,
+        "y": 214.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.964256
+      },
+      {
+        "text": "ต",
+        "x": 276.0,
+        "y": 198.0,
+        "width": 8.0,
+        "height": 41.0,
+        "nativeWordScore": 93.306091
+      },
+      {
+        "text": "ั",
+        "x": 283.0,
+        "y": 209.0,
+        "width": 12.0,
+        "height": 19.0,
+        "nativeWordScore": 92.380348
+      },
+      {
+        "text": "ว",
+        "x": 295.0,
+        "y": 214.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 95.669655
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 366.3,
+    "processPeakSampleMiB": 34.5,
+    "processPrivatePeakSampleMiB": 26.5,
+    "systemFreeBeforeMiB": 1399.9,
+    "systemFreeMinimumMiB": 1366.5,
+    "systemFreeAfterMiB": 1399.5,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-en-dark",
+    "set": "new",
+    "category": "English dark",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.",
+    "actual": "Review the text before sending.\n\nMonday meeting at 09:45.\n",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0,
+        "nativeWordScore": 96.706596
+      },
+      {
+        "text": "the",
+        "x": 158.0,
+        "y": 77.0,
+        "width": 40.0,
+        "height": 21.0,
+        "nativeWordScore": 96.972694
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 80.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.786377
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 77.0,
+        "width": 78.0,
+        "height": 21.0,
+        "nativeWordScore": 96.529633
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 77.0,
+        "width": 102.0,
+        "height": 27.0,
+        "nativeWordScore": 94.569
+      },
+      {
+        "text": "Monday",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 100.0,
+        "height": 27.0,
+        "nativeWordScore": 96.675797
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 142.0,
+        "width": 99.0,
+        "height": 27.0,
+        "nativeWordScore": 96.897873
+      },
+      {
+        "text": "at",
+        "x": 285.0,
+        "y": 145.0,
+        "width": 23.0,
+        "height": 18.0,
+        "nativeWordScore": 95.924782
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 143.0,
+        "width": 71.0,
+        "height": 20.0,
+        "nativeWordScore": 95.924782
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 366.9,
+    "processPeakSampleMiB": 35.2,
+    "processPrivatePeakSampleMiB": 27.2,
+    "systemFreeBeforeMiB": 1399.5,
+    "systemFreeMinimumMiB": 1376.2,
+    "systemFreeAfterMiB": 1411.2,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-th-dark",
+    "set": "new",
+    "category": "Thai dark",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "actual": "กรุณาตรวจข้อความก่อนส่ง\n\nนัดหมายวันจันทร์ เวลา 09:45\n",
+    "actualLines": [
+      "ก ร ุ ณา ต ร ว จ ข้ อ ค ว า ม ก ่ อ น ส ่ ง",
+      "น ั ด ห ม า ย ว ั น จ ั น ท ร ์ เว ล า 09:45"
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 41,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 41,
+    "mappedOriginalWords": [
+      {
+        "text": "ก",
+        "x": 66.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.159294
+      },
+      {
+        "text": "ร",
+        "x": 81.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 21.0,
+        "nativeWordScore": 93.299133
+      },
+      {
+        "text": "ุ",
+        "x": 91.0,
+        "y": 73.0,
+        "width": 14.0,
+        "height": 36.0,
+        "nativeWordScore": 93.294014
+      },
+      {
+        "text": "ณา",
+        "x": 104.0,
+        "y": 84.0,
+        "width": 25.0,
+        "height": 14.0,
+        "nativeWordScore": 96.283501
+      },
+      {
+        "text": "ต",
+        "x": 132.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 97.019936
+      },
+      {
+        "text": "ร",
+        "x": 143.0,
+        "y": 73.0,
+        "width": 14.0,
+        "height": 36.0,
+        "nativeWordScore": 97.011208
+      },
+      {
+        "text": "ว",
+        "x": 156.0,
+        "y": 84.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.994469
+      },
+      {
+        "text": "จ",
+        "x": 172.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.778572
+      },
+      {
+        "text": "ข้",
+        "x": 181.0,
+        "y": 73.0,
+        "width": 24.0,
+        "height": 36.0,
+        "nativeWordScore": 96.861191
+      },
+      {
+        "text": "อ",
+        "x": 206.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.006844
+      },
+      {
+        "text": "ค",
+        "x": 219.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 97.013901
+      },
+      {
+        "text": "ว",
+        "x": 234.0,
+        "y": 84.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.285118
+      },
+      {
+        "text": "า",
+        "x": 246.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.305305
+      },
+      {
+        "text": "ม",
+        "x": 259.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.889633
+      },
+      {
+        "text": "ก",
+        "x": 269.0,
+        "y": 73.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 88.336685
+      },
+      {
+        "text": "่",
+        "x": 280.0,
+        "y": 78.0,
+        "width": 10.0,
+        "height": 20.0,
+        "nativeWordScore": 93.077782
+      },
+      {
+        "text": "อ",
+        "x": 292.0,
+        "y": 84.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 96.831291
+      },
+      {
+        "text": "น",
+        "x": 302.0,
+        "y": 73.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 97.00634
+      },
+      {
+        "text": "ส",
+        "x": 314.0,
+        "y": 78.0,
+        "width": 9.0,
+        "height": 20.0,
+        "nativeWordScore": 93.284836
+      },
+      {
+        "text": "่",
+        "x": 323.0,
+        "y": 73.0,
+        "width": 14.0,
+        "height": 36.0,
+        "nativeWordScore": 93.298851
+      },
+      {
+        "text": "ง",
+        "x": 337.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.833458
+      },
+      {
+        "text": "น",
+        "x": 65.0,
+        "y": 144.0,
+        "width": 10.0,
+        "height": 19.0,
+        "nativeWordScore": 93.259796
+      },
+      {
+        "text": "ั",
+        "x": 74.0,
+        "y": 138.0,
+        "width": 14.0,
+        "height": 35.0,
+        "nativeWordScore": 92.87751
+      },
+      {
+        "text": "ด",
+        "x": 87.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.95369
+      },
+      {
+        "text": "ห",
+        "x": 98.0,
+        "y": 149.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.346283
+      },
+      {
+        "text": "ม",
+        "x": 114.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 93.297478
+      },
+      {
+        "text": "า",
+        "x": 130.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.303879
+      },
+      {
+        "text": "ย",
+        "x": 137.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 96.976974
+      },
+      {
+        "text": "ว",
+        "x": 148.0,
+        "y": 149.0,
+        "width": 8.0,
+        "height": 14.0,
+        "nativeWordScore": 93.203911
+      },
+      {
+        "text": "ั",
+        "x": 159.0,
+        "y": 144.0,
+        "width": 12.0,
+        "height": 19.0,
+        "nativeWordScore": 93.304176
+      },
+      {
+        "text": "น",
+        "x": 170.0,
+        "y": 149.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 96.995781
+      },
+      {
+        "text": "จ",
+        "x": 183.0,
+        "y": 138.0,
+        "width": 10.0,
+        "height": 35.0,
+        "nativeWordScore": 93.304291
+      },
+      {
+        "text": "ั",
+        "x": 192.0,
+        "y": 144.0,
+        "width": 11.0,
+        "height": 19.0,
+        "nativeWordScore": 93.306122
+      },
+      {
+        "text": "น",
+        "x": 203.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 97.011292
+      },
+      {
+        "text": "ท",
+        "x": 218.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 96.984711
+      },
+      {
+        "text": "ร",
+        "x": 227.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 93.304596
+      },
+      {
+        "text": "์",
+        "x": 238.0,
+        "y": 142.0,
+        "width": 9.0,
+        "height": 21.0,
+        "nativeWordScore": 92.014832
+      },
+      {
+        "text": "เว",
+        "x": 255.0,
+        "y": 149.0,
+        "width": 45.0,
+        "height": 14.0,
+        "nativeWordScore": 96.940819
+      },
+      {
+        "text": "ล",
+        "x": 279.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 93.304283
+      },
+      {
+        "text": "า",
+        "x": 290.0,
+        "y": 138.0,
+        "width": 12.0,
+        "height": 35.0,
+        "nativeWordScore": 93.25531
+      },
+      {
+        "text": "09:45",
+        "x": 310.0,
+        "y": 143.0,
+        "width": 65.0,
+        "height": 20.0,
+        "nativeWordScore": 92.327538
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 312.2,
+    "processPeakSampleMiB": 35.5,
+    "processPrivatePeakSampleMiB": 27.4,
+    "systemFreeBeforeMiB": 1411.2,
+    "systemFreeMinimumMiB": 1373.0,
+    "systemFreeAfterMiB": 1407.2,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-en-small",
+    "set": "new",
+    "category": "English small",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.",
+    "actual": "Review the text before sending.\n\nMonday meeting at 09:45,\n",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45,"
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 1,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 2.08,
+      "exact": false
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [
+      "Monday meeting at 09:45."
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 66.0,
+        "y": 70.0,
+        "width": 36.0,
+        "height": 9.0,
+        "nativeWordScore": 91.472069
+      },
+      {
+        "text": "the",
+        "x": 105.0,
+        "y": 70.0,
+        "width": 17.0,
+        "height": 9.0,
+        "nativeWordScore": 91.472069
+      },
+      {
+        "text": "text",
+        "x": 125.0,
+        "y": 71.0,
+        "width": 21.0,
+        "height": 8.0,
+        "nativeWordScore": 96.965279
+      },
+      {
+        "text": "before",
+        "x": 149.0,
+        "y": 70.0,
+        "width": 34.0,
+        "height": 9.0,
+        "nativeWordScore": 96.722008
+      },
+      {
+        "text": "sending.",
+        "x": 187.0,
+        "y": 70.0,
+        "width": 44.0,
+        "height": 12.0,
+        "nativeWordScore": 73.061218
+      },
+      {
+        "text": "Monday",
+        "x": 66.0,
+        "y": 105.0,
+        "width": 43.0,
+        "height": 12.0,
+        "nativeWordScore": 95.107735
+      },
+      {
+        "text": "meeting",
+        "x": 112.0,
+        "y": 106.0,
+        "width": 43.0,
+        "height": 11.0,
+        "nativeWordScore": 96.280434
+      },
+      {
+        "text": "at",
+        "x": 159.0,
+        "y": 106.0,
+        "width": 10.0,
+        "height": 8.0,
+        "nativeWordScore": 87.489197
+      },
+      {
+        "text": "09:45,",
+        "x": 172.0,
+        "y": 105.0,
+        "width": 31.0,
+        "height": 9.0,
+        "nativeWordScore": 87.489197
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 316.2,
+    "processPeakSampleMiB": 35.3,
+    "processPrivatePeakSampleMiB": 27.1,
+    "systemFreeBeforeMiB": 1407.2,
+    "systemFreeMinimumMiB": 1370.2,
+    "systemFreeAfterMiB": 1405.2,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-th-small",
+    "set": "new",
+    "category": "Thai small",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "actual": "(กรุณาตรวจข้อความก่อนส่ง\n\nนนัดหมายวันจันทร์ เวลา 0945\n",
+    "actualLines": [
+      "(ก ร ุ ณา ต ร ว จ ข้ อ ค ว า ม ก ่ อ น ส ่ ง",
+      "น นั ด ห ม า ย ว ั น จ ั น ท ร ์ เว ล า 0945"
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 1,
+      "insertions": 2,
+      "cerPercent": 6.25,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 1,
+      "cerPercent": 2.33,
+      "exact": false
+    },
+    "missingExactLines": [
+      "นัดหมายวันจันทร์ เวลา 09:45"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 41,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 41,
+    "mappedOriginalWords": [
+      {
+        "text": "(ก",
+        "x": 61.0,
+        "y": 60.0,
+        "width": 10.0,
+        "height": 29.0,
+        "nativeWordScore": 35.795898
+      },
+      {
+        "text": "ร",
+        "x": 71.0,
+        "y": 60.0,
+        "width": 7.0,
+        "height": 29.0,
+        "nativeWordScore": 92.620758
+      },
+      {
+        "text": "ุ",
+        "x": 77.0,
+        "y": 73.0,
+        "width": 4.0,
+        "height": 9.0,
+        "nativeWordScore": 93.288109
+      },
+      {
+        "text": "ณา",
+        "x": 80.0,
+        "y": 60.0,
+        "width": 13.0,
+        "height": 29.0,
+        "nativeWordScore": 92.695724
+      },
+      {
+        "text": "ต",
+        "x": 93.0,
+        "y": 60.0,
+        "width": 7.0,
+        "height": 29.0,
+        "nativeWordScore": 96.732094
+      },
+      {
+        "text": "ร",
+        "x": 99.0,
+        "y": 73.0,
+        "width": 6.0,
+        "height": 6.0,
+        "nativeWordScore": 96.761658
+      },
+      {
+        "text": "ว",
+        "x": 104.0,
+        "y": 60.0,
+        "width": 6.0,
+        "height": 29.0,
+        "nativeWordScore": 95.251511
+      },
+      {
+        "text": "จ",
+        "x": 109.0,
+        "y": 60.0,
+        "width": 7.0,
+        "height": 29.0,
+        "nativeWordScore": 96.885933
+      },
+      {
+        "text": "ข้",
+        "x": 115.0,
+        "y": 60.0,
+        "width": 12.0,
+        "height": 29.0,
+        "nativeWordScore": 86.958786
+      },
+      {
+        "text": "อ",
+        "x": 126.0,
+        "y": 60.0,
+        "width": 6.0,
+        "height": 29.0,
+        "nativeWordScore": 97.019501
+      },
+      {
+        "text": "ค",
+        "x": 131.0,
+        "y": 73.0,
+        "width": 7.0,
+        "height": 6.0,
+        "nativeWordScore": 77.997086
+      },
+      {
+        "text": "ว",
+        "x": 137.0,
+        "y": 60.0,
+        "width": 6.0,
+        "height": 29.0,
+        "nativeWordScore": 93.305061
+      },
+      {
+        "text": "า",
+        "x": 142.0,
+        "y": 60.0,
+        "width": 6.0,
+        "height": 29.0,
+        "nativeWordScore": 93.298409
+      },
+      {
+        "text": "ม",
+        "x": 148.0,
+        "y": 73.0,
+        "width": 6.0,
+        "height": 6.0,
+        "nativeWordScore": 97.021896
+      },
+      {
+        "text": "ก",
+        "x": 153.0,
+        "y": 60.0,
+        "width": 6.0,
+        "height": 29.0,
+        "nativeWordScore": 77.127457
+      },
+      {
+        "text": "่",
+        "x": 158.0,
+        "y": 60.0,
+        "width": 7.0,
+        "height": 29.0,
+        "nativeWordScore": 93.306053
+      },
+      {
+        "text": "อ",
+        "x": 164.0,
+        "y": 60.0,
+        "width": 4.0,
+        "height": 29.0,
+        "nativeWordScore": 96.847748
+      },
+      {
+        "text": "น",
+        "x": 167.0,
+        "y": 60.0,
+        "width": 7.0,
+        "height": 29.0,
+        "nativeWordScore": 97.021965
+      },
+      {
+        "text": "ส",
+        "x": 173.0,
+        "y": 70.0,
+        "width": 6.0,
+        "height": 9.0,
+        "nativeWordScore": 93.277573
+      },
+      {
+        "text": "่",
+        "x": 178.0,
+        "y": 60.0,
+        "width": 5.0,
+        "height": 29.0,
+        "nativeWordScore": 93.010315
+      },
+      {
+        "text": "ง",
+        "x": 182.0,
+        "y": 60.0,
+        "width": 8.0,
+        "height": 29.0,
+        "nativeWordScore": 93.934822
+      },
+      {
+        "text": "น",
+        "x": 61.0,
+        "y": 95.0,
+        "width": 6.0,
+        "height": 28.0,
+        "nativeWordScore": 36.940178
+      },
+      {
+        "text": "นั",
+        "x": 66.0,
+        "y": 95.0,
+        "width": 11.0,
+        "height": 28.0,
+        "nativeWordScore": 82.510643
+      },
+      {
+        "text": "ด",
+        "x": 76.0,
+        "y": 95.0,
+        "width": 5.0,
+        "height": 28.0,
+        "nativeWordScore": 96.884743
+      },
+      {
+        "text": "ห",
+        "x": 80.0,
+        "y": 108.0,
+        "width": 6.0,
+        "height": 6.0,
+        "nativeWordScore": 97.019356
+      },
+      {
+        "text": "ม",
+        "x": 85.0,
+        "y": 95.0,
+        "width": 6.0,
+        "height": 28.0,
+        "nativeWordScore": 93.306145
+      },
+      {
+        "text": "า",
+        "x": 93.0,
+        "y": 108.0,
+        "width": 3.0,
+        "height": 6.0,
+        "nativeWordScore": 93.208122
+      },
+      {
+        "text": "ย",
+        "x": 96.0,
+        "y": 95.0,
+        "width": 6.0,
+        "height": 28.0,
+        "nativeWordScore": 97.015984
+      },
+      {
+        "text": "ว",
+        "x": 101.0,
+        "y": 95.0,
+        "width": 6.0,
+        "height": 28.0,
+        "nativeWordScore": 93.294647
+      },
+      {
+        "text": "ั",
+        "x": 106.0,
+        "y": 104.0,
+        "width": 6.0,
+        "height": 10.0,
+        "nativeWordScore": 93.24334
+      },
+      {
+        "text": "น",
+        "x": 111.0,
+        "y": 95.0,
+        "width": 5.0,
+        "height": 28.0,
+        "nativeWordScore": 96.995148
+      },
+      {
+        "text": "จ",
+        "x": 115.0,
+        "y": 95.0,
+        "width": 6.0,
+        "height": 28.0,
+        "nativeWordScore": 93.29377
+      },
+      {
+        "text": "ั",
+        "x": 120.0,
+        "y": 95.0,
+        "width": 4.0,
+        "height": 28.0,
+        "nativeWordScore": 93.001785
+      },
+      {
+        "text": "น",
+        "x": 124.0,
+        "y": 104.0,
+        "width": 7.0,
+        "height": 10.0,
+        "nativeWordScore": 85.935043
+      },
+      {
+        "text": "ท",
+        "x": 131.0,
+        "y": 95.0,
+        "width": 4.0,
+        "height": 28.0,
+        "nativeWordScore": 96.990173
+      },
+      {
+        "text": "ร",
+        "x": 134.0,
+        "y": 104.0,
+        "width": 6.0,
+        "height": 10.0,
+        "nativeWordScore": 93.272591
+      },
+      {
+        "text": "์",
+        "x": 139.0,
+        "y": 95.0,
+        "width": 6.0,
+        "height": 28.0,
+        "nativeWordScore": 93.234398
+      },
+      {
+        "text": "เว",
+        "x": 148.0,
+        "y": 95.0,
+        "width": 10.0,
+        "height": 28.0,
+        "nativeWordScore": 94.504112
+      },
+      {
+        "text": "ล",
+        "x": 157.0,
+        "y": 108.0,
+        "width": 4.0,
+        "height": 6.0,
+        "nativeWordScore": 91.738739
+      },
+      {
+        "text": "า",
+        "x": 162.0,
+        "y": 108.0,
+        "width": 4.0,
+        "height": 6.0,
+        "nativeWordScore": 92.583633
+      },
+      {
+        "text": "0945",
+        "x": 170.0,
+        "y": 105.0,
+        "width": 28.0,
+        "height": 9.0,
+        "nativeWordScore": 84.525803
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 311.7,
+    "processPeakSampleMiB": 33.6,
+    "processPrivatePeakSampleMiB": 26.0,
+    "systemFreeBeforeMiB": 1405.1,
+    "systemFreeMinimumMiB": 1372.1,
+    "systemFreeAfterMiB": 1419.9,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-reduced",
+    "set": "new",
+    "category": "Mixed reduced",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nReview the text before sending.\nMonday meeting at 09:45.",
+    "actual": "'ครุณาตรวจข้อความค่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nReview the text before sending.\n\nMonday meeting at 09:45.\n",
+    "actualLines": [
+      "' ค ร ุ ณา ต ร ว จ ข้ อ ค ว า ม ค ่ อ น ส ่ ง",
+      "นัดหมาย ว ั น จ ั น ท ร ์ เว ล า 09:45",
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 96,
+      "substitutions": 2,
+      "deletions": 0,
+      "insertions": 1,
+      "cerPercent": 3.12,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 2,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 4.65,
+      "exact": false
+    },
+    "missingExactLines": [
+      "กรุณาตรวจข้อความก่อนส่ง"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 45,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 45,
+    "mappedOriginalWords": [
+      {
+        "text": "'",
+        "x": 58.0,
+        "y": 60.0,
+        "width": 10.0,
+        "height": 52.0,
+        "nativeWordScore": 34.829926
+      },
+      {
+        "text": "ค",
+        "x": 66.0,
+        "y": 84.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 74.653473
+      },
+      {
+        "text": "ร",
+        "x": 80.0,
+        "y": 60.0,
+        "width": 14.0,
+        "height": 52.0,
+        "nativeWordScore": 93.299812
+      },
+      {
+        "text": "ุ",
+        "x": 92.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 20.0,
+        "nativeWordScore": 93.305527
+      },
+      {
+        "text": "ณา",
+        "x": 102.0,
+        "y": 60.0,
+        "width": 28.0,
+        "height": 52.0,
+        "nativeWordScore": 97.02124
+      },
+      {
+        "text": "ต",
+        "x": 132.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 97.021629
+      },
+      {
+        "text": "ร",
+        "x": 142.0,
+        "y": 60.0,
+        "width": 14.0,
+        "height": 52.0,
+        "nativeWordScore": 97.022263
+      },
+      {
+        "text": "ว",
+        "x": 154.0,
+        "y": 84.0,
+        "width": 16.0,
+        "height": 14.0,
+        "nativeWordScore": 97.022217
+      },
+      {
+        "text": "จ",
+        "x": 168.0,
+        "y": 60.0,
+        "width": 14.0,
+        "height": 52.0,
+        "nativeWordScore": 97.009865
+      },
+      {
+        "text": "ข้",
+        "x": 180.0,
+        "y": 60.0,
+        "width": 28.0,
+        "height": 52.0,
+        "nativeWordScore": 96.748909
+      },
+      {
+        "text": "อ",
+        "x": 206.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.024559
+      },
+      {
+        "text": "ค",
+        "x": 218.0,
+        "y": 84.0,
+        "width": 14.0,
+        "height": 14.0,
+        "nativeWordScore": 97.024467
+      },
+      {
+        "text": "ว",
+        "x": 234.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 93.304932
+      },
+      {
+        "text": "า",
+        "x": 246.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 93.293915
+      },
+      {
+        "text": "ม",
+        "x": 260.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.023361
+      },
+      {
+        "text": "ค",
+        "x": 268.0,
+        "y": 60.0,
+        "width": 12.0,
+        "height": 52.0,
+        "nativeWordScore": 81.246536
+      },
+      {
+        "text": "่",
+        "x": 278.0,
+        "y": 78.0,
+        "width": 12.0,
+        "height": 20.0,
+        "nativeWordScore": 65.063568
+      },
+      {
+        "text": "อ",
+        "x": 292.0,
+        "y": 84.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.949165
+      },
+      {
+        "text": "น",
+        "x": 306.0,
+        "y": 84.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.023689
+      },
+      {
+        "text": "ส",
+        "x": 314.0,
+        "y": 60.0,
+        "width": 14.0,
+        "height": 52.0,
+        "nativeWordScore": 93.287781
+      },
+      {
+        "text": "่",
+        "x": 326.0,
+        "y": 78.0,
+        "width": 12.0,
+        "height": 20.0,
+        "nativeWordScore": 93.271492
+      },
+      {
+        "text": "ง",
+        "x": 336.0,
+        "y": 60.0,
+        "width": 18.0,
+        "height": 52.0,
+        "nativeWordScore": 95.410522
+      },
+      {
+        "text": "นัดหมาย",
+        "x": 64.0,
+        "y": 142.0,
+        "width": 236.0,
+        "height": 22.0,
+        "nativeWordScore": 23.799011
+      },
+      {
+        "text": "ว",
+        "x": 148.0,
+        "y": 122.0,
+        "width": 14.0,
+        "height": 62.0,
+        "nativeWordScore": 93.298492
+      },
+      {
+        "text": "ั",
+        "x": 160.0,
+        "y": 122.0,
+        "width": 14.0,
+        "height": 62.0,
+        "nativeWordScore": 93.291557
+      },
+      {
+        "text": "น",
+        "x": 172.0,
+        "y": 122.0,
+        "width": 8.0,
+        "height": 62.0,
+        "nativeWordScore": 96.051102
+      },
+      {
+        "text": "จ",
+        "x": 180.0,
+        "y": 122.0,
+        "width": 12.0,
+        "height": 62.0,
+        "nativeWordScore": 93.306145
+      },
+      {
+        "text": "ั",
+        "x": 190.0,
+        "y": 122.0,
+        "width": 14.0,
+        "height": 62.0,
+        "nativeWordScore": 93.30175
+      },
+      {
+        "text": "น",
+        "x": 202.0,
+        "y": 122.0,
+        "width": 14.0,
+        "height": 62.0,
+        "nativeWordScore": 97.020134
+      },
+      {
+        "text": "ท",
+        "x": 214.0,
+        "y": 122.0,
+        "width": 14.0,
+        "height": 62.0,
+        "nativeWordScore": 96.994614
+      },
+      {
+        "text": "ร",
+        "x": 226.0,
+        "y": 122.0,
+        "width": 14.0,
+        "height": 62.0,
+        "nativeWordScore": 93.286728
+      },
+      {
+        "text": "์",
+        "x": 238.0,
+        "y": 122.0,
+        "width": 12.0,
+        "height": 62.0,
+        "nativeWordScore": 93.25885
+      },
+      {
+        "text": "เว",
+        "x": 256.0,
+        "y": 122.0,
+        "width": 22.0,
+        "height": 62.0,
+        "nativeWordScore": 96.96283
+      },
+      {
+        "text": "ล",
+        "x": 276.0,
+        "y": 122.0,
+        "width": 18.0,
+        "height": 62.0,
+        "nativeWordScore": 93.155792
+      },
+      {
+        "text": "า",
+        "x": 292.0,
+        "y": 122.0,
+        "width": 12.0,
+        "height": 62.0,
+        "nativeWordScore": 93.112442
+      },
+      {
+        "text": "09:45",
+        "x": 310.0,
+        "y": 142.0,
+        "width": 64.0,
+        "height": 22.0,
+        "nativeWordScore": 83.965599
+      },
+      {
+        "text": "Review",
+        "x": 66.0,
+        "y": 206.0,
+        "width": 84.0,
+        "height": 22.0,
+        "nativeWordScore": 96.412056
+      },
+      {
+        "text": "the",
+        "x": 158.0,
+        "y": 206.0,
+        "width": 40.0,
+        "height": 22.0,
+        "nativeWordScore": 96.270325
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 210.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.347549
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 206.0,
+        "width": 78.0,
+        "height": 22.0,
+        "nativeWordScore": 96.897217
+      },
+      {
+        "text": "sending.",
+        "x": 348.0,
+        "y": 206.0,
+        "width": 102.0,
+        "height": 28.0,
+        "nativeWordScore": 93.159363
+      },
+      {
+        "text": "Monday",
+        "x": 66.0,
+        "y": 272.0,
+        "width": 100.0,
+        "height": 28.0,
+        "nativeWordScore": 95.476486
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 272.0,
+        "width": 98.0,
+        "height": 28.0,
+        "nativeWordScore": 89.130188
+      },
+      {
+        "text": "at",
+        "x": 284.0,
+        "y": 274.0,
+        "width": 24.0,
+        "height": 20.0,
+        "nativeWordScore": 96.386566
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 272.0,
+        "width": 70.0,
+        "height": 22.0,
+        "nativeWordScore": 91.741722
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 311.7,
+    "processPeakSampleMiB": 32.1,
+    "processPrivatePeakSampleMiB": 24.0,
+    "systemFreeBeforeMiB": 1419.8,
+    "systemFreeMinimumMiB": 1383.3,
+    "systemFreeAfterMiB": 1411.8,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-blur",
+    "set": "new",
+    "category": "Mixed blurred",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nReview the text before sending.\nMonday meeting at 09:45.",
+    "actual": "นัดหมายวันจันทร์ เวลา 09:45\nReview the text before sending.\nMonday meeting at 09:45.\n",
+    "actualLines": [
+      "น ั ด ห ม า ย ว ั น จ ั น ท ร ์ เว ล า 09:45",
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 96,
+      "substitutions": 0,
+      "deletions": 23,
+      "insertions": 0,
+      "cerPercent": 23.96,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 23,
+      "insertions": 0,
+      "cerPercent": 53.49,
+      "exact": false
+    },
+    "missingExactLines": [
+      "กรุณาตรวจข้อความก่อนส่ง"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 29,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 29,
+    "mappedOriginalWords": [
+      {
+        "text": "น",
+        "x": 61.0,
+        "y": 137.0,
+        "width": 15.0,
+        "height": 38.0,
+        "nativeWordScore": 71.613892
+      },
+      {
+        "text": "ั",
+        "x": 75.0,
+        "y": 137.0,
+        "width": 13.0,
+        "height": 38.0,
+        "nativeWordScore": 88.669739
+      },
+      {
+        "text": "ด",
+        "x": 87.0,
+        "y": 137.0,
+        "width": 15.0,
+        "height": 38.0,
+        "nativeWordScore": 96.089897
+      },
+      {
+        "text": "ห",
+        "x": 101.0,
+        "y": 137.0,
+        "width": 13.0,
+        "height": 38.0,
+        "nativeWordScore": 96.375076
+      },
+      {
+        "text": "ม",
+        "x": 113.0,
+        "y": 137.0,
+        "width": 13.0,
+        "height": 38.0,
+        "nativeWordScore": 93.304146
+      },
+      {
+        "text": "า",
+        "x": 125.0,
+        "y": 143.0,
+        "width": 12.0,
+        "height": 22.0,
+        "nativeWordScore": 93.291206
+      },
+      {
+        "text": "ย",
+        "x": 137.0,
+        "y": 137.0,
+        "width": 15.0,
+        "height": 38.0,
+        "nativeWordScore": 96.596329
+      },
+      {
+        "text": "ว",
+        "x": 151.0,
+        "y": 137.0,
+        "width": 10.0,
+        "height": 38.0,
+        "nativeWordScore": 93.037498
+      },
+      {
+        "text": "ั",
+        "x": 160.0,
+        "y": 137.0,
+        "width": 13.0,
+        "height": 38.0,
+        "nativeWordScore": 93.299438
+      },
+      {
+        "text": "น",
+        "x": 172.0,
+        "y": 137.0,
+        "width": 11.0,
+        "height": 38.0,
+        "nativeWordScore": 96.775215
+      },
+      {
+        "text": "จ",
+        "x": 182.0,
+        "y": 137.0,
+        "width": 10.0,
+        "height": 38.0,
+        "nativeWordScore": 93.210579
+      },
+      {
+        "text": "ั",
+        "x": 191.0,
+        "y": 137.0,
+        "width": 13.0,
+        "height": 38.0,
+        "nativeWordScore": 93.202843
+      },
+      {
+        "text": "น",
+        "x": 203.0,
+        "y": 137.0,
+        "width": 13.0,
+        "height": 38.0,
+        "nativeWordScore": 97.021355
+      },
+      {
+        "text": "ท",
+        "x": 215.0,
+        "y": 142.0,
+        "width": 10.0,
+        "height": 22.0,
+        "nativeWordScore": 96.710869
+      },
+      {
+        "text": "ร",
+        "x": 224.0,
+        "y": 137.0,
+        "width": 11.0,
+        "height": 38.0,
+        "nativeWordScore": 93.296867
+      },
+      {
+        "text": "์",
+        "x": 234.0,
+        "y": 137.0,
+        "width": 10.0,
+        "height": 38.0,
+        "nativeWordScore": 93.305969
+      },
+      {
+        "text": "เว",
+        "x": 255.0,
+        "y": 137.0,
+        "width": 25.0,
+        "height": 38.0,
+        "nativeWordScore": 96.538048
+      },
+      {
+        "text": "ล",
+        "x": 279.0,
+        "y": 137.0,
+        "width": 10.0,
+        "height": 38.0,
+        "nativeWordScore": 93.21653
+      },
+      {
+        "text": "า",
+        "x": 289.0,
+        "y": 137.0,
+        "width": 12.0,
+        "height": 38.0,
+        "nativeWordScore": 91.937592
+      },
+      {
+        "text": "09:45",
+        "x": 311.0,
+        "y": 137.0,
+        "width": 65.0,
+        "height": 38.0,
+        "nativeWordScore": 91.626564
+      },
+      {
+        "text": "Review",
+        "x": 61.0,
+        "y": 202.0,
+        "width": 83.0,
+        "height": 38.0,
+        "nativeWordScore": 96.616219
+      },
+      {
+        "text": "the",
+        "x": 155.0,
+        "y": 202.0,
+        "width": 36.0,
+        "height": 38.0,
+        "nativeWordScore": 96.961815
+      },
+      {
+        "text": "text",
+        "x": 203.0,
+        "y": 202.0,
+        "width": 48.0,
+        "height": 38.0,
+        "nativeWordScore": 97.006058
+      },
+      {
+        "text": "before",
+        "x": 263.0,
+        "y": 202.0,
+        "width": 74.0,
+        "height": 38.0,
+        "nativeWordScore": 96.796944
+      },
+      {
+        "text": "sending.",
+        "x": 348.0,
+        "y": 206.0,
+        "width": 103.0,
+        "height": 30.0,
+        "nativeWordScore": 90.933334
+      },
+      {
+        "text": "Monday",
+        "x": 61.0,
+        "y": 267.0,
+        "width": 102.0,
+        "height": 38.0,
+        "nativeWordScore": 96.587006
+      },
+      {
+        "text": "meeting",
+        "x": 174.0,
+        "y": 267.0,
+        "width": 96.0,
+        "height": 38.0,
+        "nativeWordScore": 96.22818
+      },
+      {
+        "text": "at",
+        "x": 282.0,
+        "y": 267.0,
+        "width": 23.0,
+        "height": 38.0,
+        "nativeWordScore": 96.390556
+      },
+      {
+        "text": "09:45.",
+        "x": 317.0,
+        "y": 267.0,
+        "width": 70.0,
+        "height": 38.0,
+        "nativeWordScore": 85.308029
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 312.1,
+    "processPeakSampleMiB": 36.9,
+    "processPrivatePeakSampleMiB": 28.8,
+    "systemFreeBeforeMiB": 1411.8,
+    "systemFreeMinimumMiB": 1374.8,
+    "systemFreeAfterMiB": 1414.6,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-blank",
+    "set": "new",
+    "category": "Blank",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "",
+    "actual": "",
+    "actualLines": [],
+    "metrics": {
+      "referenceChars": 0,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": null,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "no-text",
+    "words": 0,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 0,
+    "mappedOriginalWords": [],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 263.6,
+    "processPeakSampleMiB": 32.2,
+    "processPrivatePeakSampleMiB": 25.2,
+    "systemFreeBeforeMiB": 1414.6,
+    "systemFreeMinimumMiB": 1378.2,
+    "systemFreeAfterMiB": 1409.5,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-columns",
+    "set": "new",
+    "category": "English columns",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "LEFT: Repair\nLEFT: Test\nRIGHT: Save\nRIGHT: Export",
+    "actual": "LEFT: Repair                              RIGHT: Save\n\nLEFT: Test                                            RIGHT: Export\n",
+    "actualLines": [
+      "LEFT: Repair RIGHT: Save",
+      "LEFT: Test RIGHT: Export"
+    ],
+    "metrics": {
+      "referenceChars": 42,
+      "substitutions": 14,
+      "deletions": 1,
+      "insertions": 1,
+      "cerPercent": 38.1,
+      "exact": false
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "wrong",
+    "words": 8,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 8,
+    "mappedOriginalWords": [
+      {
+        "text": "LEFT:",
+        "x": 67.0,
+        "y": 83.0,
+        "width": 58.0,
+        "height": 20.0,
+        "nativeWordScore": 96.143784
+      },
+      {
+        "text": "Repair",
+        "x": 137.0,
+        "y": 82.0,
+        "width": 75.0,
+        "height": 27.0,
+        "nativeWordScore": 96.977348
+      },
+      {
+        "text": "RIGHT:",
+        "x": 512.0,
+        "y": 83.0,
+        "width": 81.0,
+        "height": 20.0,
+        "nativeWordScore": 96.006302
+      },
+      {
+        "text": "Save",
+        "x": 603.0,
+        "y": 83.0,
+        "width": 55.0,
+        "height": 20.0,
+        "nativeWordScore": 96.711853
+      },
+      {
+        "text": "LEFT:",
+        "x": 67.0,
+        "y": 158.0,
+        "width": 58.0,
+        "height": 20.0,
+        "nativeWordScore": 96.736206
+      },
+      {
+        "text": "Test",
+        "x": 135.0,
+        "y": 158.0,
+        "width": 47.0,
+        "height": 20.0,
+        "nativeWordScore": 95.908913
+      },
+      {
+        "text": "RIGHT:",
+        "x": 512.0,
+        "y": 158.0,
+        "width": 81.0,
+        "height": 20.0,
+        "nativeWordScore": 96.746063
+      },
+      {
+        "text": "Export",
+        "x": 604.0,
+        "y": 158.0,
+        "width": 77.0,
+        "height": 26.0,
+        "nativeWordScore": 96.68927
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 311.9,
+    "processPeakSampleMiB": 34.8,
+    "processPrivatePeakSampleMiB": 26.8,
+    "systemFreeBeforeMiB": 1409.5,
+    "systemFreeMinimumMiB": 1381.9,
+    "systemFreeAfterMiB": 1413.9,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-crop",
+    "set": "new",
+    "category": "English crop",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.",
+    "actual": "Review the text before sending.\n\nMonday meeting at 09:45.\n",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0,
+        "nativeWordScore": 96.605904
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 77.0,
+        "width": 39.0,
+        "height": 21.0,
+        "nativeWordScore": 96.777603
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 80.0,
+        "width": 46.0,
+        "height": 18.0,
+        "nativeWordScore": 96.8116
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 77.0,
+        "width": 77.0,
+        "height": 21.0,
+        "nativeWordScore": 96.246758
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 77.0,
+        "width": 102.0,
+        "height": 27.0,
+        "nativeWordScore": 96.507721
+      },
+      {
+        "text": "Monday",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 100.0,
+        "height": 27.0,
+        "nativeWordScore": 96.72934
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 142.0,
+        "width": 98.0,
+        "height": 27.0,
+        "nativeWordScore": 96.444771
+      },
+      {
+        "text": "at",
+        "x": 285.0,
+        "y": 145.0,
+        "width": 22.0,
+        "height": 18.0,
+        "nativeWordScore": 96.943459
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 143.0,
+        "width": 71.0,
+        "height": 20.0,
+        "nativeWordScore": 96.395241
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 261.6,
+    "processPeakSampleMiB": 31.9,
+    "processPrivatePeakSampleMiB": 24.0,
+    "systemFreeBeforeMiB": 1413.9,
+    "systemFreeMinimumMiB": 1389.8,
+    "systemFreeAfterMiB": 1421.1,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  },
+  {
+    "id": "new-screenshot",
+    "set": "new",
+    "category": "Mixed browser fixture",
+    "source": "Tesseract 5.5.3 / tessdata_fast",
+    "language": "tha+eng",
+    "expected": "CIC Test - Review\nตรวจข้อความก่อนคัดลอก\nSample 2   09:45\nCopy reviewed text",
+    "actual": "CIC Test - Review\nตรวจข้อความก่อนคัดลอก\nSample 2 09:45\n\nCopy reviewed text\n\n",
+    "actualLines": [
+      "CIC Test - Review",
+      "ต ร ว จ ข้ อ ค ว า ม ก ่ อ น ค ั ด ล อ ก",
+      "Sample 2 09:45",
+      "Copy reviewed text"
+    ],
+    "metrics": {
+      "referenceChars": 63,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": {
+      "referenceChars": 21,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 30,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 30,
+    "mappedOriginalWords": [
+      {
+        "text": "CIC",
+        "x": 66.0,
+        "y": 78.0,
+        "width": 40.0,
+        "height": 20.0,
+        "nativeWordScore": 95.747765
+      },
+      {
+        "text": "Test",
+        "x": 115.0,
+        "y": 78.0,
+        "width": 47.0,
+        "height": 20.0,
+        "nativeWordScore": 93.220177
+      },
+      {
+        "text": "-",
+        "x": 172.0,
+        "y": 89.0,
+        "width": 8.0,
+        "height": 1.0,
+        "nativeWordScore": 93.109131
+      },
+      {
+        "text": "Review",
+        "x": 191.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0,
+        "nativeWordScore": 96.881607
+      },
+      {
+        "text": "ต",
+        "x": 66.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.84478
+      },
+      {
+        "text": "ร",
+        "x": 77.0,
+        "y": 137.0,
+        "width": 15.0,
+        "height": 36.0,
+        "nativeWordScore": 96.99157
+      },
+      {
+        "text": "ว",
+        "x": 91.0,
+        "y": 149.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 97.019775
+      },
+      {
+        "text": "จ",
+        "x": 107.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 97.012764
+      },
+      {
+        "text": "ข้",
+        "x": 118.0,
+        "y": 137.0,
+        "width": 21.0,
+        "height": 36.0,
+        "nativeWordScore": 96.882126
+      },
+      {
+        "text": "อ",
+        "x": 143.0,
+        "y": 149.0,
+        "width": 7.0,
+        "height": 14.0,
+        "nativeWordScore": 96.968117
+      },
+      {
+        "text": "ค",
+        "x": 154.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 96.98922
+      },
+      {
+        "text": "ว",
+        "x": 168.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 93.299866
+      },
+      {
+        "text": "า",
+        "x": 181.0,
+        "y": 149.0,
+        "width": 11.0,
+        "height": 14.0,
+        "nativeWordScore": 93.273888
+      },
+      {
+        "text": "ม",
+        "x": 194.0,
+        "y": 149.0,
+        "width": 12.0,
+        "height": 14.0,
+        "nativeWordScore": 97.01786
+      },
+      {
+        "text": "ก",
+        "x": 210.0,
+        "y": 143.0,
+        "width": 10.0,
+        "height": 20.0,
+        "nativeWordScore": 92.974472
+      },
+      {
+        "text": "่",
+        "x": 219.0,
+        "y": 137.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 92.996124
+      },
+      {
+        "text": "อ",
+        "x": 230.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 96.997658
+      },
+      {
+        "text": "น",
+        "x": 244.0,
+        "y": 149.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 97.018921
+      },
+      {
+        "text": "ค",
+        "x": 257.0,
+        "y": 144.0,
+        "width": 12.0,
+        "height": 19.0,
+        "nativeWordScore": 93.296684
+      },
+      {
+        "text": "ั",
+        "x": 274.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 93.303085
+      },
+      {
+        "text": "ด",
+        "x": 282.0,
+        "y": 137.0,
+        "width": 12.0,
+        "height": 36.0,
+        "nativeWordScore": 95.97966
+      },
+      {
+        "text": "ล",
+        "x": 293.0,
+        "y": 149.0,
+        "width": 9.0,
+        "height": 14.0,
+        "nativeWordScore": 97.013092
+      },
+      {
+        "text": "อ",
+        "x": 307.0,
+        "y": 149.0,
+        "width": 10.0,
+        "height": 14.0,
+        "nativeWordScore": 97.023048
+      },
+      {
+        "text": "ก",
+        "x": 320.0,
+        "y": 149.0,
+        "width": 13.0,
+        "height": 14.0,
+        "nativeWordScore": 96.74295
+      },
+      {
+        "text": "Sample",
+        "x": 66.0,
+        "y": 207.0,
+        "width": 89.0,
+        "height": 27.0,
+        "nativeWordScore": 88.569016
+      },
+      {
+        "text": "2",
+        "x": 165.0,
+        "y": 208.0,
+        "width": 13.0,
+        "height": 20.0,
+        "nativeWordScore": 95.77066
+      },
+      {
+        "text": "09:45",
+        "x": 203.0,
+        "y": 208.0,
+        "width": 64.0,
+        "height": 20.0,
+        "nativeWordScore": 91.168648
+      },
+      {
+        "text": "Copy",
+        "x": 66.0,
+        "y": 273.0,
+        "width": 63.0,
+        "height": 26.0,
+        "nativeWordScore": 96.392433
+      },
+      {
+        "text": "reviewed",
+        "x": 138.0,
+        "y": 272.0,
+        "width": 107.0,
+        "height": 21.0,
+        "nativeWordScore": 95.885551
+      },
+      {
+        "text": "text",
+        "x": 255.0,
+        "y": 275.0,
+        "width": 45.0,
+        "height": 18.0,
+        "nativeWordScore": 96.769272
+      }
+    ],
+    "recognitionMs": null,
+    "decodeAndRecognitionMs": null,
+    "wallMs": 312.3,
+    "processPeakSampleMiB": 36.3,
+    "processPrivatePeakSampleMiB": 28.1,
+    "systemFreeBeforeMiB": 1421.1,
+    "systemFreeMinimumMiB": 1379.8,
+    "systemFreeAfterMiB": 1418.7,
+    "sampleMs": 50,
+    "confidenceProvided": true
+  }
+]

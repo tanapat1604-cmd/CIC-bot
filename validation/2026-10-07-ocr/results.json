@@ -1,0 +1,2886 @@
+[
+  {
+    "id": "development-en-light",
+    "set": "development",
+    "category": "English",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Choose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself. Read text on this device only.",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 47,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 91.0,
+        "height": 21.0
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 84.0,
+        "width": 28.0,
+        "height": 14.0
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 77.0,
+        "width": 73.0,
+        "height": 27.0
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 77.0,
+        "width": 101.0,
+        "height": 27.0
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 57.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "on",
+        "x": 189.0,
+        "y": 149.0,
+        "width": 30.0,
+        "height": 14.0
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 142.0,
+        "width": 43.0,
+        "height": 21.0
+      },
+      {
+        "text": "device",
+        "x": 281.0,
+        "y": 142.0,
+        "width": 77.0,
+        "height": 21.0
+      },
+      {
+        "text": "only.",
+        "x": 367.0,
+        "y": 142.0,
+        "width": 55.0,
+        "height": 27.0
+      }
+    ],
+    "recognitionMs": 14.5698,
+    "decodeAndRecognitionMs": 206.1647,
+    "wallMs": 854.6,
+    "processPeakSampleMiB": 97.2,
+    "processPrivatePeakSampleMiB": 71.7,
+    "systemFreeBeforeMiB": 1513.1,
+    "systemFreeMinimumMiB": 1439.0,
+    "systemFreeAfterMiB": 1507.3,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-th-light",
+    "set": "development",
+    "category": "Thai",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "actual": "",
+    "actualLines": [],
+    "metrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 0,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 0,
+    "mappedOriginalWords": [],
+    "recognitionMs": 19.3415,
+    "decodeAndRecognitionMs": 161.589,
+    "wallMs": 862.2,
+    "processPeakSampleMiB": 96.4,
+    "processPrivatePeakSampleMiB": 71.7,
+    "systemFreeBeforeMiB": 1506.5,
+    "systemFreeMinimumMiB": 1446.5,
+    "systemFreeAfterMiB": 1524.1,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-mixed",
+    "set": "development",
+    "category": "Mixed",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "ทดสอบ CIC Bot รุ่น 1\nChoose an image yourself.\nผู้ใช้เลือกภาพด้วยตนเอง",
+    "actual": "VINOU CIC Bot 1 Choose an image yourself.",
+    "actualLines": [
+      "VINOU CIC Bot 1",
+      "Choose an image yourself."
+    ],
+    "metrics": {
+      "referenceChars": 61,
+      "substitutions": 5,
+      "deletions": 27,
+      "insertions": 0,
+      "cerPercent": 52.46,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 32,
+      "substitutions": 0,
+      "deletions": 32,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ทดสอบ CIC Bot รุ่น 1",
+      "ผู้ใช้เลือกภาพด้วยตนเอง"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 8,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 8,
+    "mappedOriginalWords": [
+      {
+        "text": "VINOU",
+        "x": 66.0,
+        "y": 83.0,
+        "width": 76.0,
+        "height": 15.0
+      },
+      {
+        "text": "CIC",
+        "x": 152.0,
+        "y": 78.0,
+        "width": 40.0,
+        "height": 20.0
+      },
+      {
+        "text": "Bot",
+        "x": 203.0,
+        "y": 78.0,
+        "width": 39.0,
+        "height": 20.0
+      },
+      {
+        "text": "1",
+        "x": 290.0,
+        "y": 78.0,
+        "width": 7.0,
+        "height": 20.0
+      },
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 142.0,
+        "width": 91.0,
+        "height": 21.0
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 149.0,
+        "width": 28.0,
+        "height": 14.0
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 142.0,
+        "width": 73.0,
+        "height": 27.0
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 142.0,
+        "width": 101.0,
+        "height": 27.0
+      }
+    ],
+    "recognitionMs": 19.3781,
+    "decodeAndRecognitionMs": 170.10920000000002,
+    "wallMs": 851.2,
+    "processPeakSampleMiB": 99.1,
+    "processPrivatePeakSampleMiB": 73.0,
+    "systemFreeBeforeMiB": 1524.1,
+    "systemFreeMinimumMiB": 1444.9,
+    "systemFreeAfterMiB": 1521.6,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-numbers",
+    "set": "development",
+    "category": "Numbers",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Order 1638   Total 1,250.75\n2026-10-07   14:30   25%",
+    "actual": "Order 1638 Total 1,250.75 2026-10-07 14:30",
+    "actualLines": [
+      "Order 1638 Total 1,250.75",
+      "2026-10-07 14:30"
+    ],
+    "metrics": {
+      "referenceChars": 40,
+      "substitutions": 0,
+      "deletions": 3,
+      "insertions": 0,
+      "cerPercent": 7.5,
+      "exact": false
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [
+      "2026-10-07   14:30   25%"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 6,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 6,
+    "mappedOriginalWords": [
+      {
+        "text": "Order",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 70.0,
+        "height": 21.0
+      },
+      {
+        "text": "1638",
+        "x": 147.0,
+        "y": 78.0,
+        "width": 57.0,
+        "height": 20.0
+      },
+      {
+        "text": "Total",
+        "x": 228.0,
+        "y": 77.0,
+        "width": 56.0,
+        "height": 21.0
+      },
+      {
+        "text": "1,250.75",
+        "x": 297.0,
+        "y": 78.0,
+        "width": 98.0,
+        "height": 24.0
+      },
+      {
+        "text": "2026-10-07",
+        "x": 66.0,
+        "y": 143.0,
+        "width": 141.0,
+        "height": 20.0
+      },
+      {
+        "text": "14:30",
+        "x": 234.0,
+        "y": 143.0,
+        "width": 63.0,
+        "height": 20.0
+      }
+    ],
+    "recognitionMs": 18.0269,
+    "decodeAndRecognitionMs": 192.8085,
+    "wallMs": 828.0,
+    "processPeakSampleMiB": 97.6,
+    "processPrivatePeakSampleMiB": 72.7,
+    "systemFreeBeforeMiB": 1521.6,
+    "systemFreeMinimumMiB": 1441.3,
+    "systemFreeAfterMiB": 1518.3,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-en-multiline",
+    "set": "development",
+    "category": "English multiline",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Choose an image yourself.\nRead text on this device only.\nNo automatic screen capture.",
+    "actual": "Choose an image yourself. Read text on this device only. No automatic screen capture.",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only.",
+      "No automatic screen capture."
+    ],
+    "metrics": {
+      "referenceChars": 72,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 14,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 14,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 91.0,
+        "height": 21.0
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 84.0,
+        "width": 28.0,
+        "height": 14.0
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 77.0,
+        "width": 73.0,
+        "height": 27.0
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 77.0,
+        "width": 101.0,
+        "height": 27.0
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 57.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "on",
+        "x": 189.0,
+        "y": 149.0,
+        "width": 30.0,
+        "height": 14.0
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 142.0,
+        "width": 43.0,
+        "height": 21.0
+      },
+      {
+        "text": "device",
+        "x": 281.0,
+        "y": 142.0,
+        "width": 77.0,
+        "height": 21.0
+      },
+      {
+        "text": "only.",
+        "x": 367.0,
+        "y": 142.0,
+        "width": 55.0,
+        "height": 27.0
+      },
+      {
+        "text": "No",
+        "x": 67.0,
+        "y": 208.0,
+        "width": 34.0,
+        "height": 20.0
+      },
+      {
+        "text": "automatic",
+        "x": 111.0,
+        "y": 207.0,
+        "width": 122.0,
+        "height": 21.0
+      },
+      {
+        "text": "screen",
+        "x": 242.0,
+        "y": 214.0,
+        "width": 77.0,
+        "height": 14.0
+      },
+      {
+        "text": "capture.",
+        "x": 329.0,
+        "y": 210.0,
+        "width": 97.0,
+        "height": 24.0
+      }
+    ],
+    "recognitionMs": 16.660700000000002,
+    "decodeAndRecognitionMs": 163.9445,
+    "wallMs": 798.3,
+    "processPeakSampleMiB": 99.2,
+    "processPrivatePeakSampleMiB": 73.2,
+    "systemFreeBeforeMiB": 1518.3,
+    "systemFreeMinimumMiB": 1445.0,
+    "systemFreeAfterMiB": 1522.5,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-th-multiline",
+    "set": "development",
+    "category": "Thai multiline",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nห้ามส่งภาพออกนอกเครื่อง",
+    "actual": "",
+    "actualLines": [],
+    "metrics": {
+      "referenceChars": 74,
+      "substitutions": 0,
+      "deletions": 74,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 74,
+      "substitutions": 0,
+      "deletions": 74,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น",
+      "ห้ามส่งภาพออกนอกเครื่อง"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 0,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 0,
+    "mappedOriginalWords": [],
+    "recognitionMs": 22.7008,
+    "decodeAndRecognitionMs": 199.3874,
+    "wallMs": 905.4,
+    "processPeakSampleMiB": 98.0,
+    "processPrivatePeakSampleMiB": 72.1,
+    "systemFreeBeforeMiB": 1522.5,
+    "systemFreeMinimumMiB": 1430.9,
+    "systemFreeAfterMiB": 1526.8,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-en-dark",
+    "set": "development",
+    "category": "English dark",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Choose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself. Read text on this device only.",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 47,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 91.0,
+        "height": 21.0
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 84.0,
+        "width": 28.0,
+        "height": 14.0
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 77.0,
+        "width": 74.0,
+        "height": 27.0
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 77.0,
+        "width": 101.0,
+        "height": 27.0
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 58.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "on",
+        "x": 189.0,
+        "y": 149.0,
+        "width": 30.0,
+        "height": 14.0
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 142.0,
+        "width": 43.0,
+        "height": 21.0
+      },
+      {
+        "text": "device",
+        "x": 280.0,
+        "y": 142.0,
+        "width": 78.0,
+        "height": 21.0
+      },
+      {
+        "text": "only.",
+        "x": 367.0,
+        "y": 142.0,
+        "width": 55.0,
+        "height": 27.0
+      }
+    ],
+    "recognitionMs": 17.5701,
+    "decodeAndRecognitionMs": 190.7295,
+    "wallMs": 779.7,
+    "processPeakSampleMiB": 98.1,
+    "processPrivatePeakSampleMiB": 72.6,
+    "systemFreeBeforeMiB": 1526.8,
+    "systemFreeMinimumMiB": 1446.2,
+    "systemFreeAfterMiB": 1530.7,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-th-dark",
+    "set": "development",
+    "category": "Thai dark",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "actual": "",
+    "actualLines": [],
+    "metrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 0,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 0,
+    "mappedOriginalWords": [],
+    "recognitionMs": 22.446,
+    "decodeAndRecognitionMs": 159.34900000000002,
+    "wallMs": 801.3,
+    "processPeakSampleMiB": 96.5,
+    "processPrivatePeakSampleMiB": 71.2,
+    "systemFreeBeforeMiB": 1530.7,
+    "systemFreeMinimumMiB": 1452.7,
+    "systemFreeAfterMiB": 1527.6,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-en-small",
+    "set": "development",
+    "category": "English small",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Choose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself. Read text on this device only.",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 47,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 65.0,
+        "y": 70.0,
+        "width": 40.0,
+        "height": 9.0
+      },
+      {
+        "text": "an",
+        "x": 108.0,
+        "y": 73.0,
+        "width": 12.0,
+        "height": 6.0
+      },
+      {
+        "text": "image",
+        "x": 125.0,
+        "y": 70.0,
+        "width": 32.0,
+        "height": 12.0
+      },
+      {
+        "text": "yourself.",
+        "x": 160.0,
+        "y": 70.0,
+        "width": 43.0,
+        "height": 12.0
+      },
+      {
+        "text": "Read",
+        "x": 66.0,
+        "y": 105.0,
+        "width": 25.0,
+        "height": 9.0
+      },
+      {
+        "text": "text",
+        "x": 95.0,
+        "y": 106.0,
+        "width": 19.0,
+        "height": 8.0
+      },
+      {
+        "text": "on",
+        "x": 118.0,
+        "y": 108.0,
+        "width": 13.0,
+        "height": 6.0
+      },
+      {
+        "text": "this",
+        "x": 135.0,
+        "y": 105.0,
+        "width": 18.0,
+        "height": 9.0
+      },
+      {
+        "text": "device",
+        "x": 157.0,
+        "y": 105.0,
+        "width": 34.0,
+        "height": 9.0
+      },
+      {
+        "text": "only.",
+        "x": 194.0,
+        "y": 105.0,
+        "width": 24.0,
+        "height": 12.0
+      }
+    ],
+    "recognitionMs": 15.247200000000001,
+    "decodeAndRecognitionMs": 183.16570000000002,
+    "wallMs": 837.9,
+    "processPeakSampleMiB": 97.6,
+    "processPrivatePeakSampleMiB": 72.9,
+    "systemFreeBeforeMiB": 1527.6,
+    "systemFreeMinimumMiB": 1444.8,
+    "systemFreeAfterMiB": 1524.6,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-th-small",
+    "set": "development",
+    "category": "Thai small",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "actual": "",
+    "actualLines": [],
+    "metrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 0,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 0,
+    "mappedOriginalWords": [],
+    "recognitionMs": 19.8228,
+    "decodeAndRecognitionMs": 166.64020000000002,
+    "wallMs": 788.9,
+    "processPeakSampleMiB": 96.7,
+    "processPrivatePeakSampleMiB": 71.4,
+    "systemFreeBeforeMiB": 1524.6,
+    "systemFreeMinimumMiB": 1454.6,
+    "systemFreeAfterMiB": 1519.5,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-reduced",
+    "set": "development",
+    "category": "Mixed reduced",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nChoose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself. Read text on this device only.",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 98,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 52.04,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 216.0,
+        "width": 92.0,
+        "height": 22.0
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 220.0,
+        "width": 28.0,
+        "height": 16.0
+      },
+      {
+        "text": "image",
+        "x": 204.0,
+        "y": 212.0,
+        "width": 74.0,
+        "height": 28.0
+      },
+      {
+        "text": "yourself.",
+        "x": 286.0,
+        "y": 208.0,
+        "width": 102.0,
+        "height": 30.0
+      },
+      {
+        "text": "Read",
+        "x": 68.0,
+        "y": 280.0,
+        "width": 58.0,
+        "height": 24.0
+      },
+      {
+        "text": "text",
+        "x": 136.0,
+        "y": 282.0,
+        "width": 46.0,
+        "height": 20.0
+      },
+      {
+        "text": "on",
+        "x": 190.0,
+        "y": 284.0,
+        "width": 32.0,
+        "height": 18.0
+      },
+      {
+        "text": "this",
+        "x": 230.0,
+        "y": 276.0,
+        "width": 44.0,
+        "height": 24.0
+      },
+      {
+        "text": "device",
+        "x": 282.0,
+        "y": 274.0,
+        "width": 78.0,
+        "height": 24.0
+      },
+      {
+        "text": "only.",
+        "x": 368.0,
+        "y": 272.0,
+        "width": 56.0,
+        "height": 30.0
+      }
+    ],
+    "recognitionMs": 24.0088,
+    "decodeAndRecognitionMs": 170.99790000000002,
+    "wallMs": 789.7,
+    "processPeakSampleMiB": 96.3,
+    "processPrivatePeakSampleMiB": 70.8,
+    "systemFreeBeforeMiB": 1519.3,
+    "systemFreeMinimumMiB": 1467.3,
+    "systemFreeAfterMiB": 1544.1,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-blur",
+    "set": "development",
+    "category": "Mixed blurred",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nChoose an image yourself.\nRead text on this device only.",
+    "actual": "an .tnage Read text on ttys dev•ce miy.",
+    "actualLines": [
+      "an .tnage",
+      "Read text on ttys dev•ce miy."
+    ],
+    "metrics": {
+      "referenceChars": 98,
+      "substitutions": 7,
+      "deletions": 67,
+      "insertions": 1,
+      "cerPercent": 76.53,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 51,
+      "substitutions": 0,
+      "deletions": 51,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น",
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 8,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 8,
+    "mappedOriginalWords": [
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 213.0,
+        "width": 29.0,
+        "height": 16.0
+      },
+      {
+        "text": ".tnage",
+        "x": 204.0,
+        "y": 213.0,
+        "width": 75.0,
+        "height": 22.0
+      },
+      {
+        "text": "Read",
+        "x": 66.0,
+        "y": 271.0,
+        "width": 60.0,
+        "height": 23.0
+      },
+      {
+        "text": "text",
+        "x": 135.0,
+        "y": 275.0,
+        "width": 45.0,
+        "height": 19.0
+      },
+      {
+        "text": "on",
+        "x": 188.0,
+        "y": 278.0,
+        "width": 32.0,
+        "height": 16.0
+      },
+      {
+        "text": "ttys",
+        "x": 228.0,
+        "y": 272.0,
+        "width": 44.0,
+        "height": 22.0
+      },
+      {
+        "text": "dev•ce",
+        "x": 280.0,
+        "y": 272.0,
+        "width": 78.0,
+        "height": 22.0
+      },
+      {
+        "text": "miy.",
+        "x": 366.0,
+        "y": 272.0,
+        "width": 56.0,
+        "height": 28.0
+      }
+    ],
+    "recognitionMs": 28.3505,
+    "decodeAndRecognitionMs": 203.17610000000002,
+    "wallMs": 884.6,
+    "processPeakSampleMiB": 97.4,
+    "processPrivatePeakSampleMiB": 75.1,
+    "systemFreeBeforeMiB": 1544.1,
+    "systemFreeMinimumMiB": 1459.4,
+    "systemFreeAfterMiB": 1527.9,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-blank",
+    "set": "development",
+    "category": "Blank",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "",
+    "actual": "",
+    "actualLines": [],
+    "metrics": {
+      "referenceChars": 0,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": null,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "no-text",
+    "words": 0,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 0,
+    "mappedOriginalWords": [],
+    "recognitionMs": 10.2652,
+    "decodeAndRecognitionMs": 167.0516,
+    "wallMs": 821.0,
+    "processPeakSampleMiB": 96.5,
+    "processPrivatePeakSampleMiB": 71.8,
+    "systemFreeBeforeMiB": 1527.9,
+    "systemFreeMinimumMiB": 1465.0,
+    "systemFreeAfterMiB": 1538.7,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-columns",
+    "set": "development",
+    "category": "English columns",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "LEFT: Plan\nLEFT: Review\nRIGHT: Create\nRIGHT: Download",
+    "actual": "LEFT: Plan LEFT: Review RIGHT: Create RIGHT: Download",
+    "actualLines": [
+      "LEFT: Plan",
+      "LEFT: Review",
+      "RIGHT: Create",
+      "RIGHT: Download"
+    ],
+    "metrics": {
+      "referenceChars": 46,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 8,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 8,
+    "mappedOriginalWords": [
+      {
+        "text": "LEFT:",
+        "x": 67.0,
+        "y": 83.0,
+        "width": 58.0,
+        "height": 20.0
+      },
+      {
+        "text": "Plan",
+        "x": 137.0,
+        "y": 82.0,
+        "width": 48.0,
+        "height": 21.0
+      },
+      {
+        "text": "LEFT:",
+        "x": 67.0,
+        "y": 158.0,
+        "width": 58.0,
+        "height": 20.0
+      },
+      {
+        "text": "Review",
+        "x": 137.0,
+        "y": 157.0,
+        "width": 83.0,
+        "height": 21.0
+      },
+      {
+        "text": "RIGHT:",
+        "x": 512.0,
+        "y": 83.0,
+        "width": 81.0,
+        "height": 20.0
+      },
+      {
+        "text": "Create",
+        "x": 603.0,
+        "y": 83.0,
+        "width": 77.0,
+        "height": 20.0
+      },
+      {
+        "text": "RIGHT:",
+        "x": 512.0,
+        "y": 158.0,
+        "width": 81.0,
+        "height": 20.0
+      },
+      {
+        "text": "Download",
+        "x": 604.0,
+        "y": 157.0,
+        "width": 121.0,
+        "height": 21.0
+      }
+    ],
+    "recognitionMs": 20.8865,
+    "decodeAndRecognitionMs": 171.3305,
+    "wallMs": 795.8,
+    "processPeakSampleMiB": 97.9,
+    "processPrivatePeakSampleMiB": 72.3,
+    "systemFreeBeforeMiB": 1538.6,
+    "systemFreeMinimumMiB": 1477.1,
+    "systemFreeAfterMiB": 1543.7,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-crop",
+    "set": "development",
+    "category": "English crop",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Choose an image yourself.\nRead text on this device only.",
+    "actual": "Choose an image yourself. Read text on this device only.",
+    "actualLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "metrics": {
+      "referenceChars": 47,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "Choose",
+        "x": 66.0,
+        "y": 77.0,
+        "width": 91.0,
+        "height": 21.0
+      },
+      {
+        "text": "an",
+        "x": 166.0,
+        "y": 84.0,
+        "width": 28.0,
+        "height": 14.0
+      },
+      {
+        "text": "image",
+        "x": 205.0,
+        "y": 77.0,
+        "width": 73.0,
+        "height": 27.0
+      },
+      {
+        "text": "yourself.",
+        "x": 287.0,
+        "y": 77.0,
+        "width": 101.0,
+        "height": 27.0
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 57.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 134.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "on",
+        "x": 189.0,
+        "y": 149.0,
+        "width": 30.0,
+        "height": 14.0
+      },
+      {
+        "text": "this",
+        "x": 228.0,
+        "y": 142.0,
+        "width": 43.0,
+        "height": 21.0
+      },
+      {
+        "text": "device",
+        "x": 281.0,
+        "y": 142.0,
+        "width": 77.0,
+        "height": 21.0
+      },
+      {
+        "text": "only.",
+        "x": 367.0,
+        "y": 142.0,
+        "width": 55.0,
+        "height": 27.0
+      }
+    ],
+    "recognitionMs": 14.1813,
+    "decodeAndRecognitionMs": 181.8607,
+    "wallMs": 843.1,
+    "processPeakSampleMiB": 97.3,
+    "processPrivatePeakSampleMiB": 71.9,
+    "systemFreeBeforeMiB": 1543.7,
+    "systemFreeMinimumMiB": 1466.8,
+    "systemFreeAfterMiB": 1546.4,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "development-screenshot",
+    "set": "development",
+    "category": "Mixed browser fixture",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "CIC Test - Reader\nเลือกภาพก่อนอ่านข้อความ\nSample 1   14:30\nRead image text",
+    "actual": "CIC Test - Reader Sample 1 14:30 Read image text",
+    "actualLines": [
+      "CIC Test - Reader",
+      "Sample 1 14:30",
+      "Read image text"
+    ],
+    "metrics": {
+      "referenceChars": 62,
+      "substitutions": 0,
+      "deletions": 23,
+      "insertions": 0,
+      "cerPercent": 37.1,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 23,
+      "substitutions": 0,
+      "deletions": 23,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "เลือกภาพก่อนอ่านข้อความ"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 10,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 10,
+    "mappedOriginalWords": [
+      {
+        "text": "CIC",
+        "x": 66.0,
+        "y": 78.0,
+        "width": 40.0,
+        "height": 20.0
+      },
+      {
+        "text": "Test",
+        "x": 115.0,
+        "y": 78.0,
+        "width": 47.0,
+        "height": 20.0
+      },
+      {
+        "text": "-",
+        "x": 172.0,
+        "y": 89.0,
+        "width": 8.0,
+        "height": 1.0
+      },
+      {
+        "text": "Reader",
+        "x": 192.0,
+        "y": 77.0,
+        "width": 83.0,
+        "height": 21.0
+      },
+      {
+        "text": "Sample",
+        "x": 66.0,
+        "y": 207.0,
+        "width": 89.0,
+        "height": 27.0
+      },
+      {
+        "text": "1",
+        "x": 167.0,
+        "y": 208.0,
+        "width": 7.0,
+        "height": 20.0
+      },
+      {
+        "text": "14:30",
+        "x": 205.0,
+        "y": 208.0,
+        "width": 63.0,
+        "height": 20.0
+      },
+      {
+        "text": "Read",
+        "x": 67.0,
+        "y": 272.0,
+        "width": 57.0,
+        "height": 21.0
+      },
+      {
+        "text": "image",
+        "x": 136.0,
+        "y": 272.0,
+        "width": 74.0,
+        "height": 27.0
+      },
+      {
+        "text": "text",
+        "x": 218.0,
+        "y": 275.0,
+        "width": 46.0,
+        "height": 18.0
+      }
+    ],
+    "recognitionMs": 18.4073,
+    "decodeAndRecognitionMs": 168.1663,
+    "wallMs": 781.4,
+    "processPeakSampleMiB": 98.5,
+    "processPrivatePeakSampleMiB": 72.7,
+    "systemFreeBeforeMiB": 1546.4,
+    "systemFreeMinimumMiB": 1464.4,
+    "systemFreeAfterMiB": 1538.2,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-en-light",
+    "set": "new",
+    "category": "English",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.",
+    "actual": "Review the text before sending. Monday meeting at 09:45.",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 77.0,
+        "width": 39.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 80.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 77.0,
+        "width": 77.0,
+        "height": 21.0
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 77.0,
+        "width": 102.0,
+        "height": 27.0
+      },
+      {
+        "text": "Monday",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 100.0,
+        "height": 27.0
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 142.0,
+        "width": 98.0,
+        "height": 27.0
+      },
+      {
+        "text": "at",
+        "x": 285.0,
+        "y": 145.0,
+        "width": 22.0,
+        "height": 18.0
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 143.0,
+        "width": 71.0,
+        "height": 20.0
+      }
+    ],
+    "recognitionMs": 16.0229,
+    "decodeAndRecognitionMs": 166.58450000000002,
+    "wallMs": 810.3,
+    "processPeakSampleMiB": 98.1,
+    "processPrivatePeakSampleMiB": 72.4,
+    "systemFreeBeforeMiB": 1538.2,
+    "systemFreeMinimumMiB": 1470.7,
+    "systemFreeAfterMiB": 1547.6,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-th-light",
+    "set": "new",
+    "category": "Thai",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "actual": "09:45",
+    "actualLines": [
+      "09:45"
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 43,
+      "insertions": 0,
+      "cerPercent": 89.58,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 43,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 1,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 1,
+    "mappedOriginalWords": [
+      {
+        "text": "09:45",
+        "x": 310.0,
+        "y": 143.0,
+        "width": 64.0,
+        "height": 20.0
+      }
+    ],
+    "recognitionMs": 21.1825,
+    "decodeAndRecognitionMs": 180.7764,
+    "wallMs": 842.8,
+    "processPeakSampleMiB": 97.6,
+    "processPrivatePeakSampleMiB": 75.4,
+    "systemFreeBeforeMiB": 1547.5,
+    "systemFreeMinimumMiB": 1467.9,
+    "systemFreeAfterMiB": 1543.7,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-mixed",
+    "set": "new",
+    "category": "Mixed",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "ตรวจงาน CIC Bot รุ่น 2\nReview the text before sending.\nกรุณาตรวจข้อความก่อนส่ง",
+    "actual": "CIC Bot 2 Review the text before sending.",
+    "actualLines": [
+      "CIC Bot 2",
+      "Review the text before sending."
+    ],
+    "metrics": {
+      "referenceChars": 68,
+      "substitutions": 0,
+      "deletions": 34,
+      "insertions": 0,
+      "cerPercent": 50.0,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 34,
+      "substitutions": 0,
+      "deletions": 34,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ตรวจงาน CIC Bot รุ่น 2",
+      "กรุณาตรวจข้อความก่อนส่ง"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 8,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 8,
+    "mappedOriginalWords": [
+      {
+        "text": "CIC",
+        "x": 169.0,
+        "y": 78.0,
+        "width": 40.0,
+        "height": 20.0
+      },
+      {
+        "text": "Bot",
+        "x": 220.0,
+        "y": 78.0,
+        "width": 39.0,
+        "height": 20.0
+      },
+      {
+        "text": "2",
+        "x": 305.0,
+        "y": 78.0,
+        "width": 13.0,
+        "height": 20.0
+      },
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 84.0,
+        "height": 21.0
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 142.0,
+        "width": 39.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 145.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 142.0,
+        "width": 77.0,
+        "height": 21.0
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 142.0,
+        "width": 102.0,
+        "height": 27.0
+      }
+    ],
+    "recognitionMs": 19.4728,
+    "decodeAndRecognitionMs": 181.4896,
+    "wallMs": 863.4,
+    "processPeakSampleMiB": 98.5,
+    "processPrivatePeakSampleMiB": 72.4,
+    "systemFreeBeforeMiB": 1543.7,
+    "systemFreeMinimumMiB": 1474.1,
+    "systemFreeAfterMiB": 1544.1,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-numbers",
+    "set": "new",
+    "category": "Numbers",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Invoice 5824   Total 2,750.50\n2026-10-12   09:45   40%",
+    "actual": "Invoice 5824 Total 2,750.50 2026-10-12 09:45",
+    "actualLines": [
+      "Invoice 5824 Total 2,750.50",
+      "2026-10-12 09:45"
+    ],
+    "metrics": {
+      "referenceChars": 42,
+      "substitutions": 0,
+      "deletions": 3,
+      "insertions": 0,
+      "cerPercent": 7.14,
+      "exact": false
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [
+      "2026-10-12   09:45   40%"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 6,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 6,
+    "mappedOriginalWords": [
+      {
+        "text": "Invoice",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 85.0,
+        "height": 21.0
+      },
+      {
+        "text": "5824",
+        "x": 162.0,
+        "y": 78.0,
+        "width": 58.0,
+        "height": 20.0
+      },
+      {
+        "text": "Total",
+        "x": 244.0,
+        "y": 77.0,
+        "width": 56.0,
+        "height": 21.0
+      },
+      {
+        "text": "2,750.50",
+        "x": 311.0,
+        "y": 78.0,
+        "width": 101.0,
+        "height": 24.0
+      },
+      {
+        "text": "2026-10-12",
+        "x": 66.0,
+        "y": 143.0,
+        "width": 141.0,
+        "height": 20.0
+      },
+      {
+        "text": "09:45",
+        "x": 232.0,
+        "y": 143.0,
+        "width": 64.0,
+        "height": 20.0
+      }
+    ],
+    "recognitionMs": 15.5829,
+    "decodeAndRecognitionMs": 164.2315,
+    "wallMs": 841.0,
+    "processPeakSampleMiB": 97.3,
+    "processPrivatePeakSampleMiB": 72.3,
+    "systemFreeBeforeMiB": 1543.6,
+    "systemFreeMinimumMiB": 1478.8,
+    "systemFreeAfterMiB": 1557.5,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-en-multiline",
+    "set": "new",
+    "category": "English multiline",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.\nDo not send images automatically.",
+    "actual": "Review the text before sending. Monday meeting at 09:45. Do not send images automatically.",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45.",
+      "Do not send images automatically."
+    ],
+    "metrics": {
+      "referenceChars": 77,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 14,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 14,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 77.0,
+        "width": 39.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 80.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 77.0,
+        "width": 77.0,
+        "height": 21.0
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 77.0,
+        "width": 102.0,
+        "height": 27.0
+      },
+      {
+        "text": "Monday",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 100.0,
+        "height": 27.0
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 142.0,
+        "width": 98.0,
+        "height": 27.0
+      },
+      {
+        "text": "at",
+        "x": 285.0,
+        "y": 145.0,
+        "width": 22.0,
+        "height": 18.0
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 143.0,
+        "width": 71.0,
+        "height": 20.0
+      },
+      {
+        "text": "Do",
+        "x": 67.0,
+        "y": 208.0,
+        "width": 33.0,
+        "height": 20.0
+      },
+      {
+        "text": "not",
+        "x": 111.0,
+        "y": 210.0,
+        "width": 39.0,
+        "height": 18.0
+      },
+      {
+        "text": "send",
+        "x": 159.0,
+        "y": 207.0,
+        "width": 56.0,
+        "height": 21.0
+      },
+      {
+        "text": "images",
+        "x": 227.0,
+        "y": 207.0,
+        "width": 85.0,
+        "height": 27.0
+      },
+      {
+        "text": "automatically.",
+        "x": 322.0,
+        "y": 207.0,
+        "width": 166.0,
+        "height": 27.0
+      }
+    ],
+    "recognitionMs": 16.746100000000002,
+    "decodeAndRecognitionMs": 174.025,
+    "wallMs": 832.2,
+    "processPeakSampleMiB": 98.3,
+    "processPrivatePeakSampleMiB": 72.0,
+    "systemFreeBeforeMiB": 1557.5,
+    "systemFreeMinimumMiB": 1464.2,
+    "systemFreeAfterMiB": 1548.3,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-th-multiline",
+    "set": "new",
+    "category": "Thai multiline",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nภาพนี้ไม่มีข้อมูลส่วนตัว",
+    "actual": "09:45",
+    "actualLines": [
+      "09:45"
+    ],
+    "metrics": {
+      "referenceChars": 72,
+      "substitutions": 0,
+      "deletions": 67,
+      "insertions": 0,
+      "cerPercent": 93.06,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 67,
+      "substitutions": 0,
+      "deletions": 67,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45",
+      "ภาพนี้ไม่มีข้อมูลส่วนตัว"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 1,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 1,
+    "mappedOriginalWords": [
+      {
+        "text": "09:45",
+        "x": 310.0,
+        "y": 143.0,
+        "width": 64.0,
+        "height": 20.0
+      }
+    ],
+    "recognitionMs": 23.6933,
+    "decodeAndRecognitionMs": 170.1181,
+    "wallMs": 732.4,
+    "processPeakSampleMiB": 97.4,
+    "processPrivatePeakSampleMiB": 72.6,
+    "systemFreeBeforeMiB": 1548.3,
+    "systemFreeMinimumMiB": 1482.3,
+    "systemFreeAfterMiB": 1557.1,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-en-dark",
+    "set": "new",
+    "category": "English dark",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.",
+    "actual": "Review the text before sending. Monday meeting at 09:45.",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 77.0,
+        "width": 39.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 80.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 77.0,
+        "width": 78.0,
+        "height": 21.0
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 77.0,
+        "width": 102.0,
+        "height": 27.0
+      },
+      {
+        "text": "Monday",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 100.0,
+        "height": 27.0
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 142.0,
+        "width": 99.0,
+        "height": 27.0
+      },
+      {
+        "text": "at",
+        "x": 285.0,
+        "y": 145.0,
+        "width": 23.0,
+        "height": 18.0
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 143.0,
+        "width": 71.0,
+        "height": 20.0
+      }
+    ],
+    "recognitionMs": 15.217300000000002,
+    "decodeAndRecognitionMs": 159.9727,
+    "wallMs": 842.8,
+    "processPeakSampleMiB": 97.8,
+    "processPrivatePeakSampleMiB": 72.7,
+    "systemFreeBeforeMiB": 1557.0,
+    "systemFreeMinimumMiB": 1478.2,
+    "systemFreeAfterMiB": 1553.5,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-th-dark",
+    "set": "new",
+    "category": "Thai dark",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "actual": "nan 09:45",
+    "actualLines": [
+      "nan 09:45"
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 3,
+      "deletions": 40,
+      "insertions": 0,
+      "cerPercent": 89.58,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 43,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 2,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 2,
+    "mappedOriginalWords": [
+      {
+        "text": "nan",
+        "x": 256.0,
+        "y": 149.0,
+        "width": 44.0,
+        "height": 14.0
+      },
+      {
+        "text": "09:45",
+        "x": 310.0,
+        "y": 143.0,
+        "width": 65.0,
+        "height": 20.0
+      }
+    ],
+    "recognitionMs": 21.0028,
+    "decodeAndRecognitionMs": 202.6492,
+    "wallMs": 826.9,
+    "processPeakSampleMiB": 97.4,
+    "processPrivatePeakSampleMiB": 72.6,
+    "systemFreeBeforeMiB": 1553.5,
+    "systemFreeMinimumMiB": 1469.6,
+    "systemFreeAfterMiB": 1557.9,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-en-small",
+    "set": "new",
+    "category": "English small",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.",
+    "actual": "Review the text before sending. Monday meeting at 09:45.",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 66.0,
+        "y": 70.0,
+        "width": 36.0,
+        "height": 9.0
+      },
+      {
+        "text": "the",
+        "x": 105.0,
+        "y": 70.0,
+        "width": 17.0,
+        "height": 9.0
+      },
+      {
+        "text": "text",
+        "x": 126.0,
+        "y": 71.0,
+        "width": 19.0,
+        "height": 8.0
+      },
+      {
+        "text": "before",
+        "x": 149.0,
+        "y": 70.0,
+        "width": 34.0,
+        "height": 9.0
+      },
+      {
+        "text": "sending.",
+        "x": 187.0,
+        "y": 70.0,
+        "width": 43.0,
+        "height": 12.0
+      },
+      {
+        "text": "Monday",
+        "x": 66.0,
+        "y": 105.0,
+        "width": 43.0,
+        "height": 12.0
+      },
+      {
+        "text": "meeting",
+        "x": 113.0,
+        "y": 105.0,
+        "width": 42.0,
+        "height": 12.0
+      },
+      {
+        "text": "at",
+        "x": 159.0,
+        "y": 106.0,
+        "width": 10.0,
+        "height": 8.0
+      },
+      {
+        "text": "09:45.",
+        "x": 173.0,
+        "y": 105.0,
+        "width": 30.0,
+        "height": 9.0
+      }
+    ],
+    "recognitionMs": 17.3431,
+    "decodeAndRecognitionMs": 176.3689,
+    "wallMs": 835.8,
+    "processPeakSampleMiB": 98.1,
+    "processPrivatePeakSampleMiB": 72.3,
+    "systemFreeBeforeMiB": 1557.8,
+    "systemFreeMinimumMiB": 1480.7,
+    "systemFreeAfterMiB": 1555.4,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-th-small",
+    "set": "new",
+    "category": "Thai small",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "actual": "0945",
+    "actualLines": [
+      "0945"
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 44,
+      "insertions": 0,
+      "cerPercent": 91.67,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 43,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 1,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 1,
+    "mappedOriginalWords": [
+      {
+        "text": "0945",
+        "x": 170.0,
+        "y": 105.0,
+        "width": 28.0,
+        "height": 9.0
+      }
+    ],
+    "recognitionMs": 19.3242,
+    "decodeAndRecognitionMs": 166.47150000000002,
+    "wallMs": 878.4,
+    "processPeakSampleMiB": 98.1,
+    "processPrivatePeakSampleMiB": 72.6,
+    "systemFreeBeforeMiB": 1555.4,
+    "systemFreeMinimumMiB": 1502.8,
+    "systemFreeAfterMiB": 1581.5,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-reduced",
+    "set": "new",
+    "category": "Mixed reduced",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nReview the text before sending.\nMonday meeting at 09:45.",
+    "actual": "mrunanaq_YomnJIFiauÅ. 09:45 Review the text before sending. Monday meeting at 09:45.",
+    "actualLines": [
+      "mrunanaq_YomnJIFiauÅ.",
+      "09:45",
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 96,
+      "substitutions": 21,
+      "deletions": 22,
+      "insertions": 0,
+      "cerPercent": 44.79,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 43,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 11,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 11,
+    "mappedOriginalWords": [
+      {
+        "text": "mrunanaq_YomnJIFiauÅ.",
+        "x": 66.0,
+        "y": 76.0,
+        "width": 282.0,
+        "height": 30.0
+      },
+      {
+        "text": "09:45",
+        "x": 310.0,
+        "y": 142.0,
+        "width": 64.0,
+        "height": 22.0
+      },
+      {
+        "text": "Review",
+        "x": 66.0,
+        "y": 206.0,
+        "width": 84.0,
+        "height": 22.0
+      },
+      {
+        "text": "the",
+        "x": 158.0,
+        "y": 206.0,
+        "width": 40.0,
+        "height": 22.0
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 210.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 206.0,
+        "width": 78.0,
+        "height": 22.0
+      },
+      {
+        "text": "sending.",
+        "x": 348.0,
+        "y": 206.0,
+        "width": 104.0,
+        "height": 28.0
+      },
+      {
+        "text": "Monday",
+        "x": 66.0,
+        "y": 272.0,
+        "width": 102.0,
+        "height": 28.0
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 272.0,
+        "width": 98.0,
+        "height": 28.0
+      },
+      {
+        "text": "at",
+        "x": 284.0,
+        "y": 274.0,
+        "width": 24.0,
+        "height": 20.0
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 272.0,
+        "width": 72.0,
+        "height": 22.0
+      }
+    ],
+    "recognitionMs": 20.771700000000003,
+    "decodeAndRecognitionMs": 192.21300000000002,
+    "wallMs": 794.0,
+    "processPeakSampleMiB": 97.5,
+    "processPrivatePeakSampleMiB": 71.3,
+    "systemFreeBeforeMiB": 1581.5,
+    "systemFreeMinimumMiB": 1501.2,
+    "systemFreeAfterMiB": 1571.9,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-blur",
+    "set": "new",
+    "category": "Mixed blurred",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nReview the text before sending.\nMonday meeting at 09:45.",
+    "actual": "45 P.eaew text before sending Monday rneet•ng at 45.",
+    "actualLines": [
+      "45",
+      "P.eaew text before sending",
+      "Monday rneet•ng at 45."
+    ],
+    "metrics": {
+      "referenceChars": 96,
+      "substitutions": 6,
+      "deletions": 53,
+      "insertions": 1,
+      "cerPercent": 62.5,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 43,
+      "substitutions": 0,
+      "deletions": 43,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45",
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "45",
+        "x": 346.0,
+        "y": 142.0,
+        "width": 30.0,
+        "height": 23.0
+      },
+      {
+        "text": "P.eaew",
+        "x": 66.0,
+        "y": 207.0,
+        "width": 85.0,
+        "height": 22.0
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 210.0,
+        "width": 46.0,
+        "height": 19.0
+      },
+      {
+        "text": "before",
+        "x": 261.0,
+        "y": 206.0,
+        "width": 79.0,
+        "height": 23.0
+      },
+      {
+        "text": "sending",
+        "x": 348.0,
+        "y": 207.0,
+        "width": 102.0,
+        "height": 28.0
+      },
+      {
+        "text": "Monday",
+        "x": 66.0,
+        "y": 272.0,
+        "width": 101.0,
+        "height": 28.0
+      },
+      {
+        "text": "rneet•ng",
+        "x": 175.0,
+        "y": 275.0,
+        "width": 101.0,
+        "height": 26.0
+      },
+      {
+        "text": "at",
+        "x": 284.0,
+        "y": 275.0,
+        "width": 23.0,
+        "height": 19.0
+      },
+      {
+        "text": "45.",
+        "x": 352.0,
+        "y": 271.0,
+        "width": 35.0,
+        "height": 24.0
+      }
+    ],
+    "recognitionMs": 24.2724,
+    "decodeAndRecognitionMs": 173.3446,
+    "wallMs": 794.6,
+    "processPeakSampleMiB": 98.0,
+    "processPrivatePeakSampleMiB": 72.7,
+    "systemFreeBeforeMiB": 1571.8,
+    "systemFreeMinimumMiB": 1508.9,
+    "systemFreeAfterMiB": 1581.3,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-blank",
+    "set": "new",
+    "category": "Blank",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "",
+    "actual": "",
+    "actualLines": [],
+    "metrics": {
+      "referenceChars": 0,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": null,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "no-text",
+    "words": 0,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 0,
+    "mappedOriginalWords": [],
+    "recognitionMs": 9.841700000000001,
+    "decodeAndRecognitionMs": 152.11270000000002,
+    "wallMs": 796.4,
+    "processPeakSampleMiB": 96.4,
+    "processPrivatePeakSampleMiB": 71.8,
+    "systemFreeBeforeMiB": 1581.3,
+    "systemFreeMinimumMiB": 1508.9,
+    "systemFreeAfterMiB": 1580.0,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-columns",
+    "set": "new",
+    "category": "English columns",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "LEFT: Repair\nLEFT: Test\nRIGHT: Save\nRIGHT: Export",
+    "actual": "LEFT: Repair LEFT: Test RIGHT: Save RIGHT: Export",
+    "actualLines": [
+      "LEFT: Repair",
+      "LEFT: Test",
+      "RIGHT: Save",
+      "RIGHT: Export"
+    ],
+    "metrics": {
+      "referenceChars": 42,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 8,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 8,
+    "mappedOriginalWords": [
+      {
+        "text": "LEFT:",
+        "x": 67.0,
+        "y": 83.0,
+        "width": 58.0,
+        "height": 20.0
+      },
+      {
+        "text": "Repair",
+        "x": 137.0,
+        "y": 82.0,
+        "width": 75.0,
+        "height": 27.0
+      },
+      {
+        "text": "LEFT:",
+        "x": 67.0,
+        "y": 158.0,
+        "width": 58.0,
+        "height": 20.0
+      },
+      {
+        "text": "Test",
+        "x": 135.0,
+        "y": 158.0,
+        "width": 47.0,
+        "height": 20.0
+      },
+      {
+        "text": "RIGHT:",
+        "x": 512.0,
+        "y": 83.0,
+        "width": 81.0,
+        "height": 20.0
+      },
+      {
+        "text": "Save",
+        "x": 603.0,
+        "y": 83.0,
+        "width": 55.0,
+        "height": 20.0
+      },
+      {
+        "text": "RIGHT:",
+        "x": 512.0,
+        "y": 158.0,
+        "width": 81.0,
+        "height": 20.0
+      },
+      {
+        "text": "Export",
+        "x": 604.0,
+        "y": 158.0,
+        "width": 77.0,
+        "height": 26.0
+      }
+    ],
+    "recognitionMs": 18.099800000000002,
+    "decodeAndRecognitionMs": 179.1653,
+    "wallMs": 789.6,
+    "processPeakSampleMiB": 98.5,
+    "processPrivatePeakSampleMiB": 72.9,
+    "systemFreeBeforeMiB": 1579.9,
+    "systemFreeMinimumMiB": 1500.5,
+    "systemFreeAfterMiB": 1572.6,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-crop",
+    "set": "new",
+    "category": "English crop",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "Review the text before sending.\nMonday meeting at 09:45.",
+    "actual": "Review the text before sending. Monday meeting at 09:45.",
+    "actualLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "metrics": {
+      "referenceChars": 48,
+      "substitutions": 0,
+      "deletions": 0,
+      "insertions": 0,
+      "cerPercent": 0.0,
+      "exact": true
+    },
+    "thaiMetrics": null,
+    "missingExactLines": [],
+    "order": "correct",
+    "words": 9,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 9,
+    "mappedOriginalWords": [
+      {
+        "text": "Review",
+        "x": 67.0,
+        "y": 77.0,
+        "width": 84.0,
+        "height": 21.0
+      },
+      {
+        "text": "the",
+        "x": 159.0,
+        "y": 77.0,
+        "width": 39.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 206.0,
+        "y": 80.0,
+        "width": 46.0,
+        "height": 18.0
+      },
+      {
+        "text": "before",
+        "x": 262.0,
+        "y": 77.0,
+        "width": 77.0,
+        "height": 21.0
+      },
+      {
+        "text": "sending.",
+        "x": 349.0,
+        "y": 77.0,
+        "width": 102.0,
+        "height": 27.0
+      },
+      {
+        "text": "Monday",
+        "x": 67.0,
+        "y": 142.0,
+        "width": 100.0,
+        "height": 27.0
+      },
+      {
+        "text": "meeting",
+        "x": 176.0,
+        "y": 142.0,
+        "width": 98.0,
+        "height": 27.0
+      },
+      {
+        "text": "at",
+        "x": 285.0,
+        "y": 145.0,
+        "width": 22.0,
+        "height": 18.0
+      },
+      {
+        "text": "09:45.",
+        "x": 316.0,
+        "y": 143.0,
+        "width": 71.0,
+        "height": 20.0
+      }
+    ],
+    "recognitionMs": 12.0724,
+    "decodeAndRecognitionMs": 160.131,
+    "wallMs": 800.6,
+    "processPeakSampleMiB": 97.2,
+    "processPrivatePeakSampleMiB": 71.7,
+    "systemFreeBeforeMiB": 1572.6,
+    "systemFreeMinimumMiB": 1506.1,
+    "systemFreeAfterMiB": 1582.4,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  },
+  {
+    "id": "new-screenshot",
+    "set": "new",
+    "category": "Mixed browser fixture",
+    "source": "Windows.Media.Ocr",
+    "language": "en-US",
+    "expected": "CIC Test - Review\nตรวจข้อความก่อนคัดลอก\nSample 2   09:45\nCopy reviewed text",
+    "actual": "CIC Test - Review msndon-nuhou#aon Sample 2 09:45 Copy reviewed text",
+    "actualLines": [
+      "CIC Test - Review",
+      "msndon-nuhou#aon",
+      "Sample 2 09:45",
+      "Copy reviewed text"
+    ],
+    "metrics": {
+      "referenceChars": 63,
+      "substitutions": 16,
+      "deletions": 5,
+      "insertions": 0,
+      "cerPercent": 33.33,
+      "exact": false
+    },
+    "thaiMetrics": {
+      "referenceChars": 21,
+      "substitutions": 0,
+      "deletions": 21,
+      "insertions": 0,
+      "cerPercent": 100.0,
+      "exact": false
+    },
+    "missingExactLines": [
+      "ตรวจข้อความก่อนคัดลอก"
+    ],
+    "order": "cannot-assess-missing-text",
+    "words": 11,
+    "outsideImageBoxes": 0,
+    "wordCentersOnReferenceLines": 11,
+    "mappedOriginalWords": [
+      {
+        "text": "CIC",
+        "x": 66.0,
+        "y": 78.0,
+        "width": 40.0,
+        "height": 20.0
+      },
+      {
+        "text": "Test",
+        "x": 115.0,
+        "y": 78.0,
+        "width": 47.0,
+        "height": 20.0
+      },
+      {
+        "text": "-",
+        "x": 172.0,
+        "y": 89.0,
+        "width": 8.0,
+        "height": 1.0
+      },
+      {
+        "text": "Review",
+        "x": 192.0,
+        "y": 77.0,
+        "width": 83.0,
+        "height": 21.0
+      },
+      {
+        "text": "msndon-nuhou#aon",
+        "x": 66.0,
+        "y": 142.0,
+        "width": 267.0,
+        "height": 21.0
+      },
+      {
+        "text": "Sample",
+        "x": 66.0,
+        "y": 207.0,
+        "width": 89.0,
+        "height": 27.0
+      },
+      {
+        "text": "2",
+        "x": 165.0,
+        "y": 208.0,
+        "width": 13.0,
+        "height": 20.0
+      },
+      {
+        "text": "09:45",
+        "x": 203.0,
+        "y": 208.0,
+        "width": 64.0,
+        "height": 20.0
+      },
+      {
+        "text": "Copy",
+        "x": 66.0,
+        "y": 273.0,
+        "width": 63.0,
+        "height": 26.0
+      },
+      {
+        "text": "reviewed",
+        "x": 138.0,
+        "y": 272.0,
+        "width": 107.0,
+        "height": 21.0
+      },
+      {
+        "text": "text",
+        "x": 255.0,
+        "y": 275.0,
+        "width": 45.0,
+        "height": 18.0
+      }
+    ],
+    "recognitionMs": 21.7683,
+    "decodeAndRecognitionMs": 187.4567,
+    "wallMs": 927.0,
+    "processPeakSampleMiB": 97.6,
+    "processPrivatePeakSampleMiB": 72.3,
+    "systemFreeBeforeMiB": 1582.4,
+    "systemFreeMinimumMiB": 1493.3,
+    "systemFreeAfterMiB": 1554.0,
+    "sampleMs": 50,
+    "confidenceProvided": false
+  }
+]

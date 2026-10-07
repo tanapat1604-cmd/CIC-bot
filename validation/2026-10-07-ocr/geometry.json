@@ -1,0 +1,514 @@
+[
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-en-light",
+    "visibleReferenceInkPixels": 3827.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-th-light",
+    "visibleReferenceInkPixels": 3419.0,
+    "coveragePercentWithOnePixelMargin": 0.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-mixed",
+    "visibleReferenceInkPixels": 4775.0,
+    "coveragePercentWithOnePixelMargin": 61.47,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-numbers",
+    "visibleReferenceInkPixels": 3276.0,
+    "coveragePercentWithOnePixelMargin": 90.26,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-en-multiline",
+    "visibleReferenceInkPixels": 5861.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-th-multiline",
+    "visibleReferenceInkPixels": 5045.0,
+    "coveragePercentWithOnePixelMargin": 0.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-en-dark",
+    "visibleReferenceInkPixels": 4511.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-th-dark",
+    "visibleReferenceInkPixels": 4143.0,
+    "coveragePercentWithOnePixelMargin": 0.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-en-small",
+    "visibleReferenceInkPixels": 790.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-th-small",
+    "visibleReferenceInkPixels": 817.0,
+    "coveragePercentWithOnePixelMargin": 0.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-reduced",
+    "visibleReferenceInkPixels": 2359.0,
+    "coveragePercentWithOnePixelMargin": 48.2,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-blur",
+    "visibleReferenceInkPixels": 11084.0,
+    "coveragePercentWithOnePixelMargin": 37.49,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-blank",
+    "visibleReferenceInkPixels": 0.0,
+    "coveragePercentWithOnePixelMargin": null,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-columns",
+    "visibleReferenceInkPixels": 3961.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-crop",
+    "visibleReferenceInkPixels": 3827.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "development-screenshot",
+    "visibleReferenceInkPixels": 5100.0,
+    "coveragePercentWithOnePixelMargin": 67.29,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-en-light",
+    "visibleReferenceInkPixels": 4267.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-th-light",
+    "visibleReferenceInkPixels": 3348.0,
+    "coveragePercentWithOnePixelMargin": 13.17,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-mixed",
+    "visibleReferenceInkPixels": 5250.0,
+    "coveragePercentWithOnePixelMargin": 56.23,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-numbers",
+    "visibleReferenceInkPixels": 3450.0,
+    "coveragePercentWithOnePixelMargin": 89.86,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-en-multiline",
+    "visibleReferenceInkPixels": 6804.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-th-multiline",
+    "visibleReferenceInkPixels": 4938.0,
+    "coveragePercentWithOnePixelMargin": 8.93,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-en-dark",
+    "visibleReferenceInkPixels": 4895.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-th-dark",
+    "visibleReferenceInkPixels": 4057.0,
+    "coveragePercentWithOnePixelMargin": 19.77,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-en-small",
+    "visibleReferenceInkPixels": 904.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-th-small",
+    "visibleReferenceInkPixels": 797.0,
+    "coveragePercentWithOnePixelMargin": 13.55,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-reduced",
+    "visibleReferenceInkPixels": 2448.0,
+    "coveragePercentWithOnePixelMargin": 81.5,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-blur",
+    "visibleReferenceInkPixels": 11644.0,
+    "coveragePercentWithOnePixelMargin": 52.12,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-blank",
+    "visibleReferenceInkPixels": 0.0,
+    "coveragePercentWithOnePixelMargin": null,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-columns",
+    "visibleReferenceInkPixels": 3484.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-crop",
+    "visibleReferenceInkPixels": 4267.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Windows.Media.Ocr",
+    "id": "new-screenshot",
+    "visibleReferenceInkPixels": 5204.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-en-light",
+    "visibleReferenceInkPixels": 3827.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-th-light",
+    "visibleReferenceInkPixels": 3419.0,
+    "coveragePercentWithOnePixelMargin": 96.55,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-mixed",
+    "visibleReferenceInkPixels": 4775.0,
+    "coveragePercentWithOnePixelMargin": 97.65,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-numbers",
+    "visibleReferenceInkPixels": 3276.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-en-multiline",
+    "visibleReferenceInkPixels": 5861.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-th-multiline",
+    "visibleReferenceInkPixels": 5045.0,
+    "coveragePercentWithOnePixelMargin": 96.41,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-en-dark",
+    "visibleReferenceInkPixels": 4511.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-th-dark",
+    "visibleReferenceInkPixels": 4143.0,
+    "coveragePercentWithOnePixelMargin": 95.63,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-en-small",
+    "visibleReferenceInkPixels": 790.0,
+    "coveragePercentWithOnePixelMargin": 99.87,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-th-small",
+    "visibleReferenceInkPixels": 817.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-reduced",
+    "visibleReferenceInkPixels": 2359.0,
+    "coveragePercentWithOnePixelMargin": 96.35,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-blur",
+    "visibleReferenceInkPixels": 11084.0,
+    "coveragePercentWithOnePixelMargin": 52.4,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-blank",
+    "visibleReferenceInkPixels": 0.0,
+    "coveragePercentWithOnePixelMargin": null,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-columns",
+    "visibleReferenceInkPixels": 3961.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-crop",
+    "visibleReferenceInkPixels": 3827.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "development-screenshot",
+    "visibleReferenceInkPixels": 5100.0,
+    "coveragePercentWithOnePixelMargin": 99.1,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-en-light",
+    "visibleReferenceInkPixels": 4267.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-th-light",
+    "visibleReferenceInkPixels": 3348.0,
+    "coveragePercentWithOnePixelMargin": 99.07,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-mixed",
+    "visibleReferenceInkPixels": 5250.0,
+    "coveragePercentWithOnePixelMargin": 99.75,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-numbers",
+    "visibleReferenceInkPixels": 3450.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-en-multiline",
+    "visibleReferenceInkPixels": 6804.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-th-multiline",
+    "visibleReferenceInkPixels": 4938.0,
+    "coveragePercentWithOnePixelMargin": 98.97,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-en-dark",
+    "visibleReferenceInkPixels": 4895.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-th-dark",
+    "visibleReferenceInkPixels": 4057.0,
+    "coveragePercentWithOnePixelMargin": 99.19,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-en-small",
+    "visibleReferenceInkPixels": 904.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-th-small",
+    "visibleReferenceInkPixels": 797.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-reduced",
+    "visibleReferenceInkPixels": 2448.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-blur",
+    "visibleReferenceInkPixels": 11644.0,
+    "coveragePercentWithOnePixelMargin": 77.47,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-blank",
+    "visibleReferenceInkPixels": 0.0,
+    "coveragePercentWithOnePixelMargin": null,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-columns",
+    "visibleReferenceInkPixels": 3484.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-crop",
+    "visibleReferenceInkPixels": 4267.0,
+    "coveragePercentWithOnePixelMargin": 100.0,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  },
+  {
+    "engine": "Tesseract 5.5.3 / tessdata_fast",
+    "id": "new-screenshot",
+    "visibleReferenceInkPixels": 5204.0,
+    "coveragePercentWithOnePixelMargin": 99.56,
+    "coordinateRoundTripErrorPixels": 0,
+    "interpretation": "Coverage of image pixels in known reference line regions; not OCR correctness/confidence; blur changes pixels and omissions lower coverage."
+  }
+]

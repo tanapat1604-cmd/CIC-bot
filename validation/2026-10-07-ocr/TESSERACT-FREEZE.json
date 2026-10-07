@@ -1,0 +1,9 @@
+{
+  "source": "Tesseract 5.5.3",
+  "models": "tessdata_fast tha+eng",
+  "oem": 1,
+  "psm": 3,
+  "OMP_THREAD_LIMIT": "1",
+  "preprocessing": "none beyond frozen fixture degradations",
+  "sourceSHA256": "501505e4b4c84fb37e21431c343c35ed088c624d6b8df04fc9df5f9072d367d2"
+}

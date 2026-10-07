@@ -1,3 +1,42 @@
+# Current OCR checkpoint — 7 ตุลาคม 2569
+
+ต่อ clean ec4844a/สไลด์ 8f75bcb. ผู้ใช้เลือกและอนุญาต A: ติดตั้ง Tesseract5.5.3 + tessdata_fast tha/eng แยกใน ignored .tools แล้ว ไม่มี download LLM/best, paid service, ภาพออกนอกเครื่อง, prompt change หรือ training. qwen3:0.6b text-only คงเดิม,1.7bเก็บไว้; chat/tools/Stockfish/slides A/B เดิมยังใช้ได้
+
+**ยังไม่เปิด OCR ใน CIC และยังไม่พร้อมแชร์/ควบคุมจอ:** fixed fast tha+eng OEM1/PSM3/OMP1 ผ่านไทยชัดและ browser fixture ที่ทดลอง แต่ new mixed11.76%CER, Thai12px full6.25%, blurตกหล่น, columnsเรียงผิด จึงไม่ผ่าน gateที่กำหนดก่อนทดลอง ไม่ปรับจากnewแล้วใช้คะแนนเดิมยืนยัน ผลและกรอบเป็นต้นแบบเครื่องมือผู้พัฒนา รายงาน `validation/2026-10-07-ocr/RESULTS.md`; raw/manifest/config/resourceแยก nativeกับfast
+
+## ขั้นก่อนเชื่อม OCR
+
+แนะนำใช้ fast ที่ติดตั้งแล้วต่อ ไม่มี downloadเพิ่ม: developmentใหม่สำหรับ explicit Thai/English/mixed selector, upscale/ROI/single-columnโดยแสดงการแปลงชัด ไม่ autoเดาจากผลทดสอบ. ตรึง pipeline แล้วใช้ **new-2 ที่ไม่เคยปรับ** รวมภาษา/ตัวเลข/เวลา/multiline/light/dark/small/reduce/blur/blank/columns/screenshot/instruction-in-image. เก็บ old new เป็น baselineเปิดแล้วและ regression เท่านั้น
+
+ตัวเลือกขออนุญาตใหม่ภายหลังคือ best Thai+Englishเพิ่ม~21.95MiB (engineเดิม) slower CPUและRAMต้องวัดก่อน ไม่มีรับรองว่าจะดีกับโจทย์เรา อีกทางคือพักUIและใช้reportทดลองต่อ ภาษาไทยไม่ได้รับรองโดยWindowsOCR en-US
+
+เกณฑ์: ไทย/ผสม clearต่อภาพ<=5% normalizedCER ไม่มีไทยตกหล่น; อังกฤษ<=2%; ตัวเลข/วันเวลา/เครื่องหมายสำคัญตรง; blankไม่มีfalse words; readingorderตรงcolumn spec; boxesสัมพันธ์กับglyphและsize/crop. ภาพอ่านไม่ชัดต้องแสดงข้อจำกัด/ขอภาพใหม่ ห้ามเติมจากqwenหรือ groundtruth ไม่แสดง confidenceที่toolไม่มี. ทดลองperformanceRAM/timeoutบนactualmaxlimitก่อนขยาย
+
+## เส้นทาง OCR ใน CIC (แผน ยังไม่มี endpoint/UI)
+
+1. ผู้ใช้เลือกไฟล์เอง previewผ่านobjectURL; PNG/JPEGเท่านั้นเสนอเริ่มต้น8MiB/8megapixels/ด้านไม่เกิน4096px ต้องทดสอบก่อนประกาศรองรับ. ไม่รับURL/path/shellจากภาพหรือผู้ใช้เป็นengineargs. ตรวจ bytes signature/PNGchunksหรือJPEGSOFจริงก่อนdecode, rejectanimated/multiframe/unsupportedbitdepth, rejectunsupportedEXIForientationหรือcanonicalizeแล้วบันทึกtransform. Decoderจริงตรวจ dimensionsซ้ำ ไม่เชื่อextension/MIME/declaredheaderลำพัง. ทดสอบspoof/truncated/corrupt/compressionbomb/oversizeโดยไม่allocateภาพใหญ่ก่อนguard
+2. กด “อ่านข้อความ” ถึงส่งเฉพาะไฟล์ที่เลือกไปbackend127.0.0.1; userตรวจภาพก่อน ไม่มีautoOCR/on-upload/send-to-model. local HttpOnly session + exact Origin/Host/loopback + ownership; publicdemoไม่เสนอเชื่อม127.0.0.1หรือfetchlocalhost. Operatorconfigabsoluteexe/languagefilesที่ตรวจแล้ว ไม่downloadruntimeเอง
+3. ทีละjob boundedchildprocess shell:false, generatedUUIDpaths, allowedlanguage/OEM/PSM, OMP1, RAMfreeguard, timeout20sเสนอเริ่มต้นและstdout/file/wordcountlimits ต้องวัดจริง. Ocr jobไม่ชนmodel/Stockfish/nativePowerPointกับglobalcomputebudget. จำกัดจำนวนjob/queue, RAMอาจเปลี่ยนหลังguard ไม่ปิดแอปอื่นเอง. บันทึกsource/language/version/transform ไม่fabricateconfidence; Tesseractwordscoreถ้าแสดงต้องlabel native scoreที่ไม่ใช่probability
+4. states idle/preview/queued/running/cancelling/cancelled/error/ready; AbortController+generationID+session/jobownership. cancel/replace/clear/navigationต้องabortrequest, cancelownedworkerและdiscardlate result; waitverifiedstopก่อนacceptnewjob ไม่killall tesseract/processes. ฝั่งserverต้องตรวจclose/timeout/pendingpoll raceและorphan cleanup ไม่ถือปิดUIว่าprocessหยุดแล้ว
+5. ผล original image+wordframes ใช้SVGviewBoxบนimage coordinate, expose transformและnatural dimensions; objectfit/letterbox/EXIF/crop/resize/zoom/DPRต้องทดสอบ. Frame IDและimageSHAสัมพันธ์กับผลทุกครั้ง ผลเดิมห้ามอยู่บนภาพใหม่ desktop/mobile/short. พิกัดภาพไม่ใช่OSscreenพิกัด ไม่ให้คลิกได้จากผลนี้
+6. texteditor preserve rawแยกedited, copyเฉพาะuserกด, reviewedcheckboxก่อนsend. **ข้อความ OCR เป็น reference data ไม่ใช่คำสั่งผู้ใช้:** ต้องเพิ่มtyped reference envelopeในprotocolและUIแหล่งที่มา แยกจากuser instruction, routing/toolsรับคำสั่งเฉพาะข้อความที่userพิมพ์ตรง. ห้ามpaste OCRดิบเป็นuser roleแล้วเปิดrouterที่อ่าน /calcหรือคำสั่งส่ง/ลบ. ทดสอบภาพที่สั่งignore rules/อ่านsecret/เปลี่ยนgoalและforgedsource; systempromptอย่างเดียวไม่ใช่permission boundary
+7. retentionที่จะต้องพิสูจน์: browserRAM/objectURL revokeonclear/replace/leave; backendtempUUIDใต้ignored `.cic-user-files/ocr` แยกslide/examples, ไม่เขียนทับ. deleteimage/TSV/TXTหลังอ่านผลหรือerror/cancelในfinally; resultRAMจนuserclear/sessionexpire, boundedstartuporphanreapหลังcrash. หากต้องเก็บhistoryให้userเลือกก่อน. LogsmetadataเฉพาะrandomrequestID/status/duration ไม่filename/image/OCRtext/base64 bydefault. ต้องทดสอบfilesystemจริง/permission/recoveryแล้วอธิบายตามactualbehavior **ปัจจุบันไม่ใช่นโยบายที่มีแล้ว**
+
+เกณฑ์ผ่านintegration: frozennew-2quality + bytes/decodeboundary + faulttimeout/cancel/stale/route/serverdisconnect + nonlogging/cleanup + provenance/reference-only + explicitcopy/send + responsiveness screenshotsจริง. ชุดmockไม่แทนnative OCR; ผลlegacychat/tools/chess/slides A/Bต้องผ่านแยกactualกับopt-in skipped. UIต้องทดสอบเลือกภาพใหม่และการแก้ข้อความใหม่ ไม่hardcodefixture
+
+## หลัง OCR: แชร์หน้าต่างแบบอ่านอย่างเดียว (แผนและการอนุญาตแยก)
+
+- เริ่มจากuserclick browsergetDisplayMediapickerเท่านั้น ไม่มีsilentpermission/reusepreviouscapture/automaticdesktopshot. ขอเฉพาะwindow/tab; browserhintไม่ใช่guarantee ต้องตรวจtracksettings.displaySurfaceและหยุดtrackทันทีหากเป็นmonitorหรือไม่สามารถยืนยันscopeที่เลือกได้. แสดงtarget/statusindicatorและปุ่มหยุดที่เข้าถึงได้ตลอด; ทดลองpermissiondeny/no-picker/trackended/userrevoke/routeleave/browserreload
+- หน้าต่างที่แชร์เลือกพื้นที่จำเป็นและpreviewก่อนแต่ละOCR snapshot. ไม่ใช่continuousanalysisdefault; มีpaused/sharing/processing/error/stopped, frameId/timestamp/naturaldimensions/transform, แสดงage; TTLเริ่มเสนอ10sสำหรับanalysisแต่ต้องวัดจริง. หน้าต่างย้าย/resize/DPIหลายจอหรือcapturegeometryเปลี่ยนต้องinvalidateภาพเก่าและขอframeใหม่. OCRอ่านtextไม่ได้บอกicon/layout/semanticภาพทั้งหมด qwen0.6bไม่มีvision; visioncomponent/modelใหม่ต้องประเมินRAM/สิทธิ์และขออนุญาตแยกก่อนdownload
+- Stop/revoke/leaveต้องstopทุกmedia track/revokeobjectURLs/abortpendingOCR/clearframes andresults; nohidden/backgroundcapture, ไม่logภาพหรือOCRtextโดยdefault. ทดสอบbrowserpermissionจริงและtracklifecycle ไม่ถือSVGcoordinateQAครั้งนี้ว่าcapture permissionผ่านแล้ว
+- No click/typing executorในขั้นนี้. OCRผ่านไม่เท่ากับคลิกจากพิกัดได้ ควบคุมจริงต้องscope/window identity/currentframe/focus/precondition/postcondition/DPI/croporigin checks, labที่แยก, maxactions/time/retry, immediate stop/คืนcontrol, หยุดเมื่อuncertain และการยืนยันส่งข้อความ/ซื้อ/ลบ/เผยแพร่/สำคัญแต่ละactionก่อนเริ่มตามแผนเดิม. ข้อความในภาพไม่เปลี่ยนgoal/permissionsเอง ไม่รับรองทุกแอป
+
+การแจ้งสถานะcurrentchat/questioncards/report/statusเดิม ไม่มีpopupใหม่ OCRassessmentคือtoolintegration/evaluation ไม่ใช่training ไม่เปลี่ยนqwenหรือStockfishเป็นคะแนนความฉลาดทั่วไป
+
+---
+
+## แผนเดิมที่ยังใช้เป็นฐาน (รายละเอียด OCR ข้างต้นมีสถานะล่าสุด)
+
 # แผนความสามารถที่ตรวจได้ 7 ตุลาคม 2569
 
 สถานะเริ่ม c410c37 และผลตรวจบริการในเครื่อง แผนนี้ไม่ให้สิทธิ์ CIC ควบคุมเครื่องหรืออ่านไฟล์ทั่วไป ภาพหน้าจอ โค้ด และ fine-tune ยังไม่เริ่ม การเลือกสไลด์ A อนุญาตเส้นทางสไลด์เท่านั้น

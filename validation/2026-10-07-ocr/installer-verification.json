@@ -1,0 +1,8 @@
+{
+  "sha256": "bee9e3434bd94fd65387d9be28cd467a41f61b1275383b55b0f59a1331270ae4",
+  "signature": "UnknownError",
+  "statusMessage": "A required certificate is not within its validity period when verifying against the current system clock or the timestamp in the signed file.",
+  "publisher": "CN=Universität Mannheim, O=Universität Mannheim, S=Baden-Württemberg, C=DE",
+  "verification": "Exact official release digest; expired Authenticode certificate explicitly retained",
+  "bytes": 26573224
+}

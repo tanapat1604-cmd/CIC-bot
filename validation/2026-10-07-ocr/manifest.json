@@ -1,0 +1,1746 @@
+[
+  {
+    "id": "development-en-light",
+    "set": "development",
+    "category": "English",
+    "file": "development-en-light.png",
+    "expectedLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "expectedText": "Choose an image yourself.\nRead text on this device only.",
+    "lineBoxes": [
+      {
+        "text": "Choose an image yourself.",
+        "x": 65,
+        "y": 68,
+        "width": 323.859375,
+        "height": 37
+      },
+      {
+        "text": "Read text on this device only.",
+        "x": 65,
+        "y": 133,
+        "width": 358.015625,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "55241c5c857313d085e44ae087bb8d1288c12a6a067abeb727c15c75d58151e3"
+  },
+  {
+    "id": "development-th-light",
+    "set": "development",
+    "category": "Thai",
+    "file": "development-th-light.png",
+    "expectedLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น"
+    ],
+    "expectedText": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "lineBoxes": [
+      {
+        "text": "ผู้ใช้เลือกภาพด้วยตนเอง",
+        "x": 65,
+        "y": 68,
+        "width": 255.421875,
+        "height": 37
+      },
+      {
+        "text": "อ่านข้อความในเครื่องเท่านั้น",
+        "x": 65,
+        "y": 133,
+        "width": 287.5625,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "0636a7827565915c2308756440d0132f1526218b3b9e4a238c2678ed725fa3fb"
+  },
+  {
+    "id": "development-mixed",
+    "set": "development",
+    "category": "Mixed",
+    "file": "development-mixed.png",
+    "expectedLines": [
+      "ทดสอบ CIC Bot รุ่น 1",
+      "Choose an image yourself.",
+      "ผู้ใช้เลือกภาพด้วยตนเอง"
+    ],
+    "expectedText": "ทดสอบ CIC Bot รุ่น 1\nChoose an image yourself.\nผู้ใช้เลือกภาพด้วยตนเอง",
+    "lineBoxes": [
+      {
+        "text": "ทดสอบ CIC Bot รุ่น 1",
+        "x": 65,
+        "y": 68,
+        "width": 236.90625,
+        "height": 37
+      },
+      {
+        "text": "Choose an image yourself.",
+        "x": 65,
+        "y": 133,
+        "width": 323.859375,
+        "height": 37
+      },
+      {
+        "text": "ผู้ใช้เลือกภาพด้วยตนเอง",
+        "x": 65,
+        "y": 198,
+        "width": 255.421875,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "4d8b63e6d1b8d92e6630caa981b33106025a94094d95778f8e664f25928f7df1"
+  },
+  {
+    "id": "development-numbers",
+    "set": "development",
+    "category": "Numbers",
+    "file": "development-numbers.png",
+    "expectedLines": [
+      "Order 1638   Total 1,250.75",
+      "2026-10-07   14:30   25%"
+    ],
+    "expectedText": "Order 1638   Total 1,250.75\n2026-10-07   14:30   25%",
+    "lineBoxes": [
+      {
+        "text": "Order 1638   Total 1,250.75",
+        "x": 65,
+        "y": 68,
+        "width": 331.484375,
+        "height": 37
+      },
+      {
+        "text": "2026-10-07   14:30   25%",
+        "x": 65,
+        "y": 133,
+        "width": 308.71875,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "c8b399b7cb0de9c3b60fa005a1ab319a9fc684248a56ae1ea080de42aadebe9c"
+  },
+  {
+    "id": "development-en-multiline",
+    "set": "development",
+    "category": "English multiline",
+    "file": "development-en-multiline.png",
+    "expectedLines": [
+      "Choose an image yourself.",
+      "Read text on this device only.",
+      "No automatic screen capture."
+    ],
+    "expectedText": "Choose an image yourself.\nRead text on this device only.\nNo automatic screen capture.",
+    "lineBoxes": [
+      {
+        "text": "Choose an image yourself.",
+        "x": 65,
+        "y": 68,
+        "width": 323.859375,
+        "height": 37
+      },
+      {
+        "text": "Read text on this device only.",
+        "x": 65,
+        "y": 133,
+        "width": 358.015625,
+        "height": 37
+      },
+      {
+        "text": "No automatic screen capture.",
+        "x": 65,
+        "y": 198,
+        "width": 362.0625,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "c1338ab9454106f2a3c9af87e96e6463b8add305fee4bf4fe33e75671db0643e"
+  },
+  {
+    "id": "development-th-multiline",
+    "set": "development",
+    "category": "Thai multiline",
+    "file": "development-th-multiline.png",
+    "expectedLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น",
+      "ห้ามส่งภาพออกนอกเครื่อง"
+    ],
+    "expectedText": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nห้ามส่งภาพออกนอกเครื่อง",
+    "lineBoxes": [
+      {
+        "text": "ผู้ใช้เลือกภาพด้วยตนเอง",
+        "x": 65,
+        "y": 68,
+        "width": 255.421875,
+        "height": 37
+      },
+      {
+        "text": "อ่านข้อความในเครื่องเท่านั้น",
+        "x": 65,
+        "y": 133,
+        "width": 287.5625,
+        "height": 37
+      },
+      {
+        "text": "ห้ามส่งภาพออกนอกเครื่อง",
+        "x": 65,
+        "y": 198,
+        "width": 273.4375,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "fef3f243ad8d8eb75f8d8cc7723525e4f8db61d1161246e866d2df7e6fef29bd"
+  },
+  {
+    "id": "development-en-dark",
+    "set": "development",
+    "category": "English dark",
+    "file": "development-en-dark.png",
+    "expectedLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "expectedText": "Choose an image yourself.\nRead text on this device only.",
+    "lineBoxes": [
+      {
+        "text": "Choose an image yourself.",
+        "x": 65,
+        "y": 68,
+        "width": 323.859375,
+        "height": 37
+      },
+      {
+        "text": "Read text on this device only.",
+        "x": 65,
+        "y": 133,
+        "width": 358.015625,
+        "height": 37
+      }
+    ],
+    "options": {
+      "dark": true
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "3e02ed3dc9a6353c1f80217d60a2a3b988396b27c6b06d03287f114415c0b400"
+  },
+  {
+    "id": "development-th-dark",
+    "set": "development",
+    "category": "Thai dark",
+    "file": "development-th-dark.png",
+    "expectedLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น"
+    ],
+    "expectedText": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "lineBoxes": [
+      {
+        "text": "ผู้ใช้เลือกภาพด้วยตนเอง",
+        "x": 65,
+        "y": 68,
+        "width": 255.421875,
+        "height": 37
+      },
+      {
+        "text": "อ่านข้อความในเครื่องเท่านั้น",
+        "x": 65,
+        "y": 133,
+        "width": 287.5625,
+        "height": 37
+      }
+    ],
+    "options": {
+      "dark": true
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "24b701e30899f7ca5695deea679331572c1017d84dbb55a1f6c21b9b92bc48c1"
+  },
+  {
+    "id": "development-en-small",
+    "set": "development",
+    "category": "English small",
+    "file": "development-en-small.png",
+    "expectedLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "expectedText": "Choose an image yourself.\nRead text on this device only.",
+    "lineBoxes": [
+      {
+        "text": "Choose an image yourself.",
+        "x": 65,
+        "y": 66,
+        "width": 138.796875,
+        "height": 16
+      },
+      {
+        "text": "Read text on this device only.",
+        "x": 65,
+        "y": 101,
+        "width": 153.4375,
+        "height": 16
+      }
+    ],
+    "options": {
+      "size": 12
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "bd141c934c07d9088191ca81f9509fd4e9bfda125a00582119ca2d62e60dee85"
+  },
+  {
+    "id": "development-th-small",
+    "set": "development",
+    "category": "Thai small",
+    "file": "development-th-small.png",
+    "expectedLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น"
+    ],
+    "expectedText": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น",
+    "lineBoxes": [
+      {
+        "text": "ผู้ใช้เลือกภาพด้วยตนเอง",
+        "x": 65,
+        "y": 66,
+        "width": 109.46875,
+        "height": 16
+      },
+      {
+        "text": "อ่านข้อความในเครื่องเท่านั้น",
+        "x": 65,
+        "y": 101,
+        "width": 123.25,
+        "height": 16
+      }
+    ],
+    "options": {
+      "size": 12
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "a4f8e96313ecb7f9fff47d6a953044ae2c7604227b1d29e7325cf6b703271a10"
+  },
+  {
+    "id": "development-reduced",
+    "set": "development",
+    "category": "Mixed reduced",
+    "file": "development-reduced.png",
+    "expectedLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น",
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "expectedText": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nChoose an image yourself.\nRead text on this device only.",
+    "lineBoxes": [
+      {
+        "text": "ผู้ใช้เลือกภาพด้วยตนเอง",
+        "x": 65,
+        "y": 68,
+        "width": 255.421875,
+        "height": 37
+      },
+      {
+        "text": "อ่านข้อความในเครื่องเท่านั้น",
+        "x": 65,
+        "y": 133,
+        "width": 287.5625,
+        "height": 37
+      },
+      {
+        "text": "Choose an image yourself.",
+        "x": 65,
+        "y": 198,
+        "width": 323.859375,
+        "height": 37
+      },
+      {
+        "text": "Read text on this device only.",
+        "x": 65,
+        "y": 263,
+        "width": 358.015625,
+        "height": 37
+      }
+    ],
+    "options": {
+      "transform": "reduce"
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    "imageSize": [
+      450,
+      220
+    ],
+    "sha256": "8cd840abff9092bfce48ac4cf51b04b5bf30a97f03f6034fd9053be6ff39da9d"
+  },
+  {
+    "id": "development-blur",
+    "set": "development",
+    "category": "Mixed blurred",
+    "file": "development-blur.png",
+    "expectedLines": [
+      "ผู้ใช้เลือกภาพด้วยตนเอง",
+      "อ่านข้อความในเครื่องเท่านั้น",
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "expectedText": "ผู้ใช้เลือกภาพด้วยตนเอง\nอ่านข้อความในเครื่องเท่านั้น\nChoose an image yourself.\nRead text on this device only.",
+    "lineBoxes": [
+      {
+        "text": "ผู้ใช้เลือกภาพด้วยตนเอง",
+        "x": 65,
+        "y": 68,
+        "width": 255.421875,
+        "height": 37
+      },
+      {
+        "text": "อ่านข้อความในเครื่องเท่านั้น",
+        "x": 65,
+        "y": 133,
+        "width": 287.5625,
+        "height": 37
+      },
+      {
+        "text": "Choose an image yourself.",
+        "x": 65,
+        "y": 198,
+        "width": 323.859375,
+        "height": 37
+      },
+      {
+        "text": "Read text on this device only.",
+        "x": 65,
+        "y": 263,
+        "width": 358.015625,
+        "height": 37
+      }
+    ],
+    "options": {
+      "transform": "blur"
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "6aa7518bcd0ee6eb17864a0d27fd8cf38a5dcb4d6ed342aea27fb86a82e41ffe"
+  },
+  {
+    "id": "development-blank",
+    "set": "development",
+    "category": "Blank",
+    "file": "development-blank.png",
+    "expectedLines": [],
+    "expectedText": "",
+    "lineBoxes": [],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "d9d75c8a41267a92a02177b1f025c5810368f670786709f1ae01608a3e43361a"
+  },
+  {
+    "id": "development-columns",
+    "set": "development",
+    "category": "English columns",
+    "file": "development-columns.png",
+    "expectedLines": [
+      "LEFT: Plan",
+      "LEFT: Review",
+      "RIGHT: Create",
+      "RIGHT: Download"
+    ],
+    "expectedText": "LEFT: Plan\nLEFT: Review\nRIGHT: Create\nRIGHT: Download",
+    "lineBoxes": [
+      {
+        "text": "LEFT: Plan",
+        "x": 65,
+        "y": 73,
+        "width": 121.859375,
+        "height": 37
+      },
+      {
+        "text": "LEFT: Review",
+        "x": 65,
+        "y": 148,
+        "width": 154.984375,
+        "height": 37
+      },
+      {
+        "text": "RIGHT: Create",
+        "x": 510,
+        "y": 73,
+        "width": 170.890625,
+        "height": 37
+      },
+      {
+        "text": "RIGHT: Download",
+        "x": 510,
+        "y": 148,
+        "width": 217.0625,
+        "height": 37
+      }
+    ],
+    "options": {
+      "columns": true
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "f8bde00a0e09daecbf4d5947dfba53c59a61936dc711183b4e60472c98ac95ea"
+  },
+  {
+    "id": "development-crop",
+    "set": "development",
+    "category": "English crop",
+    "file": "development-crop.png",
+    "expectedLines": [
+      "Choose an image yourself.",
+      "Read text on this device only."
+    ],
+    "expectedText": "Choose an image yourself.\nRead text on this device only.",
+    "lineBoxes": [
+      {
+        "text": "Choose an image yourself.",
+        "x": 65,
+        "y": 68,
+        "width": 323.859375,
+        "height": 37
+      },
+      {
+        "text": "Read text on this device only.",
+        "x": 65,
+        "y": 133,
+        "width": 358.015625,
+        "height": 37
+      }
+    ],
+    "options": {
+      "transform": "crop"
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        40,
+        40,
+        740,
+        210
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      740,
+      210
+    ],
+    "sha256": "7fe6bc37a20d9b7603078a1a0a6735bcb3baf119c386bc39bb522ebb2686b53d"
+  },
+  {
+    "id": "development-screenshot",
+    "set": "development",
+    "category": "Mixed browser fixture",
+    "file": "development-screenshot.png",
+    "expectedLines": [
+      "CIC Test - Reader",
+      "เลือกภาพก่อนอ่านข้อความ",
+      "Sample 1   14:30",
+      "Read image text"
+    ],
+    "expectedText": "CIC Test - Reader\nเลือกภาพก่อนอ่านข้อความ\nSample 1   14:30\nRead image text",
+    "lineBoxes": [
+      {
+        "text": "CIC Test - Reader",
+        "x": 65,
+        "y": 68,
+        "width": 209.859375,
+        "height": 37
+      },
+      {
+        "text": "เลือกภาพก่อนอ่านข้อความ",
+        "x": 65,
+        "y": 133,
+        "width": 282.1875,
+        "height": 37
+      },
+      {
+        "text": "Sample 1   14:30",
+        "x": 65,
+        "y": 198,
+        "width": 203.34375,
+        "height": 37
+      },
+      {
+        "text": "Read image text",
+        "x": 65,
+        "y": 263,
+        "width": 199.21875,
+        "height": 37
+      }
+    ],
+    "options": {
+      "panel": true
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "25c38d6f9436bce6f86e5293018b769e8d9dba96e58fe71e2b926868d26fc871"
+  },
+  {
+    "id": "new-en-light",
+    "set": "new",
+    "category": "English",
+    "file": "new-en-light.png",
+    "expectedLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "expectedText": "Review the text before sending.\nMonday meeting at 09:45.",
+    "lineBoxes": [
+      {
+        "text": "Review the text before sending.",
+        "x": 65,
+        "y": 68,
+        "width": 386.921875,
+        "height": 37
+      },
+      {
+        "text": "Monday meeting at 09:45.",
+        "x": 65,
+        "y": 133,
+        "width": 322.953125,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "1edd9235688b322cad06a4d43018f8cb5754f70bc83a282d74e82399a810e11d"
+  },
+  {
+    "id": "new-th-light",
+    "set": "new",
+    "category": "Thai",
+    "file": "new-th-light.png",
+    "expectedLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45"
+    ],
+    "expectedText": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "lineBoxes": [
+      {
+        "text": "กรุณาตรวจข้อความก่อนส่ง",
+        "x": 65,
+        "y": 68,
+        "width": 283.296875,
+        "height": 37
+      },
+      {
+        "text": "นัดหมายวันจันทร์ เวลา 09:45",
+        "x": 65,
+        "y": 133,
+        "width": 310.921875,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "7cb13ebb516e46cecbf22b87779812941a71cd2e3a72864281872221c20aa99a"
+  },
+  {
+    "id": "new-mixed",
+    "set": "new",
+    "category": "Mixed",
+    "file": "new-mixed.png",
+    "expectedLines": [
+      "ตรวจงาน CIC Bot รุ่น 2",
+      "Review the text before sending.",
+      "กรุณาตรวจข้อความก่อนส่ง"
+    ],
+    "expectedText": "ตรวจงาน CIC Bot รุ่น 2\nReview the text before sending.\nกรุณาตรวจข้อความก่อนส่ง",
+    "lineBoxes": [
+      {
+        "text": "ตรวจงาน CIC Bot รุ่น 2",
+        "x": 65,
+        "y": 68,
+        "width": 253.828125,
+        "height": 37
+      },
+      {
+        "text": "Review the text before sending.",
+        "x": 65,
+        "y": 133,
+        "width": 386.921875,
+        "height": 37
+      },
+      {
+        "text": "กรุณาตรวจข้อความก่อนส่ง",
+        "x": 65,
+        "y": 198,
+        "width": 283.296875,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "eac499456dcf13e4972f00673824c1a913450d546046ffa781a3a3a5e0fbad43"
+  },
+  {
+    "id": "new-numbers",
+    "set": "new",
+    "category": "Numbers",
+    "file": "new-numbers.png",
+    "expectedLines": [
+      "Invoice 5824   Total 2,750.50",
+      "2026-10-12   09:45   40%"
+    ],
+    "expectedText": "Invoice 5824   Total 2,750.50\n2026-10-12   09:45   40%",
+    "lineBoxes": [
+      {
+        "text": "Invoice 5824   Total 2,750.50",
+        "x": 65,
+        "y": 68,
+        "width": 347.453125,
+        "height": 37
+      },
+      {
+        "text": "2026-10-12   09:45   40%",
+        "x": 65,
+        "y": 133,
+        "width": 308.71875,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "9915e5edbd2aa4067b02f14a0b3ec765a5e6c44f1f5fcb955167119c7aed8c7d"
+  },
+  {
+    "id": "new-en-multiline",
+    "set": "new",
+    "category": "English multiline",
+    "file": "new-en-multiline.png",
+    "expectedLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45.",
+      "Do not send images automatically."
+    ],
+    "expectedText": "Review the text before sending.\nMonday meeting at 09:45.\nDo not send images automatically.",
+    "lineBoxes": [
+      {
+        "text": "Review the text before sending.",
+        "x": 65,
+        "y": 68,
+        "width": 386.921875,
+        "height": 37
+      },
+      {
+        "text": "Monday meeting at 09:45.",
+        "x": 65,
+        "y": 133,
+        "width": 322.953125,
+        "height": 37
+      },
+      {
+        "text": "Do not send images automatically.",
+        "x": 65,
+        "y": 198,
+        "width": 424.5,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "78210a239af5e6e1571821ca0f211e3f58dfc030358ce7df64bf98b6a22abce0"
+  },
+  {
+    "id": "new-th-multiline",
+    "set": "new",
+    "category": "Thai multiline",
+    "file": "new-th-multiline.png",
+    "expectedLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45",
+      "ภาพนี้ไม่มีข้อมูลส่วนตัว"
+    ],
+    "expectedText": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nภาพนี้ไม่มีข้อมูลส่วนตัว",
+    "lineBoxes": [
+      {
+        "text": "กรุณาตรวจข้อความก่อนส่ง",
+        "x": 65,
+        "y": 68,
+        "width": 283.296875,
+        "height": 37
+      },
+      {
+        "text": "นัดหมายวันจันทร์ เวลา 09:45",
+        "x": 65,
+        "y": 133,
+        "width": 310.921875,
+        "height": 37
+      },
+      {
+        "text": "ภาพนี้ไม่มีข้อมูลส่วนตัว",
+        "x": 65,
+        "y": 198,
+        "width": 243.171875,
+        "height": 37
+      }
+    ],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "237f2fdb4dc9c6d4672bf1bab50b1fc312bb04e92f018145ce11f5517e540773"
+  },
+  {
+    "id": "new-en-dark",
+    "set": "new",
+    "category": "English dark",
+    "file": "new-en-dark.png",
+    "expectedLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "expectedText": "Review the text before sending.\nMonday meeting at 09:45.",
+    "lineBoxes": [
+      {
+        "text": "Review the text before sending.",
+        "x": 65,
+        "y": 68,
+        "width": 386.921875,
+        "height": 37
+      },
+      {
+        "text": "Monday meeting at 09:45.",
+        "x": 65,
+        "y": 133,
+        "width": 322.953125,
+        "height": 37
+      }
+    ],
+    "options": {
+      "dark": true
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "09dd4f19b24846721201adaf79c27dc4e417871f032d1cd9e8832e8c45db9964"
+  },
+  {
+    "id": "new-th-dark",
+    "set": "new",
+    "category": "Thai dark",
+    "file": "new-th-dark.png",
+    "expectedLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45"
+    ],
+    "expectedText": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "lineBoxes": [
+      {
+        "text": "กรุณาตรวจข้อความก่อนส่ง",
+        "x": 65,
+        "y": 68,
+        "width": 283.296875,
+        "height": 37
+      },
+      {
+        "text": "นัดหมายวันจันทร์ เวลา 09:45",
+        "x": 65,
+        "y": 133,
+        "width": 310.921875,
+        "height": 37
+      }
+    ],
+    "options": {
+      "dark": true
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "ee9e9547446522f483bc029ca96a1d76095c9a04d676e411a62a28911af1be95"
+  },
+  {
+    "id": "new-en-small",
+    "set": "new",
+    "category": "English small",
+    "file": "new-en-small.png",
+    "expectedLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "expectedText": "Review the text before sending.\nMonday meeting at 09:45.",
+    "lineBoxes": [
+      {
+        "text": "Review the text before sending.",
+        "x": 65,
+        "y": 66,
+        "width": 165.828125,
+        "height": 16
+      },
+      {
+        "text": "Monday meeting at 09:45.",
+        "x": 65,
+        "y": 101,
+        "width": 138.40625,
+        "height": 16
+      }
+    ],
+    "options": {
+      "size": 12
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "cf991bd953da384c7372bed211e513d37c6d55de0548774ecc8bd2ffb157aa3d"
+  },
+  {
+    "id": "new-th-small",
+    "set": "new",
+    "category": "Thai small",
+    "file": "new-th-small.png",
+    "expectedLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45"
+    ],
+    "expectedText": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45",
+    "lineBoxes": [
+      {
+        "text": "กรุณาตรวจข้อความก่อนส่ง",
+        "x": 65,
+        "y": 66,
+        "width": 121.421875,
+        "height": 16
+      },
+      {
+        "text": "นัดหมายวันจันทร์ เวลา 09:45",
+        "x": 65,
+        "y": 101,
+        "width": 133.25,
+        "height": 16
+      }
+    ],
+    "options": {
+      "size": 12
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "0c5cad3d8e2a5d93de23a95d660c40953123b17c9de967283cb04010c6b801b4"
+  },
+  {
+    "id": "new-reduced",
+    "set": "new",
+    "category": "Mixed reduced",
+    "file": "new-reduced.png",
+    "expectedLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45",
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "expectedText": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nReview the text before sending.\nMonday meeting at 09:45.",
+    "lineBoxes": [
+      {
+        "text": "กรุณาตรวจข้อความก่อนส่ง",
+        "x": 65,
+        "y": 68,
+        "width": 283.296875,
+        "height": 37
+      },
+      {
+        "text": "นัดหมายวันจันทร์ เวลา 09:45",
+        "x": 65,
+        "y": 133,
+        "width": 310.921875,
+        "height": 37
+      },
+      {
+        "text": "Review the text before sending.",
+        "x": 65,
+        "y": 198,
+        "width": 386.921875,
+        "height": 37
+      },
+      {
+        "text": "Monday meeting at 09:45.",
+        "x": 65,
+        "y": 263,
+        "width": 322.953125,
+        "height": 37
+      }
+    ],
+    "options": {
+      "transform": "reduce"
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        0.5,
+        0.5
+      ]
+    },
+    "imageSize": [
+      450,
+      220
+    ],
+    "sha256": "a6a8e2a1993c70ea8da4420d6f5316cc812e39e4d7a49f86c350408435547c81"
+  },
+  {
+    "id": "new-blur",
+    "set": "new",
+    "category": "Mixed blurred",
+    "file": "new-blur.png",
+    "expectedLines": [
+      "กรุณาตรวจข้อความก่อนส่ง",
+      "นัดหมายวันจันทร์ เวลา 09:45",
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "expectedText": "กรุณาตรวจข้อความก่อนส่ง\nนัดหมายวันจันทร์ เวลา 09:45\nReview the text before sending.\nMonday meeting at 09:45.",
+    "lineBoxes": [
+      {
+        "text": "กรุณาตรวจข้อความก่อนส่ง",
+        "x": 65,
+        "y": 68,
+        "width": 283.296875,
+        "height": 37
+      },
+      {
+        "text": "นัดหมายวันจันทร์ เวลา 09:45",
+        "x": 65,
+        "y": 133,
+        "width": 310.921875,
+        "height": 37
+      },
+      {
+        "text": "Review the text before sending.",
+        "x": 65,
+        "y": 198,
+        "width": 386.921875,
+        "height": 37
+      },
+      {
+        "text": "Monday meeting at 09:45.",
+        "x": 65,
+        "y": 263,
+        "width": 322.953125,
+        "height": 37
+      }
+    ],
+    "options": {
+      "transform": "blur"
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "023a5490f84489774b0a3a64c9edbe4faf41ad3ace0ed7ea057fb31ca2dac8cc"
+  },
+  {
+    "id": "new-blank",
+    "set": "new",
+    "category": "Blank",
+    "file": "new-blank.png",
+    "expectedLines": [],
+    "expectedText": "",
+    "lineBoxes": [],
+    "options": {},
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "d9d75c8a41267a92a02177b1f025c5810368f670786709f1ae01608a3e43361a"
+  },
+  {
+    "id": "new-columns",
+    "set": "new",
+    "category": "English columns",
+    "file": "new-columns.png",
+    "expectedLines": [
+      "LEFT: Repair",
+      "LEFT: Test",
+      "RIGHT: Save",
+      "RIGHT: Export"
+    ],
+    "expectedText": "LEFT: Repair\nLEFT: Test\nRIGHT: Save\nRIGHT: Export",
+    "lineBoxes": [
+      {
+        "text": "LEFT: Repair",
+        "x": 65,
+        "y": 73,
+        "width": 146.78125,
+        "height": 37
+      },
+      {
+        "text": "LEFT: Test",
+        "x": 65,
+        "y": 148,
+        "width": 117.109375,
+        "height": 37
+      },
+      {
+        "text": "RIGHT: Save",
+        "x": 510,
+        "y": 73,
+        "width": 148.40625,
+        "height": 37
+      },
+      {
+        "text": "RIGHT: Export",
+        "x": 510,
+        "y": 148,
+        "width": 171.296875,
+        "height": 37
+      }
+    ],
+    "options": {
+      "columns": true
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "c83b436d2dc0dac47152a12b3c97a9a363eb13481c23b54f6db41c06324ddd5a"
+  },
+  {
+    "id": "new-crop",
+    "set": "new",
+    "category": "English crop",
+    "file": "new-crop.png",
+    "expectedLines": [
+      "Review the text before sending.",
+      "Monday meeting at 09:45."
+    ],
+    "expectedText": "Review the text before sending.\nMonday meeting at 09:45.",
+    "lineBoxes": [
+      {
+        "text": "Review the text before sending.",
+        "x": 65,
+        "y": 68,
+        "width": 386.921875,
+        "height": 37
+      },
+      {
+        "text": "Monday meeting at 09:45.",
+        "x": 65,
+        "y": 133,
+        "width": 322.953125,
+        "height": 37
+      }
+    ],
+    "options": {
+      "transform": "crop"
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        40,
+        40,
+        740,
+        210
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      740,
+      210
+    ],
+    "sha256": "58e0c4f3b681e31a3dc18d53d88056c5124d73203606b9bff3c25aff59b68ef4"
+  },
+  {
+    "id": "new-screenshot",
+    "set": "new",
+    "category": "Mixed browser fixture",
+    "file": "new-screenshot.png",
+    "expectedLines": [
+      "CIC Test - Review",
+      "ตรวจข้อความก่อนคัดลอก",
+      "Sample 2   09:45",
+      "Copy reviewed text"
+    ],
+    "expectedText": "CIC Test - Review\nตรวจข้อความก่อนคัดลอก\nSample 2   09:45\nCopy reviewed text",
+    "lineBoxes": [
+      {
+        "text": "CIC Test - Review",
+        "x": 65,
+        "y": 68,
+        "width": 209.8125,
+        "height": 37
+      },
+      {
+        "text": "ตรวจข้อความก่อนคัดลอก",
+        "x": 65,
+        "y": 133,
+        "width": 269.6875,
+        "height": 37
+      },
+      {
+        "text": "Sample 2   09:45",
+        "x": 65,
+        "y": 198,
+        "width": 203.34375,
+        "height": 37
+      },
+      {
+        "text": "Copy reviewed text",
+        "x": 65,
+        "y": 263,
+        "width": 235.421875,
+        "height": 37
+      }
+    ],
+    "options": {
+      "panel": true
+    },
+    "originalSize": [
+      900,
+      440
+    ],
+    "transform": {
+      "crop": [
+        0,
+        0,
+        900,
+        440
+      ],
+      "scale": [
+        1,
+        1
+      ]
+    },
+    "imageSize": [
+      900,
+      440
+    ],
+    "sha256": "e41096cb61f74a72e8550ea07d175bc260fb927748a3d4ed1cd81243538f36d6"
+  }
+]
