@@ -1,3 +1,7 @@
+# Native Lab supplement — 8 October 2026
+
+Current Lab prototype has actual UIA pattern discovery/owned child exit and actual production open/stop evidence.21/21Core-Lab fixtures and54/55related(with1devoptinSKIP) passed, including realTesseract/Stockfish. User positive overall Lab reply is not six individual native results. Native effects/hotkey500ms30trials/DPI/multimonitor/general-app acceptance remains pending. No weights/download/voice/model17score upgrade. See NATIVE-LAB.md and validation/2026-10-08-native-lab/RESULTS.md. Dated earlier no-helper status below is superseded only for the owned Lab.
+
 # Final P0/P1 bounded-tools checkpoint — 8 October 2026
 
 Current source a7e06f09c5a020caffe3725a59eeb50f3681e09e (Corefoundation07c4fbd). P1 bounded calculator/time scope is verified as a pilot; broader legacy migration/native agents and overallP7 are NOT-ACCEPTED. No weights/prompt/provider/defaultmodel change, training, model/runtime downloads, paidAPI, user-data egress, nativecontrol or microphone. Preserve0.6b/1.7b/Stockfish/staticA-B/OCR/manualcapture.

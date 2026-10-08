@@ -1,3 +1,6 @@
+import {createLabCore} from './lab/core.js'
+import {createScheduler} from './core/scheduler.js'
+import {freemem} from 'node:os'
 import {createCore} from './core/core.js'
 import {coreCapabilities} from './core/capabilities.js'
 import {CoreError,exact,uuid} from '../shared/core.js'
@@ -14,7 +17,7 @@ import { once } from 'node:events'
 import { ChatError, LIMITS, validateRequest, type ErrorCode, type TextEvent } from '../shared/chatProtocol.js'
 import { SYSTEM_INSTRUCTION, testProvider, type Provider } from './provider.js'
 
-type Options = { core?: ReturnType<typeof createCore>; ocr?: ReturnType<typeof createOcrManager>; slides?: ReturnType<typeof createSlidesManager>; chess?: ChessEngine; origins?: string[]; provider?: Provider; timeoutMs?: number; requestsPerMinute?: number; maxRequests?: number; maxConcurrent?: number; enabled?: boolean; log?: (entry: { requestId: string; status: string; durationMs: number }) => void }
+type Options = { lab?: ReturnType<typeof createLabCore>; core?: ReturnType<typeof createCore>; ocr?: ReturnType<typeof createOcrManager>; slides?: ReturnType<typeof createSlidesManager>; chess?: ChessEngine; origins?: string[]; provider?: Provider; timeoutMs?: number; requestsPerMinute?: number; maxRequests?: number; maxConcurrent?: number; enabled?: boolean; log?: (entry: { requestId: string; status: string; durationMs: number }) => void }
 type Access = { expires: number; active: number; window: number; count: number; operations: Set<string> }
 const loopback = (address?: string) => address === '127.0.0.1' || address === '::1' || address === '::ffff:127.0.0.1'
 export function createChatServer(options: Options = {}) {
@@ -28,7 +31,9 @@ export function createChatServer(options: Options = {}) {
   let chessWindow = Date.now(), chessCalls = 0
   const access = new Map<string, Access>(), controllers = new Set<AbortController>()
   let active = 0, spent = 0, bootstrapWindow = Date.now(), bootstraps = 0
-  const core=options.core??createCore({externalBusy:()=>!!active||slides.isBusy()||ocr.isBusy(),ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now()})
+  const sharedScheduler=options.core||options.lab?undefined:createScheduler({freeMiB:()=>freemem()/1048576,externalBusy:()=>!!active||slides.isBusy()||ocr.isBusy()})
+  const core:ReturnType<typeof createCore>=options.core??createCore({scheduler:sharedScheduler,externalBusy:()=>!!active||slides.isBusy()||ocr.isBusy()||(!sharedScheduler&&lab.isBusy()),ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now()})
+  const lab:ReturnType<typeof createLabCore>=options.lab??createLabCore({scheduler:sharedScheduler,externalBusy:()=>!!active||slides.isBusy()||ocr.isBusy()||(sharedScheduler?sharedScheduler.busy():core.isBusy()),ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now()})
   const json = (res: ServerResponse, status: number, value: unknown) => { res.writeHead(status, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(value)) }
   // Drain rejected bodies without buffering so HTTP clients can receive the error
   // before reusing/closing the socket; requestTimeout bounds unfinished uploads.
@@ -42,6 +47,28 @@ export function createChatServer(options: Options = {}) {
     if (origin && !origins.includes(origin)) { fail(res, 403, 'unauthorized'); return }
     if (origin) { res.setHeader('Access-Control-Allow-Origin', origin); res.setHeader('Access-Control-Allow-Credentials', 'true'); res.setHeader('Vary', 'Origin') }
     if (req.method === 'OPTIONS' && origin) { res.writeHead(204, { 'Access-Control-Allow-Methods': 'POST, GET', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '600' }); res.end(); return }
+    if(req.url?.startsWith('/lab/')){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
+      try{
+        const match=/^\/lab\/jobs\/([a-f0-9-]{36})(?:\/(approve))?$/.exec(req.url),operation=/^\/lab\/operations\/([a-f0-9-]{36})\/cancel$/.exec(req.url)
+        if(match&&!uuid(match[1]))throw new CoreError('invalid')
+        if(req.method==='GET'&&match&&!match[2]){json(res,200,lab.get(token!,match[1]));return}
+        if(req.method==='GET'&&req.url==='/lab/observation'){json(res,200,await lab.observe(token!));return}
+        if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']){fail(res,403,'unauthorized');return}
+        const value=await readBody(req,AbortSignal.timeout(5000),4096)
+        if(operation||match?.[2]||req.url==='/lab/stop'){
+          if(!exact(value,[]))throw new CoreError('invalid')
+          if(operation){await lab.cancelOperation(token!,operation[1]);json(res,200,{acknowledged:true});return}
+          if(req.url==='/lab/stop'){json(res,200,await lab.stop(token!));return}
+          json(res,200,lab.approve(token!,match![1]));return
+        }
+        if(!['/lab/open','/lab/plans'].includes(req.url))throw new CoreError('invalid')
+        if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}
+        if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
+        json(res,201,req.url==='/lab/open'?await lab.open(token!,value):await lab.plan(token!,value));return
+      }catch(error){const code=error instanceof CoreError?error.code:error instanceof ChatError?error.code:'failed';if(!res.destroyed)json(res,code==='not-found'?404:code==='permission-denied'?403:code==='busy'||code==='memory'||code==='capacity'?429:code==='too_large'?413:400,{code});return}
+    }
     if(req.url==='/core/capabilities'&&req.method==='GET'){json(res,200,coreCapabilities(ocr.status()));return}
     if(req.url?.startsWith('/core/')){
       const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
@@ -88,7 +115,7 @@ export function createChatServer(options: Options = {}) {
         const operation=/^\/ocr\/operations\/([a-f0-9-]{36})\/cancel$/.exec(req.url)
         if(operation||match?.[2]){const value=await readBody(req,AbortSignal.timeout(5000));if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length)throw new OcrError('invalid');if(operation)ocr.cancelOperation(token!,operation[1]);else if(match![2]==='clear')ocr.clear(token!,match![1]);else ocr.cancel(token!,match![1]);json(res,200,{ok:true});return}
         if(req.url!=='/ocr/jobs')throw new OcrError('invalid')
-        if(core.isBusy()||active||session.active||slides.isBusy()||ocr.isBusy()){json(res,429,{code:'busy'});req.resume();return}
+        if((core.isBusy()||lab.isBusy())||active||session.active||slides.isBusy()||ocr.isBusy()){json(res,429,{code:'busy'});req.resume();return}
         if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
         const controller=new AbortController(),closing=()=>controller.abort();res.once('close',closing);active++;session.active++
         try {const value=await readBody(req,AbortSignal.any([controller.signal,AbortSignal.timeout(5000)]),5600000);controller.signal.throwIfAborted();const job=ocr.create(token!,value);res.once('close',()=>{if(!res.writableFinished)ocr.cancelOperation(token!,job.operationId)});json(res,202,job)}
@@ -109,14 +136,14 @@ export function createChatServer(options: Options = {}) {
           res.writeHead(200, { 'Content-Type': match[3].endsWith('.png') ? 'image/png' : match[3].endsWith('.pdf') ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'Content-Length': data.length, ...(match[3].startsWith('deck.') ? { 'Content-Disposition': 'attachment; filename="CIC-' + match[1] + '-' + match[3] + '"' } : {}) }); res.end(data); return
         }
         if (!origin || req.method !== 'POST' || req.headers['content-type']?.split(';')[0] !== 'application/json' || req.headers['content-encoding']) { fail(res, 403, 'unauthorized'); return }
-        if (!match?.[2] && (core.isBusy() || session.active || active || ocr.isBusy())) { json(res, 429, { code: 'busy' }); req.resume(); return }
+        if (!match?.[2] && ((core.isBusy() || lab.isBusy()) || session.active || active || ocr.isBusy())) { json(res, 429, { code: 'busy' }); req.resume(); return }
         if (Date.now() - session.window > 60000) { session.window=Date.now();session.count=0 }
         // Stopping an owned job remains possible after the creation quota is spent.
         if (!match?.[2] && ++session.count > (options.requestsPerMinute ?? 10)) { fail(res,429,'limited');return }
         const value = await readBody(req, AbortSignal.timeout(5000))
         if (match?.[2]) { if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).length) throw new SlidesError('invalid');json(res,200,slides.cancel(token!,match[1]));return }
         if (req.url !== '/slides/jobs') throw new SlidesError('invalid')
-        if(core.isBusy()||active||ocr.isBusy())throw new SlidesError('busy')
+        if((core.isBusy()||lab.isBusy())||active||ocr.isBusy())throw new SlidesError('busy')
         const job = slides.create(token!, value)
         res.once('close', () => { if (!res.writableFinished) slides.cancel(token!,job.id) })
         json(res,202,job);return
@@ -141,7 +168,7 @@ export function createChatServer(options: Options = {}) {
     const token = /(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie ?? '')?.[1]
     const session = token ? access.get(token) : undefined
     if (!session || session.expires < Date.now()) { fail(res, 401, 'unauthorized'); return }
-    if (core.isBusy() || slides.isBusy() || ocr.isBusy()) { json(res,429,{ code: 'limited' });req.resume();return }
+    if ((core.isBusy() || lab.isBusy()) || slides.isBusy() || ocr.isBusy()) { json(res,429,{ code: 'limited' });req.resume();return }
     if (req.url === '/chess/analyze') {
       if (req.headers['content-type']?.split(';')[0] !== 'application/json' || req.headers['content-encoding']) { fail(res, 400, 'invalid'); return }
       if (Date.now() - chessWindow > 60000) { chessWindow = Date.now(); chessCalls = 0 }
@@ -224,7 +251,7 @@ export function createChatServer(options: Options = {}) {
     }
   })
   server.requestTimeout = 10000; server.headersTimeout = 10000; server.maxHeadersCount = 30
-  server.on('close', () => { controllers.forEach(controller => controller.abort()); core.close(); slides.close(); ocr.close(); access.clear() })
+  server.on('close', () => { controllers.forEach(controller => controller.abort()); core.close(); void lab.close(); slides.close(); ocr.close(); access.clear() })
   return server
 }
 async function abortable<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {

@@ -11,7 +11,7 @@ test('CIC Core UI uses real authenticated backend tools after review; fixture RA
  await page.getByRole('button',{name:'อนุญาตงานนี้และเริ่ม',exact:true}).click();await expect(page.getByRole('heading',{name:'สำเร็จและตรวจผลแล้ว',exact:true})).toBeVisible();await expect(page.getByRole('article',{name:'งาน Core'})).toContainText('(81-27)/3 = 18');
  for(const[width,height]of[[1440,900],[390,844],[360,480]]){await page.setViewportSize({width,height});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:'.tools/core-'+width+'.png',fullPage:true})}
  await page.getByRole('button',{name:'หยุดงาน Core ทั้งหมดของฉัน',exact:true}).click();await expect(page.getByRole('status')).toContainText('บริการยืนยันว่าไม่มีงาน');
- }finally{server.closeAllConnections();await new Promise<void>(r=>server.close(()=>r()))}
+ }finally{await page.unrouteAll({behavior:'wait'});server.closeAllConnections();await new Promise<void>(r=>server.close(()=>r()))}
 })
 test('public Core disables local calls; malformed capability version cannot show ready',async({page})=>{
  const local:string[]=[];page.on('request',r=>{if(/:8787|:11434/.test(r.url()))local.push(r.url())});await page.route('http://core-demo.test/**',async route=>{const response=await route.fetch({url:route.request().url().replace('http://core-demo.test','http://127.0.0.1:4173')});await route.fulfill({response})});await page.goto('http://core-demo.test/CIC-bot/#/core');await expect(page.getByRole('button',{name:'ตรวจบริการและความสามารถ',exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'วางแผนงาน',exact:true})).toBeDisabled();expect(local).toEqual([]);

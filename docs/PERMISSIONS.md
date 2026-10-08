@@ -13,3 +13,6 @@ Core stop ไม่ใช่ global PC stop ใช้กับ Core jobs เท�
 Privacy: ไม่มี log คำสั่ง/ผล Core โดยปริยาย job args/results อยู่ในRAMตามbounded retention ผู้ใช้เลือกดูเอง หลักฐาน dev เป็นภาพ/คำสั่งสังเคราะห์ ไม่มีภาพส่วนตัว/audio/cookies/secretsในpublic report Raw JSON/freezes/resources อยู่ C workspace/privateignored ไม่มี persistent personal memory
 
 Future gates: browser fetch ต้อง scheme/domain/redirect/DNS/IP checksทุกhop (SSRF fixtureยังNOT-RUNเพราะไม่มี fetch adapter); CodingAgent ต้อง canonical workspace+reparse escape+secrets filtering+OS sandbox (ยังNOT-RUN); native helperใช้ user ACL named pipe และ paired identity ไม่เปิด raw control HTTP endpoint ทุก negative gate ที่ยังไม่มี adapterไม่ถือว่าผ่าน
+
+## Native Lab supplement — 8 October 2026
+Closed lab.control permits only the newly owned CIC Lab window, reviewed single action plus native human confirmation. General desktop.control remains disabled; read-only sharing never grants Lab control. Private inherited pipes/nonce and helper-side observation/deadline/geometry/grant checks; one-time≤30s. Web stop waits owned child exit. See NATIVE-LAB.md; no SendInput/clipboard/other-app/shell permission.

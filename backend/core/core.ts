@@ -5,10 +5,10 @@ import {createPolicy,type ActionEnvelope} from './policy.js'
 import {createScheduler} from './scheduler.js'
 import {boundedPlan,registry,type RegisteredTool} from './registry.js'
 type Stored={owner:string;job:CoreJob;created:number;deadline:number;grant?:string;abort:AbortController;deadlineTimer?:ReturnType<typeof setTimeout>;expiryTimer?:ReturnType<typeof setTimeout>;graceTimer?:ReturnType<typeof setTimeout>;settled:boolean}
-export function createCore(options:{externalBusy?:()=>boolean;ownerAlive?:(owner:string)=>boolean;freeMiB?:()=>number;clock?:()=>number;tools?:readonly RegisteredTool[];deadlineMs?:number;stopGraceMs?:number}={}){
+export function createCore(options:{scheduler?:ReturnType<typeof createScheduler>;externalBusy?:()=>boolean;ownerAlive?:(owner:string)=>boolean;freeMiB?:()=>number;clock?:()=>number;tools?:readonly RegisteredTool[];deadlineMs?:number;stopGraceMs?:number}={}){
  const clock=options.clock??(()=>performance.now()),policy=createPolicy(clock),jobs=new Map<string,Stored>(),operations=new Map<string,ReturnType<typeof setTimeout>>();let closed=false
  const tools=options.tools??registry();if(tools.length!==2||new Set(tools.map(t=>t.id)).size!==2||tools.some(t=>!['calculator','time-calculator'].includes(t.id)||t.native!==false||t.reserveMiB!==8||t.permission!=='tools.calculate'))throw new CoreError('registry')
- const scheduler=createScheduler({clock,freeMiB:options.freeMiB??(()=>freemem()/1048576),externalBusy:options.externalBusy??(()=>false)})
+ const scheduler=options.scheduler??createScheduler({clock,freeMiB:options.freeMiB??(()=>freemem()/1048576),externalBusy:options.externalBusy??(()=>false)})
  const state=(s:Stored,next:CoreState,reason?:string)=>{if(s.job.state===next&&s.job.reason===reason)return;s.job.state=next;s.job.reason=reason;if(s.job.events.length<24)s.job.events.push({sequence:s.job.events.length,state:next,elapsedMs:Math.max(0,clock()-s.created),...(reason?{reason}:{})})}
  const view=(s:Stored):CoreJob=>structuredClone(s.job)
  const owned=(owner:string,id:string)=>{const s=jobs.get(id);if(!s||s.owner!==owner)throw new CoreError('not-found');return s}
