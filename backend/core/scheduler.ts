@@ -21,4 +21,3 @@ export function createScheduler(options:{freeMiB:()=>number;externalBusy:()=>boo
   close(){closed=true;if(timer)clearTimeout(timer);for(const item of queue.splice(0))item.onError('cancelled')},
  }
 }
-

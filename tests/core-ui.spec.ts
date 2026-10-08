@@ -1,3 +1,4 @@
+import {coreCapabilities} from '../backend/core/capabilities'
 import {test,expect} from '@playwright/test'
 import {once} from 'node:events'
 import {createChatServer} from '../backend/server'
@@ -16,3 +17,10 @@ test('public Core disables local calls; malformed capability version cannot show
  const local:string[]=[];page.on('request',r=>{if(/:8787|:11434/.test(r.url()))local.push(r.url())});await page.route('http://core-demo.test/**',async route=>{const response=await route.fetch({url:route.request().url().replace('http://core-demo.test','http://127.0.0.1:4173')});await route.fulfill({response})});await page.goto('http://core-demo.test/CIC-bot/#/core');await expect(page.getByRole('button',{name:'ตรวจบริการและความสามารถ',exact:true})).toBeDisabled();await expect(page.getByRole('button',{name:'วางแผนงาน',exact:true})).toBeDisabled();expect(local).toEqual([]);
  await page.route('http://127.0.0.1:8787/**',route=>route.fulfill({json:route.request().url().endsWith('/session')?{ready:true}:{version:999}}));await page.goto('./#/core');await page.getByRole('button',{name:'ตรวจบริการและความสามารถ',exact:true}).click();await expect(page.getByRole('status')).toContainText('เชื่อมบริการไม่ได้');await expect(page.getByRole('button',{name:'วางแผนงาน',exact:true})).toBeDisabled();
 })
+
+
+test('expired session/restarted service enables explicit reconnect and never replays a task',async({page})=>{
+ let plans=0,sessions=0;await page.route('http://127.0.0.1:8787/**',async route=>{const u=new URL(route.request().url());if(u.pathname==='/session'){sessions++;await route.fulfill({json:{ready:true}})}else if(u.pathname==='/core/capabilities')await route.fulfill({json:coreCapabilities({configured:false})});else if(u.pathname==='/core/plans'){plans++;await route.fulfill({status:401,json:{code:'unauthorized'}})}else await route.fulfill({json:{acknowledged:true}})});
+ await page.goto('./#/core');await page.getByRole('button',{name:'ตรวจบริการและความสามารถ',exact:true}).click();await page.getByLabel('คำสั่งของคุณ').fill('/calc 41+19');await page.getByRole('button',{name:'วางแผนงาน',exact:true}).click();await expect(page.getByRole('status')).toContainText('การเชื่อมต่อหมดอายุ');await expect(page.getByRole('button',{name:'ตรวจบริการและความสามารถ',exact:true})).toBeEnabled();await expect(page.getByRole('button',{name:'วางแผนงาน',exact:true})).toBeDisabled();await expect(page.getByLabel('คำสั่งของคุณ')).toHaveValue('/calc 41+19');expect(plans).toBe(1);
+ await page.getByRole('button',{name:'ตรวจบริการและความสามารถ',exact:true}).click();await expect(page.getByRole('button',{name:'วางแผนงาน',exact:true})).toBeEnabled();expect(sessions).toBe(2);expect(plans).toBe(1);await expect(page.getByRole('article',{name:'งาน Core'})).toHaveCount(0);
+});
