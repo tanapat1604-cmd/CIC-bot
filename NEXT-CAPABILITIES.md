@@ -1,3 +1,7 @@
+# P0/P1 Core pilot — 8 October 2026 (acceptance pending)
+
+Implemented bounded #/core calculator/time plan→reviewgrant→queue→execute→verify and separatecapabilitymanifest; legacyhealthv1/manualcapture/OCR/Stockfish/slides/default0.6b/1.7b preserved. Futureagents disabled; voicescontracts/comparison only. Actualpreedittools3/3PASS, Corefixtureunit7/7PASS, changedtype/backendbuildPASS. Fullfrontend/browser640guardblocked; positiveactualCoreUI pending; realUIqueued/timeout truthfully fromlowRAM. Lateststatusfixrerun/CI stillpending. Frozen17modelscore null/NOTRUN. No training/download/privateegress/nativecontrol/mic. See docs/CIC-CORE-ARCHITECTURE.md and validation/2026-10-08-core-p1/RESULTS.md for limitations/currentverification. Existinguserwork not reset/cleaned. Next completeP1checks before claimaccepted; remainingphasegates follow supplied Coreprompt.
+
 # Explicit read-only whole-screen scope — 8 October 2026
 
 The user clarified that single-source sharing worked normally and whole-screen selection was rejected. This was the earlier intentional monitor restriction, not a broken tab/window switch. The user then explicitly chose and authorized adding whole-screen read-only sharing. After implementation the user reported it works. Record this as human overall whole-screen confirmation, not individual results for every resize/revoke/leave/stop case.
