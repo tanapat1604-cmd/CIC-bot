@@ -1,3 +1,8 @@
+# Final delivery 8 October 2026 — code00dd48e verified
+- Reviewed local OCR + explicit read-only window/tab/acknowledgedmonitor delivered. User reports nativewhole-screen sharing works; per-path remainder stillseparate. Actualdevframe-loss fixed. Default0.6b/1.7b/Stockfish/slidesA/B retained; no inputcontrol/audio/download/training/privateegress.
+- Finalbuilds/lintPASS, localOCR+screen24PASS/1nativeSKIP (earlieractualnativeOCR/Stockfish tests retained). CI37732204022build/deploySUCCESS. Actualpublic3sizes/images/hashmatch/0errors/0localcallsPASS; demoOCR/capture/build controlsdisabled. Actualdemochat completed/statusready. Localservices127onlyready. Model17cases stillNOTRUN at781.28MiB<1152; no newbrainscore.
+- See validation/2026-10-08-ocr-integration/DELIVERY.md for raw-vs-mock-vs-user evidence, zip andnextgates. Documentation checkpoint follows with unchangedsource.
+
 # Explicit read-only whole-screen scope — 8 October 2026
 
 The user clarified that single-source sharing worked normally and whole-screen selection was rejected. This was the earlier intentional monitor restriction, not a broken tab/window switch. The user then explicitly chose and authorized adding whole-screen read-only sharing. After implementation the user reported it works. Record this as human overall whole-screen confirmation, not individual results for every resize/revoke/leave/stop case.
