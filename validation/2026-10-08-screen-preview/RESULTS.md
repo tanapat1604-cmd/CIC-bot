@@ -25,3 +25,7 @@ Commit/CI/public verification recorded in WORK-PROGRESS.md after completion.
 Open http://127.0.0.1:5173/CIC-bot/#/screen in a browser supporting display capture. Select a harmless window/tab, inspect live preview, take oneframe, clear it, stopsharing; verify browserindicator disappears. Repeat and close sharing from browserindicator; UI should stop and remove snapshot. Cancel picker and test stop whilepickerpending. Do not share private credentials or other windows for this test. No screenshot/upload of this test requested or recorded by developer.
 
 [Browser API requirements](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getDisplayMedia).
+
+## Deployment checkpoint
+
+Code ee9e53245088973a7fd5284a8526714f1dcefc1f pushed; CI37707547917 SUCCESS. Public screen route desktop/mobile/short/reload/sidebar link PASS; capture/snapshot buttons disabled, no localhost/backend calls and no browser/console/asset errors. Public entry SHA256 exactly matches dist: B761F9232E36F7BD0371F66241E464F6D9E6FE0602C0E4DB2CF7643EFF99EE78. Public screenshots inspected. Native user-operated picker remains pending; no actual screen/audio recorded by developer. User bidirectional voice-runtime choice still pending; larger goal incomplete.
