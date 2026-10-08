@@ -1,3 +1,27 @@
+# Explicit read-only whole-screen scope — 8 October 2026
+
+The user clarified that single-source sharing worked normally and whole-screen selection was rejected. This was the earlier intentional monitor restriction, not a broken tab/window switch. The user then explicitly chose and authorized adding whole-screen read-only sharing. After implementation the user reported it works. Record this as human overall whole-screen confirmation, not individual results for every resize/revoke/leave/stop case.
+
+Current #/screen defaults to one window/tab. Separate whole-screen radio and per-round acknowledgement explain that other apps/notifications on the selected monitor may be visible. The picker still requires the user's button and source choice; no hidden capture. Monitor selection is accepted only in acknowledged monitor mode; a browser-returned different surface is stopped. Scope cannot change during sharing/pending picker. Stop or unsuccessful picker resets acknowledgement; new round requires it again. One selected monitor only, no automatic other-monitor following. Window/tab mode still rejects monitor. Actual full-screen preview may include smaller text; manual snapshot is capped1280x720 and its original size is the delivered video stream, not a verified desktop/DPI coordinate map.
+
+Source/frame IDs, monotonic age and explicit frame→OCR stay intact. Browser-reported surface is checked before/after snapshot; changed type stops and clears. No OCR/chat automatically, no audio, native click/type/control, vision model, downloads or private-data egress. Public-demo controls including scope selection remain disabled. The 0.6b default and retained1.7b/Stockfish/slidesA/B are unchanged. No claim that whole-screen coordinates can control an application.
+
+Native whole-screen picker was selected by the user, not the developer. Local browser UI consent state was inspected and captured without starting capture. Automated monitor cases use labelled synthetic canvas/picker fixtures and are separate evidence. User individual remaining checklist paths and physical multi-monitor/DPI behaviour remain unverified. Voice runtime/mic/lab/game/coding executor still not installed/started. Follow exact offline voice artifact/license/size/resource choice before any download; no approval inferred from whole-screen permission.
+
+The earlier same-day monitor-rejected and source-clarification status below is historical and superseded by this update. Final build/tests/CI/demo status follows in DELIVERY.md.
+
+## Frame handoff correction — 8 October 2026
+
+Fixed an actual development-mode defect: React StrictMode replay consumed the explicit frame in the first effect, then invalidated its image decode, leaving the OCR page waiting without a picture. The surviving effect now consumes the single-use frame. Handoff expires after 10 seconds and still stops sharing on leaving the screen page; no automatic OCR/chat/control.
+
+Reproduced and visually checked on the actual local Vite page using an explicitly labelled synthetic canvas source, not the native picker. After correction, native Tesseract read “CIC synthetic frame 09:35”, four word boxes, worker 707 ms. This is an integration regression check, not a fresh OCR accuracy score or native sharing acceptance. Local frontend types/build, backend build and lint PASS. Screen tests 13/13 PASS including production handoff and the opt-in actual development server/StrictMode path; CI executes both paths. An initial compiler run hit the developer's imposed 256 MiB heap cap; the bounded 384 MiB retry passed builds. Failures retained locally.
+
+Human evidence: real selected-source sharing, stopping from CIC and stopping from the browser were reported working, with image cleared and sharing indicator stopped. The latest user report says switching pages/sources does not work as expected. Treat this as an unresolved scope/usability issue; the present implementation accepts one browser-reported window or tab and rejects a whole monitor. Changing source requires stopping and selecting a new source. Tab selection does not authorize other tabs or applications. Do not mark frame/dimensions/resize/leave/chooser retry/permission-settings revocation individually passed; clarification is pending. No whole-screen or native-control permission inferred.
+
+Fresh model assessment retry used the unchanged frozen plan and verified baseline system hash; actual free RAM 781.28 MiB remained below the 1152 MiB cold-load guard. All 17 model cases NOT RUN, scores null. The five existing deterministic tool cases re-ran 5/5 as regression, not a new unseen score. No model load/download/prompt or weights adjustment. Existing 0.6b/1.7b retained.
+
+Publication checks and delivery files are recorded in DELIVERY.md. Raw JSON, user images and machine metadata remain local/ignored; only code, tests and non-private summary documentation are published.
+
 # CIC OCR integration — 8 October 2026
 
 Started clean at 37019d8 (screen code ee9e532; reviewed slides 8f75bcb). No existing user work overwritten. Read the current progress, capability/voice roadmaps and previous validation, then inspected source, services, models and RAM. qwen3:0.6b remains default; 1.7b retained. Stockfish is independent. No downloads, paid APIs, external image/audio/model requests or general computer control. Backend remains loopback; public frontend is a demo.

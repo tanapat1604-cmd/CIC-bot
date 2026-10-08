@@ -1,3 +1,6 @@
+import {spawn} from 'node:child_process'
+import {once} from 'node:events'
+import path from 'node:path'
 import {test,expect,type Page} from '@playwright/test'
 type FixtureWindow=Window & {captureTracks:MediaStreamTrack[];captureRequests:number;captureOptions?:DisplayMediaStreamOptions;resolveCapture?:()=>void;rejectedCapture?:boolean}
 async function fixture(page:Page,mode='normal'){
@@ -20,7 +23,7 @@ test('screen preview is explicit, no audio/backend, snapshot stops and clears tr
  await page.goto('./#/screen');expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureRequests)).toBe(0)
  await page.getByRole('button',{name:'เลือกหน้าต่างหรือแท็บ',exact:true}).click();await expect(page.getByRole('status')).toContainText('กำลังแชร์')
  expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureOptions?.audio)).toBe(false)
- await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await expect(page.getByRole('img',{name:'ภาพหนึ่งเฟรมจากหน้าต่างที่คุณเลือก'})).toBeVisible()
+ await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await expect(page.getByRole('img',{name:'ภาพหนึ่งเฟรมจากแหล่งที่คุณเลือก'})).toBeVisible()
  await expect(page.getByRole('region',{name:'ภาพหนึ่งเฟรม'})).toContainText('640×360')
  await page.clock.fastForward(11000);await expect(page.getByRole('region',{name:'ภาพหนึ่งเฟรม'})).toContainText('ภาพเก่า')
  for(const[width,height]of[[1440,900],[390,844],[360,480]]){await page.setViewportSize({width,height});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:'.tools/screen-'+width+'.png',fullPage:true})}
@@ -70,4 +73,40 @@ test('frame age follows monotonic time despite a backwards wall clock',async({pa
 test('slow snapshot encoding cannot give an old picture a fresh capture timestamp',async({page})=>{
  await fixture(page);await page.clock.install();await page.addInitScript(()=>{const original=HTMLCanvasElement.prototype.toBlob;HTMLCanvasElement.prototype.toBlob=function(this:HTMLCanvasElement,callback,type,quality){(window as unknown as {finishSnapshot:()=>void}).finishSnapshot=()=>original.call(this,callback,type,quality)}});
  await page.goto('./#/screen');await page.getByRole('button',{name:'เลือกหน้าต่างหรือแท็บ',exact:true}).click();await expect(page.getByRole('status')).toContainText('กำลังแชร์');await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await page.clock.fastForward(11000);await page.evaluate(()=>(window as unknown as {finishSnapshot:()=>void}).finishSnapshot());await expect(page.getByRole('status')).toContainText('ภาพถ่ายเสร็จช้า');await expect(page.getByRole('img')).toHaveCount(0);await page.getByRole('button',{name:'หยุดแชร์และล้างภาพ'}).click();
+});
+
+
+async function verifyFrameHandoff(page:Page,url='./#/screen'){
+ await fixture(page);const requests:string[]=[];page.on('request',r=>{if(r.url().includes(':8787'))requests.push(r.url())});await page.goto(url);
+ await page.getByRole('button',{name:'เลือกหน้าต่างหรือแท็บ',exact:true}).click();await expect(page.getByRole('status')).toContainText('กำลังแชร์');await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await expect(page.getByRole('img')).toBeVisible();await page.getByRole('button',{name:'อ่านเฟรมนี้ด้วย OCR'}).click();
+ await expect(page.getByRole('heading',{name:'ภาพต้นฉบับ 640×360'})).toBeVisible();await expect(page.getByText('เฟรมจากแหล่ง',{exact:false})).toContainText('ต้นฉบับสตรีม 640×360');expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureTracks.every(t=>t.readyState==='ended'))).toBe(true);expect(requests).toEqual([]);
+ await page.getByRole('button',{name:'ล้างภาพและผล'}).click();await expect(page.getByRole('heading',{name:'ภาพต้นฉบับ 640×360'})).toHaveCount(0);
+}
+test('fresh explicit frame survives route handoff without automatic OCR or retained sharing',async({page})=>{await verifyFrameHandoff(page)});
+test('development StrictMode replay cannot consume and lose an explicit frame',async({page})=>{
+ test.skip(!process.env.CI&&process.env.CIC_TEST_DEV_HANDOFF!=='1','Dev server runs in CI or explicit local opt-in; manual dev fixture recorded separately');test.setTimeout(35000);
+ const child=spawn(process.execPath,[path.resolve('node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','4174','--strictPort'],{cwd:process.cwd(),shell:false,windowsHide:true,stdio:'ignore'});let failed=false;child.on('error',()=>{failed=true});
+ try{await expect.poll(async()=>{if(failed||child.exitCode!==null)throw Error('Owned dev server unavailable');try{return(await fetch('http://127.0.0.1:4174/CIC-bot/')).ok}catch{return false}},{timeout:15000}).toBe(true);await verifyFrameHandoff(page,'http://127.0.0.1:4174/CIC-bot/#/screen')}
+ finally{if(child.exitCode===null&&!failed){const stopped=once(child,'close',{signal:AbortSignal.timeout(5000)});child.kill();await stopped}}
+});
+
+
+test('monitor requires explicit scope and per-round acknowledgement; stop resets permission and clears image',async({page})=>{
+ await fixture(page,'monitor');const network:string[]=[];page.on('request',r=>{if(r.url().includes(':8787')||r.url().includes(':11434'))network.push(r.url())});await page.goto('./#/screen');
+ await page.getByRole('radio',{name:'ทั้งจอแบบอ่านอย่างเดียว',exact:true}).check();const choose=page.getByRole('button',{name:'เลือกจอที่อนุญาต',exact:true});await expect(choose).toBeDisabled();expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureRequests)).toBe(0);
+ const consent=page.getByRole('checkbox',{name:/ฉันอนุญาตให้แสดงทั้งจอ/});await consent.check();await choose.click();await expect(page.getByRole('status')).toContainText('ทั้งจอที่คุณเลือก');await expect(page.getByRole('radio',{name:'หน้าต่างหรือแท็บ (ค่าเริ่มต้น)',exact:true})).toBeDisabled();
+ await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await expect(page.getByRole('region',{name:'ภาพหนึ่งเฟรม'})).toContainText('แหล่ง ทั้งจอที่เลือก');await expect(page.getByRole('img')).toBeVisible();
+ for(const[width,height]of[[1440,900],[390,844],[360,480]]){await page.setViewportSize({width,height});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true);await page.screenshot({path:'.tools/screen-monitor-'+width+'.png',fullPage:true})}
+ await page.getByRole('button',{name:'หยุดแชร์และล้างภาพ'}).click();await expect(page.getByRole('img')).toHaveCount(0);await expect(consent).not.toBeChecked();await expect(choose).toBeDisabled();expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureTracks.every(t=>t.readyState==='ended'))).toBe(true);expect(network).toEqual([]);
+ await consent.check();await choose.click();await expect(page.getByRole('status')).toContainText('กำลังแชร์');await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await page.getByRole('button',{name:'อ่านเฟรมนี้ด้วย OCR'}).click();await expect(page.getByRole('heading',{name:'ภาพต้นฉบับ 640×360'})).toBeVisible();await expect(page.getByText('เฟรมจากแหล่ง',{exact:false})).toContainText('ทั้งจอที่เลือก');expect(network).toEqual([]);expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureTracks.every(t=>t.readyState==='ended'))).toBe(true);
+});
+
+test('monitor scope rejects a browser-returned window and picker cancel requires acknowledgement again',async({page})=>{
+ await fixture(page);await page.goto('./#/screen');await page.getByRole('radio',{name:'ทั้งจอแบบอ่านอย่างเดียว',exact:true}).check();await page.getByRole('checkbox',{name:/ฉันอนุญาตให้แสดงทั้งจอ/}).check();await page.getByRole('button',{name:'เลือกจอที่อนุญาต',exact:true}).click();await expect(page.getByRole('status')).toContainText('ไม่ตรงกับโหมดทั้งจอ');expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureTracks.every(t=>t.readyState==='ended'))).toBe(true);await expect(page.getByRole('button',{name:'เลือกจอที่อนุญาต',exact:true})).toBeDisabled();
+ await fixture(page,'denied');await page.reload();await page.getByRole('radio',{name:'ทั้งจอแบบอ่านอย่างเดียว',exact:true}).check();await page.getByRole('checkbox',{name:/ฉันอนุญาตให้แสดงทั้งจอ/}).check();await page.getByRole('button',{name:'เลือกจอที่อนุญาต',exact:true}).click();await expect(page.getByRole('status')).toContainText('ไม่ได้ให้สิทธิ์');await expect(page.getByRole('checkbox',{name:/ฉันอนุญาตให้แสดงทั้งจอ/})).not.toBeChecked();await expect(page.getByRole('button',{name:'เลือกจอที่อนุญาต',exact:true})).toBeDisabled();
+});
+
+
+test('a changed browser-reported surface stops and clears instead of snapshotting broader scope',async({page})=>{
+ await fixture(page);await page.goto('./#/screen');await page.getByRole('button',{name:'เลือกหน้าต่างหรือแท็บ',exact:true}).click();await expect(page.getByRole('status')).toContainText('กำลังแชร์');await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await expect(page.getByRole('img')).toBeVisible();await page.evaluate(()=>Object.defineProperty((window as unknown as FixtureWindow).captureTracks[0],'getSettings',{configurable:true,value:()=>({displaySurface:'monitor'})}));await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await expect(page.getByRole('status')).toContainText('ชนิดแหล่งภาพเปลี่ยน');await expect(page.getByRole('img')).toHaveCount(0);expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureTracks.every(t=>t.readyState==='ended'))).toBe(true);
 });

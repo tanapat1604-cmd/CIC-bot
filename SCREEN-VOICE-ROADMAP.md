@@ -1,3 +1,19 @@
+# Explicit read-only whole-screen scope — 8 October 2026
+
+The user clarified that single-source sharing worked normally and whole-screen selection was rejected. This was the earlier intentional monitor restriction, not a broken tab/window switch. The user then explicitly chose and authorized adding whole-screen read-only sharing. After implementation the user reported it works. Record this as human overall whole-screen confirmation, not individual results for every resize/revoke/leave/stop case.
+
+Current #/screen defaults to one window/tab. Separate whole-screen radio and per-round acknowledgement explain that other apps/notifications on the selected monitor may be visible. The picker still requires the user's button and source choice; no hidden capture. Monitor selection is accepted only in acknowledged monitor mode; a browser-returned different surface is stopped. Scope cannot change during sharing/pending picker. Stop or unsuccessful picker resets acknowledgement; new round requires it again. One selected monitor only, no automatic other-monitor following. Window/tab mode still rejects monitor. Actual full-screen preview may include smaller text; manual snapshot is capped1280x720 and its original size is the delivered video stream, not a verified desktop/DPI coordinate map.
+
+Source/frame IDs, monotonic age and explicit frame→OCR stay intact. Browser-reported surface is checked before/after snapshot; changed type stops and clears. No OCR/chat automatically, no audio, native click/type/control, vision model, downloads or private-data egress. Public-demo controls including scope selection remain disabled. The 0.6b default and retained1.7b/Stockfish/slidesA/B are unchanged. No claim that whole-screen coordinates can control an application.
+
+Native whole-screen picker was selected by the user, not the developer. Local browser UI consent state was inspected and captured without starting capture. Automated monitor cases use labelled synthetic canvas/picker fixtures and are separate evidence. User individual remaining checklist paths and physical multi-monitor/DPI behaviour remain unverified. Voice runtime/mic/lab/game/coding executor still not installed/started. Follow exact offline voice artifact/license/size/resource choice before any download; no approval inferred from whole-screen permission.
+
+The earlier same-day monitor-rejected and source-clarification status below is historical and superseded by this update. Final build/tests/CI/demo status follows in DELIVERY.md.
+
+# Frame handoff correction — 8 October 2026
+
+Current actual integration: reviewed native OCR; explicit fresh frame survives both production and development StrictMode, sharing stops on handoff. Native reader check on clearly synthetic frame passed. Human-selected sharing and stopCIC/stopbrowser confirmed; source/page switching reported incomplete and awaiting scope clarification. One browser-reported window/tab only, monitor rejected; do not interpret the report as authorization for the whole desktop. Frame/resize/leave/picker retry/permission-settings revocation remain unverified individually. Complete these gates before additional speech runtime choice/installation. No native input, microphone or model-vision capability added.
+
 # CIC speech + screen roadmap — 2026-10-08
 
 User target: two-way spoken commands/answers, screen sharing and control; use https://neal.fun/not-a-robot/ as one gameplay evaluation before investigating3D games. This is integration/evaluation, not evidence that qwen weights improved. No promise to complete every task/game. Preserve coding and slide/image/table plans in NEXT-CAPABILITIES.md.

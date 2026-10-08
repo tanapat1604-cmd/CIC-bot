@@ -1,3 +1,19 @@
+# Explicit read-only whole-screen scope — 8 October 2026
+
+The user clarified that single-source sharing worked normally and whole-screen selection was rejected. This was the earlier intentional monitor restriction, not a broken tab/window switch. The user then explicitly chose and authorized adding whole-screen read-only sharing. After implementation the user reported it works. Record this as human overall whole-screen confirmation, not individual results for every resize/revoke/leave/stop case.
+
+Current #/screen defaults to one window/tab. Separate whole-screen radio and per-round acknowledgement explain that other apps/notifications on the selected monitor may be visible. The picker still requires the user's button and source choice; no hidden capture. Monitor selection is accepted only in acknowledged monitor mode; a browser-returned different surface is stopped. Scope cannot change during sharing/pending picker. Stop or unsuccessful picker resets acknowledgement; new round requires it again. One selected monitor only, no automatic other-monitor following. Window/tab mode still rejects monitor. Actual full-screen preview may include smaller text; manual snapshot is capped1280x720 and its original size is the delivered video stream, not a verified desktop/DPI coordinate map.
+
+Source/frame IDs, monotonic age and explicit frame→OCR stay intact. Browser-reported surface is checked before/after snapshot; changed type stops and clears. No OCR/chat automatically, no audio, native click/type/control, vision model, downloads or private-data egress. Public-demo controls including scope selection remain disabled. The 0.6b default and retained1.7b/Stockfish/slidesA/B are unchanged. No claim that whole-screen coordinates can control an application.
+
+Native whole-screen picker was selected by the user, not the developer. Local browser UI consent state was inspected and captured without starting capture. Automated monitor cases use labelled synthetic canvas/picker fixtures and are separate evidence. User individual remaining checklist paths and physical multi-monitor/DPI behaviour remain unverified. Voice runtime/mic/lab/game/coding executor still not installed/started. Follow exact offline voice artifact/license/size/resource choice before any download; no approval inferred from whole-screen permission.
+
+The earlier same-day monitor-rejected and source-clarification status below is historical and superseded by this update. Final build/tests/CI/demo status follows in DELIVERY.md.
+
+# Frame handoff correction — 8 October 2026
+
+Reviewed OCR and explicit frame handoff now pass local production/development regression (13 screen cases). Human confirms selected-source sharing and both CIC/browser stop paths. New source-switching usability report is unresolved: clarify tab versus window versus proposed monitor sharing before changing scope. Current monitor sharing is rejected; no permission to capture the whole desktop. Remaining actual frame/resize/leave/retry/revoke gates need separate evidence. Keep speech installation/lab/game/native input behind the ordered gates; prepare options without installing. New17-model evaluation remains RAM-blocked (781.28MiB<1152), no new model score. Full evidence in validation/2026-10-08-ocr-integration/RESULTS.md.
+
 # Update 8 October 2026 — usable reviewed OCR, ordered next gates
 
 Current: #/ocr local selectedfile/manuallanguage/ROI/raw-edit-review/coordinates/copy/explicitnewchat is implemented and verified with nativeTesseract. Thai error remains, no qwenvision. See OCR.md and validation/2026-10-08-ocr-integration/RESULTS.md. Tools5/5 separate from skipped17-case model eval; architectureA chosen. RAMguard prevents fresh0.6b loading; do not claim an intelligence improvement or close other software.
