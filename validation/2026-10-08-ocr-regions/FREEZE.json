@@ -1,0 +1,33 @@
+{
+  "created": 1791378519.078375,
+  "manifestHash": "30be17a857fab46dd47c9d37d6c136d882fa922488ced59dfb2dac1bf274d698",
+  "imageHashes": {
+    "development-th-light.png": "b514fac1b911f4b5c8883ec1f75796e874b915009044a910b72742acdaf2ebe8",
+    "development-en-light.png": "a72a802903fcc14b02a426f995cbee850780adf71d195798ef0864cfc2e7b0e1",
+    "development-th-dark.png": "b4bd0e01aa2b7fe67dc548c3be0e78ea31fac5aba497914b42ef50f2a1019907",
+    "development-th-small.png": "d6c342c68479c887bcc6367f340b847cc51e7cb35c542197fba66eae06261d6f",
+    "development-en-small.png": "c54679d829ccdc4f09d6da9911b71f161d47660261dbc6e6768d951ea3d1f132",
+    "development-mixed-inline.png": "3a3610e86d04dcd4f810d6e6e12aba70fb9cb95215893f24dfd02f1c5309f40b",
+    "development-mixed-regions.png": "019d92231169745ea8b1dbb16f4e1b130cedbab616ccca92ec56207bc7413bcb",
+    "development-numbers.png": "012e4adae91cced009307d1664305cfb70457af317ea7bd83629c60e9ccfb5fb",
+    "development-columns.png": "c67a8979e270c3fbef17ed3ff16398c762a9af21c88d7d681ede6df69ad41460",
+    "development-blur.png": "9fd29b6d03f3d063736bb95b2fb1acbdfe4072a6b7d41a06f8d5c6639f159a81",
+    "development-blank.png": "f675c50730e011f80a3a9c4a08a113d0e20f9c1badbb2d1a731534ee264806cd",
+    "development-instruction.png": "cfca01282536ae7bd1dae2899584bf51cce6cf737caadb6674b404d616f0749a",
+    "new-2-th-light.png": "56ee243bca688bc41680e267937bd519f3484e5c2de94fa702b052feb13a2eb2",
+    "new-2-en-light.png": "c948c24ff724834ef81643a2355eb7ec5cb1b51cdba478c6d1bf18ba602d9918",
+    "new-2-th-dark.png": "98ea6fcbbb18bf9ce724517d3dc6334a00c93186240dcea5b40e3f6a8d275140",
+    "new-2-th-small.png": "af420f37b871cb7e10cbf2b90b878355e39f7626920a9063b4a54e96ae603765",
+    "new-2-en-small.png": "c949c066d96eb2c5dec4546160857376e5a7389cdf49e33d713a8556f4cc2ab6",
+    "new-2-mixed-inline.png": "d8a771f8a51cddc1b9976832169d18f349f835bf9c82c666158e7f2024b1b344",
+    "new-2-mixed-regions.png": "120ed95e154272b63ee9cd134e8b733d039342927d6a95595ba0306303b97ac6",
+    "new-2-numbers.png": "5c3dc77b91500fa30d178f4434a8ee7ef4db47401b77b23a5880abc113f30a39",
+    "new-2-columns.png": "a1ab27d820ec0d2487207c5e7f232abf0adf07abe7527e1f28031cb1b55af59d",
+    "new-2-blur.png": "52f98731e692826b1533ff6be5efcc4979bb1076f9e2f782332b98dd6178ea23",
+    "new-2-blank.png": "f675c50730e011f80a3a9c4a08a113d0e20f9c1badbb2d1a731534ee264806cd",
+    "new-2-instruction.png": "7d3574642f5bc9af9e78edb83c302e9b1f4d08ad10962fd951bc7e7507c2a13f"
+  },
+  "baseline": "tha+eng PSM3 full image",
+  "candidate": "explicit user language and manually selected regions, each crop 2x Lanczos, grayscale, PSM6; column regions read in user order",
+  "gate": "Every clear Thai/mixed image CER<=5%, English<=2%, numbers/times exact, blank empty, selected columns order exact. Blur separately unsupported if omissions/errors; no automatic uncertainty claim. No model repairs. No result-driven policy changes."
+}

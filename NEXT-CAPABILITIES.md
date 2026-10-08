@@ -1,3 +1,7 @@
+# Update 2026-10-08: two-way voice and screen target
+
+User chose spoken input + spoken output, target Neal game then later3D. See [staged roadmap](SCREEN-VOICE-ROADMAP.md) and [new OCR regions evaluation](validation/2026-10-08-ocr-regions/RESULTS.md). Prior OCR failed gate remains historical evidence. New manual-language/ROIpipeline new-2clear11/11, development9/11; not automatic perception/control. Additional speech-runtime approval pending; no vision/voice/OCR/control integrated. Read-only browser window preview added at #/screen; native chooser validation pending, see SCREEN.md. Coding and slide enhancements below remain planned.
+
 # Current OCR checkpoint — 7 ตุลาคม 2569
 
 ต่อ clean ec4844a/สไลด์ 8f75bcb. ผู้ใช้เลือกและอนุญาต A: ติดตั้ง Tesseract5.5.3 + tessdata_fast tha/eng แยกใน ignored .tools แล้ว ไม่มี download LLM/best, paid service, ภาพออกนอกเครื่อง, prompt change หรือ training. qwen3:0.6b text-only คงเดิม,1.7bเก็บไว้; chat/tools/Stockfish/slides A/B เดิมยังใช้ได้
