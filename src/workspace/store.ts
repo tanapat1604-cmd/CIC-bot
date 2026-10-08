@@ -39,6 +39,7 @@ export function createSessionStore(adapters = createMockAdapters(), textAdapter?
     const op = begin(), session = current()
     patch(session.id, s => ({ ...s, agent: 'responding', operationId: op.operationId, error: null, retryText: text, draft: retry ? s.draft : '', attachments: retry ? s.attachments : [], title: s.messages.length ? s.title : text.slice(0, 38), messages: retry ? s.messages : [...s.messages, { id: id(), role: 'user', text, attachments: s.attachments }] }))
     const request: AgentRequest = {
+      ...(session.ocrReference?{ocrReference:{...session.ocrReference}}:{}),
       sessionId: session.id, operationId: op.operationId, mode: session.mode, source: session.mode === 'chat' || !session.source ? null : { ...session.source },
       messages: current().messages.map(message => ({ id: message.id, role: message.role, text: message.text, responseStatus: message.responseStatus,
         attachments: (message.attachments ?? []).map(item => item.kind === 'image' ? { kind: 'image', name: item.name, file: item.file } : { kind: 'link', name: item.name, url: item.url }),
@@ -51,6 +52,7 @@ export function createSessionStore(adapters = createMockAdapters(), textAdapter?
       return exists ? s.messages.map(message => message.id === responseId ? update(message) : message) : [...s.messages, update({ id: responseId, role: 'assistant', text: '', operationId: op.operationId, responseStatus: 'streaming' })]
     }
     try {
+      if(session.ocrReference && session.connection==='demo') throw new Error('ข้อมูล OCR ใช้กับแชต backend ในเครื่องเท่านั้น')
       if (session.connection !== 'demo') {
         if (!textAdapter) throw new Error('ยังไม่ได้เชื่อมต่อ backend เปิดการเชื่อมต่อแล้วตรวจอีกครั้ง')
         const history = textHistory(request)
@@ -91,6 +93,7 @@ export function createSessionStore(adapters = createMockAdapters(), textAdapter?
     switchSession(sessionId) { if (sessionId === state.sessionId || !state.sessions.some(s => s.id === sessionId)) return; cancel(); publish({ ...state, sessionId }) },
     setLayout(layout) { publish({ ...state, layout }) },
     setMode(mode) { if (current().mode === mode || (current().connection !== 'demo' && mode !== 'chat')) return; cancel(); patch(state.sessionId, s => ({ ...s, mode, agent: 'idle', error: null, retryText: null })) },
+    setOcrReference(ocrReference) { cancel(); patch(state.sessionId,s=>({...s,ocrReference,agent:'idle',error:null,retryText:null})) },
     setDraft(draft) { patch(state.sessionId, s => ({ ...s, draft })) },
     send() { void respond(current().draft.trim()) },
     retry() { if (current().agent === 'error' && current().retryText) void respond(current().retryText!, true) },

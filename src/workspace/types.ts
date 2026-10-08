@@ -16,6 +16,7 @@ export interface ProposedAction extends ActionProposal {
 export type ResponseStatus = 'streaming' | 'complete' | 'stopped' | 'error'
 export interface Message { id: string; role: 'user' | 'assistant'; text: string; attachments?: Attachment[]; action?: ProposedAction; operationId?: string; responseStatus?: ResponseStatus; replySource?: ReplySource }
 export interface Session {
+  ocrReference?: {jobId:string;text:string}
   connection: Connection; contextNotice: boolean; model?: string
   id: string; title: string; mode: Mode; screen: ScreenStatus; source: ScreenSource | null
   agent: AgentStatus; operationId: string | null; messages: Message[]; draft: string; attachments: Attachment[]
@@ -25,7 +26,7 @@ export interface WorkspaceState { sessions: Session[]; sessionId: string; layout
 // Object URLs belong to the view. A future transport serializes File data explicitly.
 export type AgentAttachment = { kind: 'link'; name: string; url: string } | { kind: 'image'; name: string; file: File }
 export interface AgentMessage { id: string; role: 'user' | 'assistant'; text: string; attachments: AgentAttachment[]; responseStatus?: ResponseStatus }
-export interface AgentRequest { sessionId: string; operationId: string; messages: AgentMessage[]; mode: Mode; source: ScreenSource | null }
+export interface AgentRequest { ocrReference?: {jobId:string;text:string}; sessionId: string; operationId: string; messages: AgentMessage[]; mode: Mode; source: ScreenSource | null }
 export type AgentEvent = { sessionId: string; operationId: string } & (
   { type: 'delta'; text: string; source?: ReplySource } | { type: 'action'; proposal: ActionProposal } | { type: 'done'; source?: ReplySource } | { type: 'cancelled' } | { type: 'error'; message: string }
 )
@@ -39,6 +40,7 @@ export interface SessionStore {
   switchSession(id: string): void
   setLayout(layout: Layout): void
   setMode(mode: Mode): void
+  setOcrReference(value: {jobId:string;text:string}|undefined): void
   setDraft(text: string): void
   send(): void
   retry(): void

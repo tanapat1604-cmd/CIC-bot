@@ -4,11 +4,15 @@ User target: two-way spoken commands/answers, screen sharing and control; use ht
 
 ## Current reality
 
-CIC supports text chat (experimental), calculator/time, Stockfish chess, reviewed-outline slide A/B files. OCR explicit languages/regions is a developer experiment: new-2non-blur11/11gate but development2fail and misspelling remains. Read-only browser #/screen preview now implemented with simulated-picker media tests; native chooser/user-window validation pending. No OCR API/UI, click/type executor or bidirectional voice in CIC yet. qwen0.6b has no vision.
+CIC supports text chat (experimental), calculator/time, Stockfish chess, reviewed-outline slide A/B files. OCR explicit languages/regions now has local API/UI with raw/edit/review/coordinates and explicit typed reference to a new chat; misspelling remains. Real native5-image UI evidence is narrow and manually bounded. Read-only #/screen simulated lifecycle tests pass; user confirms actual sharing works but individual stop/revoke/resize/leave paths need specific human evidence. No click/type executor or bidirectional voice in CIC yet. qwen0.6b has no vision.
 
-## 1. OCR pilot with user review
+## 1. OCR pilot with user review — implemented, limited acceptance
 
-Implement selected image + manual language/ROI selection; source preview and raw/edited text separate. Generated job paths, strict decoded-image dimensions/byte/pixel limits, sessionownership, onecomputejob, deadline/cancel/stale suppression. Display reading order and transformations. No guessing missing text. Explicit user review before sending a typed reference envelope to chat; OCR reference cannot issue tool commands. Fail clearly on unsupported/uncertain layouts. Test real new-layout images as well as synthetic examples; previous test images become regression only.
+Implemented selected image + manual language/ROI selection; source preview and raw/edited text separate. Generated job paths, strict decoded-image dimensions/byte/pixel limits, sessionownership, onecomputejob, deadline/cancel/stale suppression. Display reading order and transformations. No guessing missing text. Explicit user review before sending a typed reference envelope to chat; OCR reference cannot issue tool commands. Fail clearly on unsupported/uncertain layouts. Test real new-layout images as well as synthetic examples; previous test images become regression only.
+
+## Ordered next gate: actual selected-window verification BEFORE voice
+
+Follow the current user brief order: complete #/screen real picker/preview/frame/resize/stopCIC/stopbrowser/revoke/leave/cancel checks first. User confirmed sharing works; remaining paths are not automatically passed. Simulated tests are separate. Frame age is performance.now from draw time; slow≥10s encoding and stale handoff rejected. Explicit frame-to-OCR stops capture on route leave. No native coordinate/control acceptance. Then stage2voice below.
 
 ## 2. Two-way voice, approval pending for additional runtime
 

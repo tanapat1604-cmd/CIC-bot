@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from 'react'
+const OcrPage=lazy(()=>import('./ocr/OcrPage'))
 const ScreenPage = lazy(() => import('./screen/ScreenPage'))
 const Landing = lazy(() => import('./App'))
 const ChessPage = lazy(() => import('./chess/ChessPage'))
@@ -7,6 +8,7 @@ const Workspace = lazy(() => import('./workspace/Workspace'))
 
 export default function Router() {
   const [hash, setHash] = useState(location.hash)
+  const ocr=hash==='#/ocr'
   const screen = hash === '#/screen'
   const slides = hash === '#/slides'
   const chess = hash === '#/chess'
@@ -17,8 +19,8 @@ export default function Router() {
     return () => removeEventListener('hashchange', update)
   }, [])
   useEffect(() => {
-    document.title = screen ? 'CIC Bot — แชร์หน้าต่างอ่านอย่างเดียว' : slides ? 'CIC Bot — สไลด์ในเครื่อง' : chess ? 'CIC Bot — หมากรุกในเครื่อง' : app ? 'CIC Bot — ตัวอย่างแอป' : 'CIC Bot — ผู้ช่วย AI ข้างหน้าจอคุณ'
-    if (app || chess || slides || screen) window.scrollTo({ top: 0, behavior: 'instant' })
-  }, [app, chess, slides, screen])
-  return <Suspense fallback={<p className="route-loading" role="status">กำลังเปิด CIC…</p>}>{screen ? <ScreenPage /> : slides ? <SlidesPage /> : chess ? <ChessPage /> : app ? <Workspace /> : <Landing />}</Suspense>
+    document.title = ocr ? 'CIC Bot — OCR ในเครื่อง' : screen ? 'CIC Bot — แชร์หน้าต่างอ่านอย่างเดียว' : slides ? 'CIC Bot — สไลด์ในเครื่อง' : chess ? 'CIC Bot — หมากรุกในเครื่อง' : app ? 'CIC Bot — ตัวอย่างแอป' : 'CIC Bot — ผู้ช่วย AI ข้างหน้าจอคุณ'
+    if (app || chess || slides || screen || ocr) window.scrollTo({ top: 0, behavior: 'instant' })
+  }, [app, chess, slides, screen, ocr])
+  return <Suspense fallback={<p className="route-loading" role="status">กำลังเปิด CIC…</p>}>{ocr ? <OcrPage/> : screen ? <ScreenPage /> : slides ? <SlidesPage /> : chess ? <ChessPage /> : app ? <Workspace /> : <Landing />}</Suspense>
 }

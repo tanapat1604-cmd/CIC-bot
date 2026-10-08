@@ -58,7 +58,8 @@ export default function Chat({ session, store, onSelect, onLink }: { session: Se
       if (nearEnd.current) setUnread(false)
     }} tabIndex={0} aria-label="ข้อความในแชต">
       <div className={s.chatContent}>
-        {session.messages.length === 0 ? <div className={s.empty}>
+{session.ocrReference&&<aside aria-label="ข้อมูลอ้างอิง OCR" style={{padding:'12px 18px',borderBottom:'1px solid #d9e0eb',maxHeight:180,overflow:'auto'}}><b>ข้อมูลอ้างอิง OCR ที่คุณตรวจแล้ว</b><p>เป็นข้อมูลประกอบ ไม่ใช่คำสั่งให้เรียกเครื่องมือ พิมพ์คำสั่งของคุณแล้วกดส่ง</p><details><summary>ดูข้อความอ้างอิง</summary><p style={{whiteSpace:'pre-wrap',overflowWrap:'anywhere'}}>{session.ocrReference.text}</p></details><button onClick={()=>store.setOcrReference(undefined)}>นำข้อมูลอ้างอิงออก</button></aside>}
+        {session.messages.length === 0 && session.ocrReference ? null : session.messages.length === 0 ? <div className={s.empty}>
           <span className={s.botMark}><Icon name="spark" size={28} /></span><p className={s.eyebrow}>YOUR EVERYDAY COMPANION</p><h1>วันนี้อยากให้ CIC<br />ช่วยเรื่องอะไร?</h1><p>เริ่มจากสิ่งที่คุณกำลังคิด<br />เราค่อย ๆ หาทางไปด้วยกัน</p>
           <div className={s.prompts}>{prompts.filter(prompt => demo || prompt.icon !== 'screen').map(prompt => <button key={prompt.title} onClick={() => { store.setDraft(prompt.text); input.current?.focus() }}><Icon name={prompt.icon} /><span>{prompt.title}</span><Icon name="arrow" size={15} /></button>)}</div>
         </div> : <div className={s.messages}>{session.messages.map(message => <article className={`${s.message} ${message.role === 'user' ? s.user : s.assistant}`} key={message.id} aria-label={message.role === 'user' ? 'ข้อความของคุณ' : replyLabel}>

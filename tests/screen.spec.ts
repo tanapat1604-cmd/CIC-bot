@@ -8,6 +8,7 @@ async function fixture(page:Page,mode='normal'){
    w.captureRequests++;w.captureOptions=options
    if(mode==='denied')throw new DOMException('Fixture denied','NotAllowedError')
    const canvas=document.createElement('canvas');canvas.width=640;canvas.height=360;const ctx=canvas.getContext('2d')!;ctx.fillStyle='#071923';ctx.fillRect(0,0,640,360);ctx.fillStyle='#67e8f9';ctx.font='30px sans-serif';ctx.fillText('CIC synthetic screen',30,80);const stream=canvas.captureStream(2);w.captureTracks.push(...stream.getTracks())
+   if(mode!=='unknown')Object.defineProperty(stream.getVideoTracks()[0],'getSettings',{configurable:true,value:()=>({displaySurface:'window'})});
    if(mode==='monitor')Object.defineProperty(stream.getVideoTracks()[0],'getSettings',{value:()=>({displaySurface:'monitor'})})
    if(mode==='pending')await new Promise<void>(resolve=>{w.resolveCapture=resolve})
    return stream
@@ -57,3 +58,16 @@ test('a frame finishing after video resize is discarded while sharing remains ac
  await expect(page.getByRole('img')).toHaveCount(0);await expect(page.getByRole('status')).toContainText('กำลังแชร์')
  await page.getByRole('button',{name:'หยุดแชร์และล้างภาพ'}).click()
 })
+
+
+test('unknown capture surface is rejected without retaining media',async({page})=>{
+ await fixture(page,'unknown');await page.goto('./#/screen');await page.getByRole('button',{name:'เลือกหน้าต่างหรือแท็บ',exact:true}).click();await expect(page.getByRole('status')).toContainText('ยืนยัน');expect(await page.evaluate(()=>(window as unknown as FixtureWindow).captureTracks.every(t=>t.readyState==='ended'))).toBe(true);
+});
+test('frame age follows monotonic time despite a backwards wall clock',async({page})=>{
+ await fixture(page);await page.clock.install();await page.goto('./#/screen');await page.getByRole('button',{name:'เลือกหน้าต่างหรือแท็บ',exact:true}).click();await expect(page.getByRole('status')).toContainText('กำลังแชร์');await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await expect(page.getByRole('img')).toBeVisible();await page.clock.setSystemTime(new Date('2000-01-01'));await page.clock.fastForward(11000);await expect(page.getByRole('region',{name:'ภาพหนึ่งเฟรม'})).toContainText('ภาพเก่า');await expect(page.getByRole('button',{name:'อ่านเฟรมนี้ด้วย OCR'})).toBeDisabled();await page.getByRole('button',{name:'หยุดแชร์และล้างภาพ'}).click();
+});
+
+test('slow snapshot encoding cannot give an old picture a fresh capture timestamp',async({page})=>{
+ await fixture(page);await page.clock.install();await page.addInitScript(()=>{const original=HTMLCanvasElement.prototype.toBlob;HTMLCanvasElement.prototype.toBlob=function(this:HTMLCanvasElement,callback,type,quality){(window as unknown as {finishSnapshot:()=>void}).finishSnapshot=()=>original.call(this,callback,type,quality)}});
+ await page.goto('./#/screen');await page.getByRole('button',{name:'เลือกหน้าต่างหรือแท็บ',exact:true}).click();await expect(page.getByRole('status')).toContainText('กำลังแชร์');await page.getByRole('button',{name:'ถ่ายภาพหนึ่งเฟรม'}).click();await page.clock.fastForward(11000);await page.evaluate(()=>(window as unknown as {finishSnapshot:()=>void}).finishSnapshot());await expect(page.getByRole('status')).toContainText('ภาพถ่ายเสร็จช้า');await expect(page.getByRole('img')).toHaveCount(0);await page.getByRole('button',{name:'หยุดแชร์และล้างภาพ'}).click();
+});

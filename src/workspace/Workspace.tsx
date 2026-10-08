@@ -1,4 +1,5 @@
 import { useEffect, useState, useSyncExternalStore } from 'react'
+import {takeReference} from '../ocr/handoff'
 import Brand from '../Brand'
 import Icon from '../Icon'
 import { useMediaQuery } from '../useMotion'
@@ -27,6 +28,7 @@ export default function Workspace() {
   const [contextOpen, setContextOpen] = useState(false), [contextHidden, setContextHidden] = useState(false)
   const [settingsOpen, setSettingsOpen] = useState(false), [sourceOpen, setSourceOpen] = useState(false), [linkOpen, setLinkOpen] = useState(false)
   const [link, setLink] = useState(''), [linkError, setLinkError] = useState('')
+  useEffect(()=>{const value=takeReference();if(value){store.newSession(value.connection,value.model);store.setOcrReference({jobId:value.jobId,text:value.text})}},[])
   useEffect(() => {
     const dispose = () => store.dispose()
     // A lazy destination can suspend before unmount cleanup runs. Stop at the
@@ -45,7 +47,7 @@ export default function Workspace() {
     <div className={s.sidebarBrand}><Brand href="#top" className={s.brand} />{!narrow && <button className={s.sidebarIcon} aria-label={collapsed ? 'ขยายแถบด้านข้าง' : 'ยุบแถบด้านข้าง'} onClick={() => setCollapsed(value => !value)}><Icon name="menu" /></button>}</div>
     <button className={s.newChat} aria-label="แชตใหม่" onClick={() => { store.newSession(); setNavOpen(false) }}><Icon name="plus" /><span>แชตใหม่</span></button>
     <div className={s.history}><p>แชตในครั้งนี้</p>{state.sessions.map(item => <button key={item.id} className={item.id === session.id ? s.selectedChat : ''} aria-label={`เปิดแชต ${item.title}`} aria-current={item.id === session.id ? 'page' : undefined} title={item.title} onClick={() => { store.switchSession(item.id); setNavOpen(false) }}><Icon name="work" size={17} /><span>{item.title}</span></button>)}</div>
-    <div className={s.sidebarBottom}><p>เก็บแชตไว้ชั่วคราว<br />จนกว่าจะรีเฟรชหรือปิดหน้า</p><button aria-label="ตั้งค่า" onClick={() => { setNavOpen(false); setSettingsOpen(true) }}><Icon name="structure" size={18} /><span>ตั้งค่า</span></button><a href="#/screen" aria-label="เปิดแชร์หน้าต่างอ่านอย่างเดียว"><Icon name="screen" size={18} /><span>แชร์หน้าต่าง · อ่านอย่างเดียว</span></a><a href="#/slides" aria-label="เปิดสไลด์ในเครื่อง"><Icon name="work" size={18} /><span>สไลด์ในเครื่อง</span></a><a href="#top" aria-label="กลับหน้าแนะนำ"><Icon name="arrow" size={18} /><span>กลับหน้าแนะนำ</span></a></div>
+    <div className={s.sidebarBottom}><p>เก็บแชตไว้ชั่วคราว<br />จนกว่าจะรีเฟรชหรือปิดหน้า</p><button aria-label="ตั้งค่า" onClick={() => { setNavOpen(false); setSettingsOpen(true) }}><Icon name="structure" size={18} /><span>ตั้งค่า</span></button><a href="#/ocr" aria-label="เปิด OCR ในเครื่อง"><span>อ่านข้อความจากภาพ</span></a><a href="#/screen" aria-label="เปิดแชร์หน้าต่างอ่านอย่างเดียว"><Icon name="screen" size={18} /><span>แชร์หน้าต่าง · อ่านอย่างเดียว</span></a><a href="#/slides" aria-label="เปิดสไลด์ในเครื่อง"><Icon name="work" size={18} /><span>สไลด์ในเครื่อง</span></a><a href="#top" aria-label="กลับหน้าแนะนำ"><Icon name="arrow" size={18} /><span>กลับหน้าแนะนำ</span></a></div>
   </>
   return <div className={`${s.workspace} ${compact ? s.compact : ''} ${collapsed ? s.collapsed : ''}`}>
     {!compact && !narrow && <aside className={s.sidebar} aria-label="ประวัติแชต">{navigation}</aside>}

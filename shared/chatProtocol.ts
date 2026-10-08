@@ -1,7 +1,7 @@
 import { REPLY_SOURCES, type ReplySource } from './capabilities.js'
 export const LIMITS = { messages: 24, messageChars: 8000, totalChars: 24000, bodyBytes: 160000, outputChars: 12000, lineChars: 64000 } as const
 export type TextMessage = { role: 'user' | 'assistant'; text: string }
-export type TextRequest = { sessionId: string; operationId: string; messages: TextMessage[] }
+export type TextRequest = { sessionId: string; operationId: string; messages: TextMessage[]; reference?: {jobId:string;text:string} }
 export const errors = {
   invalid: 'รูปแบบคำขอไม่ถูกต้อง รองรับเฉพาะแชตข้อความ',
   too_large: 'ข้อความยาวเกินกำหนด กรุณาย่อข้อความแล้วส่งใหม่',
@@ -11,6 +11,7 @@ export const errors = {
   interrupted: 'การเชื่อมต่อขาดช่วงก่อนตอบครบ ลองอีกครั้งได้',
   timeout: 'บริการใช้เวลานานเกินกำหนด ลองอีกครั้งได้',
   output_limit: 'คำตอบถึงขีดจำกัดแล้ว กรุณาถามให้แคบลง',
+  reference_expired: 'ผล OCR หมดอายุหรือสิทธิ์ไม่ตรง กรุณาอ่านภาพใหม่หรือนำข้อมูลอ้างอิงออก',
   model_missing: 'ไม่พบโมเดลที่ตั้งไว้ใน Ollama กรุณาตรวจชื่อโมเดลที่ติดตั้งแล้ว',
   model_settings: 'โมเดลนี้ไม่รองรับค่า thinking ที่ตั้งไว้ กรุณาตรวจการตั้งค่า backend',
 } as const
@@ -25,9 +26,10 @@ export function record(value: unknown): value is Record<string, unknown> { retur
 function exact(value: Record<string, unknown>, keys: string[]) { return Object.keys(value).length === keys.length && keys.every(key => Object.hasOwn(value, key)) }
 function identity(value: unknown): value is string { return typeof value === 'string' && /^[\w-]{1,80}$/.test(value) }
 export function validateRequest(value: unknown): TextRequest {
-  if (!record(value) || !exact(value, ['sessionId', 'operationId', 'messages']) || !identity(value.sessionId) || !identity(value.operationId) || !Array.isArray(value.messages) || !value.messages.length) throw new ChatError('invalid')
+  if (!record(value) || !(exact(value, ['sessionId', 'operationId', 'messages']) || exact(value, ['sessionId', 'operationId', 'messages', 'reference'])) || !identity(value.sessionId) || !identity(value.operationId) || !Array.isArray(value.messages) || !value.messages.length) throw new ChatError('invalid')
   if (value.messages.length > LIMITS.messages) throw new ChatError('too_large')
-  let size = 0
+  if (value.reference !== undefined && (!record(value.reference) || !exact(value.reference, ['jobId','text']) || typeof value.reference.jobId !== 'string' || !/^[a-f0-9-]{36}$/.test(value.reference.jobId) || typeof value.reference.text !== 'string' || !value.reference.text.trim() || value.reference.text.length>8000)) throw new ChatError('invalid')
+  let size = value.reference && record(value.reference) ? String(value.reference.text).length : 0
   for (const message of value.messages) {
     if (!record(message) || !exact(message, ['role', 'text']) || (message.role !== 'user' && message.role !== 'assistant') || typeof message.text !== 'string' || !message.text.trim()) throw new ChatError('invalid')
     size += message.text.length

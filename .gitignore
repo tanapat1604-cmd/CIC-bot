@@ -12,3 +12,6 @@ playwright-report/
 !.env.example
 
 .cic-user-files/
+
+# Keep raw local integration evidence and machine metadata off the public repository.
+validation/2026-10-08-ocr-integration/*.json

@@ -5,7 +5,7 @@ import type { AgentAdapter, AgentRequest } from './types'
 export function textHistory(request: AgentRequest): { payload: TextRequest; omitted: boolean } {
   if (request.mode !== 'chat' || request.source || request.messages.some(message => message.attachments.length)) throw new ChatError('invalid')
   const complete = request.messages.filter(message => message.role === 'user' || message.responseStatus === 'complete')
-  const messages: TextMessage[] = []; let size = 0
+  const messages: TextMessage[] = []; let size = request.ocrReference?.text.length ?? 0
   for (let i = complete.length - 1; i >= 0; i--) {
     const message = complete[i]
     if (message.text.length > LIMITS.messageChars || messages.length >= LIMITS.messages || size + message.text.length > LIMITS.totalChars) {
@@ -16,7 +16,7 @@ export function textHistory(request: AgentRequest): { payload: TextRequest; omit
   }
   // Keep a whole-message suffix, starting with a user and always retaining the latest request.
   while (messages[0]?.role === 'assistant') messages.shift()
-  return { payload: validateRequest({ sessionId: request.sessionId, operationId: request.operationId, messages }), omitted: messages.length !== request.messages.length }
+  return { payload: validateRequest({ sessionId: request.sessionId, operationId: request.operationId, messages, ...(request.ocrReference?{reference:{...request.ocrReference}}:{}) }), omitted: messages.length !== request.messages.length }
 }
 
 export async function* decodeEvents(body: ReadableStream<Uint8Array>, request: TextRequest, signal: AbortSignal): AsyncIterable<TextEvent> {
@@ -58,8 +58,8 @@ export function createTextAdapter(baseUrl: string, fetcher: typeof fetch = fetch
       // Time bound applies to headers and the entire stream; abort is also propagated upstream.
       const combined = AbortSignal.any([signal, AbortSignal.timeout(35000)])
       try {
-        const response = await fetcher(`${baseUrl}/chat`, { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: combined })
-        if (!response.ok) { await response.body?.cancel(); throw responseError(response.status) }
+        const response = await fetcher(`${baseUrl}/chat`, { method: 'POST', redirect:'error', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), signal: combined })
+        if (!response.ok) { let code:unknown;try{const error:unknown=await response.json();if(record(error))code=error.code}catch{/* Generic error. */}if(typeof code==='string'&&Object.hasOwn(errors,code))throw new ChatError(code as keyof typeof errors);throw responseError(response.status) }
         if (!response.headers.get('content-type')?.startsWith('application/x-ndjson') || !response.body) { await response.body?.cancel(); throw new ChatError('interrupted') }
         for await (const event of decodeEvents(response.body, payload, combined)) {
           if (event.type === 'error') yield { sessionId: event.sessionId, operationId: event.operationId, type: 'error', message: errors[event.code] }
