@@ -1,0 +1,80 @@
+{
+  "at": 1791509941.39724,
+  "files": [
+    {
+      "repo": "rhasspy/piper-voices",
+      "revision": "c10ece1aade47bb51c153c893d14e5bf8e5b7117",
+      "file": "th/th_TH/tsync2/medium/th_TH-tsync2-medium.onnx",
+      "bytes": 63221984,
+      "sha256": "136669378ee72dd27012604994099ca3c833e625c7cfdff05ccdf468a1a2115f",
+      "lfsHashVerified": true,
+      "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/th/th_TH/tsync2/medium/th_TH-tsync2-medium.onnx"
+    },
+    {
+      "repo": "rhasspy/piper-voices",
+      "revision": "c10ece1aade47bb51c153c893d14e5bf8e5b7117",
+      "file": "th/th_TH/tsync2/medium/th_TH-tsync2-medium.onnx.json",
+      "bytes": 5255,
+      "sha256": "212aff35b8beed828a5f2af33b3cfc7744f4fac3c3dc7e6a2f464692e8257bb7",
+      "lfsHashVerified": false,
+      "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/th/th_TH/tsync2/medium/th_TH-tsync2-medium.onnx.json"
+    },
+    {
+      "repo": "rhasspy/piper-voices",
+      "revision": "c10ece1aade47bb51c153c893d14e5bf8e5b7117",
+      "file": "th/th_TH/tsync2/medium/MODEL_CARD",
+      "bytes": 467,
+      "sha256": "b980358b9a6055eff8006f12ee929e67882c4451eb8e9b2c34cf022fa025b4b2",
+      "lfsHashVerified": false,
+      "url": "https://huggingface.co/rhasspy/piper-voices/resolve/c10ece1aade47bb51c153c893d14e5bf8e5b7117/th/th_TH/tsync2/medium/MODEL_CARD"
+    },
+    {
+      "repo": "Systran/faster-whisper-base",
+      "revision": "ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66",
+      "file": "model.bin",
+      "bytes": 145217532,
+      "sha256": "d01c3014881c9c6f3133c182f3d2887eb6ca1c789a7538c5c007196857a0a6a9",
+      "lfsHashVerified": true,
+      "url": "https://huggingface.co/Systran/faster-whisper-base/resolve/ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66/model.bin"
+    },
+    {
+      "repo": "Systran/faster-whisper-base",
+      "revision": "ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66",
+      "file": "config.json",
+      "bytes": 2309,
+      "sha256": "56a6d8110d311f19c8f0471e562832c7527f146b567275bfca59fcf7c184da9a",
+      "lfsHashVerified": false,
+      "url": "https://huggingface.co/Systran/faster-whisper-base/resolve/ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66/config.json"
+    },
+    {
+      "repo": "Systran/faster-whisper-base",
+      "revision": "ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66",
+      "file": "tokenizer.json",
+      "bytes": 2203239,
+      "sha256": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab",
+      "lfsHashVerified": false,
+      "url": "https://huggingface.co/Systran/faster-whisper-base/resolve/ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66/tokenizer.json"
+    },
+    {
+      "repo": "Systran/faster-whisper-base",
+      "revision": "ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66",
+      "file": "vocabulary.txt",
+      "bytes": 459861,
+      "sha256": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913",
+      "lfsHashVerified": false,
+      "url": "https://huggingface.co/Systran/faster-whisper-base/resolve/ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66/vocabulary.txt"
+    },
+    {
+      "repo": "Systran/faster-whisper-base",
+      "revision": "ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66",
+      "file": "README.md",
+      "bytes": 1991,
+      "sha256": "b922acef3616e27b1d416260b63ba7114c732f0315012006781af2da69cd1ebf",
+      "lfsHashVerified": false,
+      "url": "https://huggingface.co/Systran/faster-whisper-base/resolve/ebe41f70d5b6dfa9166e2c581c45c9c0cfc57b66/README.md"
+    }
+  ],
+  "privateLocalPrototype": true,
+  "ttsDatasetLicense": "CC BY-NC-SA 3.0",
+  "weightsTrained": false
+}

@@ -15,3 +15,10 @@ playwright-report/
 
 # Keep raw local integration evidence and machine metadata off the public repository.
 validation/2026-10-08-ocr-integration/*.json
+
+# Private development evidence, audio and training records; never ship with preview.
+validation/2026-10-09-*/
+validation/2026-10-11-*/
+validation/2026-10-12-*/
+validation/2026-10-08-notepad/
+training/

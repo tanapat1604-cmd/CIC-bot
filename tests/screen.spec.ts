@@ -84,10 +84,10 @@ async function verifyFrameHandoff(page:Page,url='./#/screen'){
 }
 test('fresh explicit frame survives route handoff without automatic OCR or retained sharing',async({page})=>{await verifyFrameHandoff(page)});
 test('development StrictMode replay cannot consume and lose an explicit frame',async({page})=>{
- test.skip(!process.env.CI&&process.env.CIC_TEST_DEV_HANDOFF!=='1','Dev server runs in CI or explicit local opt-in; manual dev fixture recorded separately');test.setTimeout(35000);
- const child=spawn(process.execPath,[path.resolve('node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','4174','--strictPort'],{cwd:process.cwd(),shell:false,windowsHide:true,stdio:'ignore'});let failed=false;child.on('error',()=>{failed=true});
+ test.skip(!process.env.CI&&process.env.CIC_TEST_DEV_HANDOFF!=='1','Dev server runs in CI or explicit local opt-in; manual dev fixture recorded separately');test.setTimeout(60000);
+ const child=spawn(process.execPath,[path.resolve('node_modules/vite/bin/vite.js'),'--host','127.0.0.1','--port','4174','--strictPort'],{cwd:process.cwd(),shell:false,windowsHide:true,stdio:['ignore','pipe','pipe']});let log='';child.stdout?.on('data',chunk=>log+=chunk.toString());child.stderr?.on('data',chunk=>log+=chunk.toString());let failed=false;child.on('error',()=>{failed=true});
  try{await expect.poll(async()=>{if(failed||child.exitCode!==null)throw Error('Owned dev server unavailable');try{return(await fetch('http://127.0.0.1:4174/CIC-bot/')).ok}catch{return false}},{timeout:15000}).toBe(true);await verifyFrameHandoff(page,'http://127.0.0.1:4174/CIC-bot/#/screen')}
- finally{if(child.exitCode===null&&!failed){const stopped=once(child,'close',{signal:AbortSignal.timeout(5000)});child.kill();await stopped}}
+ finally{await (await import('node:fs/promises')).writeFile(path.resolve('validation/2026-10-12-model-comparison/dev-handoff-server.log'),log);if(child.exitCode===null&&!failed){const stopped=once(child,'close',{signal:AbortSignal.timeout(5000)});child.kill();await stopped}}
 });
 
 

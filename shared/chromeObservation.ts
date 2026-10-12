@@ -1,0 +1,17 @@
+import {exact,uuid,CoreError} from './core.js'
+import {record} from './chatProtocol.js'
+export type ChromeObservation={source:'native-chrome-uia';readOnly:true;instanceId:string;observationId:string;windowId:string;pid:number;startTicks:string;query:string;urlVerified:boolean;title:string;nodes:{reference:string;role:string;name:string;enabled:boolean;contentLink?:boolean}[];truncated:boolean;elapsedMs:number;geometry:{left:number;top:number;right:number;bottom:number}}
+export type ChromeResearchJob={version:1;taskId:string;operationId:string;instruction:string;query?:string;state:'planning'|'waiting-permission'|'queued'|'running'|'succeeded'|'failed'|'cancelling'|'cancelled'|'stop-unverified';reason?:string;result?:{source:'native-chrome-uia';query:string;title:string;windowId:string;windowVerified:true;searchUrlVerified:true;selectionIsProposal:true;selectedTitle?:string;model:'qwen3:0.6b';elapsedMs:number}}
+export function parseChromeResearchInput(v:unknown){if(!exact(v,['version','operationId','instruction'])||v.version!==1||!uuid(v.operationId)||typeof v.instruction!=='string'||!v.instruction.trim()||v.instruction.length>200||[...v.instruction].some(c=>c.charCodeAt(0)<32))throw new CoreError('invalid');return{operationId:v.operationId as string,instruction:v.instruction as string}}
+export function parseChromeObservation(v:unknown):ChromeObservation{
+ if(!record(v)||v.source!=='native-chrome-uia'||v.readOnly!==true||!uuid(v.instanceId)||!uuid(v.observationId)||typeof v.windowId!=='string'||!/^\d+$/u.test(v.windowId)||!Number.isSafeInteger(v.pid)||Number(v.pid)<=0||typeof v.startTicks!=='string'||!/^\d+$/u.test(v.startTicks)||typeof v.query!=='string'||v.query.length>200||typeof v.title!=='string'||v.title.length>240||typeof v.urlVerified!=='boolean'||typeof v.truncated!=='boolean'||typeof v.elapsedMs!=='number'||!Number.isFinite(v.elapsedMs)||v.elapsedMs<0||!Array.isArray(v.nodes)||v.nodes.length>180||!record(v.geometry))throw new CoreError('protocol')
+ const geometry=v.geometry
+ if(!['left','top','right','bottom'].every(k=>Number.isFinite(geometry[k])))throw new CoreError('protocol')
+ for(const n of v.nodes)if(!record(n)||typeof n.reference!=='string'||!n.reference.startsWith(v.observationId+':')||typeof n.role!=='string'||typeof n.name!=='string'||n.name.length>240||typeof n.enabled!=='boolean'||n.contentLink!==undefined&&typeof n.contentLink!=='boolean')throw new CoreError('protocol')
+ return v as ChromeObservation
+}
+export function parseChromeResearchJob(v:unknown):ChromeResearchJob{
+ if(!record(v)||v.version!==1||!uuid(v.taskId)||!uuid(v.operationId)||typeof v.instruction!=='string'||v.instruction.length>200||!['planning','waiting-permission','queued','running','succeeded','failed','cancelling','cancelled','stop-unverified'].includes(String(v.state))||v.query!==undefined&&(typeof v.query!=='string'||!v.query.trim()||v.query.length>200))throw new CoreError('protocol')
+ if(v.result){const r=v.result;if(!record(r)||v.state!=='succeeded'||r.source!=='native-chrome-uia'||r.windowVerified!==true||r.searchUrlVerified!==true||r.selectionIsProposal!==true||r.model!=='qwen3:0.6b'||typeof r.query!=='string'||r.query!==v.query||typeof r.title!=='string'||typeof r.windowId!=='string'||typeof r.elapsedMs!=='number'||!Number.isFinite(r.elapsedMs)||r.selectedTitle!==undefined&&typeof r.selectedTitle!=='string')throw new CoreError('protocol')}
+ return v as ChromeResearchJob
+}
