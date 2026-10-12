@@ -1,0 +1,66 @@
+import {test,expect,type Page} from '@playwright/test'
+import {once} from 'node:events'
+import {createVoiceCore} from '../backend/voice/core'
+import {createNotepadCore} from '../backend/notepad/core'
+import {createScheduler} from '../backend/core/scheduler'
+import {createChatServer} from '../backend/server'
+import type {NotepadNative} from '../backend/notepad/native'
+async function fixture(page:Page,baseURL:string,delayed=false){
+ let opens=0,closed=false,release:()=>void=()=>{};const spoken:string[]=[],instanceId=crypto.randomUUID(),scheduler=createScheduler({freeMiB:()=>4096,externalBusy:()=>false})
+ const observation={instanceId,observationId:crypto.randomUUID(),monotonicMs:1,geometry:'fixture',pid:123,windowId:'456',foreground:true,text:'',source:'owned-notepad-editor' as const}
+ const native:NotepadNative={alive:()=>!closed,observe:async()=>observation,execute:async()=>{throw Error('unused')},close:async()=>{closed=true}}
+ const notepad=createNotepadCore({externalBusy:()=>false,ownerAlive:()=>true,freeMiB:()=>4096,start:async()=>{opens++;closed=false;if(delayed)await new Promise<void>(r=>release=r);return native}})
+ const voice=createVoiceCore({scheduler,externalBusy:()=>false,ownerAlive:()=>true,freeMiB:()=>4096,runner:async input=>{if(input.kind!=='tts')throw Error('no fake ASR in this suite');spoken.push(input.phrase);return{kind:'tts',phrase:input.phrase,wav:Buffer.alloc(60),elapsedMs:1,peakWorkingSetMiB:32}}})
+ const server=createChatServer({voice,notepad,origins:[new URL(baseURL).origin]});server.listen(0,'127.0.0.1');await once(server,'listening');const base='http://127.0.0.1:'+(server.address() as {port:number}).port
+ await page.route('http://127.0.0.1:8787/**',async route=>{await route.fulfill({response:await route.fetch({url:route.request().url().replace('http://127.0.0.1:8787',base)})})})
+ await page.addInitScript(()=>Object.defineProperty(window,'Audio',{value:class{src='';onended=()=>{};play(){return Promise.resolve()}pause(){}}}))
+ await page.goto('./?voiceDiagnostics=1#/voice');await page.getByRole('button',{name:'เชื่อมเครื่องมือเสียง',exact:true}).click()
+ return{opens:()=>opens,spoken,release:()=>release(),closed:()=>closed,async close(){release();await page.unrouteAll({behavior:'wait'});server.closeAllConnections();await new Promise<void>(r=>server.close(()=>r()));await notepad.close();await voice.close();scheduler.close()}}
+}
+async function prepare(page:Page,text='เปิด Notepad ให้หน่อย'){await page.getByRole('textbox',{name:'ข้อความที่ถอดได้',exact:true}).fill(text);await page.getByRole('checkbox',{name:'ตรวจแล้วว่าข้อความตรงสิ่งที่ฉันพูด',exact:true}).check();await page.getByRole('button',{name:'ตรวจคำสั่งและเตรียมขอบเขต',exact:true}).click()}
+test('review and one-use scoped approval precede a verified Notepad result and Thai TTS; this is typed/mock UI evidence',async({page,baseURL})=>{const f=await fixture(page,baseURL!);try{await page.getByRole('textbox',{name:'ข้อความที่ถอดได้',exact:true}).fill('เปิด Notepad ให้หน่อย');await expect(page.getByRole('button',{name:'ตรวจคำสั่งและเตรียมขอบเขต',exact:true})).toBeDisabled();await prepare(page);expect(f.opens()).toBe(0);expect(f.spoken).toEqual([]);await page.getByRole('button',{name:'อนุญาตให้ CIC เปิดตามแผนหนึ่งครั้ง',exact:true}).click();await expect(page.getByRole('log',{name:'สถานะคำสั่งเสียง'})).toContainText('ตรวจ PID');await expect.poll(()=>f.spoken).toEqual(['notepadOpened']);expect(f.opens()).toBe(1);await expect(page.getByRole('button',{name:'อนุญาตให้ CIC เปิดตามแผนหนึ่งครั้ง',exact:true})).toHaveCount(0);await page.getByRole('button',{name:'หยุดไมค์และงานเสียง',exact:true}).click();await expect(page.getByRole('status')).toContainText('ยุติแล้ว');expect(f.closed()).toBe(true)}finally{await f.close()}})
+test('edited transcript revokes an awaiting grant and a negated command never opens or speaks success',async({page,baseURL})=>{const f=await fixture(page,baseURL!);try{await prepare(page);await expect(page.getByRole('button',{name:'อนุญาตให้ CIC เปิดตามแผนหนึ่งครั้ง',exact:true})).toBeVisible();await page.getByRole('textbox',{name:'ข้อความที่ถอดได้',exact:true}).fill('อย่าเปิด Chrome');await expect(page.getByRole('button',{name:'อนุญาตให้ CIC เปิดตามแผนหนึ่งครั้ง',exact:true})).toHaveCount(0);await prepare(page,'อย่าเปิด Chrome');await expect(page.getByRole('log',{name:'สถานะคำสั่งเสียง'})).toContainText('คำปฏิเสธ');expect(f.opens()).toBe(0);expect(f.spoken).toEqual([])}finally{await f.close()}})
+test('Stop during a delayed owned open verifies helper exit and never speaks a late success',async({page,baseURL})=>{const f=await fixture(page,baseURL!,true);try{await prepare(page);await page.getByRole('button',{name:'อนุญาตให้ CIC เปิดตามแผนหนึ่งครั้ง',exact:true}).click();await expect.poll(()=>f.opens()).toBe(1);await page.getByRole('button',{name:'หยุดไมค์และงานเสียง',exact:true}).click();f.release();await expect(page.getByRole('status')).toContainText('ยุติแล้ว');expect(f.closed()).toBe(true);expect(f.spoken).toEqual([]);await expect(page.getByRole('log',{name:'สถานะคำสั่งเสียง'})).not.toContainText('ตรวจ PID')}finally{await f.close()}})
+
+test('default conversation prepares typed instructions without microphone, and a single visible scope confirmation is still mandatory',async({page,baseURL})=>{const f=await fixture(page,baseURL!);try{await page.goto('./#/voice');await page.getByRole('textbox',{name:'ข้อความถึง CiC',exact:true}).fill('เปิด Notepad ให้หน่อย');await page.getByRole('button',{name:'ส่ง',exact:true}).click();await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true})).toBeVisible();expect(f.opens()).toBe(0);expect(f.spoken).toEqual([]);await page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true}).click();await expect(page.getByRole('log',{name:'สถานะคำสั่งเสียง'})).toContainText('เปิด Notepad บนเครื่อง');await expect.poll(()=>f.spoken).toEqual(['notepadOpened']);expect(f.opens()).toBe(1);await page.getByRole('button',{name:'หยุด',exact:true}).click();await expect(page.getByRole('status')).toContainText('ยุติแล้ว');for(const[width,height]of[[1100,720],[390,844],[360,480]]){await page.setViewportSize({width,height});expect(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth)).toBe(true)}}finally{await f.close()}})
+test('denying a conversational plan has no launch or success speech, and a second submitted turn does not replay the denied grant',async({page,baseURL})=>{const f=await fixture(page,baseURL!);try{await page.goto('./#/voice');await page.getByRole('textbox',{name:'ข้อความถึง CiC'}).fill('เปิด Notepad ให้หน่อย');await page.getByRole('button',{name:'ส่ง',exact:true}).click();await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว'})).toBeVisible();await page.getByRole('button',{name:'ไม่ต้อง',exact:true}).click();expect(f.opens()).toBe(0);await page.getByRole('textbox',{name:'ข้อความถึง CiC'}).fill('อย่าเปิด Chrome');await page.getByRole('button',{name:'ส่ง',exact:true}).click();await expect(page.getByRole('log',{name:'สถานะคำสั่งเสียง'})).toContainText('คำปฏิเสธ');await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว'})).toHaveCount(0);expect(f.opens()).toBe(0);expect(f.spoken).toEqual([])}finally{await f.close()}})
+
+test('observed wrong tail stays visible; YouTube plan still requires one human approval and denial sends none',async({page,baseURL})=>{
+ const f=await fixture(page,baseURL!);const approved:string[]=[]
+ await page.route('http://127.0.0.1:8787/apps/**',async route=>{if(route.request().method()==='POST'&&route.request().url().endsWith('/approve'))approved.push(route.request().url());await route.fallback()})
+ try{
+  await page.goto('./#/voice');const text='เปิดยูทูปแด้หน่อย'
+  await page.getByRole('textbox',{name:'ข้อความถึง CiC',exact:true}).fill(text);await page.getByRole('button',{name:'ส่ง',exact:true}).click()
+  await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true})).toBeVisible()
+  await expect(page.getByText(text,{exact:true})).toBeVisible()
+  await expect(page.getByRole('log',{name:'สถานะคำสั่งเสียง'})).toContainText('YouTube')
+  expect(approved).toEqual([]);expect(f.spoken).toEqual([])
+  await page.getByRole('button',{name:'ไม่ต้อง',exact:true}).click()
+  await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true})).toHaveCount(0)
+  expect(approved).toEqual([]);expect(f.spoken).toEqual([])
+ }finally{await f.close()}
+})
+
+test('one grant survives Stop and three typed app turns; explicit end revokes it; fixture only',async({page,baseURL})=>{
+ const f=await fixture(page,baseURL!);try{
+  await page.goto('./#/voice');await page.getByRole('button',{name:'อนุญาตใช้แอปรอบนี้',exact:true}).click();await expect(page.getByRole('button',{name:'อนุญาตใช้แอปรอบนี้',exact:true})).toHaveCount(0);
+  for(const expected of [1,2]){await page.getByRole('textbox',{name:'ข้อความถึง CiC',exact:true}).fill('เปิด Notepad ให้หน่อย');await page.getByRole('button',{name:'ส่ง',exact:true}).click();await expect(page.getByRole('log',{name:'สถานะคำสั่งเสียง'})).toContainText('เปิด Notepad บนเครื่อง');await expect.poll(()=>f.opens()).toBe(expected);await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true})).toHaveCount(0);await expect(page.getByRole('textbox',{name:'ข้อความถึง CiC',exact:true})).toBeEnabled()}
+  await page.getByRole('button',{name:'หยุด',exact:true}).click();await expect(page.getByRole('status')).toContainText('ยุติแล้ว');await expect(page.getByRole('button',{name:'อนุญาตใช้แอปรอบนี้',exact:true})).toHaveCount(0);
+  await page.getByRole('textbox',{name:'ข้อความถึง CiC',exact:true}).fill('เปิด Notepad ให้หน่อย');await page.getByRole('button',{name:'ส่ง',exact:true}).click();await expect.poll(()=>f.opens()).toBe(3);await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true})).toHaveCount(0);await expect(page.getByRole('textbox',{name:'ข้อความถึง CiC',exact:true})).toBeEnabled();
+  await page.getByRole('button',{name:'จบการใช้แอป',exact:true}).click();await expect(page.getByRole('button',{name:'อนุญาตใช้แอปรอบนี้',exact:true})).toBeVisible();
+  await page.getByRole('textbox',{name:'ข้อความถึง CiC',exact:true}).fill('เปิด Notepad ให้หน่อย');await page.getByRole('button',{name:'ส่ง',exact:true}).click();await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true})).toBeVisible();expect(f.opens()).toBe(3)
+ }finally{await f.close()}
+})
+
+test('an early revoke HTTP failure is handled while Stop waits for an owned startup; no unhandled rejection or late success',async({page,baseURL})=>{
+ const f=await fixture(page,baseURL!,true),errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+ try{await prepare(page);await page.getByRole('button',{name:'อนุญาตให้ CIC เปิดตามแผนหนึ่งครั้ง',exact:true}).click();await expect.poll(()=>f.opens()).toBe(1);
+  await page.route('http://127.0.0.1:8787/conversation/revoke',route=>route.fulfill({status:503,json:{code:'unavailable'}}));
+  await page.getByRole('button',{name:'หยุดไมค์และงานเสียง',exact:true}).click();await page.waitForTimeout(200);expect(errors).toEqual([]);f.release();await expect(page.getByRole('status')).toContainText('ยังตรวจการหยุด');expect(f.spoken).toEqual([]);expect(errors).toEqual([])
+ }finally{f.release();await f.close()}
+})
+
+
+test('public typed conversation opens approved app without configured voice; microphone and synthesis stay off',async({page,baseURL})=>{
+ const f=await fixture(page,baseURL!);try{await page.route('http://127.0.0.1:8787/voice/status',route=>route.fulfill({status:200,json:{version:1,local:true,configured:false,handsFreeAccepted:false,asr:'none',requiresFreeMiB:1152,stopUnverified:false}}));await page.goto('./#/voice');await page.getByRole('textbox',{name:'ข้อความถึง CiC',exact:true}).fill('เปิด Notepad ให้หน่อย');await page.getByRole('button',{name:'ส่ง',exact:true}).click();await expect(page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true})).toBeVisible();expect(f.opens()).toBe(0);await page.getByRole('button',{name:'อนุญาตใช้แอปครั้งเดียว',exact:true}).click();await expect.poll(()=>f.opens()).toBe(1);await expect(page.getByRole('log',{name:'สถานะคำสั่งเสียง'})).toContainText('เปิด Notepad บนเครื่อง');expect(f.spoken).toEqual([]);await page.getByRole('button',{name:'เริ่มคุย',exact:true}).click();await expect(page.getByRole('status')).toContainText('ยังไม่ได้ติดตั้ง');expect(f.spoken).toEqual([]);await page.getByRole('button',{name:'หยุด',exact:true}).click();await expect(page.getByRole('status')).toContainText('ยุติแล้ว')}finally{await f.close()}
+})

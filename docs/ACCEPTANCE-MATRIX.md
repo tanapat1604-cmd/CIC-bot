@@ -48,3 +48,12 @@ Source/docs/tests arepublished; rawfreezes/resources/logs/imageskeptCworkspacepr
 | P7 release | overallNOT-ACCEPTED; feature flags/contractsไม่ใช่ครบวงจรจาวิส |
 
 P1pilotจะผ่านเฉพาะboundedtools scopeเมื่อbuild/lint/regressions/actualCICUI/negativepermission/stop-caseผ่าน ไม่มีCoreadapterใดสั่งOS/coreexternal effectsได้ การผ่านpilotไม่ยกcriticalnative/voice/research/coding gatesให้ผ่านอัตโนมัติ
+
+
+## Scoped Notepad pilot
+Native Core Thai input and real-app two-task Unicode/newline append/readback/stop verified separately from fixtures. Windows10 classic Notepad only; no general desktop/screenshot-vision/voice acceptance. Native hotkey30trials, focus-race/occlusion/DPI/multimonitor/memory peak/recovery stress NOT certified. See validation/2026-10-08-notepad/RESULTS.md.
+
+
+## YouTube music prototype (2026-10-08)
+
+Source and evidence: [YOUTUBE-CONTROL.md](YOUTUBE-CONTROL.md). Separate actual model intent extraction, real browser playback and app end-to-end from fixtures; reject echo/empty artist, unknown channel, missing Latest selection or unverified playback. No global research/desktop/voice acceptance or new model17 score. Current detailed outcomes in validation/2026-10-09-youtube/RESULTS.md.
