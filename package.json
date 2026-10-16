@@ -11,7 +11,14 @@
     "preview": "vite preview --host 127.0.0.1",
     "lint": "eslint .",
     "test": "playwright test",
-    "social": "node scripts/social-preview.mjs"
+    "social": "node scripts/social-preview.mjs",
+    "doctor": "node scripts/cic-doctor.mjs",
+    "doctor:test": "node --test tests/cic-doctor.test.mjs",
+    "voice:configure": "node scripts/configure-voice.mjs",
+    "voice:configure:test": "node --test tests/configure-voice.test.mjs",
+    "test:voice": "playwright test -c playwright.voice-unit.config.ts",
+    "test:voice-ui": "playwright test -c playwright.voice-command-ui.config.ts",
+    "test:public-unit": "playwright test -c playwright.public-unit.config.ts"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.0",
@@ -20,7 +27,8 @@
     "chess.js": "1.4.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "three": "^0.180.0"
+    "three": "^0.180.0",
+    "playwright-core": "1.63.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

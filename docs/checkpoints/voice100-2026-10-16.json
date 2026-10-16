@@ -1,0 +1,116 @@
+{
+  "updatedAt": "2026-10-16T12:57:17.611Z",
+  "uniqueHumanTrainingClips": 100,
+  "languageCounts": {
+    "th": 50,
+    "en": 50
+  },
+  "originalGradientUpdates": 100,
+  "additionalRepeatedGradientUpdates": 2000,
+  "newUniqueClipsDuringRefinement": 0,
+  "refinementEpochs": 20,
+  "architecture": "Frozen pretrained CV8 body plus147-token CTC classifier head",
+  "firstHeadSha256": "f9452274d9d66c29b23a393753c365005bfd39f1ddd25d70bbce002224bf25d3",
+  "refinedHeadSha256": "8d9e9be3da518400e02debcff0bccf44031e44e2ea09778673273bb05c22b6b3",
+  "baseWeightsSha256": "f0135130a25f0f16a59cc376f886f9e54e0c1736f1b85c4c01e93b9f4cc4b090",
+  "refinementManifestSha256": "ae6ae807aaf82cc479980c7c02bbed8870d5c7571e15b556c886d7e723ce1726",
+  "development": {
+    "speechExact": 1,
+    "speechTotal": 5,
+    "shortStopExact": false,
+    "rawNonspeechTranscripts": 1,
+    "rows": [
+      {
+        "id": "control-0",
+        "reference": "ไม่ เอา ถุง",
+        "rawText": "ไม่เอาถุง",
+        "exact": true,
+        "characterErrors": 0,
+        "modelProcessingMs": 688
+      },
+      {
+        "id": "control-2",
+        "reference": "ยกเลิก เมนู",
+        "rawText": "ยกเลิกมนู",
+        "exact": false,
+        "characterErrors": 1,
+        "modelProcessingMs": 843
+      },
+      {
+        "id": "control-4",
+        "reference": "สต็อป",
+        "rawText": "สต็๊อป",
+        "exact": false,
+        "characterErrors": 1,
+        "modelProcessingMs": 609
+      },
+      {
+        "id": "control-5",
+        "reference": "หยุด",
+        "rawText": "ยุ่น",
+        "exact": false,
+        "characterErrors": 3,
+        "modelProcessingMs": 203
+      },
+      {
+        "id": "gowajee-4",
+        "reference": "หยุด เพลง",
+        "rawText": "หยุดแพง",
+        "exact": false,
+        "characterErrors": 2,
+        "modelProcessingMs": 860
+      },
+      {
+        "id": "dev-silence",
+        "reference": "",
+        "rawText": "",
+        "exact": true,
+        "characterErrors": 0,
+        "modelProcessingMs": 484
+      },
+      {
+        "id": "dev-click",
+        "reference": "",
+        "rawText": "",
+        "exact": true,
+        "characterErrors": 0,
+        "modelProcessingMs": 469
+      },
+      {
+        "id": "dev-noise200",
+        "reference": "",
+        "rawText": "pุ",
+        "exact": false,
+        "characterErrors": 2,
+        "modelProcessingMs": 531
+      }
+    ],
+    "timing": "Starts after decoded waveform is available; not human speech-end latency"
+  },
+  "originalHeld12Used": false,
+  "productionPromoted": false,
+  "fullSpeechAccepted": false,
+  "trainingEnglishRowsEmittingLatin": 50,
+  "trainingScoresAreNotValidation": true,
+  "verification": {
+    "desktopUnitPassed": 10,
+    "desktopUIFixturePassed": 5,
+    "personalChromeReceiptPassed": 4,
+    "trainingMainProtocolPassed": 13,
+    "actualTiktokOpen": false,
+    "actualTiktokScroll": false,
+    "actualTiktokFailure": "native-unverified",
+    "ownedHelperExitVerified": true,
+    "cleanSourceUnitPassed": 123,
+    "countsOverlapNotAdditive": true,
+    "defaultSuiteCollected": 428,
+    "fullDefaultSuiteExecuted": false
+  },
+  "source": {
+    "dataset": "google/fleurs",
+    "revision": "70bb2e84b976b7e960aa89f1c648e09c59f894dd",
+    "split": "train",
+    "speakerIdentity": "Publisher-attested split separation; no invented per-speaker IDs"
+  },
+  "privateArtifactsIncluded": false
+}

@@ -1,0 +1,2 @@
+const tools=[['#/app','แชตและไฟล์'],['#/notepad','สมุดบันทึก'],['#/youtube','เพลงและ YouTube'],['#/ocr','อ่านข้อความจากภาพ'],['#/screen','อ่านหน้าต่างที่แชร์'],['#/slides','สร้างสไลด์'],['#/chess','หมากรุก'],['#/core','ดูความสามารถของ CiC']] as const
+export default function CicToolHub(){return <details className="cic-tool-hub"><summary>เครื่องมือของ CiC</summary><nav aria-label="เครื่องมือของ CiC" style={{display:'flex',flexWrap:'wrap',gap:'0.75rem',padding:'1rem 0'}}>{tools.map(([href,label])=><a key={href} href={href}>{label}</a>)}</nav></details>}

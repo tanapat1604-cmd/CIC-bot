@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test'
+export default defineConfig({testDir:'./tests',testMatch:/personal-memory\.spec\.ts$/,workers:1,retries:0,reporter:'json',use:{baseURL:'http://127.0.0.1:4173/CIC-bot/',channel:'chrome'},webServer:{command:'"'+process.execPath+'" node_modules/vite/bin/vite.js preview --host127.0.0.1 --port4173 --strictPort'.replace('--host127','--host 127').replace('--port4173','--port 4173'),url:'http://127.0.0.1:4173/CIC-bot/',reuseExistingServer:false}})

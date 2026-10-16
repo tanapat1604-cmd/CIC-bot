@@ -1,5 +1,5 @@
 import {CoreError} from '../../shared/core.js'
-export type Scheduled={id:string;owner:string;deadline:number;reserveMiB?:8|96;cancelled:()=>boolean;onWait:(reason:string)=>void;run:()=>Promise<void>;onError:(code:string)=>void}
+export type Scheduled={id:string;owner:string;deadline:number;reserveMiB?:8|96|128|384|640|1024|2048;cancelled:()=>boolean;onWait:(reason:string)=>void;run:()=>Promise<void>;onError:(code:string)=>void}
 export function createScheduler(options:{freeMiB:()=>number;externalBusy:()=>boolean;clock?:()=>number}){
  const clock=options.clock??(()=>performance.now());let closed=false,active:Scheduled|null=null,timer:ReturnType<typeof setTimeout>|undefined;const queue:Scheduled[]=[]
  const arm=()=>{if(!closed&&!timer&&queue.length){timer=setTimeout(()=>{timer=undefined;pump()},50);timer.unref()}}

@@ -1,3 +1,19 @@
+import {runVoiceTraining,VOICE_TRAINING_MODES,type VoiceTrainingMode} from './voiceTraining.js'
+import {createDesktopCore} from './desktop/core.js'
+import {desktopConfigured} from './desktop/native.js'
+import {createPersonalMemory} from './personalMemory.js'
+import {prepareVoiceModel,type VoiceModelArtifact} from './modelPrepare.js'
+import {createChromeWindows} from './chrome/sequence.js'
+import {startChromeWindow} from './chrome/browser.js'
+import {focusPersonalChrome,personalChromeConfigured} from './chrome/personalChrome.js'
+import {chromeResultCandidates} from './chrome/planner.js'
+import {thinkAssistant} from './assistant.js'
+import {parseAssistantInput,parseAssistantDecision,type AssistantInput,type AssistantDecision} from '../shared/assistant.js'
+import {createChromeResearchCore} from './chrome/core.js'
+import {createVoiceCore} from './voice/core.js'
+import {createAppOpenCore} from './voice/apps.js'
+import {createYouTubeCore} from './youtube/core.js'
+import {createNotepadCore} from './notepad/core.js'
 import {createLabCore} from './lab/core.js'
 import {createScheduler} from './core/scheduler.js'
 import {freemem} from 'node:os'
@@ -17,8 +33,8 @@ import { once } from 'node:events'
 import { ChatError, LIMITS, validateRequest, type ErrorCode, type TextEvent } from '../shared/chatProtocol.js'
 import { SYSTEM_INSTRUCTION, testProvider, type Provider } from './provider.js'
 
-type Options = { lab?: ReturnType<typeof createLabCore>; core?: ReturnType<typeof createCore>; ocr?: ReturnType<typeof createOcrManager>; slides?: ReturnType<typeof createSlidesManager>; chess?: ChessEngine; origins?: string[]; provider?: Provider; timeoutMs?: number; requestsPerMinute?: number; maxRequests?: number; maxConcurrent?: number; enabled?: boolean; log?: (entry: { requestId: string; status: string; durationMs: number }) => void }
-type Access = { expires: number; active: number; window: number; count: number; operations: Set<string> }
+type Options = { trainVoice?:typeof runVoiceTraining; desktop?:ReturnType<typeof createDesktopCore>; personalChrome?:typeof focusPersonalChrome;personalMemory?:ReturnType<typeof createPersonalMemory>; prepareVoiceModel?:typeof prepareVoiceModel; conversationNotepadAppend?:boolean;chromeWindows?:ReturnType<typeof createChromeWindows>; assistantThink?:(input:AssistantInput,signal:AbortSignal)=>Promise<AssistantDecision>; chrome?: ReturnType<typeof createChromeResearchCore>; voice?: ReturnType<typeof createVoiceCore>; youtube?: ReturnType<typeof createYouTubeCore>; notepad?: ReturnType<typeof createNotepadCore>; lab?: ReturnType<typeof createLabCore>; core?: ReturnType<typeof createCore>; ocr?: ReturnType<typeof createOcrManager>; slides?: ReturnType<typeof createSlidesManager>; chess?: ChessEngine; origins?: string[]; provider?: Provider; timeoutMs?: number; requestsPerMinute?: number; maxRequests?: number; maxConcurrent?: number; enabled?: boolean; log?: (entry: { requestId: string; status: string; durationMs: number }) => void }
+type Access = { notepadAppendGranted?:boolean;conversationGranted?: boolean; conversationPaused?: boolean; conversationPauseSettled?: boolean; conversationRevision?: number; conversationNonces?: Set<string>; voiceRate?: { window:number; asr:number; tts:number }; expires: number; active: number; window: number; count: number; operations: Set<string> }
 const loopback = (address?: string) => address === '127.0.0.1' || address === '::1' || address === '::ffff:127.0.0.1'
 export function createChatServer(options: Options = {}) {
   const origins = options.origins ?? ['http://127.0.0.1:5173', 'http://127.0.0.1:4173']
@@ -29,11 +45,25 @@ export function createChatServer(options: Options = {}) {
   const slides = options.slides ?? createSlidesManager()
   const ocr = options.ocr ?? createOcrManager()
   let chessWindow = Date.now(), chessCalls = 0
+  const personalMemory=options.personalMemory??createPersonalMemory()
   const access = new Map<string, Access>(), controllers = new Set<AbortController>()
-  let active = 0, spent = 0, bootstrapWindow = Date.now(), bootstraps = 0
-  const sharedScheduler=options.core||options.lab?undefined:createScheduler({freeMiB:()=>freemem()/1048576,externalBusy:()=>!!active||slides.isBusy()||ocr.isBusy()})
-  const core:ReturnType<typeof createCore>=options.core??createCore({scheduler:sharedScheduler,externalBusy:()=>!!active||slides.isBusy()||ocr.isBusy()||(!sharedScheduler&&lab.isBusy()),ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now()})
-  const lab:ReturnType<typeof createLabCore>=options.lab??createLabCore({scheduler:sharedScheduler,externalBusy:()=>!!active||slides.isBusy()||ocr.isBusy()||(sharedScheduler?sharedScheduler.busy():core.isBusy()),ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now()})
+  const notepadAppendConfigured=options.conversationNotepadAppend??process.env.CIC_CONVERSATION_NOTEPAD_APPEND==='1'
+  const conversationAllowed=(owner:string)=>access.get(owner)?.conversationGranted===true&&access.get(owner)?.conversationPaused!==true&&(access.get(owner)?.expires??0)>Date.now()
+  const assistantRuns=new Map<string,{controller:AbortController;done:Promise<void>}>()
+  const stopAssistant=async(owner:string)=>{const run=assistantRuns.get(owner);if(run){run.controller.abort();await run.done}return{settled:!assistantFault}}
+  const chromeWindows=options.chromeWindows??(process.env.CIC_REUSE_CHROME==='1'?createChromeWindows({start:startChromeWindow,ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now(),allowed:conversationAllowed}):undefined)
+  let trainingOwner:string|null=null;let trainingOperation:string|null=null;let trainingMode:VoiceTrainingMode|null=null;
+  let assistantFault=false;let active = 0, spent = 0, bootstrapWindow = Date.now(), bootstraps = 0
+  const sharedScheduler=options.chrome||options.core||options.lab||options.notepad||options.youtube||options.voice?undefined:createScheduler({freeMiB:()=>freemem()/1048576,externalBusy:()=>desktop.isBusy()||!!active||chromeWindows?.isBusy()===true||slides.isBusy()||ocr.isBusy()})
+  const core:ReturnType<typeof createCore>=options.core??createCore({scheduler:sharedScheduler,externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()||(youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy())||(!sharedScheduler&&(lab.isBusy()||notepad.isBusy())),ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now()})
+  const lab:ReturnType<typeof createLabCore>=options.lab??createLabCore({scheduler:sharedScheduler,externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()||(youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy())||(sharedScheduler?sharedScheduler.busy():core.isBusy()||notepad.isBusy()),ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now()})
+  const notepad:ReturnType<typeof createNotepadCore>=options.notepad??createNotepadCore({sessionAllowed:owner=>notepadAppendConfigured&&conversationAllowed(owner)&&access.get(owner)?.notepadAppendGranted===true,scheduler:sharedScheduler,externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()||(youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy())||(sharedScheduler?sharedScheduler.busy():desktop.isBusy()||core.isBusy()||lab.isBusy()),ownerAlive:who=>(access.get(who)?.expires??0)>Date.now()})
+  const youtube:ReturnType<typeof createYouTubeCore>=options.youtube??createYouTubeCore({scheduler:sharedScheduler??createScheduler({freeMiB:()=>freemem()/1048576,externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()}),externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy()||(sharedScheduler?sharedScheduler.busy():desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy()),ownerAlive:who=>(access.get(who)?.expires??0)>Date.now()})
+  const voice:ReturnType<typeof createVoiceCore>=options.voice??createVoiceCore({scheduler:sharedScheduler??createScheduler({freeMiB:()=>freemem()/1048576,externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()}),externalBusy:kind=>!!active||slides.isBusy()||ocr.isBusy()||(kind==='tts'?youtube.isExecuting()||apps.isExecuting():youtube.isBusy()||apps.isBusy())||desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy()||chrome.isBusy(),ownerAlive:who=>(access.get(who)?.expires??0)>Date.now()})
+  const personalChrome=options.personalChrome??(!options.voice&&!options.chrome?focusPersonalChrome:undefined)
+  const apps=createAppOpenCore({personalChrome,chromeWindows,sessionAllowed:conversationAllowed,scheduler:sharedScheduler??createScheduler({freeMiB:()=>freemem()/1048576,externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()}),externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()||voice.isBusy()||youtube.isBusy()||desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy()||chrome.isBusy(),ownerAlive:who=>(access.get(who)?.expires??0)>Date.now()})
+  const chrome:ReturnType<typeof createChromeResearchCore>=options.chrome??createChromeResearchCore({... (chromeWindows?{windowMode:'cic-reuse' as const,start:(query:string,signal:AbortSignal,owner?:string)=>{if(!owner)throw new CoreError('permission-denied');return chromeWindows.search(owner,query,signal)},select:async(query:string,observation:import('../shared/chromeObservation.js').ChromeObservation,signal:AbortSignal)=>{signal.throwIfAborted();return chromeResultCandidates(query,observation)[0]?.name??null}}:{}),sessionAllowed:conversationAllowed,scheduler:sharedScheduler??createScheduler({freeMiB:()=>freemem()/1048576,externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()}),externalBusy:()=>desktop.isBusy()||!!active||slides.isBusy()||ocr.isBusy()||voice.isBusy()||youtube.isBusy()||apps.isBusy()||desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy(),ownerAlive:who=>(access.get(who)?.expires??0)>Date.now()})
+  const desktop=options.desktop??createDesktopCore({personalChrome,ownerAlive:owner=>(access.get(owner)?.expires??0)>Date.now(),externalBusy:()=>!!active||core.isBusy()||lab.isBusy()||notepad.isBusy()||youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy()||chromeWindows?.isBusy()===true||slides.isBusy()||ocr.isBusy()})
   const json = (res: ServerResponse, status: number, value: unknown) => { res.writeHead(status, { 'Content-Type': 'application/json' }); res.end(JSON.stringify(value)) }
   // Drain rejected bodies without buffering so HTTP clients can receive the error
   // before reusing/closing the socket; requestTimeout bounds unfinished uploads.
@@ -47,6 +77,240 @@ export function createChatServer(options: Options = {}) {
     if (origin && !origins.includes(origin)) { fail(res, 403, 'unauthorized'); return }
     if (origin) { res.setHeader('Access-Control-Allow-Origin', origin); res.setHeader('Access-Control-Allow-Credentials', 'true'); res.setHeader('Vary', 'Origin') }
     if (req.method === 'OPTIONS' && origin) { res.writeHead(204, { 'Access-Control-Allow-Methods': 'POST, GET', 'Access-Control-Allow-Headers': 'Content-Type', 'Access-Control-Max-Age': '600' }); res.end(); return }
+    if(req.url?.startsWith('/desktop/')){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!origin||!session||session.expires<=Date.now()||options.enabled===false){fail(res,403,'unauthorized');return}
+      try{
+        if(req.method==='GET'&&req.url==='/desktop/status'){json(res,200,{version:1,configured:!!options.desktop||await desktopConfigured(),...desktop.status(token),targetWindowsClosedByStop:false});return}
+        if(req.method==='GET'&&req.url==='/desktop/windows'){json(res,200,await desktop.list(token!));return}
+        if(req.method==='GET'&&req.url==='/desktop/observation'){json(res,200,await desktop.observe(token!));return}
+        if(req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding'])throw new CoreError('invalid')
+        const value=await readBody(req,AbortSignal.timeout(5000),8192)
+        if(req.url==='/desktop/tiktok'){json(res,200,await desktop.site(token!,value));return}
+        if(req.url==='/desktop/begin'){json(res,200,await desktop.begin(token!,value));return}
+        if(req.url==='/desktop/select'){json(res,200,await desktop.select(token!,value));return}
+        if(req.url==='/desktop/action'){json(res,200,await desktop.execute(token!,value));return}
+        if(req.url==='/desktop/stop'&&exact(value,[])){json(res,200,await desktop.stop(token!));return}
+        throw new CoreError('invalid')
+      }catch(error){json(res,error instanceof CoreError&&error.code==='busy'?429:400,{code:error instanceof CoreError?error.code:'desktop-native-failed'});return}
+    }
+    // Explicit local operator preparation shares the owned model slot and Stop.
+    // Fixed public corpus/gradient pilots share the existing owned heavy slot.
+    if(req.url==='/voice/training/status'||req.url==='/voice/training/stop'){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!origin||!session||session.expires<=Date.now()||options.enabled===false){fail(res,403,'unauthorized');return}
+      try{
+        if(req.method==='GET'&&req.url==='/voice/training/status'){json(res,200,{version:1,configured:!!options.trainVoice||process.env.CIC_VOICE_TRAINING==='1',busy:trainingOwner!==null,owned:trainingOwner===token,operationId:trainingOwner===token?trainingOperation:null,mode:trainingOwner===token?trainingMode:null,stopUnverified:assistantFault,heavySlotSharedWithMain:true});return}
+        if(req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']||req.url!=='/voice/training/stop'||!exact(await readBody(req,AbortSignal.timeout(5000),4096),[]))throw new CoreError('invalid')
+        if(trainingOwner===token)await stopAssistant(token!);json(res,200,{settled:!assistantFault,ownedTrainingWorkerOnly:true,userAppsClosed:false});return
+      }catch(e){json(res,400,{code:e instanceof CoreError?e.code:'training-stop-failed'});return}
+    }
+    if(req.url==='/voice/training-pilot'){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']||!session||session.expires<=Date.now()||options.enabled===false||!options.trainVoice&&process.env.CIC_VOICE_TRAINING!=='1'){fail(res,403,'unauthorized');return}
+      let reserved=false,finish:()=>void=()=>{};const controller=new AbortController(),closed=()=>controller.abort()
+      try{
+        const value=await readBody(req,AbortSignal.timeout(5000),4096)
+        if(!exact(value,['version','operationId','acknowledged','mode'])||value.version!==1||!uuid(value.operationId)||value.acknowledged!==true||!VOICE_TRAINING_MODES.includes(value.mode as VoiceTrainingMode))throw new CoreError('invalid')
+        if(assistantFault)throw new CoreError('model-stop-unverified');if(session.expires-Date.now()<300000)throw new CoreError('permission-denied')
+        if([...access.values()].some(a=>a.conversationGranted===true&&a.conversationPaused!==true&&a.expires>Date.now())||session.conversationPaused&&session.conversationPauseSettled!==true||active||session.active||desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy()||youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy()||chromeWindows?.isBusy()||slides.isBusy()||ocr.isBusy()||chess.status().busy)throw new CoreError('busy')
+        if(session.operations.has(value.operationId))throw new CoreError('replay');if(session.operations.size>=128)throw new CoreError('capacity');session.operations.add(value.operationId)
+        active++;session.active++;reserved=true;const done=new Promise<void>(resolve=>finish=resolve);assistantRuns.set(token!,{controller,done});controllers.add(controller);res.once('close',closed)
+        trainingOwner=token!;trainingOperation=value.operationId;trainingMode=value.mode as VoiceTrainingMode;
+        const result=await(options.trainVoice??runVoiceTraining)(controller.signal,value.operationId,value.mode as VoiceTrainingMode);controller.signal.throwIfAborted()
+        if(session.expires<=Date.now())throw new CoreError('permission-denied')
+        if(result.version!==1||result.operationId!==value.operationId||result.mode!==value.mode||result.state!=='succeeded'||result.productionModified!==false||result.fullSpeechAccepted!==false||result.terminalVerified!==true||!Number.isSafeInteger(result.trainingUpdates)||result.trainingUpdates<0||result.trainingUpdates>(value.mode==='head-refine100'?2000:value.mode==='head-batch100'?12:4)||!Number.isSafeInteger(result.newUniqueClips)||result.newUniqueClips<0||result.newUniqueClips>(value.mode==='head-batch100'?12:value.mode==='head-pilot'||value.mode==='acquire-pilot'?4:100000)||result.trainingUpdates>(value.mode==='head-refine100'?2000:result.newUniqueClips)||!['head-pilot','head-batch100','head-refine100'].includes(String(value.mode))&&result.trainingUpdates!==0||['head-cache100','head-refine100','head-evaluate100','head-evaluate100-refined'].includes(String(value.mode))&&result.newUniqueClips!==0||value.mode==='head-refine100'&&(result.trainingUpdates!==2000||result.fixedUniqueTrainingClips!==100||result.epochs!==20)||value.mode==='setup-corpus'&&result.newUniqueClips!==0||['head-pilot','head-batch100','head-refine100'].includes(String(value.mode))&&(result.trainingUpdates<1||result.headWeightsChanged!==true||typeof result.checkpointSha256!=='string'||!/^[a-f0-9]{64}$/u.test(result.checkpointSha256)))throw new CoreError('training-pilot-failed')
+        json(res,200,result);return
+      }catch(e){const code=e instanceof CoreError?e.code:'training-pilot-failed';if(code==='model-stop-unverified')assistantFault=true;if(!res.destroyed)json(res,code==='busy'?429:400,{code:controller.signal.aborted&&!assistantFault?'cancelled':code});return}
+      finally{if(reserved&&trainingOwner===token){trainingOwner=null;trainingOperation=null;trainingMode=null;}res.off('close',closed);controllers.delete(controller);controller.abort();if(reserved){session.active--;if(!assistantFault)active--;assistantRuns.delete(token!);finish()}}
+    }
+    if(req.url==='/voice/model-prepare'){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']||!session||session.expires<=Date.now()||options.enabled===false||!options.prepareVoiceModel&&process.env.CIC_ASR_CTC_PREPARE!=='1'){fail(res,403,'unauthorized');return}
+      let reserved=false,finish:()=>void=()=>{};const controller=new AbortController(),closed=()=>controller.abort()
+      try{
+        const value=await readBody(req,AbortSignal.timeout(5000),4096)
+        if(!exact(value,['version','operationId','acknowledged','artifactId'])||value.version!==1||!uuid(value.operationId)||value.acknowledged!==true||!['wav2vec2-thai-int8-v1','wav2vec2-thai-cv8-int8-v1'].includes(String(value.artifactId)))throw new CoreError('invalid')
+        if(assistantFault)throw new CoreError('model-stop-unverified');if(session.expires-Date.now()<300000)throw new CoreError('permission-denied')
+        if(session.conversationPaused&&session.conversationPauseSettled!==true||active||session.active||desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy()||youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy()||chromeWindows?.isBusy()||slides.isBusy()||ocr.isBusy()||chess.status().busy)throw new CoreError('busy')
+        if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}if(++session.count>(options.requestsPerMinute??10))throw new CoreError('limited')
+        if(session.operations.has(value.operationId))throw new CoreError('replay');if(session.operations.size>=128)throw new CoreError('capacity');session.operations.add(value.operationId)
+        active++;session.active++;reserved=true;const done=new Promise<void>(resolve=>finish=resolve);assistantRuns.set(token!,{controller,done});controllers.add(controller);res.once('close',closed)
+        const artifact=await(options.prepareVoiceModel??prepareVoiceModel)(controller.signal,value.artifactId as VoiceModelArtifact['artifactId']);controller.signal.throwIfAborted()
+        if(session.expires<=Date.now())throw new CoreError('permission-denied')
+        if(artifact.artifactId!==value.artifactId||artifact.sourceModel!==(value.artifactId==='wav2vec2-thai-cv8-int8-v1'?'wannaphong/wav2vec2-large-xlsr-53-th-cv8-newmm':'airesearch/wav2vec2-large-xlsr-53-th')||!Array.isArray(artifact.files)||artifact.files.length!==4||new Set(artifact.files.map(f=>f.file)).size!==4||artifact.files.some(f=>!['model-int8.onnx','vocab.json','preprocessor_config.json','config.json'].includes(f.file)||!Number.isSafeInteger(f.bytes)||f.bytes<1||!/^[a-f0-9]{64}$/.test(f.sha256))||!Number.isFinite(artifact.durationMs)||artifact.durationMs<0)throw new CoreError('model-prepare-failed')
+        json(res,200,{version:1,operationId:value.operationId,source:'local-voice-model-prepare',artifact});return
+      }catch(e){const code=e instanceof CoreError?e.code:'model-prepare-failed';if(code==='model-stop-unverified')assistantFault=true;if(!res.destroyed)json(res,code==='busy'||code==='limited'?429:400,{code:controller.signal.aborted&&!assistantFault?'cancelled':code});return}
+      finally{res.off('close',closed);controllers.delete(controller);controller.abort();if(reserved){session.active--;if(!assistantFault)active--;assistantRuns.delete(token!);finish()}}
+    }
+    if(req.url==='/assistant/think'){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']||!session||session.expires<=Date.now()||options.enabled===false){fail(res,403,'unauthorized');return}
+      let reserved=false,finish:()=>void=()=>{};const controller=new AbortController(),closed=()=>controller.abort()
+      try{
+        const input=parseAssistantInput(await readBody(req,AbortSignal.timeout(5000),8192))
+        if(assistantFault)throw new CoreError('model-stop-unverified');if(session.conversationPaused&&session.conversationPauseSettled!==true)throw new CoreError('busy')
+        if(chromeWindows?.isBusy()||active||session.active||desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy()||youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy()||slides.isBusy()||ocr.isBusy())throw new CoreError('busy')
+        if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}if(++session.count>(options.requestsPerMinute??10))throw new CoreError('limited')
+        if(session.operations.has(input.operationId))throw new CoreError('replay');if(session.operations.size>=128)throw new CoreError('capacity');session.operations.add(input.operationId)
+        active++;session.active++;reserved=true;const done=new Promise<void>(resolve=>finish=resolve);assistantRuns.set(token!,{controller,done});res.once('close',closed);controllers.add(controller);const began=performance.now()
+        const thought=options.assistantThink?{decision:await options.assistantThink(input,controller.signal),cacheHit:false}:await thinkAssistant(input,controller.signal,await personalMemory.read());const decision=parseAssistantDecision(thought.decision);controller.signal.throwIfAborted();if(session.expires<=Date.now())throw new CoreError('permission-denied')
+        json(res,200,{version:1,operationId:input.operationId,source:'local-ai-proposal',model:options.assistantThink?'fixture':provider.model??'qwen3:0.6b',decision,cacheHit:thought.cacheHit,elapsedMs:Math.round(performance.now()-began)});return
+      }catch(e){const code=e instanceof CoreError?e.code:'assistant-unavailable';if(code==='model-stop-unverified')assistantFault=true;if(!res.destroyed)json(res,code==='busy'||code==='limited'?429:400,{code:controller.signal.aborted&&!assistantFault?'cancelled':code});return}
+      finally{res.off('close',closed);controllers.delete(controller);controller.abort();if(reserved){session.active--;if(!assistantFault)active--;assistantRuns.delete(token!);finish()}}
+    }
+    if(req.url?.startsWith('/conversation/')){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
+      try{
+        if(req.method==='GET'&&req.url==='/conversation/permission'){json(res,200,{granted:session.conversationGranted===true,expiresAt:session.expires,revision:session.conversationRevision??0});return}
+        if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']){fail(res,403,'unauthorized');return}
+        const value=await readBody(req,AbortSignal.timeout(5000),4096)
+        if(req.url==='/conversation/grant'){
+          if(!exact(value,['acknowledged','scopes','operationId','sessionRevision'])||value.acknowledged!==true||!uuid(value.operationId)||!Number.isSafeInteger(value.sessionRevision)||Number(value.sessionRevision)<0||!Array.isArray(value.scopes)||![2,3].includes(value.scopes.length)||value.scopes.length===3&&(!notepadAppendConfigured||value.scopes[2]!=='notepad-append')||value.scopes[0]!=='app-open'||value.scopes[1]!=='chrome-search-read')throw new CoreError('invalid')
+          const nonces=session.conversationNonces??=new Set<string>();if(nonces.has(value.operationId as string))throw new CoreError('replay');if(nonces.size>=128)throw new CoreError('capacity');nonces.add(value.operationId as string);if(value.sessionRevision!==(session.conversationRevision??0)||session.expires<=Date.now())throw new CoreError('permission-denied');
+          if(session.conversationPaused&&session.conversationPauseSettled!==true)throw new CoreError('busy');session.conversationGranted=true;session.notepadAppendGranted=value.scopes.length===3;session.conversationPaused=false;session.expires=Date.now()+600000;res.setHeader('Set-Cookie','cic_local='+token+'; HttpOnly; SameSite=Strict; Path=/; Max-Age=600');json(res,200,{granted:true,expiresAt:session.expires});return
+        }
+        if(req.url==='/conversation/continue'){
+          if(!exact(value,['sessionRevision'])||!Number.isSafeInteger(value.sessionRevision))throw new CoreError('invalid')
+          if(value.sessionRevision!==(session.conversationRevision??0)||session.conversationGranted!==true||session.expires<=Date.now())throw new CoreError('permission-denied')
+          if(session.conversationPaused&&session.conversationPauseSettled!==true)throw new CoreError('busy')
+          session.conversationPaused=false;session.expires=Date.now()+600000
+          res.setHeader('Set-Cookie','cic_local='+token+'; HttpOnly; SameSite=Strict; Path=/; Max-Age=600')
+          json(res,200,{granted:true,expiresAt:session.expires});return
+        }
+        if(req.url==='/conversation/pause'||req.url==='/conversation/revoke'){
+          if(!exact(value,[]))throw new CoreError('invalid')
+          const revoke=req.url==='/conversation/revoke';if(revoke)session.conversationGranted=false;session.conversationPaused=true;session.conversationPauseSettled=false;const revision=session.conversationRevision=(session.conversationRevision??0)+1
+          const settled=await Promise.all([desktop.stop(token!),stopAssistant(token!),apps.stop(token!),chrome.stop(token!),...(chromeWindows?[chromeWindows.pause(token!)]:[]),notepad.stop(token!).catch(e=>{if(e instanceof CoreError&&e.code==='not-found')return{settled:true};throw e})])
+          const windowResult=revoke&&chromeWindows?await chromeWindows.release(token!):{settled:true,chromeWindowsClosed:false};const stopped=settled.every(r=>r.settled===true)&&windowResult.settled;if(session.conversationRevision===revision)session.conversationPauseSettled=stopped;json(res,200,{revoked:revoke,paused:true,settled:stopped,chromeWindowsClosed:windowResult.chromeWindowsClosed});return
+        }
+        if(req.url==='/conversation/notepad/plans'){
+          if(!notepadAppendConfigured||!conversationAllowed(token!)||session.notepadAppendGranted!==true)throw new CoreError('permission-denied');const revision=session.conversationRevision??0;
+          if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
+          const plan=await notepad.plan(token!,value);if(!conversationAllowed(token!)||session.notepadAppendGranted!==true||(session.conversationRevision??0)!==revision){await notepad.cancelOperation(token!,plan.operationId);throw new CoreError('permission-denied')}json(res,201,notepad.approve(token!,plan.taskId,true));return
+        }
+        if(req.url==='/conversation/notepad/open'){
+          if(!conversationAllowed(token!))throw new CoreError('permission-denied')
+          if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}
+          if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
+          json(res,201,await notepad.open(token!,value));return
+        }
+        throw new CoreError('invalid')
+      }catch(error){const code=error instanceof CoreError?error.code:'failed';json(res,code==='permission-denied'?403:code==='busy'?429:400,{code});return}
+    }
+    if(req.url?.startsWith('/chrome/')){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
+      try{
+        const match=/^\/chrome\/jobs\/([a-f0-9-]{36})(?:\/(approve|session-approve))?$/.exec(req.url),operation=/^\/chrome\/operations\/([a-f0-9-]{36})\/cancel$/.exec(req.url)
+        if(match&&!uuid(match[1])||operation&&!uuid(operation[1]))throw new CoreError('invalid')
+        if(req.method==='GET'&&match&&!match[2]){json(res,200,chrome.get(token!,match[1]));return}
+        if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']){fail(res,403,'unauthorized');return}
+        const value=await readBody(req,AbortSignal.timeout(5000),4096)
+        if(operation||match?.[2]||req.url==='/chrome/stop'){
+          if(!exact(value,[]))throw new CoreError('invalid')
+          if(operation){await chrome.cancelOperation(token!,operation[1]);json(res,200,{acknowledged:true});return}
+          if(req.url==='/chrome/stop'){json(res,200,await chrome.stop(token!));return}
+          json(res,200,chrome.approve(token!,match![1],match![2]==='session-approve'));return
+        }
+        if(req.url!=='/chrome/plans')throw new CoreError('invalid')
+        if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}
+        if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
+        json(res,201,chrome.plan(token!,value));return
+      }catch(error){const code=error instanceof CoreError?error.code:error instanceof ChatError?error.code:'failed';if(!res.destroyed)json(res,code==='not-found'?404:code==='permission-denied'?403:code==='busy'||code==='memory'||code==='capacity'?429:400,{code});return}
+    }
+    if(req.url?.startsWith('/apps/')){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
+      try{
+        const match=/^\/apps\/jobs\/([a-f0-9-]{36})(?:\/(approve|session-approve))?$/.exec(req.url),operation=/^\/apps\/operations\/([a-f0-9-]{36})\/cancel$/.exec(req.url)
+        if(match&&!uuid(match[1])||operation&&!uuid(operation[1]))throw new CoreError('invalid')
+        if(req.method==='GET'&&match&&!match[2]){json(res,200,apps.get(token!,match[1]));return}
+        if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']){fail(res,403,'unauthorized');return}
+        const value=await readBody(req,AbortSignal.timeout(5000),4096)
+        if(operation||match?.[2]||req.url==='/apps/stop'){
+          if(!exact(value,[]))throw new CoreError('invalid')
+          if(operation){await apps.cancelOperation(token!,operation[1]);json(res,200,{acknowledged:true});return}
+          if(req.url==='/apps/stop'){json(res,200,await apps.stop(token!));return}
+          json(res,200,apps.approve(token!,match![1],match![2]==='session-approve'));return
+        }
+        if(req.url!=='/apps/plans')throw new CoreError('invalid')
+        if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}
+        if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
+        json(res,201,apps.plan(token!,value));return
+      }catch(error){const code=error instanceof CoreError?error.code:error instanceof ChatError?error.code:'failed';if(!res.destroyed)json(res,code==='not-found'?404:code==='permission-denied'?403:code==='busy'||code==='memory'||code==='capacity'?429:400,{code});return}
+    }
+    if(req.url?.startsWith('/voice/')){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
+      try{
+        const match=/^\/voice\/jobs\/([a-f0-9-]{36})(?:\/(audio))?$/.exec(req.url),operation=/^\/voice\/operations\/([a-f0-9-]{36})\/cancel$/.exec(req.url)
+        if(match&&!uuid(match[1])||operation&&!uuid(operation[1]))throw new CoreError('invalid')
+        if(req.method==='GET'&&req.url==='/voice/memory'){if(!origin)throw new CoreError('permission-denied');json(res,200,await personalMemory.read());return}
+        if(req.method==='GET'&&req.url==='/voice/status'){const voiceStatus=voice.status(token!);json(res,200,{...voiceStatus,stopUnverified:voiceStatus.stopUnverified||assistantFault||desktop.status().fault,desktopStopUnverified:desktop.status().fault,assistantStopUnverified:assistantFault,runtimeBusy:desktop.isBusy()||assistantFault||!!active||core.isBusy()||lab.isBusy()||notepad.isBusy()||youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy()||chromeWindows?.isBusy()===true||slides.isBusy()||ocr.isBusy(),resourcesOwned:desktop.hasOwnedWindow()||voice.hasOwnedReplySpeech()||notepad.hasOwnedWindow()||chromeWindows?.hasOwnedWindow()===true,activeConversations:[...access.values()].some(a=>a.conversationGranted===true&&a.conversationPaused!==true&&a.expires>Date.now()),conversationNotepadAppendConfigured:notepadAppendConfigured,chromeReuseConfigured:!!chromeWindows,desktopConfigured:!!options.desktop||await desktopConfigured(),desktopController:desktop.status(token),runtimeSourceRoot:process.cwd(),runtimeRevision:'voice100-training-v1-2026-10-16',trainingBusy:trainingOwner!==null,trainingConfigured:!!options.trainVoice||process.env.CIC_VOICE_TRAINING==='1',personalChromeConfigured:!!personalChrome&&(!!options.personalChrome||await personalChromeConfigured()),sessionExpiresAt:session.expires});return}
+        if(req.method==='GET'&&match){if(match[2]){const wav=voice.audio(token!,match[1]);res.writeHead(200,{'Content-Type':'audio/wav'});res.end(wav)}else json(res,200,voice.get(token!,match[1]));return}
+        if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']){fail(res,403,'unauthorized');return}
+        const value=await readBody(req,AbortSignal.timeout(5000),700000)
+        if(req.url==='/voice/memory'){if(!value||typeof value!=='object'||!('operationId'in value)||!uuid(value.operationId))throw new CoreError('invalid');if(session.operations.has(value.operationId))throw new CoreError('replay');if(session.operations.size>=128)throw new CoreError('capacity');session.operations.add(value.operationId);if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}if(++session.count>(options.requestsPerMinute??10))throw new CoreError('limited');json(res,200,await personalMemory.change(value));return}
+        if(operation||req.url==='/voice/stop'){if(!exact(value,[]))throw new CoreError('invalid');if(operation){await voice.cancelOperation(token!,operation[1]);json(res,200,{acknowledged:true})}else json(res,200,await voice.stop(token!));return}
+        if(!['/voice/jobs','/voice/prepare','/voice/prepared-submit'].includes(req.url??''))throw new CoreError('invalid')
+        // Speech input and fixed speech output each retain ten requests/minute.
+        // A reply does not consume the next listening turn or native-tool budget.
+        // Invalid requests are still charged, and Stop/cancel remain exempt.
+        const rate=session.voiceRate??={window:Date.now(),asr:0,tts:0}
+        if(Date.now()-rate.window>60000){rate.window=Date.now();rate.asr=0;rate.tts=0}
+        const kind=req.url==='/voice/prepare'?'asr':typeof value==='object'&&value!==null&&'kind'in value&&value.kind==='tts'?'tts':'asr'
+        if(req.url!=='/voice/prepared-submit'&&++rate[kind]>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
+        json(res,201,req.url==='/voice/prepare'?voice.prepare(token!,value):req.url==='/voice/prepared-submit'?voice.submitPrepared(token!,value):voice.create(token!,value));return
+      }catch(error){const code=error instanceof CoreError?error.code:error instanceof ChatError?error.code:'failed';if(!res.destroyed)json(res,code==='not-found'?404:code==='permission-denied'?403:code==='busy'||code==='voice-memory'||code==='capacity'?429:code==='too_large'?413:400,{code});return}
+    }
+    if(req.url?.startsWith('/youtube/')){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
+      try{
+        const match=/^\/youtube\/jobs\/([a-f0-9-]{36})(?:\/(approve|screenshot|show|normal-chrome))?$/.exec(req.url),operation=/^\/youtube\/operations\/([a-f0-9-]{36})\/cancel$/.exec(req.url)
+        if(match&&!uuid(match[1])||operation&&!uuid(operation[1]))throw new CoreError('invalid')
+        if(req.method==='GET'&&match&&!match[2]){json(res,200,youtube.get(token!,match[1]));return}
+        if(req.method==='GET'&&match?.[2]==='screenshot'){const shot=await youtube.screenshot(token!,match[1]);res.writeHead(200,{'Content-Type':'image/jpeg'});res.end(shot);return}
+        if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']){fail(res,403,'unauthorized');return}
+        const value=await readBody(req,AbortSignal.timeout(5000),4096)
+        if(match?.[2]==='normal-chrome'){json(res,200,youtube.normalChrome(token!,match[1],value));return}
+        if(match?.[2]==='show'){if(!exact(value,[]))throw new CoreError('invalid');json(res,200,await youtube.show(token!,match[1]));return}
+        if(operation||match?.[2]==='approve'||req.url==='/youtube/stop'){
+          if(!exact(value,[]))throw new CoreError('invalid')
+          if(operation){await youtube.cancelOperation(token!,operation[1]);json(res,200,{acknowledged:true});return}
+          if(req.url==='/youtube/stop'){json(res,200,await youtube.stop(token!));return}
+          json(res,200,youtube.approve(token!,match![1]));return
+        }
+        if(req.url!=='/youtube/plans')throw new CoreError('invalid')
+        if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}
+        if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
+        json(res,201,youtube.plan(token!,value));return
+      }catch(error){const code=error instanceof CoreError?error.code:error instanceof ChatError?error.code:'failed';if(!res.destroyed)json(res,code==='not-found'?404:code==='permission-denied'?403:code==='busy'||code==='model-memory'||code==='capacity'?429:code==='too_large'?413:400,{code});return}
+    }
+    if(req.url?.startsWith('/notepad/')){
+      const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
+      if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
+      try{
+        const match=/^\/notepad\/jobs\/([a-f0-9-]{36})(?:\/(approve))?$/.exec(req.url),operation=/^\/notepad\/operations\/([a-f0-9-]{36})\/cancel$/.exec(req.url)
+        if(match&&!uuid(match[1])||operation&&!uuid(operation[1]))throw new CoreError('invalid')
+        if(req.method==='GET'&&match&&!match[2]){json(res,200,notepad.get(token!,match[1]));return}
+        if(req.method==='GET'&&req.url==='/notepad/observation'){json(res,200,await notepad.observe(token!));return}
+        if(!origin||req.method!=='POST'||req.headers['content-type']?.split(';')[0]!=='application/json'||req.headers['content-encoding']){fail(res,403,'unauthorized');return}
+        const value=await readBody(req,AbortSignal.timeout(5000),4096)
+        if(operation||match?.[2]||req.url==='/notepad/stop'){
+          if(!exact(value,[]))throw new CoreError('invalid')
+          if(operation){await notepad.cancelOperation(token!,operation[1]);json(res,200,{acknowledged:true});return}
+          if(req.url==='/notepad/stop'){json(res,200,await notepad.stop(token!));return}
+          json(res,200,notepad.approve(token!,match![1]));return
+        }
+        if(!['/notepad/open','/notepad/plans'].includes(req.url))throw new CoreError('invalid')
+        if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}
+        if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
+        json(res,201,req.url==='/notepad/open'?await notepad.open(token!,value):await notepad.plan(token!,value));return
+      }catch(error){const code=error instanceof CoreError?error.code:error instanceof ChatError?error.code:'failed';if(!res.destroyed)json(res,code==='not-found'?404:code==='permission-denied'?403:code==='busy'||code==='memory'||code==='capacity'?429:code==='too_large'?413:400,{code});return}
+    }
     if(req.url?.startsWith('/lab/')){
       const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
       if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
@@ -69,7 +333,7 @@ export function createChatServer(options: Options = {}) {
         json(res,201,req.url==='/lab/open'?await lab.open(token!,value):await lab.plan(token!,value));return
       }catch(error){const code=error instanceof CoreError?error.code:error instanceof ChatError?error.code:'failed';if(!res.destroyed)json(res,code==='not-found'?404:code==='permission-denied'?403:code==='busy'||code==='memory'||code==='capacity'?429:code==='too_large'?413:400,{code});return}
     }
-    if(req.url==='/core/capabilities'&&req.method==='GET'){json(res,200,coreCapabilities(ocr.status()));return}
+    if(req.url==='/core/capabilities'&&req.method==='GET'){json(res,200,coreCapabilities(ocr.status(),voice.status()));return}
     if(req.url?.startsWith('/core/')){
       const token=/(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie??'')?.[1],session=token?access.get(token):undefined
       if(!session||session.expires<Date.now()){fail(res,401,'unauthorized');return}
@@ -115,7 +379,7 @@ export function createChatServer(options: Options = {}) {
         const operation=/^\/ocr\/operations\/([a-f0-9-]{36})\/cancel$/.exec(req.url)
         if(operation||match?.[2]){const value=await readBody(req,AbortSignal.timeout(5000));if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).length)throw new OcrError('invalid');if(operation)ocr.cancelOperation(token!,operation[1]);else if(match![2]==='clear')ocr.clear(token!,match![1]);else ocr.cancel(token!,match![1]);json(res,200,{ok:true});return}
         if(req.url!=='/ocr/jobs')throw new OcrError('invalid')
-        if((core.isBusy()||lab.isBusy())||active||session.active||slides.isBusy()||ocr.isBusy()){json(res,429,{code:'busy'});req.resume();return}
+        if((desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy()||(youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy()))||active||session.active||slides.isBusy()||ocr.isBusy()){json(res,429,{code:'busy'});req.resume();return}
         if(Date.now()-session.window>60000){session.window=Date.now();session.count=0}if(++session.count>(options.requestsPerMinute??10)){fail(res,429,'limited');return}
         const controller=new AbortController(),closing=()=>controller.abort();res.once('close',closing);active++;session.active++
         try {const value=await readBody(req,AbortSignal.any([controller.signal,AbortSignal.timeout(5000)]),5600000);controller.signal.throwIfAborted();const job=ocr.create(token!,value);res.once('close',()=>{if(!res.writableFinished)ocr.cancelOperation(token!,job.operationId)});json(res,202,job)}
@@ -136,14 +400,14 @@ export function createChatServer(options: Options = {}) {
           res.writeHead(200, { 'Content-Type': match[3].endsWith('.png') ? 'image/png' : match[3].endsWith('.pdf') ? 'application/pdf' : 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'Content-Length': data.length, ...(match[3].startsWith('deck.') ? { 'Content-Disposition': 'attachment; filename="CIC-' + match[1] + '-' + match[3] + '"' } : {}) }); res.end(data); return
         }
         if (!origin || req.method !== 'POST' || req.headers['content-type']?.split(';')[0] !== 'application/json' || req.headers['content-encoding']) { fail(res, 403, 'unauthorized'); return }
-        if (!match?.[2] && ((core.isBusy() || lab.isBusy()) || session.active || active || ocr.isBusy())) { json(res, 429, { code: 'busy' }); req.resume(); return }
+        if (!match?.[2] && ((core.isBusy() || lab.isBusy() || notepad.isBusy() || (youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy())) || session.active || active || ocr.isBusy())) { json(res, 429, { code: 'busy' }); req.resume(); return }
         if (Date.now() - session.window > 60000) { session.window=Date.now();session.count=0 }
         // Stopping an owned job remains possible after the creation quota is spent.
         if (!match?.[2] && ++session.count > (options.requestsPerMinute ?? 10)) { fail(res,429,'limited');return }
         const value = await readBody(req, AbortSignal.timeout(5000))
         if (match?.[2]) { if (!value || typeof value !== 'object' || Array.isArray(value) || Object.keys(value).length) throw new SlidesError('invalid');json(res,200,slides.cancel(token!,match[1]));return }
         if (req.url !== '/slides/jobs') throw new SlidesError('invalid')
-        if((core.isBusy()||lab.isBusy())||active||ocr.isBusy())throw new SlidesError('busy')
+        if((desktop.isBusy()||core.isBusy()||lab.isBusy()||notepad.isBusy()||(youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy()))||active||ocr.isBusy())throw new SlidesError('busy')
         const job = slides.create(token!, value)
         res.once('close', () => { if (!res.writableFinished) slides.cancel(token!,job.id) })
         json(res,202,job);return
@@ -168,7 +432,7 @@ export function createChatServer(options: Options = {}) {
     const token = /(?:^|;\s*)cic_local=([a-f0-9]{64})(?:;|$)/.exec(req.headers.cookie ?? '')?.[1]
     const session = token ? access.get(token) : undefined
     if (!session || session.expires < Date.now()) { fail(res, 401, 'unauthorized'); return }
-    if ((core.isBusy() || lab.isBusy()) || slides.isBusy() || ocr.isBusy()) { json(res,429,{ code: 'limited' });req.resume();return }
+    if ((core.isBusy() || lab.isBusy() || notepad.isBusy() || (youtube.isBusy()||voice.isBusy()||apps.isBusy()||chrome.isBusy())) || slides.isBusy() || ocr.isBusy()) { json(res,429,{ code: 'limited' });req.resume();return }
     if (req.url === '/chess/analyze') {
       if (req.headers['content-type']?.split(';')[0] !== 'application/json' || req.headers['content-encoding']) { fail(res, 400, 'invalid'); return }
       if (Date.now() - chessWindow > 60000) { chessWindow = Date.now(); chessCalls = 0 }
@@ -251,7 +515,7 @@ export function createChatServer(options: Options = {}) {
     }
   })
   server.requestTimeout = 10000; server.headersTimeout = 10000; server.maxHeadersCount = 30
-  server.on('close', () => { controllers.forEach(controller => controller.abort()); core.close(); void lab.close(); slides.close(); ocr.close(); access.clear() })
+  server.on('close', () => {void desktop.close(); controllers.forEach(controller => controller.abort()); core.close(); void lab.close(); void notepad.close(); void youtube.close(); void voice.close(); void apps.close(); void chrome.close(); void chromeWindows?.close(); slides.close(); ocr.close(); access.clear() })
   return server
 }
 async function abortable<T>(promise: Promise<T>, signal: AbortSignal): Promise<T> {
@@ -274,3 +538,4 @@ async function readBody(req: IncomingMessage, signal: AbortSignal, maxBytes:numb
   try { return JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(Buffer.concat(chunks))) }
   catch { throw new ChatError('invalid') }
 }
+

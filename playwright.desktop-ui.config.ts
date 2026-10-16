@@ -1,0 +1,2 @@
+import {defineConfig} from '@playwright/test'
+export default defineConfig({testDir:'./tests',testMatch:/desktop-ui\.spec\.ts$/,workers:1,retries:0,use:{baseURL:'http://127.0.0.1:4173/CIC-bot/',channel:'chrome',viewport:{width:1100,height:900}},webServer:{command:'"'+process.execPath+'" node_modules/vite/bin/vite.js preview --host 127.0.0.1 --port 4173 --strictPort',url:'http://127.0.0.1:4173/CIC-bot/',reuseExistingServer:false}})
