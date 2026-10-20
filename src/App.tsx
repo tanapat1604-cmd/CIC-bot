@@ -132,7 +132,7 @@ export default function App() {
           <a href="#capabilities" onClick={() => setMenuOpen(false)}>ช่วยอะไรได้บ้าง</a>
           <a href="#how-it-works" onClick={() => setMenuOpen(false)}>วิธีทำงาน</a>
         </nav>
-        <div className="header-actions"><span className="coming-soon">ทดลองหน้าแอป</span>{actionButtons()}</div>
+        <div className="header-actions"><a className="coming-soon" href="#/talk">ลองคุยด้วยเสียง</a>{actionButtons()}</div>
         <button className="menu-toggle" ref={menuButton} aria-label={menuOpen ? 'ปิดเมนู' : 'เปิดเมนู'} aria-expanded={menuOpen} aria-controls="main-navigation" onClick={() => setMenuOpen(current => !current)}><Icon name={menuOpen ? 'close' : 'menu'} /></button>
       </div>
     </header>
